@@ -1,0 +1,83 @@
+[
+  {
+    "wort": "Hund",
+    "wortart": "Nomen",
+    "artikel": "der",
+    "singular": {
+      "genitiv": "des Hundes",
+      "dativ": "dem Hund",
+      "akkusativ": "den Hund"
+    },
+    "plural": {
+      "nominativ": "die Hunde",
+      "genitiv": "der Hunde",
+      "dativ": "den Hunden",
+      "akkusativ": "die Hunde"
+    }
+  },
+  {
+    "wort": "die Katze",
+    "wortart": "Nomen",
+    "singular": {
+      "2": "der Katze",
+      "3": "der Katze",
+      "4": "die Katze"
+    },
+    "plural": {
+      "1": "die Katzen",
+      "genetiv": "der Katzen",
+      "3": "den Katzen",
+      "akkusativ": "die Katzen"
+    }
+  },
+  {
+    "wort": "Krokodil",
+    "wortart": "Nomen",
+    "singular": {
+      "1": "das Krokodil",
+      "2": "des Krokodils",
+      "3": "dem Krokodil",
+      "4": "das Krokodil"
+    },
+    "plural": {
+      "1": "die Krokodile",
+      "2": "der Krokodile",
+      "3": "den Krokodilen",
+      "4": "die Krokodile"
+    }
+  },
+  {
+    "wort": "gehen",
+    "wortart": "Verb",
+    "formen": ["ging", "gegangen", "geht"]
+  },
+  {
+    "wort": "schoen",
+    "wortart": "Adjektiv",
+    "formen": ["schoener", "am schoensten"]
+  },
+  {
+    "wort": "der",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "mein",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "zwei",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "gestern",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "und",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "ach",
+    "wortart": "Interjektion"
+  }
+]
