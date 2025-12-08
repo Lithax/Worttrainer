@@ -14,19 +14,16 @@ public class FehlerfuchsModel extends LinearSpielModel {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public String getSpielDescription(){
 		return "";
 	}
 
 	public String getSpielName(){
-		return "";
+		return "Fehlerfuchs";
 	}
 
 	public Statistik getStatistik(){
-		return null;
+		return super.getStatistik();
 	}
 
 	public boolean hasNewRound(){

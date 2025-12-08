@@ -1,5 +1,6 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.SpielEngineView;
@@ -13,11 +14,11 @@ public interface Spiel {
 
 	public String getDescription();
 
-	public InputStream getIcon();
+	public InputStream getIcon() throws IOException;
 
 	public String getName();
 
-	public SpielEngineView getSpielEngineView();
+	public SpielEngineView newSpielEngineView();
 
 	public void spielBeenden();
 

@@ -3,6 +3,7 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fallDerWo
 import java.io.InputStream;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielView;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.artikeljaeger.ArtikeljaegerController;
 
 /**
  * @author Benutzbiber
@@ -11,15 +12,13 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielView;
  */
 public class FallDerWoerterView extends SpielView<FallDerWoerterController, FallDerWoerterView> {
 
-	public FallDerWoerterView(){
-
+	public FallDerWoerterView(FallDerWoerterController c){
+		super(c);
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	
-	public InputStream loadIcon(){
-		return null;
+	@Override
+	public Object getAsObject() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'getAsObject'");
 	}
 }//end FallDerWoerterView

@@ -1,10 +1,11 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 
+import java.awt.GridLayout;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 import javax.swing.JPanel;
 
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
 
 /**
@@ -13,22 +14,11 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
  * @created 08-Dez-2025 15:09:39
  */
 public class SpieleViewImpl extends JPanel implements SpieleView {
+	private AtomicReference<SpieleListener> l;
 
-
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public SpieleViewImpl(){
-
-	}
-
-	/**
-	 * 
-	 * @param controller
-	 */
-	public void setController(MainController controller){
-
+	public SpieleViewImpl(SpieleListener l){
+		this.l = new AtomicReference<>(l);
+		setLayout(new GridLayout(0, 3, 10, 10));
 	}
 
 	/**
@@ -36,6 +26,8 @@ public class SpieleViewImpl extends JPanel implements SpieleView {
 	 * @param spiele
 	 */
 	public void setSpiele(List<Spiel> spiele){
-
+		removeAll();
+		for(Spiel s : spiele)
+			add(new SpielPanel(s.getName(), s.getDescription(), s.getIcon(), l));
 	}
 }//end SpieleViewImpl

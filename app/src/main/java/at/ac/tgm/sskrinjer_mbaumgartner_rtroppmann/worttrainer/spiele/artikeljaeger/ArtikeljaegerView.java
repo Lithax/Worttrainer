@@ -11,15 +11,13 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielView;
  */
 public class ArtikeljaegerView extends SpielView<ArtikeljaegerController, ArtikeljaegerView> {
 
-	public ArtikeljaegerView(){
-
+	public ArtikeljaegerView(ArtikeljaegerController c){
+		super(c);
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	
-	public InputStream loadIcon(){
-		return null;
+	@Override
+	public Object getAsObject() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'getAsObject'");
 	}
 }//end ArtikeljaegerView

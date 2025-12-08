@@ -11,27 +11,24 @@ import javax.swing.JTextField;
  */
 public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 
-	private JTextField anzahlRunden;
-	private JComboBox<Integer> schwierigkeit;
-	private JTextField theme;
+	private JTextField anzahlRundenField;
+	private JComboBox<Integer> schwierigkeitCBox;
+	private JComboBox<String> themeCBox;
 
 	public EinstellungsViewImpl(){
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public int getAnzahlRunden(){
-		return 0;
+		return Integer.parseInt(anzahlRundenField.getText());
 	}
 
 	public int getSchwierigkeit(){
-		return 0;
+		return (Integer) schwierigkeitCBox.getSelectedItem();
 	}
 
 	public String getTheme(){
-		return "";
+		return (String) themeCBox.getSelectedItem();
 	}
 
 	/**
@@ -39,7 +36,7 @@ public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 	 * @param anzahlRunden
 	 */
 	public void setAnzahlRunden(int anzahlRunden){
-
+		anzahlRundenField.setText(String.valueOf(anzahlRunden));
 	}
 
 	/**
@@ -47,7 +44,7 @@ public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 	 * @param schwierigkeit
 	 */
 	public void setSchwierigkeit(int schwierigkeit){
-
+		schwierigkeitCBox.setSelectedItem(Integer.valueOf(schwierigkeit));
 	}
 
 	/**
@@ -55,6 +52,6 @@ public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 	 * @param theme
 	 */
 	public void setTheme(String theme){
-
+		themeCBox.setSelectedItem(theme);
 	}
 }//end EinstellungsViewImpl

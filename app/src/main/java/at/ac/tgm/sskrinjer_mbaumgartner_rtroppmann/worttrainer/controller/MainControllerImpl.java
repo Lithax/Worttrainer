@@ -1,12 +1,15 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Einstellungen;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.GameState;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.EinstellungsView;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainView;
 
 /**
@@ -20,23 +23,16 @@ public class MainControllerImpl implements MainController {
 	private MainView mainView;
 	private List<Spiel> spiele;
 
-	public MainControllerImpl(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
 	/**
 	 * 
 	 * @param spiele
 	 */
 	public MainControllerImpl(List<Spiel> spiele){
+		this.spiele = spiele;
 
-	}
+		Thread.setDefaultUncaughtExceptionHandler((t, e ) -> {
 
-	public void onEinstellungenSave(){
-
+		});
 	}
 
 	public void onSpielBeenden(){
@@ -56,8 +52,9 @@ public class MainControllerImpl implements MainController {
 	 * @param datum
 	 * @param time
 	 */
-	public void onUpdateTime(LocalDateTime datum, LocalTime time){
-
+	public void onUpdateTime(LocalDate datum, LocalTime time){
+		mainView.getHomeView().setDatum(datum);
+		mainView.getHomeView().setUhrzeit(time);
 	}
 
 	/**
@@ -65,15 +62,21 @@ public class MainControllerImpl implements MainController {
 	 * @param mainView
 	 */
 	public void setMainView(MainView mainView){
-
+		this.mainView = mainView;
 	}
 
-	public void einstellungenChanged(){
-
-	}
-
-	public void openEinstellungenRequest(){
-
+	public void onEinstellungenSave() throws IOException {
+		EinstellungsView eV = mainView.getEinstellungsView();
+		Einstellungen eM = mainModel.getEinstellungen();
+		try {
+			eM.setAnzahlRunden(eV.getAnzahlRunden());
+			eM.setSchwierigkeit(eV.getSchwierigkeit());
+			if(!eM.getTheme().equals(eV.getTheme())) 
+				eM.setTheme(eV.getTheme());
+			eM.save();
+		} catch (IllegalArgumentException e) {
+			
+		}
 	}
 
 	/**
@@ -81,12 +84,11 @@ public class MainControllerImpl implements MainController {
 	 * @param spielName
 	 */
 	public void spielStartenRequest(String spielName){
-
+		
 	}
 
 	@Override
-	public void onUpdateTime(LocalDate datum, LocalTime time) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'onUpdateTime'");
+	public void setMainModel(MainModel mM) {
+		mainModel = mM;
 	}
 }//end MainControllerImpl

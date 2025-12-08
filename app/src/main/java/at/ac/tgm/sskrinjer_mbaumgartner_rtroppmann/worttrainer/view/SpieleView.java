@@ -1,5 +1,6 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 
+import java.io.IOException;
 import java.util.List;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
@@ -14,14 +15,8 @@ public interface SpieleView {
 
 	/**
 	 * 
-	 * @param controller
-	 */
-	public void setController(MainController controller);
-
-	/**
-	 * 
 	 * @param spiele
 	 */
-	public void setSpiele(List<Spiel> spiele);
+	public void setSpiele(List<Spiel> spiele) throws IOException;
 
 }

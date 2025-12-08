@@ -28,4 +28,15 @@ public interface MainView {
 	 */
 	public void setSpiel(SpielEngineView spielEngineView);
 
+	/**
+	 * 
+	 * @param theme
+	 */
+	public void setTheme(String theme);
+
+	/**
+	 * 
+	 * @param theme
+	 */
+	public String[] getAvailableThemes();
 }

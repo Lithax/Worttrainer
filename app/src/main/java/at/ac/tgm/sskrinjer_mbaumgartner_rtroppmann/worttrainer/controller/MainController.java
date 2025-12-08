@@ -1,8 +1,13 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import com.google.common.util.concurrent.TimeLimiter;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.TimeListener;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainView;
 
 /**
@@ -10,9 +15,9 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainView;
  * @version 1.0
  * @created 08-Dez-2025 15:09:38
  */
-public interface MainController {
+public interface MainController extends TimeListener {
 
-	public void onEinstellungenSave();
+	public void onEinstellungenSave() throws IOException;
 
 	/**
 	 * 
@@ -32,5 +37,7 @@ public interface MainController {
 	 * @param mainView
 	 */
 	public void setMainView(MainView mainView);
+
+	public void setMainModel(MainModel mM);
 
 }

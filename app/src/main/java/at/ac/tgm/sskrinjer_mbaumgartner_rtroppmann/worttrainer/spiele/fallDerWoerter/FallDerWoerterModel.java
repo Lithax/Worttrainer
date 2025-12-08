@@ -14,19 +14,16 @@ public class FallDerWoerterModel extends LinearSpielModel {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public String getSpielDescription(){
 		return "";
 	}
 
 	public String getSpielName(){
-		return "";
+		return "Fall der Wörter";
 	}
 
 	public Statistik getStatistik(){
-		return null;
+		return super.getStatistik();
 	}
 
 	public boolean hasNewRound(){

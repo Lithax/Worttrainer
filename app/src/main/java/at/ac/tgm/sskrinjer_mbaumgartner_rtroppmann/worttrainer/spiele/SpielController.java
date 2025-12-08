@@ -1,5 +1,6 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.SpielEngineView;
@@ -22,9 +23,6 @@ public abstract class SpielController<
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	/**
 	 * 
 	 * @param spielModel
@@ -35,23 +33,23 @@ public abstract class SpielController<
 	}
 
 	public String getDescription(){
-		return "";
+		return model.getSpielDescription();
 	}
 
-	public InputStream getIcon(){
-		return null;
+	public InputStream getIcon() throws IOException{
+		return view.loadIcon();
 	}
 
 	public String getName(){
-		return "";
+		return model.getSpielName();
 	}
 
-	public SpielEngineView getSpielEngineView(){
-		return null;
+	public SpielEngineView newSpielEngineView(){
+		return view;
 	}
 
 	public void spielBeenden(){
-
+		view.showStatistik(model.getStatistik());
 	}
 
 	public abstract void spielStarten();

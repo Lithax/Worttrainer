@@ -1,6 +1,7 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 
 import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicReference;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,25 +14,13 @@ import javax.swing.JPanel;
  * @created 08-Dez-2025 15:09:39
  */
 public class SpielPanel extends JPanel {
-
-	private JButton button;
-	private ImageIcon icon;
-	private JLabel name;
-
-	public SpielPanel(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	/**
 	 * 
 	 * @param name
 	 * @param beschreibung
 	 * @param icon
 	 */
-	public SpielPanel(String name, String beschreibung, InputStream icon){
-
+	public SpielPanel(String name, String beschreibung, InputStream icon, AtomicReference<SpieleListener> l){
+		//TODO: GUI
 	}
 }//end SpielPanel

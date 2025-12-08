@@ -1,5 +1,7 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
 
+import java.util.HashMap;
+
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Wortliste;
 
@@ -16,15 +18,13 @@ public abstract class SpielModel {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	public abstract String getSpielDescription();
 
 	public abstract String getSpielName();
 
-	public Statistik getStatistik(){
-		return null;
+	public Statistik getStatistik() {
+        HashMap<String, String> fields = new HashMap<>();
+        return new Statistik(getSpielDescription(), getSpielName() + " - Statistik", fields);
 	}
 
 	public abstract boolean hasNewRound();

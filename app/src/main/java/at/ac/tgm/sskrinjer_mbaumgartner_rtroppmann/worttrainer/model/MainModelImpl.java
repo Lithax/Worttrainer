@@ -1,5 +1,9 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
 
 /**
@@ -11,41 +15,39 @@ public class MainModelImpl implements MainModel {
 
 	private GameState gameState;
 	private TimeUpdateThread timer;
-	public Wortliste m_Wortliste;
-	public Einstellungen m_Einstellungen;
+	public Wortliste wortliste;
+	public Einstellungen einstellungen;
 
-	public MainModelImpl(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
 	/**
 	 * 
 	 * @param controller
 	 */
 	public MainModelImpl(MainController controller){
-
+		timer.setTimeListener(controller);
 	}
 
+
 	public Einstellungen getEinstellungen(){
-		return null;
+		return einstellungen;
 	}
 
 	public GameState getGameState(){
-		return null;
+		return gameState;
 	}
 
-	public Tip getTipOfTheDay(){
-		return null;
+	public Tip getTipOfTheDay() throws IOException {
+		return Tip.getTipOfTheDay();
 	}
 
-	public Wortliste getWortliste(){
-		return null;
+
+	@Override
+	public void setGameState(GameState g) {
+		gameState = g;
 	}
 
-	public Wortliste getWortListe(){
-		return null;
+
+	@Override
+	public Wortliste getWortliste() {
+		return wortliste;
 	}
 }//end MainModelImpl

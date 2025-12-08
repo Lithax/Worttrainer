@@ -11,26 +11,19 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
  */
 public class StatistikDialog extends JDialog {
 
-	public StatistikDialog(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	/**
 	 * 
 	 * @param statistik
 	 */
 	public StatistikDialog(Statistik statistik){
+		super();
+		setTitle(statistik.getTitle());
+		setModal(true);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 
-	}
+		// TODO: gui
 
-	/**
-	 * 
-	 * @param statistik
-	 */
-	public void show(Statistik statistik){
-
+		pack();
 	}
 }//end StatistikView

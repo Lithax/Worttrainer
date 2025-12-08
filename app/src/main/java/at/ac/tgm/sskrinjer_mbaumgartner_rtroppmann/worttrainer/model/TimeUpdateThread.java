@@ -1,5 +1,7 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  * @author mhbau
@@ -7,18 +9,20 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
  * @created 08-Dez-2025 15:09:39
  */
 public class TimeUpdateThread extends Thread {
-
+	public static final int UPDATE_INTERVAL_MS = 1000 * 60; // 1 min
 	private TimeListener timerCallback;
-	public TimeListener m_TimeListener;
 
-	public TimeUpdateThread(){
-
+	public void setTimeListener(TimeListener l) {
+		this.timerCallback = l;
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
+	@Override
 	public void run(){
-
+		while(isAlive() && !isInterrupted()) {
+			try {
+				Thread.sleep(UPDATE_INTERVAL_MS);
+			} catch (Exception e) {}
+			timerCallback.onUpdateTime(LocalDate.now(), LocalTime.now());
+		}
 	}
 }//end TimeUpdateThread

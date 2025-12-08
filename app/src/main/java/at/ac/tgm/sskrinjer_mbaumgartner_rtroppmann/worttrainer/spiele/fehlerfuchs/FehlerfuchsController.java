@@ -13,7 +13,14 @@ public class FehlerfuchsController extends SpielController<FehlerfuchsModel, Feh
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
+	@Override
+	public void spielBeenden() {
+		super.spielBeenden();
+	}
+
+	@Override
+	public void spielStarten() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'spielStarten'");
 	}
 }//end FehlerfuchsController

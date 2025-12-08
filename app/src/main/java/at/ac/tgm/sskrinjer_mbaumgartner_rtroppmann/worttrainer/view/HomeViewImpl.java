@@ -25,10 +25,6 @@ public class HomeViewImpl extends JPanel implements HomeView {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-
 	/**
 	 * 
 	 * @param datum

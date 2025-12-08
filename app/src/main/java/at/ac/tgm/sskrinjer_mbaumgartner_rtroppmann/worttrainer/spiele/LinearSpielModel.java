@@ -12,14 +12,11 @@ public abstract class LinearSpielModel extends SpielModel {
 	protected int fehlerAnzahl = 0;
 	protected int gesamtAnzahl = 0;
 
-	public LinearSpielModel(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public Statistik getStatistik(){
-		return null;
+	@Override
+	public Statistik getStatistik() 
+	{
+		Statistik s = super.getStatistik();
+		s.getStatFields().put("Fehlerquote", String.valueOf((fehlerAnzahl / gesamtAnzahl) * 100));
+		return s;
 	}
 }//end LinearSpielModel

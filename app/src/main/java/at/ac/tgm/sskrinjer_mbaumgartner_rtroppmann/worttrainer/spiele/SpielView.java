@@ -1,9 +1,13 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.SpielEngineView;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.StatistikDialog;
 
 /**
  * @author Benutzbiber
@@ -13,18 +17,11 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 public abstract class SpielView<
         C extends SpielController<?, C, V>,
         V extends SpielView<C, V>
-> {
+> implements SpielEngineView {
 
-	public static final Path iconsPath = Path.of("");
-	private C spielController;
+	public static final Path iconsPath = Path.of("resources/icons");
+	protected C spielController;
 
-	public SpielView(){
-
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	/**
 	 * 
 	 * @param spielController
@@ -33,14 +30,17 @@ public abstract class SpielView<
 
 	}
 
-	public abstract InputStream loadIcon();
+	protected Path getIconFile() {
+		return Path.of(spielController.getName());
+	}
 
 	/**
 	 * 
 	 * @param path
+	 * @throws IOException 
 	 */
-	protected static InputStream loadIcon(Path path){
-		return null;
+	public InputStream loadIcon() throws IOException{
+		return Files.newInputStream(iconsPath.resolve(getIconFile()));
 	}
 
 	public void neuesSpiel(){
@@ -52,6 +52,7 @@ public abstract class SpielView<
 	 * @param statistik
 	 */
 	public void showStatistik(Statistik statistik){
-
+		StatistikDialog sDialog = new StatistikDialog(statistik);
+		sDialog.setVisible(true);
 	}
 }//end SpielView

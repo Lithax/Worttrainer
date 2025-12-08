@@ -13,11 +13,9 @@ public class ArtikeljaegerController extends SpielController<ArtikeljaegerModel,
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public void spielBeenden(){
-
+	@Override
+	public void spielBeenden() {
+		super.spielBeenden();
 	}
 
 	public void spielStarten(){

@@ -1,8 +1,16 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 
+import java.util.stream.Stream;
+
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
+import javax.swing.LookAndFeel;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.UIManager.LookAndFeelInfo;
+
+import com.formdev.flatlaf.FlatLaf;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
 
@@ -17,32 +25,25 @@ public class MainViewImpl extends JFrame implements MainView {
 	private HomeView homeView;
 	private SpieleView spieleView;
 	private JTabbedPane tabbedPane;
-	public MainController m_MainController;
-	public EinstellungsView m_EinstellungsView;
-	public HomeView m_HomeView;
-	public SpieleView m_SpieleView;
 
-	public MainViewImpl(){
+	public MainViewImpl(MainController controller){
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	public void disposeSpiel(){
 
 	}
 
 	public EinstellungsView getEinstellungsView(){
-		return null;
+		return einstellungsView;
 	}
 
 	public HomeView getHomeView(){
-		return null;
+		return homeView;
 	}
 
 	public SpieleView getSpieleView(){
-		return null;
+		return spieleView;
 	}
 
 	/**
@@ -59,5 +60,24 @@ public class MainViewImpl extends JFrame implements MainView {
 	 */
 	public void runOnThread(Runnable callback){
 		SwingUtilities.invokeLater(callback);
+	}
+
+	@Override
+	public void setTheme(String theme) {
+		for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels())
+			if (info.getName().equals(theme)) {
+				try {
+					UIManager.setLookAndFeel(info.getClassName());
+					FlatLaf.updateUI();
+				} catch (Exception e) {e.printStackTrace();}
+				return;
+			}
+	}
+
+	@Override
+	public String[] getAvailableThemes() {
+		return Stream.of(UIManager.getInstalledLookAndFeels())
+        .map(UIManager.LookAndFeelInfo::getName)
+        .toArray(String[]::new);
 	}
 }//end MainViewImpl

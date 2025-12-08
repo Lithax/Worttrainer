@@ -1,6 +1,7 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
 
 import java.nio.file.Path;
+import java.util.function.Predicate;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -16,15 +17,12 @@ public class Wortliste {
 	private Wort[] alleWoerter;
 	private Wort[] grundformenORersterFallWoerter;
 	private Wort[] grundformenWoerter;
-	public static final Path woerterPath = Path.of("");
+	public static final Path woerterPath = Path.of("resources/woerterliste.json");
 
 	public Wortliste(){
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	/**
 	 * 
 	 * @param wortAnzahl

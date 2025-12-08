@@ -1,5 +1,6 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
 
+import java.io.IOException;
 
 /**
  * @author Benutzbiber
@@ -12,8 +13,10 @@ public interface MainModel {
 
 	public GameState getGameState();
 
-	public Tip getTipOfTheDay();
+	public void setGameState(GameState g);
 
-	public Wortliste getWortListe();
+	public Tip getTipOfTheDay() throws IOException;
+
+	public Wortliste getWortliste();
 
 }

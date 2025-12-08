@@ -8,18 +8,10 @@ import java.util.HashMap;
  * @created 08-Dez-2025 13:58:04
  */
 public class Statistik {
-
 	private String fliesstext;
 	private HashMap<String, String> statfields;
 	private String title;
 
-	public Statistik(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
 	/**
 	 * 
 	 * @param flie�text
@@ -27,23 +19,25 @@ public class Statistik {
 	 * @param statfields
 	 */
 	public Statistik(String fliesstext, String title, HashMap<String, String> statfields){
-
+		this.fliesstext = fliesstext;
+		this.title = title;
+		this.statfields = statfields;
 	}
 
 	public String getFliesstext(){
-		return "";
+		return fliesstext;
 	}
 
 	public HashMap<String, String> getStatFields(){
-		return null;
+		return statfields;
 	}
 
 	/**
 	 * 
 	 * @param String
 	 */
-	public String getTitle(String title){
-		return "";
+	public String getTitle(){
+		return title;
 	}
 
 	/**
@@ -51,7 +45,7 @@ public class Statistik {
 	 * @param flie�text
 	 */
 	public void setFliessText(String fliesstext){
-
+		this.fliesstext = fliesstext;
 	}
 
 	/**
@@ -59,6 +53,6 @@ public class Statistik {
 	 * @param newTitle
 	 */
 	public void setTitle(String newTitle){
-
+		this.title = newTitle;
 	}
 }//end Statistik
