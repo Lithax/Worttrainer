@@ -29,7 +29,7 @@ public class MainViewImpl extends JFrame implements MainView {
 	private JTabbedPane tabbedPane;
 
 	public MainViewImpl(MainController controller){
-
+		
 	}
 
 	public void disposeSpiel(){

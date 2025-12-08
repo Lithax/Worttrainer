@@ -17,7 +17,7 @@ public class Wortliste {
 	private Wort[] alleWoerter;
 	private Wort[] grundformenORersterFallWoerter;
 	private Wort[] grundformenWoerter;
-	public static final Path woerterPath = Path.of("resources/woerterliste.json");
+	public static final Path woerterPath = Path.of("woerter/woerterliste.json");
 
 	public Wortliste(){
 

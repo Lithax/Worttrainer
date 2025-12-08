@@ -42,14 +42,6 @@ public class MainControllerImpl implements MainController {
 
 	/**
 	 * 
-	 * @param spielName
-	 */
-	public void onSpielStarten(String spielName){
-
-	}
-
-	/**
-	 * 
 	 * @param datum
 	 * @param time
 	 */
@@ -80,16 +72,13 @@ public class MainControllerImpl implements MainController {
 		}
 	}
 
-	/**
-	 * 
-	 * @param spielName
-	 */
-	public void spielStartenRequest(String spielName){
-		
-	}
-
 	@Override
 	public void setMainModel(MainModel mM) {
 		mainModel = mM;
+	}
+
+	@Override
+	public void onSpielSelected(String name) {
+		
 	}
 }//end MainControllerImpl

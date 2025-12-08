@@ -19,7 +19,7 @@ import com.google.gson.reflect.TypeToken;
  */
 public class Einstellungen {
 	private int anzahlSpielrunden;
-	public static final Path einstellungenPath = Path.of("resources/settings.json");
+	public static final Path einstellungenPath = Path.of("settings/settings.json");
 	private int schwierigkeit;
 	private String[] themes;
 

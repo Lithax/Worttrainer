@@ -18,7 +18,7 @@ import com.google.gson.reflect.TypeToken;
  * @created 08-Dez-2025 15:09:39
  */
 public record Tip(String text, String title) {
-	public static final Path tipsPath = Path.of("resources/tips.json");
+	public static final Path tipsPath = Path.of("tips/tips.json");
 	private static List<Tip> tips;
 
 	/**
