@@ -1,0 +1,25 @@
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 14:30:07
+ */
+public abstract class LinearSpielModel extends SpielModel {
+
+	protected int fehlerAnzahl = 0;
+	protected int gesamtAnzahl = 0;
+
+	public LinearSpielModel(){
+
+	}
+
+	public void finalize() throws Throwable {
+		super.finalize();
+	}
+	public Statistik getStatistik(){
+		return null;
+	}
+}//end LinearSpielModel
