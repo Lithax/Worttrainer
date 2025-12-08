@@ -1,10 +1,14 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainView;
 
 /**
  * @author mhbau
  * @version 1.0
- * @created 08-Dez-2025 15:02:18
+ * @created 08-Dez-2025 15:09:38
  */
 public interface MainController {
 

@@ -1,21 +1,22 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.GeneralListener;
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
+import javax.swing.SwingUtilities;
+
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
 
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 15:02:19
+ * @created 08-Dez-2025 15:09:39
  */
-public class MainViewImpl extends JFrame implements SpielEngineViewImpl, MainView {
+public class MainViewImpl extends JFrame implements MainView {
 
 	private EinstellungsView einstellungsView;
 	private HomeView homeView;
 	private SpieleView spieleView;
 	private JTabbedPane tabbedPane;
-	public BasicFrame m_BasicFrame;
-	public GeneralListener m_GeneralListener;
 	public MainController m_MainController;
 	public EinstellungsView m_EinstellungsView;
 	public HomeView m_HomeView;
@@ -28,6 +29,10 @@ public class MainViewImpl extends JFrame implements SpielEngineViewImpl, MainVie
 	public void finalize() throws Throwable {
 		super.finalize();
 	}
+	public void disposeSpiel(){
+
+	}
+
 	public EinstellungsView getEinstellungsView(){
 		return null;
 	}
@@ -42,9 +47,9 @@ public class MainViewImpl extends JFrame implements SpielEngineViewImpl, MainVie
 
 	/**
 	 * 
-	 * @param spielView
+	 * @param spielEngineView
 	 */
-	public void setSpiel(SpielView spielView){
+	public void setSpiel(SpielEngineView spielEngineView){
 
 	}
 
@@ -53,14 +58,6 @@ public class MainViewImpl extends JFrame implements SpielEngineViewImpl, MainVie
 	 * @param callback
 	 */
 	public void runOnThread(Runnable callback){
-
-	}
-
-	/**
-	 * 
-	 * @param spielView
-	 */
-	public void setSpiel(SpielView spielView){
-
+		SwingUtilities.invokeLater(callback);
 	}
 }//end MainViewImpl

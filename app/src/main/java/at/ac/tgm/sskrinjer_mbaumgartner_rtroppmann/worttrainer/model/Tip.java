@@ -1,24 +1,22 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
 
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.List;
+
 import com.google.gson.Gson;
 
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 15:02:19
+ * @created 08-Dez-2025 15:09:39
  */
-public record Tip {
+public record Tip(String text, String title) {
 
-	private String text;
-	public static final Path tipsPath;
-	private String title;
-
-	public Tip(){
-
-	}
+	public static final Path tipsPath = Path.of("");
 
 	public void finalize() throws Throwable {
-
+		
 	}
 	/**
 	 * 

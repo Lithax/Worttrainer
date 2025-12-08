@@ -4,17 +4,9 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 15:02:19
+ * @created 08-Dez-2025 15:09:40
  */
-public record Wort {
-
-	public Wort(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
+public record Wort(String wort, Wortart wortart, String artikel, int fall, int specialType, Wort[] singular, Wort[] plural, Wort[] formen) {
 	/**
 	 * 
 	 * @param wort
@@ -26,7 +18,7 @@ public record Wort {
 	 * @param plural
 	 * @param formen
 	 */
-	private Wort(String wort, Wortart wortart, String artikel, int fall, int specialType, Woerter[] singular, Woerter[] plural, Woerter[] formen){
+	private Wort(String wort, Wortart wortart, String artikel, int fall, int specialType, Wort[] singular, Wort[] plural, Wort[] formen){
 		if (grundform == null) throw new IllegalArgumentException("Grundform fehlt");
 		this.formen = (formen == null) ? java.util.Map.of() : java.util.Map.copyOf(formen);
 		//0=nix, 1=singular, 2=plural, 3=comperativ, 4=superlativ

@@ -4,9 +4,11 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 15:02:18
+ * @created 08-Dez-2025 15:09:39
  */
 public interface MainView {
+
+	public void disposeSpiel();
 
 	public EinstellungsView getEinstellungsView();
 
@@ -22,8 +24,8 @@ public interface MainView {
 
 	/**
 	 * 
-	 * @param spielView
+	 * @param spielEngineView
 	 */
-	public void setSpiel(SpielView spielView);
+	public void setSpiel(SpielEngineView spielEngineView);
 
 }

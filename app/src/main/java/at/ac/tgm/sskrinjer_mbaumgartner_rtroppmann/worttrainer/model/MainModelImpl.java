@@ -1,10 +1,11 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
 
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
 
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 15:02:18
+ * @created 08-Dez-2025 15:09:39
  */
 public class MainModelImpl implements MainModel {
 
@@ -12,8 +13,6 @@ public class MainModelImpl implements MainModel {
 	private TimeUpdateThread timer;
 	public Wortliste m_Wortliste;
 	public Einstellungen m_Einstellungen;
-	public Tip m_Tip;
-	public TimeUpdateThread m_TimeUpdateThread;
 
 	public MainModelImpl(){
 

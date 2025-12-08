@@ -1,5 +1,10 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.List;
+
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainView;
@@ -7,17 +12,13 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainView;
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 15:02:18
+ * @created 08-Dez-2025 15:09:38
  */
-public class MainControllerImpl implements GeneralListener, SpieleListener, MainController {
-
+public class MainControllerImpl implements MainController {
 	private Spiel currentSpiel;
 	private MainModel mainModel;
 	private MainView mainView;
-	private List<Spiele> spiele;
-	public MainModel m_MainModel;
-	public Spiel m_Spiel;
-	public MainView m_MainView;
+	private List<Spiel> spiele;
 
 	public MainControllerImpl(){
 
@@ -30,7 +31,7 @@ public class MainControllerImpl implements GeneralListener, SpieleListener, Main
 	 * 
 	 * @param spiele
 	 */
-	public MainControllerImpl(List<Spiele> spiele){
+	public MainControllerImpl(List<Spiel> spiele){
 
 	}
 
@@ -55,7 +56,7 @@ public class MainControllerImpl implements GeneralListener, SpieleListener, Main
 	 * @param datum
 	 * @param time
 	 */
-	public void onUpdateTime(LocalDate datum, LocalTime time){
+	public void onUpdateTime(LocalDateTime datum, LocalTime time){
 
 	}
 
@@ -81,5 +82,11 @@ public class MainControllerImpl implements GeneralListener, SpieleListener, Main
 	 */
 	public void spielStartenRequest(String spielName){
 
+	}
+
+	@Override
+	public void onUpdateTime(LocalDate datum, LocalTime time) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'onUpdateTime'");
 	}
 }//end MainControllerImpl

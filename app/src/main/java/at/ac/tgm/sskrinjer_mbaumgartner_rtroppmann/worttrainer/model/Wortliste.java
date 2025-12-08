@@ -1,5 +1,7 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
 
+import java.nio.file.Path;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonElement;
@@ -7,14 +9,14 @@ import com.google.gson.JsonElement;
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 15:02:19
+ * @created 08-Dez-2025 15:09:40
  */
 public class Wortliste {
 
 	private Wort[] alleWoerter;
 	private Wort[] grundformenORersterFallWoerter;
 	private Wort[] grundformenWoerter;
-	public static final Path woerterPath;
+	public static final Path woerterPath = Path.of("");
 
 	public Wortliste(){
 
@@ -32,8 +34,8 @@ public class Wortliste {
 	}
 
 	/**
-	 * <font color="#008000">gibt nur die Woerter zurück, die fall==0 && (type == 0 ||
-	 * type == 1) haben. Also alle Grundformen der Wörter</font>
+	 * <font color="#008000">gibt nur die Woerter zurï¿½ck, die fall==0 && (type == 0 ||
+	 * type == 1) haben. Also alle Grundformen der Wï¿½rter</font>
 	 * 
 	 * @param wortAnzahl
 	 * @param minBuchstaben
@@ -167,8 +169,8 @@ public class Wortliste {
 	}
 
 	/**
-	 * Holt sich die Wörter aus einem JSON. Baut aus einem Wort, dass mehrere Wörter
-	 * enthält eigene Wörter und referenziert sie dann in den Attributen ("singular",
+	 * Holt sich die Wï¿½rter aus einem JSON. Baut aus einem Wort, dass mehrere Wï¿½rter
+	 * enthï¿½lt eigene Wï¿½rter und referenziert sie dann in den Attributen ("singular",
 	 * "plural" und "formen"), damit man vom base Wort noch auf die Formen kommen kann.
 	 * 
 	 * 
@@ -176,8 +178,8 @@ public class Wortliste {
 	 */
 	public static Wortliste loadWortliste(Path path){
 		/*
-		Holt sich die Wörter aus einem JSON. 
-		Baut aus einem Wort, dass mehrere Wörter enthält eigene Wörter 
+		Holt sich die Wï¿½rter aus einem JSON. 
+		Baut aus einem Wort, dass mehrere Wï¿½rter enthï¿½lt eigene Wï¿½rter 
 		und referenziert sie dann in den Attributen ("singular", "plural" und "formen"),
 		damit man vom base Wort noch auf die Formen kommen kann.
 		*/

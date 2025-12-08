@@ -1,17 +1,22 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
 
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.SpieleListener;
+import java.io.InputStream;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.SpielEngineView;
 
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 15:02:19
+ * @created 08-Dez-2025 15:09:39
  */
-public abstract class SpielController<M extends SpielModel, V extends SpielView<? extends SpielController<M, V>>> implements Spiel {
+public abstract class SpielController<
+        M extends SpielModel,
+        C extends SpielController<M, C, V>,
+        V extends SpielView<C, V>
+> implements Spiel {
 
 	protected M model;
 	protected V view;
-	public SpieleListener m_SpieleListener;
 
 	public SpielController(){
 
@@ -41,7 +46,7 @@ public abstract class SpielController<M extends SpielModel, V extends SpielView<
 		return "";
 	}
 
-	public V getSpielView(){
+	public SpielEngineView getSpielEngineView(){
 		return null;
 	}
 

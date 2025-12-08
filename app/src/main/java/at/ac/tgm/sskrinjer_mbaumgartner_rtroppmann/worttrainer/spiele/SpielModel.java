@@ -1,15 +1,16 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Wortliste;
 
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 15:02:19
+ * @created 08-Dez-2025 15:09:39
  */
 public abstract class SpielModel {
 
-	protected Wortliste[] wortliste;
+	protected Wortliste wortliste;
 
 	public SpielModel(){
 

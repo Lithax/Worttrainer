@@ -1,15 +1,16 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
 
+import java.util.HashMap;
 
 /**
  * @author mhbau
  * @version 1.0
- * @created 08-Dez-2025 15:02:19
+ * @created 08-Dez-2025 13:58:04
  */
 public class Statistik {
 
-	private String fließtext;
-	private Map<String, String> statfields;
+	private String fliesstext;
+	private HashMap<String, String> statfields;
 	private String title;
 
 	public Statistik(){
@@ -21,15 +22,15 @@ public class Statistik {
 	}
 	/**
 	 * 
-	 * @param fließtext
+	 * @param flieï¿½text
 	 * @param title
 	 * @param statfields
 	 */
-	public Statistik(String fließtext, String title, HashMap<String, String> statfields){
+	public Statistik(String fliesstext, String title, HashMap<String, String> statfields){
 
 	}
 
-	public String getFließtext(){
+	public String getFliesstext(){
 		return "";
 	}
 
@@ -41,15 +42,15 @@ public class Statistik {
 	 * 
 	 * @param String
 	 */
-	public String getTitle(String){
+	public String getTitle(String title){
 		return "";
 	}
 
 	/**
 	 * 
-	 * @param fließtext
+	 * @param flieï¿½text
 	 */
-	public void setFließText(String fließtext){
+	public void setFliessText(String fliesstext){
 
 	}
 

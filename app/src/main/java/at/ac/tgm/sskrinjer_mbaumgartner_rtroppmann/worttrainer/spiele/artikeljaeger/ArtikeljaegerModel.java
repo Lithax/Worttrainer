@@ -6,11 +6,11 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 15:02:17
+ * @created 08-Dez-2025 15:09:37
  */
-public class ArtikeljägerModel extends LinearSpielModel {
+public class ArtikeljaegerModel extends LinearSpielModel {
 
-	public ArtikeljägerModel(){
+	public ArtikeljaegerModel(){
 
 	}
 
@@ -36,4 +36,4 @@ public class ArtikeljägerModel extends LinearSpielModel {
 	public void spielStarten(){
 
 	}
-}//end ArtikeljägerModel
+}//end Artikeljï¿½gerModel

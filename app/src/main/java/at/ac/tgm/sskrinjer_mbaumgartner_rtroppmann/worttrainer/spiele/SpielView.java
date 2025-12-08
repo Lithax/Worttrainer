@@ -1,19 +1,22 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
 
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.SpielEngineViewImpl;
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.StatistikView;
+import java.io.InputStream;
+import java.nio.file.Path;
+
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 15:02:19
+ * @created 08-Dez-2025 13:58:04
  */
-public abstract class SpielView<C extends SpielController<?, ? extends SpielView<C>>> extends JPanel {
+public abstract class SpielView<
+        C extends SpielController<?, C, V>,
+        V extends SpielView<C, V>
+> {
 
-	public static final Path iconsPath;
+	public static final Path iconsPath = Path.of("");
 	private C spielController;
-	public SpielEngineViewImpl m_SpielEngineViewImpl;
 
 	public SpielView(){
 
@@ -41,7 +44,7 @@ public abstract class SpielView<C extends SpielController<?, ? extends SpielView
 	}
 
 	public void neuesSpiel(){
-		view.show(this);
+		
 	}
 
 	/**

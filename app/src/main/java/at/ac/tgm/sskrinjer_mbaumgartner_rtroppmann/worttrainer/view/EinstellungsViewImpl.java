@@ -1,10 +1,13 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 15:02:17
+ * @created 08-Dez-2025 15:09:38
  */
 public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 
