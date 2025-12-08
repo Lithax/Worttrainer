@@ -11,6 +11,7 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.EinstellungsView;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainView;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MessageType;
 
 /**
  * @author Benutzbiber
@@ -21,22 +22,22 @@ public class MainControllerImpl implements MainController {
 	private Spiel currentSpiel;
 	private MainModel mainModel;
 	private MainView mainView;
-	private List<Spiel> spiele;
+	private Class<? extends Spiel>[] spiele;
 
 	/**
 	 * 
 	 * @param spiele
 	 */
-	public MainControllerImpl(List<Spiel> spiele){
+	public MainControllerImpl(Class<? extends Spiel>[] spiele){
 		this.spiele = spiele;
 
-		Thread.setDefaultUncaughtExceptionHandler((t, e ) -> {
-
+		Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
+			mainView.showMessage("Internal Error", e.getMessage(), MessageType.ERROR);
 		});
 	}
 
 	public void onSpielBeenden(){
-
+		
 	}
 
 	/**
@@ -75,7 +76,7 @@ public class MainControllerImpl implements MainController {
 				eM.setTheme(eV.getTheme());
 			eM.save();
 		} catch (IllegalArgumentException e) {
-			
+			mainView.showMessage("Invalide Eingabe", e.getMessage(), MessageType.ERROR);
 		}
 	}
 

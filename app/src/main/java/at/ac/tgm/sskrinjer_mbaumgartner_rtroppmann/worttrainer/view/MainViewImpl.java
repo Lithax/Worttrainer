@@ -1,8 +1,10 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 
+import java.util.Map;
 import java.util.stream.Stream;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.LookAndFeel;
 import javax.swing.SwingUtilities;
@@ -79,5 +81,15 @@ public class MainViewImpl extends JFrame implements MainView {
 		return Stream.of(UIManager.getInstalledLookAndFeels())
         .map(UIManager.LookAndFeelInfo::getName)
         .toArray(String[]::new);
+	}
+
+	private static final Map<MessageType, Integer> typeMap = Map.of(
+		MessageType.INFO, JOptionPane.INFORMATION_MESSAGE,
+		MessageType.ERROR, JOptionPane.ERROR_MESSAGE
+	);
+
+	@Override
+	public void showMessage(String title, String content, MessageType type) {
+		JOptionPane.showMessageDialog(this, content, title, typeMap.get(type));
 	}
 }//end MainViewImpl

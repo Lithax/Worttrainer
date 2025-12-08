@@ -1,6 +1,7 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModelImpl;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielListe;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainControllerImpl;
 
@@ -18,7 +19,7 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainViewImpl
 public class Main {
 	public Main() {
 		SwingUtilities.invokeLater(() -> {
-			MainController mC = new MainControllerImpl();
+			MainController mC = new MainControllerImpl(SpielListe.SPIELE);
 			MainView mV = new MainViewImpl(mC);
 			MainModel mM = new MainModelImpl(mC);
 			mC.setMainModel(mM);

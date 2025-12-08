@@ -39,4 +39,10 @@ public interface MainView {
 	 * @param theme
 	 */
 	public String[] getAvailableThemes();
+
+	/**
+	 * @param title
+	 * @param content
+	 */
+	public void showMessage(String title, String content, MessageType type);
 }
