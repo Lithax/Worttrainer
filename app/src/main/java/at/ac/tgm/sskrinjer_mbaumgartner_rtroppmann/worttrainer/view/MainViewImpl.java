@@ -6,7 +6,7 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainCo
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 14:30:08
+ * @created 08-Dez-2025 15:02:19
  */
 public class MainViewImpl extends JFrame implements SpielEngineViewImpl, MainView {
 

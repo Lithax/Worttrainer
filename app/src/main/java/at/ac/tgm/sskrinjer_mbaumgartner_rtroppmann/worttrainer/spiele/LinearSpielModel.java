@@ -5,7 +5,7 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 /**
  * @author mhbau
  * @version 1.0
- * @created 08-Dez-2025 14:30:07
+ * @created 08-Dez-2025 15:02:18
  */
 public abstract class LinearSpielModel extends SpielModel {
 

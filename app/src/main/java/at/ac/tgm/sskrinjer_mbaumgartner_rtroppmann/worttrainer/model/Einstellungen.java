@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 14:30:06
+ * @created 08-Dez-2025 15:02:17
  */
 public class Einstellungen {
 

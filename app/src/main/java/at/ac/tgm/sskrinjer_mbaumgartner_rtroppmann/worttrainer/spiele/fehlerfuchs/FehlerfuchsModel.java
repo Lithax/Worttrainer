@@ -6,7 +6,7 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 14:30:07
+ * @created 08-Dez-2025 15:02:18
  */
 public class FehlerfuchsModel extends LinearSpielModel {
 
@@ -23,10 +23,6 @@ public class FehlerfuchsModel extends LinearSpielModel {
 
 	public String getSpielName(){
 		return "";
-	}
-
-	public Statistik getStatistik(){
-		return null;
 	}
 
 	public Statistik getStatistik(){

@@ -5,7 +5,7 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.Spiele
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 14:30:08
+ * @created 08-Dez-2025 15:02:19
  */
 public abstract class SpielController<M extends SpielModel, V extends SpielView<? extends SpielController<M, V>>> implements Spiel {
 
@@ -41,7 +41,7 @@ public abstract class SpielController<M extends SpielModel, V extends SpielView<
 		return "";
 	}
 
-	public SpielView getSpielView(){
+	public V getSpielView(){
 		return null;
 	}
 

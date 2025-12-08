@@ -5,7 +5,7 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 14:30:08
+ * @created 08-Dez-2025 15:02:19
  */
 public interface StatistikView {
 
@@ -20,7 +20,7 @@ public interface StatistikView {
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 14:30:08
+ * @created 08-Dez-2025 15:02:19
  */
 public class StatistikView extends JDialog implements StatistikView {
 

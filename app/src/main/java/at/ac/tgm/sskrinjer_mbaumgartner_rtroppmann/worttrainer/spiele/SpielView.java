@@ -7,7 +7,7 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 /**
  * @author Benutzbiber
  * @version 1.0
- * @created 08-Dez-2025 14:30:08
+ * @created 08-Dez-2025 15:02:19
  */
 public abstract class SpielView<C extends SpielController<?, ? extends SpielView<C>>> extends JPanel {
 
