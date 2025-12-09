@@ -26,13 +26,4 @@ public interface MainController extends TimeListener, SpieleListener {
 	 * @param time
 	 */
 	public void onUpdateTime(LocalDate datum, LocalTime time);
-
-	/**
-	 * 
-	 * @param mainView
-	 */
-	public void setMainView(MainView mainView);
-
-	public void setMainModel(MainModel mM);
-
 }

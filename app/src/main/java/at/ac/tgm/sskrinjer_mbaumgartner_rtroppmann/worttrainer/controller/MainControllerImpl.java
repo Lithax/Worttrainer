@@ -1,5 +1,7 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller;
 
+import static at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util.Propagate.propagate;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -28,12 +30,21 @@ public class MainControllerImpl implements MainController {
 	 * 
 	 * @param spiele
 	 */
-	public MainControllerImpl(Class<? extends Spiel>[] spiele){
+	public MainControllerImpl(Class<? extends Spiel>[] spiele, MainModel mainModel, MainView mainView){
 		this.spiele = spiele;
+		this.mainModel = mainModel;
+		this.mainView = mainView;
 
 		Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
 			mainView.showMessage("Internal Error", e.getMessage(), MessageType.ERROR);
+			e.printStackTrace();
 		});
+
+
+		mainModel.setController(this);
+		mainView.setController(this);
+
+		updateEinstellungsView();
 	}
 
 	public void onSpielBeenden(){
@@ -50,12 +61,15 @@ public class MainControllerImpl implements MainController {
 		mainView.getHomeView().setUhrzeit(time);
 	}
 
-	/**
-	 * 
-	 * @param mainView
-	 */
-	public void setMainView(MainView mainView){
-		this.mainView = mainView;
+	public void updateEinstellungsView() {
+		propagate(() -> {
+			EinstellungsView eV = mainView.getEinstellungsView();
+			Einstellungen eM = mainModel.getEinstellungen();
+			eV.setAnzahlRunden(eM.getAnzahlRunden());
+			eV.setSchwierigkeit(eM.getSchwierigkeit());
+			eV.setTheme(eM.getTheme());
+			mainView.setTheme(eM.getTheme());
+		});
 	}
 
 	public void onEinstellungenSave() throws IOException {
@@ -70,11 +84,6 @@ public class MainControllerImpl implements MainController {
 		} catch (IllegalArgumentException e) {
 			mainView.showMessage("Invalide Eingabe", e.getMessage(), MessageType.ERROR);
 		}
-	}
-
-	@Override
-	public void setMainModel(MainModel mM) {
-		mainModel = mM;
 	}
 
 	@Override

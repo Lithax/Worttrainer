@@ -14,7 +14,6 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Tip;
  * @created 08-Dez-2025 15:09:38
  */
 public class HomeViewImpl extends JPanel implements HomeView {
-
 	private JLabel datumLabel;
 	private JLabel tipContent;
 	private JLabel tipTitle;

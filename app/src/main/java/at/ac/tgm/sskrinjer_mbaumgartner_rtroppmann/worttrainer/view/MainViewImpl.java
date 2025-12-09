@@ -1,6 +1,7 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
 
 import javax.swing.JFrame;
@@ -23,13 +24,33 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainCo
  */
 public class MainViewImpl extends JFrame implements MainView {
 
-	private EinstellungsView einstellungsView;
-	private HomeView homeView;
-	private SpieleView spieleView;
+	private EinstellungsViewImpl einstellungsView;
+	private HomeViewImpl homeView;
+	private SpieleViewImpl spieleView;
 	private JTabbedPane tabbedPane;
+	private AtomicReference<MainController> controller = new AtomicReference<>(null);
 
-	public MainViewImpl(MainController controller){
-		
+	public MainViewImpl(){
+		super("SBT Worttrainer - Skrinjer::Baumgartner::Troppmann");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(600, 500);
+		homeView = new HomeViewImpl();
+		spieleView = new SpieleViewImpl(controller);
+		einstellungsView = new EinstellungsViewImpl();
+
+		tabbedPane = new JTabbedPane();
+
+		tabbedPane.addTab("Start", homeView);
+		tabbedPane.addTab("Einstellungen", einstellungsView);
+		tabbedPane.addTab("Spiele", spieleView);
+
+
+		setVisible(true);
+		requestFocus();
+	}
+
+	public void setController(MainController controller) {
+		this.controller = new AtomicReference<>(controller);
 	}
 
 	public void disposeSpiel(){

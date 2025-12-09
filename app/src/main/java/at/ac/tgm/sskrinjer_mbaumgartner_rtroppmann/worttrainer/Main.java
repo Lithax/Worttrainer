@@ -19,11 +19,9 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainViewImpl
 public class Main {
 	public Main() {
 		SwingUtilities.invokeLater(() -> {
-			MainController mC = new MainControllerImpl(SpielListe.SPIELE);
-			MainView mV = new MainViewImpl(mC);
-			MainModel mM = new MainModelImpl(mC);
-			mC.setMainModel(mM);
-            mC.setMainView(mV);
+			MainView mV = new MainViewImpl();
+			MainModel mM = new MainModelImpl();
+			MainController mC = new MainControllerImpl(SpielListe.SPIELE, mM, mV);
 		});
 	}
 	/**

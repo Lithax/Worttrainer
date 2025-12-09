@@ -1,5 +1,6 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
 
 /**
  * @author Benutzbiber
@@ -15,6 +16,8 @@ public interface MainView {
 	public HomeView getHomeView();
 
 	public SpieleView getSpieleView();
+
+	public void setController(MainController controller);
 
 	/**
 	 * 

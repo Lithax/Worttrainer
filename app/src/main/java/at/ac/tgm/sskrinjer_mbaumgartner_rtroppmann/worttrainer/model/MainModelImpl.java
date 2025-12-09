@@ -3,8 +3,11 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.concurrent.atomic.AtomicReference;
 
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.Main;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
+import static at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util.Propagate.propagate;
 
 /**
  * @author Benutzbiber
@@ -15,19 +18,26 @@ public class MainModelImpl implements MainModel {
 
 	private GameState gameState;
 	private TimeUpdateThread timer;
-	public Wortliste wortliste;
-	public Einstellungen einstellungen;
+	private Wortliste wortliste;
+	private Einstellungen einstellungen;
 
 	/**
 	 * 
 	 * @param controller
+	 * @throws IOException 
 	 */
-	public MainModelImpl(MainController controller){
+	public MainModelImpl() {
+		timer = new TimeUpdateThread();
+		timer.start();
+	}
+
+	@Override
+	public void setController(MainController controller) {
 		timer.setTimeListener(controller);
 	}
 
-
-	public Einstellungen getEinstellungen(){
+	public Einstellungen getEinstellungen() throws IOException {
+		if(einstellungen == null) einstellungen = Einstellungen.load(Einstellungen.einstellungenPath);
 		return einstellungen;
 	}
 

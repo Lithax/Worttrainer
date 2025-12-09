@@ -18,14 +18,14 @@ public record Wort(String wort, Wortart wortart, String artikel, int fall, int s
 	 * @param plural
 	 * @param formen
 	 */
-	private Wort(String wort, Wortart wortart, String artikel, int fall, int specialType, Wort[] singular, Wort[] plural, Wort[] formen){
-		if (grundform == null) throw new IllegalArgumentException("Grundform fehlt");
-		this.formen = (formen == null) ? java.util.Map.of() : java.util.Map.copyOf(formen);
-		//0=nix, 1=singular, 2=plural, 3=comperativ, 4=superlativ
-		this.grundform = grundform;
-		this.artikel = artikel;
-		this.wortart = wortart;
-	}
+	//private Wort(String wort, Wortart wortart, String artikel, int fall, int specialType, Wort[] singular, Wort[] plural, Wort[] formen){
+	//	if (grundform == null) throw new IllegalArgumentException("Grundform fehlt");
+	//	this.formen = (formen == null) ? java.util.Map.of() : java.util.Map.copyOf(formen);
+	//	//0=nix, 1=singular, 2=plural, 3=comperativ, 4=superlativ
+	//	this.grundform = grundform;
+	//	this.artikel = artikel;
+	//	this.wortart = wortart;
+	//}
 
 	/**
 	 * 
