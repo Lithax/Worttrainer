@@ -10,10 +10,14 @@ import java.util.List;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Einstellungen;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.GameState;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.TimeListener;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util.Propagate;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.EinstellungenListener;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.EinstellungsView;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainView;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MessageType;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.SpieleListener;
 
 /**
  * @author Benutzbiber
@@ -24,31 +28,31 @@ public class MainControllerImpl implements MainController {
 	private Spiel currentSpiel;
 	private MainModel mainModel;
 	private MainView mainView;
-	private Class<? extends Spiel>[] spiele;
+	private List<Spiel> spiele;
 
 	/**
 	 * 
 	 * @param spiele
 	 */
-	public MainControllerImpl(Class<? extends Spiel>[] spiele, MainModel mainModel, MainView mainView){
+	public MainControllerImpl(List<Spiel> spiele, MainModel mainModel, MainView mainView){
 		this.spiele = spiele;
 		this.mainModel = mainModel;
 		this.mainView = mainView;
 
-		Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
-			mainView.showMessage("Internal Error", e.getMessage(), MessageType.ERROR);
-			e.printStackTrace();
-		});
+		Thread.setDefaultUncaughtExceptionHandler((t, e) -> handleException(e));
+		Propagate.exceptHandler = this::handleException;
 
-
-		mainModel.setController(this);
+		mainModel.setTimeListener(this);
 		mainView.setController(this);
 
 		updateEinstellungsView();
 	}
 
 	public void onSpielBeenden(){
-		
+		if(currentSpiel == null) return;
+		currentSpiel.spielBeenden();
+		currentSpiel = null;
+		mainModel.setGameState(GameState.GAME_ABSENT);
 	}
 
 	/**
@@ -61,7 +65,7 @@ public class MainControllerImpl implements MainController {
 		mainView.getHomeView().setUhrzeit(time);
 	}
 
-	public void updateEinstellungsView() {
+	private void updateEinstellungsView() {
 		propagate(() -> {
 			EinstellungsView eV = mainView.getEinstellungsView();
 			Einstellungen eM = mainModel.getEinstellungen();
@@ -72,15 +76,15 @@ public class MainControllerImpl implements MainController {
 		});
 	}
 
-	public void onEinstellungenSave() throws IOException {
+	public void onEinstellungenSave()  {
 		EinstellungsView eV = mainView.getEinstellungsView();
-		Einstellungen eM = mainModel.getEinstellungen();
+		Einstellungen eM = propagate(() -> mainModel.getEinstellungen());
 		try {
 			eM.setAnzahlRunden(eV.getAnzahlRunden());
 			eM.setSchwierigkeit(eV.getSchwierigkeit());
 			if(!eM.getTheme().equals(eV.getTheme())) 
 				eM.setTheme(eV.getTheme());
-			eM.save();
+			propagate(() -> eM.save());
 		} catch (IllegalArgumentException e) {
 			mainView.showMessage("Invalide Eingabe", e.getMessage(), MessageType.ERROR);
 		}
@@ -88,6 +92,17 @@ public class MainControllerImpl implements MainController {
 
 	@Override
 	public void onSpielSelected(String name) {
-		
+		for(Spiel spiel : spiele)
+			if(spiel.getName().endsWith(name)) {
+				currentSpiel = spiel;
+				mainModel.setGameState(GameState.GAME_RUNNING);
+				return;
+			}
+		mainView.showMessage("Lade Fehler", "Spiel konnte nicht gefunden werden", MessageType.ERROR);
+	}
+
+	private void handleException(Throwable e) {
+		mainView.showMessage("Internal Error", e.getMessage(), MessageType.ERROR);
+		e.printStackTrace();
 	}
 }//end MainControllerImpl

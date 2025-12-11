@@ -2,8 +2,6 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
 
 import java.io.IOException;
 
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
-
 /**
  * @author Benutzbiber
  * @version 1.0
@@ -21,5 +19,5 @@ public interface MainModel {
 
 	public Wortliste getWortliste();
 
-	public void setController(MainController controller);
+	public void setTimeListener(TimeListener controller);
 }

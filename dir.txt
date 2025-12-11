@@ -1,0 +1,2217 @@
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\controller\MainController.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import com.google.common.util.concurrent.TimeLimiter;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.TimeListener;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainView;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.SpieleListener;
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public interface MainController extends TimeListener, SpieleListener {
+
+	public void onEinstellungenSave() throws IOException;
+
+	/**
+	 * 
+	 * @param datum
+	 * @param time
+	 */
+	public void onUpdateTime(LocalDate datum, LocalTime time);
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\controller\MainControllerImpl.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller;
+
+import static at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util.Propagate.propagate;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Einstellungen;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.GameState;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.EinstellungsView;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainView;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MessageType;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public class MainControllerImpl implements MainController {
+	private Spiel currentSpiel;
+	private MainModel mainModel;
+	private MainView mainView;
+	private Class<? extends Spiel>[] spiele;
+
+	/**
+	 * 
+	 * @param spiele
+	 */
+	public MainControllerImpl(Class<? extends Spiel>[] spiele, MainModel mainModel, MainView mainView){
+		this.spiele = spiele;
+		this.mainModel = mainModel;
+		this.mainView = mainView;
+
+		Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
+			mainView.showMessage("Internal Error", e.getMessage(), MessageType.ERROR);
+			e.printStackTrace();
+		});
+
+		mainModel.setController(this);
+		mainView.setController(this);
+
+		updateEinstellungsView();
+	}
+
+	public void onSpielBeenden(){
+		
+	}
+
+	/**
+	 * 
+	 * @param datum
+	 * @param time
+	 */
+	public void onUpdateTime(LocalDate datum, LocalTime time){
+		mainView.getHomeView().setDatum(datum);
+		mainView.getHomeView().setUhrzeit(time);
+	}
+
+	public void updateEinstellungsView() {
+		propagate(() -> {
+			EinstellungsView eV = mainView.getEinstellungsView();
+			Einstellungen eM = mainModel.getEinstellungen();
+			eV.setAnzahlRunden(eM.getAnzahlRunden());
+			eV.setSchwierigkeit(eM.getSchwierigkeit());
+			eV.setTheme(eM.getTheme());
+			mainView.setTheme(eM.getTheme());
+		});
+	}
+
+	public void onEinstellungenSave() throws IOException {
+		EinstellungsView eV = mainView.getEinstellungsView();
+		Einstellungen eM = mainModel.getEinstellungen();
+		try {
+			eM.setAnzahlRunden(eV.getAnzahlRunden());
+			eM.setSchwierigkeit(eV.getSchwierigkeit());
+			if(!eM.getTheme().equals(eV.getTheme())) 
+				eM.setTheme(eV.getTheme());
+			eM.save();
+		} catch (IllegalArgumentException e) {
+			mainView.showMessage("Invalide Eingabe", e.getMessage(), MessageType.ERROR);
+		}
+	}
+
+	@Override
+	public void onSpielSelected(String name) {
+		
+	}
+}//end MainControllerImpl
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\Main.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModelImpl;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielListe;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainControllerImpl;
+
+import javax.swing.SwingUtilities;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainView;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainViewImpl;
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public class Main {
+	public Main() {
+		SwingUtilities.invokeLater(() -> {
+			MainView mV = new MainViewImpl();
+			MainModel mM = new MainModelImpl();
+			MainController mC = new MainControllerImpl(SpielListe.SPIELE, mM, mV);
+		});
+	}
+	/**
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args){
+		new Main();
+	}
+}//end Main
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\model\Einstellungen.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public class Einstellungen {
+	private int anzahlSpielrunden;
+	public static final Path einstellungenPath = Path.of("settings/settings.json");
+	private int schwierigkeit;
+	private String[] themes;
+
+	public String[] getThemes() {
+		return themes;
+	}
+
+	public void setThemes(String[] themes) {
+		this.themes = themes;
+	}
+
+	private String theme;
+
+	public int getAnzahlRunden(){
+		return anzahlSpielrunden;
+	}
+
+	public int getSchwierigkeit(){
+		return schwierigkeit;
+	}
+
+	public String getTheme(){
+		return theme;
+	}
+
+	public void save() throws IOException{
+		save(this, einstellungenPath);
+	}
+
+	/**
+	 * 
+	 * @param einstellungen
+	 * @param path
+	 */
+	public static void save(Einstellungen einstellungen, Path path) throws IOException {
+		Gson gson = new Gson();
+		String jsonString = gson.toJson(einstellungen, Einstellungen.class);
+		Files.writeString(path, jsonString, 
+			StandardCharsets.UTF_8, 
+			StandardOpenOption.CREATE, 
+			StandardOpenOption.TRUNCATE_EXISTING
+		);
+	}
+
+	/**
+	 * 
+	 * @param path
+	 * @return einstellungen
+	 */
+	public static Einstellungen load(Path path) throws IOException {
+		Gson gson = new Gson();
+		String jsonString = new String(Files.readAllBytes(path));
+		return gson.fromJson(jsonString, Einstellungen.class);
+	}
+
+	/**
+	 * 
+	 * @param anzahlRunden
+	 */
+	public void setAnzahlRunden(int anzahlRunden)  {
+		if(anzahlRunden < 0 || anzahlRunden > 100) 
+			throw new IllegalArgumentException("Anzahl der runden darf nur im Bereich 0 - 100 sein!");
+		this.anzahlSpielrunden = anzahlRunden;
+	}
+
+	/**
+	 * 
+	 * @param schwierigkeit
+	 */
+	public void setSchwierigkeit(int schwierigkeit)  {
+		if(schwierigkeit < 1 || schwierigkeit > 3) 
+			throw new IllegalArgumentException("Schwierigkeit muss entweder 1, 2 oder 3 sein!");
+		this.schwierigkeit = schwierigkeit;
+	}
+
+	/**
+	 * 
+	 * @param theme
+	 */
+	public void setTheme(String theme) {
+		for(String t : themes)
+			if(t.equals(theme)) { this.theme = theme; return; }
+		throw new IllegalArgumentException("Dieses Theme existiert nicht!");
+	}
+}//end Einstellungen
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\model\GameState.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public enum GameState {
+	GAME_RUNNING,
+	GAME_STOPPED,
+	GAME_INTERRUPTED,
+	GAME_ABSENT
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\model\MainModel.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+
+import java.io.IOException;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public interface MainModel {
+
+	public Einstellungen getEinstellungen() throws IOException;
+
+	public GameState getGameState();
+
+	public void setGameState(GameState g);
+
+	public Tip getTipOfTheDay() throws IOException;
+
+	public Wortliste getWortliste();
+
+	public void setController(MainController controller);
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\model\MainModelImpl.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.concurrent.atomic.AtomicReference;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.Main;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
+import static at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util.Propagate.propagate;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public class MainModelImpl implements MainModel {
+
+	private GameState gameState;
+	private TimeUpdateThread timer;
+	private Wortliste wortliste;
+	private Einstellungen einstellungen;
+
+	/**
+	 * 
+	 * @param controller
+	 * @throws IOException 
+	 */
+	public MainModelImpl() {
+		timer = new TimeUpdateThread();
+		timer.start();
+	}
+
+	@Override
+	public void setController(MainController controller) {
+		timer.setTimeListener(controller);
+	}
+
+	public Einstellungen getEinstellungen() throws IOException {
+		if(einstellungen == null) einstellungen = Einstellungen.load(Einstellungen.einstellungenPath);
+		return einstellungen;
+	}
+
+	public GameState getGameState(){
+		return gameState;
+	}
+
+	public Tip getTipOfTheDay() throws IOException {
+		return Tip.getTipOfTheDay();
+	}
+
+
+	@Override
+	public void setGameState(GameState g) {
+		gameState = g;
+	}
+
+
+	@Override
+	public Wortliste getWortliste() {
+		return wortliste;
+	}
+}//end MainModelImpl
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\model\Statistik.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+
+import java.util.HashMap;
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 13:58:04
+ */
+public class Statistik {
+	private String fliesstext;
+	private HashMap<String, String> statfields;
+	private String title;
+
+	/**
+	 * 
+	 * @param flie�text
+	 * @param title
+	 * @param statfields
+	 */
+	public Statistik(String fliesstext, String title, HashMap<String, String> statfields){
+		this.fliesstext = fliesstext;
+		this.title = title;
+		this.statfields = statfields;
+	}
+
+	public String getFliesstext(){
+		return fliesstext;
+	}
+
+	public HashMap<String, String> getStatFields(){
+		return statfields;
+	}
+
+	/**
+	 * 
+	 * @param String
+	 */
+	public String getTitle(){
+		return title;
+	}
+
+	/**
+	 * 
+	 * @param flie�text
+	 */
+	public void setFliessText(String fliesstext){
+		this.fliesstext = fliesstext;
+	}
+
+	/**
+	 * 
+	 * @param newTitle
+	 */
+	public void setTitle(String newTitle){
+		this.title = newTitle;
+	}
+}//end Statistik
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\model\TimeListener.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public interface TimeListener {
+
+	/**
+	 * 
+	 * @param date
+	 * @param time
+	 */
+	public void onUpdateTime(LocalDate date, LocalTime time);
+
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\model\TimeUpdateThread.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public class TimeUpdateThread {
+
+    public static final int UPDATE_INTERVAL_MIN = 1;
+    private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+    private TimeListener timerCallback;
+
+    public void setTimeListener(TimeListener l) {
+        this.timerCallback = l;
+    }
+
+    public void start() {
+        scheduler.scheduleAtFixedRate(() -> {
+            if (timerCallback != null) 
+                timerCallback.onUpdateTime(LocalDate.now(), LocalTime.now());
+        }, 0, UPDATE_INTERVAL_MIN, TimeUnit.MINUTES);
+    }
+
+    public void stop() {
+        scheduler.shutdownNow();
+    }
+}//end TimeUpdateThread
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\model\Tip.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public record Tip(String text, String title) {
+	public static final Path tipsPath = Path.of("tips/tips.json");
+	private static List<Tip> tips;
+
+	/**
+	 * 
+	 * @param date
+	 * @param path
+	 * @throws IOException 
+	 */
+	public static Tip getTipOfTheDay(LocalDate date, Path path) throws IOException {
+		if(tips == null) loadTips(path);
+		if (tips.isEmpty()) return null;
+
+		long days = date.toEpochDay();
+
+		int index = (int) (days % tips.size());
+		if (index < 0) index += tips.size();
+
+		return tips.get(index);
+	}
+
+	/**
+	 * 
+	 * @param date
+	 * @throws IOException 
+	 */
+	public static Tip getTipOfTheDay() throws IOException{
+		return getTipOfTheDay(LocalDate.now(), tipsPath);
+	}
+
+	/**
+	 * 
+	 * @param tipsPath
+	 * @throws IOException 
+	 */
+	public static void loadTips(Path path) throws IOException {
+		String jsonString = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
+		tips = new Gson().fromJson(jsonString, new TypeToken<List<Tip>>(){}.getType());
+	}
+}//end Tip
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\model\Wort.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:40
+ */
+public record Wort(String wort, Wortart wortart, String artikel, int fall, int specialType, Wort[] singular, Wort[] plural, Wort[] formen) {
+	/**
+	 * 
+	 * @param wort
+	 * @param wortart
+	 * @param artikel
+	 * @param fall    null=nix, 0=nix, 1=1., 2=2., 3=3., 4=4.
+	 * @param specialType    0=nix, 1=singular, 2=plural, 3=comperativ, 4=superlativ
+	 * @param singular
+	 * @param plural
+	 * @param formen
+	 */
+	//private Wort(String wort, Wortart wortart, String artikel, int fall, int specialType, Wort[] singular, Wort[] plural, Wort[] formen){
+	//	if (grundform == null) throw new IllegalArgumentException("Grundform fehlt");
+	//	this.formen = (formen == null) ? java.util.Map.of() : java.util.Map.copyOf(formen);
+	//	//0=nix, 1=singular, 2=plural, 3=comperativ, 4=superlativ
+	//	this.grundform = grundform;
+	//	this.artikel = artikel;
+	//	this.wortart = wortart;
+	//}
+
+	/**
+	 * 
+	 * @param fallNr
+	 */
+	public String getNomenFall(int fallNr){
+		return "";
+	}
+
+	/**
+	 * 
+	 * @param formNr
+	 */
+	public String getVerbForm(int formNr){
+		return "";
+	}
+}//end Wort
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\model\Wortart.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:40
+ */
+public enum Wortart {
+;
+
+	public String getName(){
+		return "";
+	}
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\model\Wortliste.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+
+import java.nio.file.Path;
+import java.util.function.Predicate;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:40
+ */
+public class Wortliste {
+//
+//	private Wort[] alleWoerter;
+//	private Wort[] grundformenORersterFallWoerter;
+//	private Wort[] grundformenWoerter;
+//	public static final Path woerterPath = Path.of("woerter/woerterliste.json");
+//
+//	public Wortliste(){
+//
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wortAnzahl
+//	 */
+//	public Wort[] getRandomBaseWoerter(int wortAnzahl){
+//		return null;
+//	}
+//
+//	/**
+//	 * <font color="#008000">gibt nur die Woerter zur�ck, die fall==0 && (type == 0 ||
+//	 * type == 1) haben. Also alle Grundformen der W�rter</font>
+//	 * 
+//	 * @param wortAnzahl
+//	 * @param minBuchstaben
+//	 * @param maxBuchstaben
+//	 */
+//	public Wort[] getRandomBaseWoerter(int wortAnzahl, int minBuchstaben, int maxBuchstaben){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wortAnzahl
+//	 * @param predicate
+//	 */
+//	public Wort[] getRandomBaseWoerter(int wortAnzahl, Predicate<T> predicate){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wortAnzahl
+//	 */
+//	public Wort[] getRandomBaseWoerterWithPlural(int wortAnzahl){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wortAnzahl
+//	 * @param minBuchstaben
+//	 * @param maxBuchstaben
+//	 */
+//	public Wort[] getRandomBaseWoerterWithPlural(int wortAnzahl, int minBuchstaben, int maxBuchstaben){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wortAnzahl
+//	 * @param predicate
+//	 */
+//	public Wort[] getRandomBaseWoerterWithPlural(int wortAnzahl, Predicate<T> predicate){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wortAnzahl
+//	 * @param wortart
+//	 */
+//	public Wort[] getRandomWoerter(int wortAnzahl, Wortart wortart){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wortAnzahl
+//	 */
+//	public Wort[] getRandomWoerter(int wortAnzahl){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wortAnzahl
+//	 * @param minBuchstaben
+//	 */
+//	public Wort[] getRandomWoerter(int wortAnzahl, int minBuchstaben){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wordAnzahl
+//	 * @param minBuchstaben
+//	 * @param maxBuchstaben
+//	 */
+//	public Wort[] getRandomWoerter(int wordAnzahl, int minBuchstaben, int maxBuchstaben){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wortAnzahl
+//	 * @param wortArt
+//	 * @param minBuchstaben
+//	 * @param max Buchstaben
+//	 */
+//	public Wort[] getRandomWoerter(int wortAnzahl, Wortart wortArt, int minBuchstaben, int max Buchstaben){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wortAnzahl
+//	 * @param predicate
+//	 */
+//	public Wort[] getRandomWoerter(int wortAnzahl, Predicate<T> predicate){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wortAnzahl
+//	 */
+//	public Wort[] getRandomWoerterOhneFaelle(int wortAnzahl){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wortAnzahl
+//	 * @param minBuchstaben
+//	 * @param maxBuchstaben
+//	 */
+//	public Wort[] getRandomWoerterOhneFaelle(int wortAnzahl, int minBuchstaben, int maxBuchstaben){
+//		return null;
+//	}
+//
+//	/**
+//	 * 
+//	 * @param wortAnzahl
+//	 * @param predicate
+//	 */
+//	public Wort[] getRandomWoerterOhneFaelle(int wortAnzahl, Predicate<T> predicate){
+//		return null;
+//	}
+//
+//	public static Wortliste loadWortliste(){
+//		return null;
+//	}
+//
+//	/**
+//	 * Holt sich die W�rter aus einem JSON. Baut aus einem Wort, dass mehrere W�rter
+//	 * enth�lt eigene W�rter und referenziert sie dann in den Attributen ("singular",
+//	 * "plural" und "formen"), damit man vom base Wort noch auf die Formen kommen kann.
+//	 * 
+//	 * 
+//	 * @param path
+//	 */
+//	public static Wortliste loadWortliste(Path path){
+//		/*
+//		Holt sich die W�rter aus einem JSON. 
+//		Baut aus einem Wort, dass mehrere W�rter enth�lt eigene W�rter 
+//		und referenziert sie dann in den Attributen ("singular", "plural" und "formen"),
+//		damit man vom base Wort noch auf die Formen kommen kann.
+//		*/
+//	}
+//
+//	public WortListe(){
+//
+//	}
+} //end Wortliste
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\artikeljaeger\ArtikeljaegerController.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.artikeljaeger;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielController;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:37
+ */
+public class ArtikeljaegerController extends SpielController<ArtikeljaegerModel, ArtikeljaegerController, ArtikeljaegerView> {
+
+	public ArtikeljaegerController(){
+
+	}
+
+	@Override
+	public void spielBeenden() {
+		super.spielBeenden();
+	}
+
+	public void spielStarten(){
+
+	}
+}//end ArtikeljaegerController
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\artikeljaeger\ArtikeljaegerModel.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.artikeljaeger;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.LinearSpielModel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:37
+ */
+public class ArtikeljaegerModel extends LinearSpielModel {
+
+	public ArtikeljaegerModel(){
+
+	}
+
+	public String getSpielDescription(){
+		return "";
+	}
+
+	public String getSpielName(){
+		return "Artikeljaeger";
+	}
+
+	public Statistik getStatistik(){
+		return super.getStatistik();
+	}
+
+	public boolean hasNewRound(){
+		return false;
+	}
+
+	public void spielStarten(){
+
+	}
+}//end Artikelj�gerModel
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\artikeljaeger\ArtikeljaegerView.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.artikeljaeger;
+
+import java.io.InputStream;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielView;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:37
+ */
+public class ArtikeljaegerView extends SpielView<ArtikeljaegerController, ArtikeljaegerView> {
+
+	public ArtikeljaegerView(ArtikeljaegerController c){
+		super(c);
+	}
+
+	@Override
+	public Object getAsObject() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'getAsObject'");
+	}
+}//end ArtikeljaegerView
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\fallDerWoerter\FallDerWoerterController.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fallDerWoerter;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielController;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public class FallDerWoerterController extends SpielController<FallDerWoerterModel, FallDerWoerterController, FallDerWoerterView> {
+
+	public FallDerWoerterController(){
+
+	}
+
+	@Override
+	public void spielBeenden() {
+		super.spielBeenden();
+	}
+
+	public void spielStarten(){
+
+	}
+}//end FallDerWoerterController
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\fallDerWoerter\FallDerWoerterModel.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fallDerWoerter;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.LinearSpielModel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public class FallDerWoerterModel extends LinearSpielModel {
+
+	public FallDerWoerterModel(){
+
+	}
+
+	public String getSpielDescription(){
+		return "";
+	}
+
+	public String getSpielName(){
+		return "Fall der Wörter";
+	}
+
+	public Statistik getStatistik(){
+		return super.getStatistik();
+	}
+
+	public boolean hasNewRound(){
+		return false;
+	}
+
+	public void spielStarten(){
+
+	}
+}//end FallDerWoerterModel
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\fallDerWoerter\FallDerWoerterView.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fallDerWoerter;
+
+import java.io.InputStream;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielView;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.artikeljaeger.ArtikeljaegerController;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public class FallDerWoerterView extends SpielView<FallDerWoerterController, FallDerWoerterView> {
+
+	public FallDerWoerterView(FallDerWoerterController c){
+		super(c);
+	}
+
+	@Override
+	public Object getAsObject() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'getAsObject'");
+	}
+}//end FallDerWoerterView
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\fehlerfuchs\FehlerfuchsController.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fehlerfuchs;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielController;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public class FehlerfuchsController extends SpielController<FehlerfuchsModel, FehlerfuchsController, FehlerfuchsView> {
+
+	public FehlerfuchsController(){
+
+	}
+
+	@Override
+	public void spielBeenden() {
+		super.spielBeenden();
+	}
+
+	@Override
+	public void spielStarten() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'spielStarten'");
+	}
+}//end FehlerfuchsController
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\fehlerfuchs\FehlerfuchsModel.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fehlerfuchs;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.LinearSpielModel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public class FehlerfuchsModel extends LinearSpielModel {
+
+	public FehlerfuchsModel(){
+
+	}
+
+	public String getSpielDescription(){
+		return "";
+	}
+
+	public String getSpielName(){
+		return "Fehlerfuchs";
+	}
+
+	public Statistik getStatistik(){
+		return super.getStatistik();
+	}
+
+	public boolean hasNewRound(){
+		return false;
+	}
+
+	public void spielStarten(){
+
+	}
+}//end FehlerfuchsModel
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\fehlerfuchs\FehlerfuchsView.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fehlerfuchs;
+
+import java.io.InputStream;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielView;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.artikeljaeger.ArtikeljaegerController;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public class FehlerfuchsView extends SpielView<FehlerfuchsController, FehlerfuchsView> {
+
+	public FehlerfuchsView(FehlerfuchsController c){
+		super(c);
+	}
+
+	@Override
+	public Object getAsObject() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'getAsObject'");
+	}
+}//end FehlerfuchsView
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\LinearSpielModel.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public abstract class LinearSpielModel extends SpielModel {
+
+	protected int fehlerAnzahl = 0;
+	protected int gesamtAnzahl = 0;
+
+	@Override
+	public Statistik getStatistik() 
+	{
+		Statistik s = super.getStatistik();
+		s.getStatFields().put("Fehlerquote", String.valueOf((fehlerAnzahl / gesamtAnzahl) * 100));
+		return s;
+	}
+}//end LinearSpielModel
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\Spiel.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.SpielEngineView;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public interface Spiel {
+
+	public String getDescription();
+
+	public InputStream getIcon() throws IOException;
+
+	public String getName();
+
+	public SpielEngineView newSpielEngineView();
+
+	public void spielBeenden();
+
+	public void spielStarten();
+
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\SpielController.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.SpielEngineView;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public abstract class SpielController<
+        M extends SpielModel,
+        C extends SpielController<M, C, V>,
+        V extends SpielView<C, V>
+> implements Spiel {
+
+	protected M model;
+	protected V view;
+
+	/**
+	 * 
+	 * @param spielModel
+	 * @param spielView
+	 */
+	public SpielController(M spielModel, V spielView){
+		
+	}
+
+	public String getDescription(){
+		return model.getSpielDescription();
+	}
+
+	public InputStream getIcon() throws IOException{
+		return view.loadIcon();
+	}
+
+	public String getName(){
+		return model.getSpielName();
+	}
+
+	public SpielEngineView newSpielEngineView(){
+		return view;
+	}
+
+	public void spielBeenden(){
+		view.showStatistik(model.getStatistik());
+	}
+
+	public abstract void spielStarten();
+}//end SpielController
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\SpielListe.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.artikeljaeger.ArtikeljaegerController;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fallDerWoerter.FallDerWoerterController;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fehlerfuchs.FehlerfuchsController;
+
+public interface SpielListe {
+    @SuppressWarnings("unchecked")
+    Class<? extends Spiel>[] SPIELE = new Class[]{
+        FehlerfuchsController.class,
+        FallDerWoerterController.class,
+        ArtikeljaegerController.class
+    };
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\SpielModel.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
+
+import java.util.HashMap;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Wortliste;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public abstract class SpielModel {
+
+	protected Wortliste wortliste;
+
+	public SpielModel(){
+
+	}
+
+	public abstract String getSpielDescription();
+
+	public abstract String getSpielName();
+
+	public Statistik getStatistik() {
+        HashMap<String, String> fields = new HashMap<>();
+        return new Statistik(getSpielDescription(), getSpielName() + " - Statistik", fields);
+	}
+
+	public abstract boolean hasNewRound();
+
+	public abstract void spielStarten();
+}//end SpielModel
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\spiele\SpielView.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.SpielEngineView;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.StatistikDialog;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 13:58:04
+ */
+public abstract class SpielView<
+        C extends SpielController<?, C, V>,
+        V extends SpielView<C, V>
+> implements SpielEngineView {
+
+	public static final Path iconsPath = Path.of("icons");
+	protected C spielController;
+
+	/**
+	 * 
+	 * @param spielController
+	 */
+	public SpielView(C spielController){
+
+	}
+
+	protected Path getIconFile() {
+		return Path.of(spielController.getName());
+	}
+
+	/**
+	 * 
+	 * @param path
+	 * @throws IOException 
+	 */
+	public InputStream loadIcon() throws IOException{
+		return Files.newInputStream(iconsPath.resolve(getIconFile()));
+	}
+
+	public void neuesSpiel(){
+		
+	}
+
+	/**
+	 * 
+	 * @param statistik
+	 */
+	public void showStatistik(Statistik statistik){
+		StatistikDialog sDialog = new StatistikDialog(statistik);
+		sDialog.setVisible(true);
+	}
+}//end SpielView
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\util\Propagate.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util;
+
+public final class Propagate {
+    private Propagate() {}
+
+    public static void propagate(Throwable t) {
+        Propagate.<RuntimeException>throwAs(t);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T extends Throwable> void throwAs(Throwable t) throws T {
+        throw (T) t; // unchecked cast + throws T
+    }
+
+    @FunctionalInterface
+    public interface ThrowingRunnable {
+        void run() throws Exception;
+    }
+
+    public static void propagate(ThrowingRunnable runnable) {
+        try {
+            runnable.run();
+        } catch (RuntimeException e) {
+            throw e; // keep runtime exceptions as-is
+        } catch (Exception e) {
+            throw new RuntimeException(e); // wrap checked exceptions
+        }
+    }
+
+    @FunctionalInterface
+    public interface ThrowingSupplier<T> {
+        T get() throws Exception;
+    }
+
+    public static <T> T propagate(ThrowingSupplier<T> supplier) {
+        try {
+            return supplier.get();
+        } catch (RuntimeException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\EinstellungsView.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public interface EinstellungsView {
+
+	public int getAnzahlRunden();
+
+	public int getSchwierigkeit();
+
+	public String getTheme();
+
+	/**
+	 * 
+	 * @param anzahlRunden
+	 */
+	public void setAnzahlRunden(int anzahlRunden);
+
+	/**
+	 * 
+	 * @param schwierigkeit
+	 */
+	public void setSchwierigkeit(int schwierigkeit);
+
+	/**
+	 * 
+	 * @param theme
+	 */
+	public void setTheme(String theme);
+
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\EinstellungsViewImpl.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
+
+	private JTextField anzahlRundenField;
+	private JComboBox<Integer> schwierigkeitCBox;
+	private JComboBox<String> themeCBox;
+
+	public EinstellungsViewImpl(){
+
+	}
+
+	public int getAnzahlRunden(){
+		return Integer.parseInt(anzahlRundenField.getText());
+	}
+
+	public int getSchwierigkeit(){
+		return (Integer) schwierigkeitCBox.getSelectedItem();
+	}
+
+	public String getTheme(){
+		return (String) themeCBox.getSelectedItem();
+	}
+
+	/**
+	 * 
+	 * @param anzahlRunden
+	 */
+	public void setAnzahlRunden(int anzahlRunden){
+		anzahlRundenField.setText(String.valueOf(anzahlRunden));
+	}
+
+	/**
+	 * 
+	 * @param schwierigkeit
+	 */
+	public void setSchwierigkeit(int schwierigkeit){
+		schwierigkeitCBox.setSelectedItem(Integer.valueOf(schwierigkeit));
+	}
+
+	/**
+	 * 
+	 * @param theme
+	 */
+	public void setTheme(String theme){
+		themeCBox.setSelectedItem(theme);
+	}
+}//end EinstellungsViewImpl
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\HomeView.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Tip;
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public interface HomeView {
+
+	/**
+	 * 
+	 * @param datum
+	 */
+	public void setDatum(LocalDate datum);
+
+	/**
+	 * 
+	 * @param tip
+	 */
+	public void setTipOfTheDay(Tip tip);
+
+	/**
+	 * 
+	 * @param uhrzeit
+	 */
+	public void setUhrzeit(LocalTime uhrzeit);
+
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\HomeViewImpl.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Tip;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:38
+ */
+public class HomeViewImpl extends JPanel implements HomeView {
+	private JLabel datumLabel;
+	private JLabel tipContent;
+	private JLabel tipTitle;
+	private JLabel uhrzeitLabel;
+	private JLabel wochentagLabel;
+
+	public HomeViewImpl(){
+
+	}
+
+	/**
+	 * 
+	 * @param datum
+	 */
+	@Override
+	public void setDatum(LocalDate datum){
+
+	}
+
+	/**
+	 * 
+	 * @param tip
+	 */
+	@Override
+	public void setTipOfTheDay(Tip tip){
+
+	}
+
+	/**
+	 * 
+	 * @param uhrzeit
+	 */
+	@Override
+	public void setUhrzeit(LocalTime uhrzeit){
+
+	}
+}//end HomeViewImpl
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\MainView.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public interface MainView {
+
+	public void disposeSpiel();
+
+	public EinstellungsView getEinstellungsView();
+
+	public HomeView getHomeView();
+
+	public SpieleView getSpieleView();
+
+	public void setController(MainController controller);
+
+	/**
+	 * 
+	 * @param callback
+	 */
+	public void runOnThread(Runnable callback);
+
+	/**
+	 * 
+	 * @param spielEngineView
+	 */
+	public void setSpiel(SpielEngineView spielEngineView);
+
+	/**
+	 * 
+	 * @param theme
+	 */
+	public void setTheme(String theme);
+
+	/**
+	 * 
+	 * @param theme
+	 */
+	public String[] getAvailableThemes();
+
+	/**
+	 * @param title
+	 * @param content
+	 */
+	public void showMessage(String title, String content, MessageType type);
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\MainViewImpl.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Stream;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
+import javax.swing.LookAndFeel;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.UIManager.LookAndFeelInfo;
+
+import com.formdev.flatlaf.FlatLaf;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public class MainViewImpl extends JFrame implements MainView {
+
+	private EinstellungsViewImpl einstellungsView;
+	private HomeViewImpl homeView;
+	private SpieleViewImpl spieleView;
+	private JTabbedPane tabbedPane;
+	private AtomicReference<MainController> controller = new AtomicReference<>(null);
+
+	public MainViewImpl(){
+		super("SBT Worttrainer - Skrinjer::Baumgartner::Troppmann");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(600, 500);
+		homeView = new HomeViewImpl();
+		spieleView = new SpieleViewImpl(controller);
+		einstellungsView = new EinstellungsViewImpl();
+
+		tabbedPane = new JTabbedPane();
+
+		tabbedPane.addTab("Start", homeView);
+		tabbedPane.addTab("Einstellungen", einstellungsView);
+		tabbedPane.addTab("Spiele", spieleView);
+
+
+		setVisible(true);
+		requestFocus();
+	}
+
+	public void setController(MainController controller) {
+		this.controller = new AtomicReference<>(controller);
+	}
+
+	public void disposeSpiel(){
+
+	}
+
+	public EinstellungsView getEinstellungsView(){
+		return einstellungsView;
+	}
+
+	public HomeView getHomeView(){
+		return homeView;
+	}
+
+	public SpieleView getSpieleView(){
+		return spieleView;
+	}
+
+	/**
+	 * 
+	 * @param spielEngineView
+	 */
+	public void setSpiel(SpielEngineView spielEngineView){
+
+	}
+
+	/**
+	 * 
+	 * @param callback
+	 */
+	public void runOnThread(Runnable callback){
+		SwingUtilities.invokeLater(callback);
+	}
+
+	@Override
+	public void setTheme(String theme) {
+		for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels())
+			if (info.getName().equals(theme)) {
+				try {
+					UIManager.setLookAndFeel(info.getClassName());
+					FlatLaf.updateUI();
+				} catch (Exception e) {e.printStackTrace();}
+				return;
+			}
+	}
+
+	@Override
+	public String[] getAvailableThemes() {
+		return Stream.of(UIManager.getInstalledLookAndFeels())
+        .map(UIManager.LookAndFeelInfo::getName)
+        .toArray(String[]::new);
+	}
+
+	private static final Map<MessageType, Integer> typeMap = Map.of(
+		MessageType.INFO, JOptionPane.INFORMATION_MESSAGE,
+		MessageType.ERROR, JOptionPane.ERROR_MESSAGE
+	);
+
+	@Override
+	public void showMessage(String title, String content, MessageType type) {
+		JOptionPane.showMessageDialog(this, content, title, typeMap.get(type));
+	}
+}//end MainViewImpl
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\MessageType.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+public enum MessageType {
+    INFO, ERROR
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\SpieleListener.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+public interface SpieleListener {
+    void onSpielSelected(String name);
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\SpielEngineView.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public interface SpielEngineView {
+
+	public Object getAsObject();
+
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\SpieleView.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+import java.io.IOException;
+import java.util.List;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public interface SpieleView {
+
+	/**
+	 * 
+	 * @param spiele
+	 */
+	public void setSpiele(List<Spiel> spiele) throws IOException;
+
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\SpieleViewImpl.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
+
+/**
+ * @author mhbau
+ * @version 1.0
+ */
+public class SpieleViewImpl extends JPanel implements SpieleView {
+    private AtomicReference<? extends SpieleListener> l;
+    private JPanel gridPanel;
+
+    public SpieleViewImpl(AtomicReference<? extends SpieleListener> l) {
+        this.l = l;
+
+        setLayout(new BorderLayout());
+        
+        JPanel container = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
+        
+        gridPanel = new JPanel();
+        gridPanel.setLayout(new GridLayout(0, 3, 20, 20)); 
+        gridPanel.setOpaque(false);
+        
+        container.add(gridPanel);
+
+        JScrollPane scrollPane = new JScrollPane(container);
+        scrollPane.setBorder(null);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
+        
+        add(scrollPane, BorderLayout.CENTER);
+    }
+
+    /**
+     * @param spiele
+     * @throws IOException
+     */
+    public void setSpiele(List<Spiel> spiele) throws IOException {
+        gridPanel.removeAll();
+        
+        for (Spiel s : spiele) 
+            gridPanel.add(new SpielPanel(
+                s.getName(), 
+                s.getDescription(), 
+                s.getIcon(), 
+                l
+            ));
+            
+        gridPanel.revalidate();
+        gridPanel.repaint();
+    }
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\SpielPanel.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicReference;
+
+import javax.imageio.ImageIO;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+
+
+import com.formdev.flatlaf.FlatClientProperties;
+
+/**
+ * @author mhbau
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public class SpielPanel extends JPanel {
+    private final AtomicReference<? extends SpieleListener> listenerRef;
+    private static final int CARD_WIDTH = 220;
+    private static final int IMAGE_HEIGHT = 120;
+
+    /**
+     * @param name         The title of the game
+     * @param beschreibung The description
+     * @param iconStream   The input stream for the game icon
+     * @param l            Reference to the listener
+     */
+    public SpielPanel(String name, String beschreibung, InputStream iconStream, AtomicReference<? extends SpieleListener> l) {
+        this.listenerRef = l;
+
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(CARD_WIDTH, 200));
+        setBackground(UIManager.getColor("Panel.background"));
+        
+        putClientProperty(FlatClientProperties.STYLE, "" +
+                "arc: 20;" +
+                "border: 1,1,1,1, $Component.borderColor, 1, 20");
+
+        JLabel imageLabel = new JLabel();
+        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        imageLabel.setIcon(processIcon(iconStream));
+
+        imageLabel.setBorder(new EmptyBorder(10, 10, 5, 10));
+
+        JPanel textPanel = new JPanel();
+        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.Y_AXIS));
+        textPanel.setOpaque(false);
+        textPanel.setBorder(new EmptyBorder(0, 12, 12, 12));
+
+        JLabel titleLabel = new JLabel(name);
+        titleLabel.putClientProperty(FlatClientProperties.STYLE, "font: bold +2");
+        titleLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        String htmlDesc = "<html><body style='width: " + (CARD_WIDTH - 40) + "px'>" + 
+                          beschreibung + "</body></html>";
+        JLabel descLabel = new JLabel(htmlDesc);
+        descLabel.putClientProperty(FlatClientProperties.STYLE, "foreground: $Label.disabledForeground; font: 90%");
+        descLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        
+        textPanel.add(titleLabel);
+        textPanel.add(Box.createVerticalStrut(4));
+        textPanel.add(descLabel);
+
+        add(imageLabel, BorderLayout.CENTER);
+        add(textPanel, BorderLayout.SOUTH);
+
+        setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                SpieleListener listener = listenerRef.get();
+                if (listener != null) listener.onSpielSelected(name);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                setBackground(UIManager.getColor("Button.hoverBackground"));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                setBackground(UIManager.getColor("Panel.background"));
+            }
+        });
+    }
+
+    private ImageIcon processIcon(InputStream stream) {
+        if (stream == null) return null;
+        try {
+            BufferedImage img = ImageIO.read(stream);
+            if (img == null) return null;
+
+            Image scaled = img.getScaledInstance(CARD_WIDTH - 20, IMAGE_HEIGHT, Image.SCALE_SMOOTH);
+            return new ImageIcon(scaled);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+}//end SpielPanel
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\StatistikDialog.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.util.Map;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+
+import com.formdev.flatlaf.FlatClientProperties;
+
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
+
+/**
+ * @author Benutzbiber
+ * @version 1.0
+ * @created 08-Dez-2025 15:09:39
+ */
+public class StatistikDialog extends JDialog {
+	/**
+	 * 
+	 * @param statistik
+	 */
+	public StatistikDialog(Statistik statistik){
+		super();
+		setTitle(statistik.getTitle());
+		setModal(true);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
+		JPanel contentPanel = new JPanel();
+        contentPanel.setLayout(new BorderLayout(10, 20));
+        contentPanel.setBorder(new EmptyBorder(20, 30, 20, 30));
+
+        JLabel titleLabel = new JLabel(statistik.getTitle());
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        titleLabel.putClientProperty(FlatClientProperties.STYLE, "font: $h1.font");
+        
+        contentPanel.add(titleLabel, BorderLayout.NORTH);
+
+        JPanel centerPanel = new JPanel();
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+
+        if (statistik.getFliesstext() != null && !statistik.getFliesstext().isEmpty()) {
+            JTextArea descArea = new JTextArea(statistik.getFliesstext());
+            descArea.setWrapStyleWord(true);
+            descArea.setLineWrap(true);
+            descArea.setEditable(false);
+            descArea.setFocusable(false);
+            
+            descArea.setOpaque(false); 
+            descArea.setBorder(new EmptyBorder(0, 0, 20, 0));
+            
+            descArea.putClientProperty(FlatClientProperties.STYLE, "foreground: $Label.disabledForeground");
+            
+            centerPanel.add(descArea);
+        }
+
+        if (statistik.getStatFields() != null && !statistik.getStatFields().isEmpty()) {
+            JPanel statsGrid = new JPanel();
+            statsGrid.setLayout(new GridLayout(0, 2, 20, 10)); 
+
+            for (Map.Entry<String, String> entry : statistik.getStatFields().entrySet()) {
+                JLabel keyLabel = new JLabel(entry.getKey() + ":");
+                keyLabel.putClientProperty(FlatClientProperties.STYLE, "font: bold");
+                
+                JLabel valueLabel = new JLabel(entry.getValue()); 
+                valueLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+
+                statsGrid.add(keyLabel);
+                statsGrid.add(valueLabel);
+            }
+            centerPanel.add(statsGrid);
+        }
+
+        contentPanel.add(centerPanel, BorderLayout.CENTER);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setBorder(new EmptyBorder(15, 0, 0, 0));
+
+        JButton closeButton = new JButton("Schließen");
+        getRootPane().setDefaultButton(closeButton);
+        closeButton.addActionListener(e -> dispose());
+        
+        closeButton.putClientProperty(FlatClientProperties.STYLE, "font: +1");
+
+        buttonPanel.add(closeButton);
+        contentPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+        setContentPane(contentPanel);
+        pack();
+        setMinimumSize(new Dimension(350, getHeight()));
+        setLocationRelativeTo(null);
+	}
+}//end StatistikView
+
+

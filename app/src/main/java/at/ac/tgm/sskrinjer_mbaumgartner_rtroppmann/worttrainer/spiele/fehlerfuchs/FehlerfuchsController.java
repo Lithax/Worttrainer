@@ -10,7 +10,8 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielContr
 public class FehlerfuchsController extends SpielController<FehlerfuchsModel, FehlerfuchsController, FehlerfuchsView> {
 
 	public FehlerfuchsController(){
-
+		model = new FehlerfuchsModel();
+		view = new FehlerfuchsView(this);
 	}
 
 	@Override

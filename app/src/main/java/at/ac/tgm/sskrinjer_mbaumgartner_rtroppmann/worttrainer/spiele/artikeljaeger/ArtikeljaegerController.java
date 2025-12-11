@@ -10,7 +10,8 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielContr
 public class ArtikeljaegerController extends SpielController<ArtikeljaegerModel, ArtikeljaegerController, ArtikeljaegerView> {
 
 	public ArtikeljaegerController(){
-
+		model = new ArtikeljaegerModel();
+		view = new ArtikeljaegerView(this);
 	}
 
 	@Override

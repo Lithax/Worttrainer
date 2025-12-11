@@ -1,15 +1,17 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util;
 
+import java.util.function.Consumer;
+
 public final class Propagate {
+    public static volatile Consumer<Throwable> exceptHandler = t -> {
+        t.printStackTrace();
+    };
+
     private Propagate() {}
 
     public static void propagate(Throwable t) {
-        Propagate.<RuntimeException>throwAs(t);
-    }
-
-    @SuppressWarnings("unchecked")
-    private static <T extends Throwable> void throwAs(Throwable t) throws T {
-        throw (T) t; // unchecked cast + throws T
+        Consumer<Throwable> handler = exceptHandler;
+        if (handler != null) handler.accept(t);
     }
 
     @FunctionalInterface
@@ -20,10 +22,9 @@ public final class Propagate {
     public static void propagate(ThrowingRunnable runnable) {
         try {
             runnable.run();
-        } catch (RuntimeException e) {
-            throw e; // keep runtime exceptions as-is
-        } catch (Exception e) {
-            throw new RuntimeException(e); // wrap checked exceptions
+        } catch (Throwable t) {
+            Consumer<Throwable> handler = exceptHandler;
+            if (handler != null) handler.accept(t);
         }
     }
 
@@ -35,10 +36,10 @@ public final class Propagate {
     public static <T> T propagate(ThrowingSupplier<T> supplier) {
         try {
             return supplier.get();
-        } catch (RuntimeException e) {
-            throw e;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (Throwable t) {
+            Consumer<Throwable> handler = exceptHandler;
+            if (handler != null) handler.accept(t);
+            return null;
         }
     }
 }

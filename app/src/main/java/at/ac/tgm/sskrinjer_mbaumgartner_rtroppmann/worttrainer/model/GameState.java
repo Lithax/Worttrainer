@@ -8,7 +8,6 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
  */
 public enum GameState {
 	GAME_RUNNING,
-	GAME_STOPPED,
 	GAME_INTERRUPTED,
 	GAME_ABSENT
 }

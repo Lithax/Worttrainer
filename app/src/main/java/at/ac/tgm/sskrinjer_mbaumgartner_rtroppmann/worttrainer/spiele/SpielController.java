@@ -19,19 +19,6 @@ public abstract class SpielController<
 	protected M model;
 	protected V view;
 
-	public SpielController(){
-
-	}
-
-	/**
-	 * 
-	 * @param spielModel
-	 * @param spielView
-	 */
-	public SpielController(M spielModel, V spielView){
-
-	}
-
 	public String getDescription(){
 		return model.getSpielDescription();
 	}

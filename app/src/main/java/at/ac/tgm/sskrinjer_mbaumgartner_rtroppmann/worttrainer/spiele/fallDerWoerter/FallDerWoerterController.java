@@ -10,7 +10,8 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielContr
 public class FallDerWoerterController extends SpielController<FallDerWoerterModel, FallDerWoerterController, FallDerWoerterView> {
 
 	public FallDerWoerterController(){
-
+		model = new FallDerWoerterModel();
+		view = new FallDerWoerterView(this);
 	}
 
 	@Override

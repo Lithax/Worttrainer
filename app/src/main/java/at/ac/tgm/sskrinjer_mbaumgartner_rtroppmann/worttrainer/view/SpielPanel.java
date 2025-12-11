@@ -23,7 +23,6 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-
 import com.formdev.flatlaf.FlatClientProperties;
 
 /**

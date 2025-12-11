@@ -6,7 +6,6 @@ import java.time.LocalTime;
 import java.util.concurrent.atomic.AtomicReference;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.Main;
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
 import static at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util.Propagate.propagate;
 
 /**
@@ -32,7 +31,7 @@ public class MainModelImpl implements MainModel {
 	}
 
 	@Override
-	public void setController(MainController controller) {
+	public void setTimeListener(TimeListener controller) {
 		timer.setTimeListener(controller);
 	}
 

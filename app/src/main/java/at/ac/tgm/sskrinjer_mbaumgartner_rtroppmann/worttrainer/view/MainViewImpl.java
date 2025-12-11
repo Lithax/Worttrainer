@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
@@ -40,10 +41,13 @@ public class MainViewImpl extends JFrame implements MainView {
 
 		tabbedPane = new JTabbedPane();
 
-		tabbedPane.addTab("Start", homeView);
-		tabbedPane.addTab("Einstellungen", einstellungsView);
-		tabbedPane.addTab("Spiele", spieleView);
+		tabbedPane.addTab("Start", SvgIconLoader.load("home", 30, 30), homeView);
+		tabbedPane.addTab("Einstellungen", SvgIconLoader.load("settings", 30, 30), einstellungsView);
+		tabbedPane.addTab("Spiele", SvgIconLoader.load("spiele", 30, 30), spieleView);
 
+		tabbedPane.setSelectedIndex(0);
+
+		setContentPane(tabbedPane);
 
 		setVisible(true);
 		requestFocus();
