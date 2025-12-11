@@ -24,7 +24,7 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(22)
     }
 }
 
@@ -58,3 +58,4 @@ task fatJar(type: Jar) {
     // keep the default jar contents (like resources)
     with tasks.jar
 }
+

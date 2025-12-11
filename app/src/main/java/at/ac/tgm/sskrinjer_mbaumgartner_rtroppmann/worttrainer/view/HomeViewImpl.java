@@ -73,7 +73,6 @@ public class HomeViewImpl extends JPanel implements HomeView {
         tipContent.setEditable(false);
         tipContent.setFocusable(false);
         tipContent.setOpaque(false);
-        tipContent.putClientProperty(FlatClientProperties.STYLE, "font: +10%");
 
         tipCard.add(tipTitle, BorderLayout.NORTH);
         tipCard.add(tipContent, BorderLayout.CENTER);

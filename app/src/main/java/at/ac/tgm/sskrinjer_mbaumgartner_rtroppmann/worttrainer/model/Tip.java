@@ -54,6 +54,8 @@ public record Tip(String text, String title) {
 	 * @throws IOException 
 	 */
 	public static void loadTips(Path path) throws IOException {
+		if(!Files.exists(path))
+			Files.createFile(path);
 		String jsonString = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
 		tips = new Gson().fromJson(jsonString, new TypeToken<List<Tip>>(){}.getType());
 	}

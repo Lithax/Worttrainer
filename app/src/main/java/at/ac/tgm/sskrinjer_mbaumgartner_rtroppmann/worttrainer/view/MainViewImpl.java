@@ -13,6 +13,10 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.UIManager.LookAndFeelInfo;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 
 import com.formdev.flatlaf.FlatLaf;
 
@@ -41,13 +45,21 @@ public class MainViewImpl extends JFrame implements MainView {
 
 		tabbedPane = new JTabbedPane();
 
-		tabbedPane.addTab("Start", SvgIconLoader.load("home", 30, 30), homeView);
-		tabbedPane.addTab("Einstellungen", SvgIconLoader.load("settings", 30, 30), einstellungsView);
-		tabbedPane.addTab("Spiele", SvgIconLoader.load("spiele", 30, 30), spieleView);
+		tabbedPane.addTab("Start", SvgIconLoader.load("home.svg", 30, 30), homeView);
+		tabbedPane.addTab("Einstellungen", SvgIconLoader.load("settings.svg", 30, 30), einstellungsView);
+		tabbedPane.addTab("Spiele", SvgIconLoader.load("spiele.svg", 30, 30), spieleView);
 
 		tabbedPane.setSelectedIndex(0);
 
 		setContentPane(tabbedPane);
+
+		UIManager.installLookAndFeel("FlatLaf Light", FlatLightLaf.class.getName());
+        UIManager.installLookAndFeel("FlatLaf Dark", FlatDarkLaf.class.getName());
+        
+        UIManager.installLookAndFeel("FlatLaf Mac Light", FlatMacLightLaf.class.getName());
+        UIManager.installLookAndFeel("FlatLaf Mac Dark", FlatMacDarkLaf.class.getName());
+
+        FlatLightLaf.setup();
 
 		setVisible(true);
 		requestFocus();
@@ -55,6 +67,7 @@ public class MainViewImpl extends JFrame implements MainView {
 
 	public void setController(MainController controller) {
 		this.controller = new AtomicReference<>(controller);
+		einstellungsView.setEinstellungsListener(controller);
 	}
 
 	public void disposeSpiel(){
@@ -95,7 +108,8 @@ public class MainViewImpl extends JFrame implements MainView {
 			if (info.getName().equals(theme)) {
 				try {
 					UIManager.setLookAndFeel(info.getClassName());
-					FlatLaf.updateUI();
+					SwingUtilities.updateComponentTreeUI(this);
+					this.getRootPane().updateUI(); 
 				} catch (Exception e) {e.printStackTrace();}
 				return;
 			}

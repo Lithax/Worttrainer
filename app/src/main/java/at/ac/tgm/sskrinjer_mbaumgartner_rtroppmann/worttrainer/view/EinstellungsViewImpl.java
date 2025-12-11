@@ -3,6 +3,7 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -12,6 +13,10 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import com.formdev.flatlaf.FlatClientProperties;
 
 /**
  * @author Benutzbiber
@@ -23,6 +28,7 @@ public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 	private JTextField anzahlRundenField;
 	private JComboBox<Integer> schwierigkeitCBox;
 	private JComboBox<String> themeCBox;
+	private EinstellungenListener l;
 
 	public EinstellungsViewImpl() {
         setLayout(new GridBagLayout());
@@ -64,8 +70,17 @@ public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 
         addLabel(formPanel, "Design:", 3, gbc);
         
-        themeCBox = new JComboBox<>(new String[]{"Light", "Dark", "System"});
+        themeCBox = new JComboBox<>();
         addComponent(formPanel, themeCBox, 3, gbc);
+
+		JButton saveButton = new JButton("Speichern");
+		saveButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(l!=null)l.onEinstellungenSave();
+			}
+		});
+		addComponent(formPanel, saveButton, 4, gbc);
 
         add(formPanel);
     }
@@ -119,5 +134,16 @@ public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 	 */
 	public void setTheme(String theme){
 		themeCBox.setSelectedItem(theme);
+	}
+
+	@Override
+	public void setEinstellungsListener(EinstellungenListener l) {
+		this.l = l;
+	}
+
+	@Override
+	public void setThemes(String[] themes) {
+		for(String theme : themes)
+			themeCBox.addItem(theme);
 	}
 }//end EinstellungsViewImpl

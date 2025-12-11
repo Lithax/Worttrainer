@@ -32,4 +32,7 @@ public interface EinstellungsView {
 	 */
 	public void setTheme(String theme);
 
+	void setThemes(String[] themes);
+
+	void setEinstellungsListener(EinstellungenListener l);
 }

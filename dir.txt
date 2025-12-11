@@ -1,36 +1,81 @@
 //==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\build.gradle
+//==========================================================
+
+plugins {
+    id 'java'
+    id 'application'
+    // id 'com.github.johnrengelman.shadow' version '8.1.1' // optional - not required for fatJar
+    // id 'at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer' version '1.0.0' // keep commented while debugging
+}
+
+group = 'at.ac.tgm'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:32.1.2-jre'          // Guava
+    implementation 'com.google.code.gson:gson:2.13.2'           // Gson
+    implementation 'com.formdev:flatlaf:3.7'                    // FlatLaf
+    implementation 'org.apache.xmlgraphics:batik-all:1.19'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.0'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(22)
+    }
+}
+
+application {
+    mainClass = 'at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.Main'
+}
+
+tasks.jar {
+    manifest {
+        attributes 'Main-Class': application.mainClass.toString()
+    }
+}
+
+/*
+ * fatJar: creates a runnable "uber" jar including runtime dependencies.
+ * Run it with: .\gradlew.bat fatJar
+ */
+task fatJar(type: Jar) {
+    archiveClassifier.set('all')                   // produces *-all.jar
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes 'Main-Class': application.mainClass.toString()
+    }
+    // include compiled classes
+    from sourceSets.main.output
+
+    // include runtime deps (unpack JARs)
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    // keep the default jar contents (like resources)
+    with tasks.jar
+}
+
+
+
+//==========================================================
 // Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\controller\MainController.java
 //==========================================================
 
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller;
 
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-
-import com.google.common.util.concurrent.TimeLimiter;
-
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.TimeListener;
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainView;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.EinstellungenListener;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.SpieleListener;
 
-/**
- * @author mhbau
- * @version 1.0
- * @created 08-Dez-2025 15:09:38
- */
-public interface MainController extends TimeListener, SpieleListener {
-
-	public void onEinstellungenSave() throws IOException;
-
-	/**
-	 * 
-	 * @param datum
-	 * @param time
-	 */
-	public void onUpdateTime(LocalDate datum, LocalTime time);
-}
+public interface MainController extends TimeListener, SpieleListener, EinstellungenListener {}
 
 
 //==========================================================
@@ -49,10 +94,14 @@ import java.util.List;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Einstellungen;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.GameState;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.TimeListener;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util.Propagate;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.EinstellungenListener;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.EinstellungsView;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainView;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MessageType;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.SpieleListener;
 
 /**
  * @author Benutzbiber
@@ -63,30 +112,37 @@ public class MainControllerImpl implements MainController {
 	private Spiel currentSpiel;
 	private MainModel mainModel;
 	private MainView mainView;
-	private Class<? extends Spiel>[] spiele;
+	private List<Spiel> spiele;
 
 	/**
 	 * 
 	 * @param spiele
 	 */
-	public MainControllerImpl(Class<? extends Spiel>[] spiele, MainModel mainModel, MainView mainView){
+	public MainControllerImpl(List<Spiel> spiele, MainModel mainModel, MainView mainView){
 		this.spiele = spiele;
 		this.mainModel = mainModel;
 		this.mainView = mainView;
 
-		Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
-			mainView.showMessage("Internal Error", e.getMessage(), MessageType.ERROR);
-			e.printStackTrace();
-		});
+		Thread.setDefaultUncaughtExceptionHandler((t, e) -> handleException(e));
+		Propagate.exceptHandler = this::handleException;
 
-		mainModel.setController(this);
+		mainModel.setTimeListener(this);
 		mainView.setController(this);
+
+		propagate(() -> mainModel.getEinstellungen().setThemes(mainView.getAvailableThemes()));
+
+		propagate(() -> mainView.getHomeView().setTipOfTheDay(mainModel.getTipOfTheDay()));
+
+		mainModel.setTimeListener(this);
 
 		updateEinstellungsView();
 	}
 
 	public void onSpielBeenden(){
-		
+		if(currentSpiel == null) return;
+		currentSpiel.spielBeenden();
+		currentSpiel = null;
+		mainModel.setGameState(GameState.GAME_ABSENT);
 	}
 
 	/**
@@ -99,26 +155,27 @@ public class MainControllerImpl implements MainController {
 		mainView.getHomeView().setUhrzeit(time);
 	}
 
-	public void updateEinstellungsView() {
+	private void updateEinstellungsView() {
 		propagate(() -> {
 			EinstellungsView eV = mainView.getEinstellungsView();
 			Einstellungen eM = mainModel.getEinstellungen();
 			eV.setAnzahlRunden(eM.getAnzahlRunden());
 			eV.setSchwierigkeit(eM.getSchwierigkeit());
 			eV.setTheme(eM.getTheme());
-			mainView.setTheme(eM.getTheme());
+			if(!eV.getTheme().equals(eM.getTheme())) 
+				mainView.setTheme(eM.getTheme());
 		});
 	}
 
-	public void onEinstellungenSave() throws IOException {
+	public void onEinstellungenSave()  {
 		EinstellungsView eV = mainView.getEinstellungsView();
-		Einstellungen eM = mainModel.getEinstellungen();
+		Einstellungen eM = propagate(() -> mainModel.getEinstellungen());
 		try {
 			eM.setAnzahlRunden(eV.getAnzahlRunden());
 			eM.setSchwierigkeit(eV.getSchwierigkeit());
 			if(!eM.getTheme().equals(eV.getTheme())) 
 				eM.setTheme(eV.getTheme());
-			eM.save();
+			propagate(() -> eM.save());
 		} catch (IllegalArgumentException e) {
 			mainView.showMessage("Invalide Eingabe", e.getMessage(), MessageType.ERROR);
 		}
@@ -126,7 +183,18 @@ public class MainControllerImpl implements MainController {
 
 	@Override
 	public void onSpielSelected(String name) {
-		
+		for(Spiel spiel : spiele)
+			if(spiel.getName().endsWith(name)) {
+				currentSpiel = spiel;
+				mainModel.setGameState(GameState.GAME_RUNNING);
+				return;
+			}
+		mainView.showMessage("Lade Fehler", "Spiel konnte nicht gefunden werden", MessageType.ERROR);
+	}
+
+	private void handleException(Throwable e) {
+		mainView.showMessage("Internal Error", e.getMessage(), MessageType.ERROR);
+		e.printStackTrace();
 	}
 }//end MainControllerImpl
 
@@ -248,6 +316,8 @@ public class Einstellungen {
 	 */
 	public static Einstellungen load(Path path) throws IOException {
 		Gson gson = new Gson();
+		if(!Files.exists(path))
+			Files.createFile(path);
 		String jsonString = new String(Files.readAllBytes(path));
 		return gson.fromJson(jsonString, Einstellungen.class);
 	}
@@ -298,7 +368,6 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
  */
 public enum GameState {
 	GAME_RUNNING,
-	GAME_STOPPED,
 	GAME_INTERRUPTED,
 	GAME_ABSENT
 }
@@ -311,8 +380,6 @@ public enum GameState {
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
 
 import java.io.IOException;
-
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
 
 /**
  * @author Benutzbiber
@@ -331,7 +398,7 @@ public interface MainModel {
 
 	public Wortliste getWortliste();
 
-	public void setController(MainController controller);
+	public void setTimeListener(TimeListener controller);
 }
 
 
@@ -347,7 +414,6 @@ import java.time.LocalTime;
 import java.util.concurrent.atomic.AtomicReference;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.Main;
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
 import static at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util.Propagate.propagate;
 
 /**
@@ -373,7 +439,7 @@ public class MainModelImpl implements MainModel {
 	}
 
 	@Override
-	public void setController(MainController controller) {
+	public void setTimeListener(TimeListener controller) {
 		timer.setTimeListener(controller);
 	}
 
@@ -594,6 +660,8 @@ public record Tip(String text, String title) {
 	 * @throws IOException 
 	 */
 	public static void loadTips(Path path) throws IOException {
+		if(!Files.exists(path))
+			Files.createFile(path);
 		String jsonString = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
 		tips = new Gson().fromJson(jsonString, new TypeToken<List<Tip>>(){}.getType());
 	}
@@ -883,7 +951,8 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielContr
 public class ArtikeljaegerController extends SpielController<ArtikeljaegerModel, ArtikeljaegerController, ArtikeljaegerView> {
 
 	public ArtikeljaegerController(){
-
+		model = new ArtikeljaegerModel();
+		view = new ArtikeljaegerView(this);
 	}
 
 	@Override
@@ -984,7 +1053,8 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielContr
 public class FallDerWoerterController extends SpielController<FallDerWoerterModel, FallDerWoerterController, FallDerWoerterView> {
 
 	public FallDerWoerterController(){
-
+		model = new FallDerWoerterModel();
+		view = new FallDerWoerterView(this);
 	}
 
 	@Override
@@ -1086,7 +1156,8 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielContr
 public class FehlerfuchsController extends SpielController<FehlerfuchsModel, FehlerfuchsController, FehlerfuchsView> {
 
 	public FehlerfuchsController(){
-
+		model = new FehlerfuchsModel();
+		view = new FehlerfuchsView(this);
 	}
 
 	@Override
@@ -1211,6 +1282,8 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
 import java.io.IOException;
 import java.io.InputStream;
 
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Einstellungen;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Wortliste;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.SpielEngineView;
 
 /**
@@ -1231,7 +1304,6 @@ public interface Spiel {
 	public void spielBeenden();
 
 	public void spielStarten();
-
 }
 
 
@@ -1259,15 +1331,6 @@ public abstract class SpielController<
 
 	protected M model;
 	protected V view;
-
-	/**
-	 * 
-	 * @param spielModel
-	 * @param spielView
-	 */
-	public SpielController(M spielModel, V spielView){
-		
-	}
 
 	public String getDescription(){
 		return model.getSpielDescription();
@@ -1299,17 +1362,18 @@ public abstract class SpielController<
 
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
 
+import java.util.List;
+
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.artikeljaeger.ArtikeljaegerController;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fallDerWoerter.FallDerWoerterController;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fehlerfuchs.FehlerfuchsController;
 
 public interface SpielListe {
-    @SuppressWarnings("unchecked")
-    Class<? extends Spiel>[] SPIELE = new Class[]{
-        FehlerfuchsController.class,
-        FallDerWoerterController.class,
-        ArtikeljaegerController.class
-    };
+    List<Spiel> SPIELE = List.of(
+        new FehlerfuchsController(),
+        new ArtikeljaegerController(),
+        new FallDerWoerterController()
+    );
 }
 
 
@@ -1422,16 +1486,18 @@ public abstract class SpielView<
 
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util;
 
+import java.util.function.Consumer;
+
 public final class Propagate {
+    public static volatile Consumer<Throwable> exceptHandler = t -> {
+        t.printStackTrace();
+    };
+
     private Propagate() {}
 
     public static void propagate(Throwable t) {
-        Propagate.<RuntimeException>throwAs(t);
-    }
-
-    @SuppressWarnings("unchecked")
-    private static <T extends Throwable> void throwAs(Throwable t) throws T {
-        throw (T) t; // unchecked cast + throws T
+        Consumer<Throwable> handler = exceptHandler;
+        if (handler != null) handler.accept(t);
     }
 
     @FunctionalInterface
@@ -1442,10 +1508,9 @@ public final class Propagate {
     public static void propagate(ThrowingRunnable runnable) {
         try {
             runnable.run();
-        } catch (RuntimeException e) {
-            throw e; // keep runtime exceptions as-is
-        } catch (Exception e) {
-            throw new RuntimeException(e); // wrap checked exceptions
+        } catch (Throwable t) {
+            Consumer<Throwable> handler = exceptHandler;
+            if (handler != null) handler.accept(t);
         }
     }
 
@@ -1457,12 +1522,23 @@ public final class Propagate {
     public static <T> T propagate(ThrowingSupplier<T> supplier) {
         try {
             return supplier.get();
-        } catch (RuntimeException e) {
-            throw e;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (Throwable t) {
+            Consumer<Throwable> handler = exceptHandler;
+            if (handler != null) handler.accept(t);
+            return null;
         }
     }
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\EinstellungenListener.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+public interface EinstellungenListener {
+    void onEinstellungenSave();
 }
 
 
@@ -1504,6 +1580,7 @@ public interface EinstellungsView {
 	 */
 	public void setTheme(String theme);
 
+	void setEinstellungsListener(EinstellungenListener l);
 }
 
 
@@ -1513,9 +1590,23 @@ public interface EinstellungsView {
 
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import com.formdev.flatlaf.FlatClientProperties;
 
 /**
  * @author Benutzbiber
@@ -1527,10 +1618,77 @@ public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 	private JTextField anzahlRundenField;
 	private JComboBox<Integer> schwierigkeitCBox;
 	private JComboBox<String> themeCBox;
+	private EinstellungenListener l;
 
-	public EinstellungsViewImpl(){
+	public EinstellungsViewImpl() {
+        setLayout(new GridBagLayout());
+        setBorder(new EmptyBorder(20, 20, 20, 20));
 
-	}
+        JPanel formPanel = new JPanel(new GridBagLayout());
+        formPanel.setBackground(UIManager.getColor("Panel.background"));
+        formPanel.putClientProperty(FlatClientProperties.STYLE, "" +
+                "border: 1,1,1,1, $Component.borderColor, 1, 15;" +
+                "background: $Panel.background");
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 20, 10, 20);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        JLabel header = new JLabel("Einstellungen");
+        header.putClientProperty(FlatClientProperties.STYLE, "font: $h2.font");
+        header.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        gbc.gridx = 0; gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(20, 20, 30, 20);
+        formPanel.add(header, gbc);
+
+        gbc.insets = new Insets(10, 20, 10, 20);
+        gbc.gridwidth = 1;
+        gbc.weightx = 0.3;
+
+        addLabel(formPanel, "Rundenanzahl:", 1, gbc);
+        
+        anzahlRundenField = new JTextField("10");
+        anzahlRundenField.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "z.B. 10");
+        addComponent(formPanel, anzahlRundenField, 1, gbc);
+
+        addLabel(formPanel, "Schwierigkeit:", 2, gbc);
+
+        schwierigkeitCBox = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5}); 
+        addComponent(formPanel, schwierigkeitCBox, 2, gbc);
+
+        addLabel(formPanel, "Design:", 3, gbc);
+        
+        themeCBox = new JComboBox<>(new String[]{"Light", "Dark", "System"});
+        addComponent(formPanel, themeCBox, 3, gbc);
+
+		JButton saveButton = new JButton("Speichern");
+		saveButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(l!=null)l.onEinstellungenSave();
+			}
+		});
+		addComponent(formPanel, saveButton, 4, gbc);
+
+        add(formPanel);
+    }
+
+    private void addLabel(JPanel panel, String text, int row, GridBagConstraints gbc) {
+        JLabel label = new JLabel(text);
+        label.putClientProperty(FlatClientProperties.STYLE, "font: bold");
+        gbc.gridx = 0;
+        gbc.gridy = row;
+        panel.add(label, gbc);
+    }
+
+    private void addComponent(JPanel panel, JComponent comp, int row, GridBagConstraints gbc) {
+        gbc.gridx = 1;
+        gbc.gridy = row;
+        gbc.weightx = 0.7;
+        panel.add(comp, gbc);
+    }
 
 	public int getAnzahlRunden(){
 		return Integer.parseInt(anzahlRundenField.getText());
@@ -1566,6 +1724,11 @@ public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 	 */
 	public void setTheme(String theme){
 		themeCBox.setSelectedItem(theme);
+	}
+
+	@Override
+	public void setEinstellungsListener(EinstellungenListener l) {
+		this.l = l;
 	}
 }//end EinstellungsViewImpl
 
@@ -1615,57 +1778,138 @@ public interface HomeView {
 
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
+import com.formdev.flatlaf.FlatClientProperties;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Tip;
 
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.util.Locale;
+
 /**
+ *
  * @author Benutzbiber
- * @version 1.0
- * @created 08-Dez-2025 15:09:38
+ * @version 1.1
  */
 public class HomeViewImpl extends JPanel implements HomeView {
-	private JLabel datumLabel;
-	private JLabel tipContent;
-	private JLabel tipTitle;
-	private JLabel uhrzeitLabel;
-	private JLabel wochentagLabel;
+    private JLabel datumLabel;
+    private JLabel uhrzeitLabel;
+    
+    private JLabel tipTitle;
+    private JTextArea tipContent;
+    private JPanel tipCard;
 
-	public HomeViewImpl(){
+    private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+    private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd. MMMM yyyy");
 
-	}
+    public HomeViewImpl() {
+        setLayout(new BorderLayout());
+        setBorder(new EmptyBorder(40, 40, 40, 40));
 
-	/**
-	 * 
-	 * @param datum
-	 */
-	@Override
-	public void setDatum(LocalDate datum){
+        JPanel clockPanel = new JPanel();
+        clockPanel.setLayout(new BoxLayout(clockPanel, BoxLayout.Y_AXIS));
+        clockPanel.setOpaque(false);
+        
+        uhrzeitLabel = new JLabel("00:00");
+        uhrzeitLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        uhrzeitLabel.putClientProperty(FlatClientProperties.STYLE, "font: $h00.font");
+        
+        datumLabel = new JLabel("Montag, 01. Jänner 2025");
+        datumLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        datumLabel.putClientProperty(FlatClientProperties.STYLE, "font: $h3.font; foreground: $Label.disabledForeground");
 
-	}
+        clockPanel.add(uhrzeitLabel);
+        clockPanel.add(Box.createVerticalStrut(5));
+        clockPanel.add(datumLabel);
+        clockPanel.add(Box.createVerticalStrut(40));
 
-	/**
-	 * 
-	 * @param tip
-	 */
-	@Override
-	public void setTipOfTheDay(Tip tip){
+        add(clockPanel, BorderLayout.NORTH);
 
-	}
+        JPanel centerWrapper = new JPanel(new GridBagLayout()); 
+        centerWrapper.setOpaque(false);
+        
+        tipCard = new JPanel(new BorderLayout(0, 15));
+        tipCard.setPreferredSize(new Dimension(400, 200));
+        tipCard.setBorder(new EmptyBorder(20, 20, 20, 20));
+        
+        tipCard.putClientProperty(FlatClientProperties.STYLE, "" +
+                "arc: 20;" +
+                "background: $Button.background;" +
+                "border: 1,1,1,1, $Component.borderColor, 1, 20");
 
-	/**
-	 * 
-	 * @param uhrzeit
-	 */
-	@Override
-	public void setUhrzeit(LocalTime uhrzeit){
+        tipTitle = new JLabel("Tipp des Tages");
+        tipTitle.putClientProperty(FlatClientProperties.STYLE, "font: bold $h3.font; foreground: $Component.accentColor");
+        tipTitle.setHorizontalAlignment(SwingConstants.LEFT);
 
-	}
-}//end HomeViewImpl
+        tipContent = new JTextArea("Lade Tipp...");
+        tipContent.setWrapStyleWord(true);
+        tipContent.setLineWrap(true);
+        tipContent.setEditable(false);
+        tipContent.setFocusable(false);
+        tipContent.setOpaque(false);
+        tipContent.putClientProperty(FlatClientProperties.STYLE, "font: +10%");
+
+        tipCard.add(tipTitle, BorderLayout.NORTH);
+        tipCard.add(tipContent, BorderLayout.CENTER);
+
+        centerWrapper.add(tipCard);
+        add(centerWrapper, BorderLayout.CENTER);
+    }
+
+    @Override
+    public void setDatum(LocalDate datum) {
+        String wochentag = datum.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.GERMAN);
+        String dateStr = datum.format(dateFormatter);
+        datumLabel.setText(wochentag + ", " + dateStr);
+    }
+
+    @Override
+    public void setUhrzeit(LocalTime uhrzeit) {
+        uhrzeitLabel.setText(uhrzeit.format(timeFormatter));
+    }
+
+    @Override
+    public void setTipOfTheDay(Tip tip) {
+        if (tip != null) {
+			tipTitle.setText(tip.title());
+            tipContent.setText(tip.text());
+        } else {
+            tipContent.setText("Keine Tipps verfügbar.");
+        }
+    }
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\IconLoader.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import javax.swing.ImageIcon;
+
+public class IconLoader {
+    public static final Path iconsPath = Path.of("icons");
+
+    public static ImageIcon load(String name) {
+        byte[] data;
+        try {
+            data = Files.readAllBytes(iconsPath.resolve(name));
+            return new ImageIcon(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+}
 
 
 //==========================================================
@@ -1735,6 +1979,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
@@ -1771,10 +2016,13 @@ public class MainViewImpl extends JFrame implements MainView {
 
 		tabbedPane = new JTabbedPane();
 
-		tabbedPane.addTab("Start", homeView);
-		tabbedPane.addTab("Einstellungen", einstellungsView);
-		tabbedPane.addTab("Spiele", spieleView);
+		tabbedPane.addTab("Start", SvgIconLoader.load("home.svg", 30, 30), homeView);
+		tabbedPane.addTab("Einstellungen", SvgIconLoader.load("settings.svg", 30, 30), einstellungsView);
+		tabbedPane.addTab("Spiele", SvgIconLoader.load("spiele.svg", 30, 30), spieleView);
 
+		tabbedPane.setSelectedIndex(0);
+
+		setContentPane(tabbedPane);
 
 		setVisible(true);
 		requestFocus();
@@ -1782,6 +2030,7 @@ public class MainViewImpl extends JFrame implements MainView {
 
 	public void setController(MainController controller) {
 		this.controller = new AtomicReference<>(controller);
+		einstellungsView.setEinstellungsListener(controller);
 	}
 
 	public void disposeSpiel(){
@@ -1866,6 +2115,7 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 
 public interface SpieleListener {
     void onSpielSelected(String name);
+    void onSpielBeenden();
 }
 
 
@@ -2011,7 +2261,6 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-
 
 import com.formdev.flatlaf.FlatClientProperties;
 
@@ -2213,5 +2462,86 @@ public class StatistikDialog extends JDialog {
         setLocationRelativeTo(null);
 	}
 }//end StatistikView
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\app\src\main\java\at\ac\tgm\sskrinjer_mbaumgartner_rtroppmann\worttrainer\view\SvgIconLoader.java
+//==========================================================
+
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import javax.swing.ImageIcon;
+
+import org.apache.batik.transcoder.TranscoderException;
+import org.apache.batik.transcoder.TranscoderInput;
+import org.apache.batik.transcoder.image.ImageTranscoder;
+
+public class SvgIconLoader { // chat chat chatti wurde hier verwendet (kb auf 50+ documentationen durchlesen)
+
+    public static final Path svgPath = Path.of("icons");
+
+    private static class BufferedImageTranscoder extends ImageTranscoder {
+        private BufferedImage image;
+
+        @Override
+        public BufferedImage createImage(int w, int h) {
+            return new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        }
+
+        @Override
+        public void writeImage(BufferedImage img, org.apache.batik.transcoder.TranscoderOutput out) {
+            this.image = img;
+        }
+
+        public BufferedImage getImage() {
+            return image;
+        }
+    }
+
+    public static ImageIcon load(String name, int width, int height) {
+        try (InputStream in = Files.newInputStream(svgPath.resolve(name))) {
+
+            BufferedImageTranscoder transcoder = new BufferedImageTranscoder();
+            transcoder.addTranscodingHint(ImageTranscoder.KEY_WIDTH,  (float) width);
+            transcoder.addTranscodingHint(ImageTranscoder.KEY_HEIGHT, (float) height);
+
+            TranscoderInput input = new TranscoderInput(in);
+            transcoder.transcode(input, null);
+
+            BufferedImage img = transcoder.getImage();
+            return new ImageIcon(img);
+
+        } catch (IOException | TranscoderException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+}
+
+
+//==========================================================
+// Content from: C:\Users\mhbau\OneDrive\Dokumente\Schule\itp\Worttrainer\settings.gradle
+//==========================================================
+
+/*
+ * This file was generated by the Gradle 'init' task.
+ *
+ * The settings file is used to specify which projects to include in your build.
+ * For more detailed information on multi-project builds, please refer to https://docs.gradle.org/9.2.1/userguide/multi_project_builds.html in the Gradle documentation.
+ */
+
+plugins {
+    // Apply the foojay-resolver plugin to allow automatic download of JDKs
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
+rootProject.name = 'Worttrainer'
+include('app')
 
 

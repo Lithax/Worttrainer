@@ -45,6 +45,17 @@ public class MainControllerImpl implements MainController {
 		mainModel.setTimeListener(this);
 		mainView.setController(this);
 
+		String[] themes = mainView.getAvailableThemes();
+
+		mainView.getEinstellungsView().setThemes(themes);
+
+		propagate(() -> mainView.setTheme(mainModel.getEinstellungen().getTheme()));
+
+		propagate(() -> mainView.getHomeView().setTipOfTheDay(mainModel.getTipOfTheDay()));
+
+		mainModel.setTimeListener(this);
+
+
 		updateEinstellungsView();
 	}
 
@@ -72,7 +83,8 @@ public class MainControllerImpl implements MainController {
 			eV.setAnzahlRunden(eM.getAnzahlRunden());
 			eV.setSchwierigkeit(eM.getSchwierigkeit());
 			eV.setTheme(eM.getTheme());
-			mainView.setTheme(eM.getTheme());
+			if(!eV.getTheme().equals(eM.getTheme())) 
+				mainView.setTheme(eM.getTheme());
 		});
 	}
 
@@ -82,8 +94,9 @@ public class MainControllerImpl implements MainController {
 		try {
 			eM.setAnzahlRunden(eV.getAnzahlRunden());
 			eM.setSchwierigkeit(eV.getSchwierigkeit());
-			if(!eM.getTheme().equals(eV.getTheme())) 
-				eM.setTheme(eV.getTheme());
+			eM.setTheme(eV.getTheme());
+			//if(!eM.getTheme().equals(eV.getTheme())) 
+				mainView.setTheme(eM.getTheme());
 			propagate(() -> eM.save());
 		} catch (IllegalArgumentException e) {
 			mainView.showMessage("Invalide Eingabe", e.getMessage(), MessageType.ERROR);

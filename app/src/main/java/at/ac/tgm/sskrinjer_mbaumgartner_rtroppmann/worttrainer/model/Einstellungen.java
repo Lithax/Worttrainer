@@ -21,17 +21,11 @@ public class Einstellungen {
 	private int anzahlSpielrunden;
 	public static final Path einstellungenPath = Path.of("settings/settings.json");
 	private int schwierigkeit;
-	private String[] themes;
-
-	public String[] getThemes() {
-		return themes;
-	}
-
-	public void setThemes(String[] themes) {
-		this.themes = themes;
-	}
-
 	private String theme;
+
+	public void setTheme(String theme) {
+		this.theme = theme;
+	}
 
 	public int getAnzahlRunden(){
 		return anzahlSpielrunden;
@@ -71,6 +65,8 @@ public class Einstellungen {
 	 */
 	public static Einstellungen load(Path path) throws IOException {
 		Gson gson = new Gson();
+		if(!Files.exists(path))
+			Files.createFile(path);
 		String jsonString = new String(Files.readAllBytes(path));
 		return gson.fromJson(jsonString, Einstellungen.class);
 	}
@@ -93,15 +89,5 @@ public class Einstellungen {
 		if(schwierigkeit < 1 || schwierigkeit > 3) 
 			throw new IllegalArgumentException("Schwierigkeit muss entweder 1, 2 oder 3 sein!");
 		this.schwierigkeit = schwierigkeit;
-	}
-
-	/**
-	 * 
-	 * @param theme
-	 */
-	public void setTheme(String theme) {
-		for(String t : themes)
-			if(t.equals(theme)) { this.theme = theme; return; }
-		throw new IllegalArgumentException("Dieses Theme existiert nicht!");
 	}
 }//end Einstellungen
