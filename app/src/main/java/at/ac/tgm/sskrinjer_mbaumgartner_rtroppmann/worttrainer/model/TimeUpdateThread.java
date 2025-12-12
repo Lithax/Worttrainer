@@ -19,6 +19,7 @@ public class TimeUpdateThread {
 
     public void setTimeListener(TimeListener l) {
         this.timerCallback = l;
+        timerCallback.onUpdateTime(LocalDate.now(), LocalTime.now());
     }
 
     public void start() {

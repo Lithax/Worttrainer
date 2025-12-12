@@ -1,4 +1,7 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
-    "java.project.sourcePaths": ["app/src/main/java"]
+    "java.project.sourcePaths": [
+        "app/src/main/java"
+    ],
+    "java.compile.nullAnalysis.mode": "automatic"
 }

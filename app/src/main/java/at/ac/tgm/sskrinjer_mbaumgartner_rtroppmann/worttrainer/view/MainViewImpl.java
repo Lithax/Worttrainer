@@ -13,10 +13,14 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.UIManager.LookAndFeelInfo;
+
+import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.intellijthemes.FlatAllIJThemes;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import java.awt.Font;
 
 import com.formdev.flatlaf.FlatLaf;
 
@@ -48,6 +52,7 @@ public class MainViewImpl extends JFrame implements MainView {
 		tabbedPane.addTab("Start", SvgIconLoader.load("home.svg", 30, 30), homeView);
 		tabbedPane.addTab("Einstellungen", SvgIconLoader.load("settings.svg", 30, 30), einstellungsView);
 		tabbedPane.addTab("Spiele", SvgIconLoader.load("spiele.svg", 30, 30), spieleView);
+		tabbedPane.setFont(tabbedPane.getFont().deriveFont(16));
 
 		tabbedPane.setSelectedIndex(0);
 
@@ -59,7 +64,9 @@ public class MainViewImpl extends JFrame implements MainView {
         UIManager.installLookAndFeel("FlatLaf Mac Light", FlatMacLightLaf.class.getName());
         UIManager.installLookAndFeel("FlatLaf Mac Dark", FlatMacDarkLaf.class.getName());
 
-        FlatLightLaf.setup();
+		UIManager.installLookAndFeel("Flat Darcula", FlatDarculaLaf.class.getName());
+		
+		FlatAllIJThemes.install();
 
 		setVisible(true);
 		requestFocus();
