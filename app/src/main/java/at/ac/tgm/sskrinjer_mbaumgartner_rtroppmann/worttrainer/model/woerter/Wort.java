@@ -1,4 +1,4 @@
-package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter;
 
 
 /**
@@ -31,15 +31,31 @@ public record Wort(String wort, Wortart wortart, String artikel, int fall, int s
 	 * 
 	 * @param fallNr
 	 */
-	public String getNomenFall(int fallNr){
-		return "";
+	public Fall getNomenFall(){
+		return null; // #Todo
 	}
 
 	/**
 	 * 
 	 * @param formNr
 	 */
-	public String getVerbForm(int formNr){
-		return "";
+	public Verbform getVerbForm(){
+		return null; //#todo
 	}
+
+    public int getLength(){
+        return 0;
+    }
+
+    public double getKomplexitaet() {
+        return 0;
+    }
+
+    public Wortart getWortart() {
+        return this.wortart();
+    }
+
+
+
+
 }//end Wort

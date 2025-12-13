@@ -1,11 +1,6 @@
-package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter;
 
 import java.nio.file.Path;
-import java.util.function.Predicate;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonElement;
 
 /**
  * @author Benutzbiber
@@ -14,14 +9,40 @@ import com.google.gson.JsonElement;
  */
 public class Wortliste {
 //
-//	private Wort[] alleWoerter;
+	private Wort[] alleWoerter;
 //	private Wort[] grundformenORersterFallWoerter;
 //	private Wort[] grundformenWoerter;
-//	public static final Path woerterPath = Path.of("woerter/woerterliste.json");
+	public static final Path woerterPath = Path.of("woerter/woerterliste.json");
+
+    public enum OPTIONS {
+        GRUNDFORMEN,
+        PLURAL,
+
+    }
 //
-//	public Wortliste(){
-//
-//	}
+	private Wortliste(){
+
+	}
+
+    public WortQuery query() {
+        return WortQuery.create(this);
+    }
+
+    public Wort[] alleWoerter() {
+        return alleWoerter;
+    }
+
+    public static Wortliste loadWortliste() {
+        return null;
+    }
+
+    public static Wortliste loadWortliste(Path path) {
+        return null;
+    }
+
+
+
+
 //
 //	/**
 //	 * 

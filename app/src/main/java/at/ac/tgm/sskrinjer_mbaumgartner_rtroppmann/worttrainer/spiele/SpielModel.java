@@ -3,7 +3,7 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
 import java.util.HashMap;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Wortliste;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wortliste;
 
 /**
  * @author Benutzbiber

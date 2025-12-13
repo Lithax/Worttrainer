@@ -1,4 +1,4 @@
-package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model;
+package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter;
 
 
 /**
