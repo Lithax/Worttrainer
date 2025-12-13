@@ -20,6 +20,8 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.FlatAllIJThemes;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+
+import java.awt.Color;
 import java.awt.Font;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 
@@ -59,6 +61,13 @@ public class MainViewImpl extends JFrame implements MainView {
 		for (FlatAllIJThemes.FlatIJLookAndFeelInfo themeInfo : FlatAllIJThemes.INFOS) {
         	UIManager.installLookAndFeel(themeInfo.getName(), themeInfo.getClassName());
     	}
+
+		FlatSVGIcon.ColorFilter.getInstance().setMapper(color -> {
+			if (color.equals(java.awt.Color.BLACK)) {
+				return UIManager.getColor("Label.foreground");
+			}
+			return color;
+		});
 
 		tabbedPane = new JTabbedPane();
 
