@@ -19,7 +19,7 @@ public abstract class SpielView<
         V extends SpielView<C, V>
 > implements SpielEngineView {
 
-	public static final Path iconsPath = Path.of("resource/icons");
+	public static final String iconsPath = "/icons";
 	protected C spielController;
 
 	/**
@@ -30,8 +30,8 @@ public abstract class SpielView<
 		this.spielController = spielController;
 	}
 
-	protected Path getIconFile() {
-		return Path.of(spielController.getName());
+	protected String getIconResource() {
+		return iconsPath + "/" + spielController.getName()+".png";
 	}
 
 	/**
@@ -39,8 +39,13 @@ public abstract class SpielView<
 	 * @param path
 	 * @throws IOException 
 	 */
-	public InputStream loadIcon() throws IOException{
-		return Files.newInputStream(iconsPath.resolve(getIconFile()));
+	public InputStream loadIcon() throws IOException {
+		InputStream in = spielController.getClass().getResourceAsStream(getIconResource());
+
+		if (in == null) {
+			throw new IOException("Resource not found: " + getIconResource());
+		}
+		return in;
 	}
 
 	public void neuesSpiel(){

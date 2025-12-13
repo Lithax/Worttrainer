@@ -11,6 +11,8 @@ public interface MainModel {
 
 	public Einstellungen getEinstellungen() throws IOException;
 
+	UserData getUserData() throws IOException;
+
 	public GameState getGameState();
 
 	public void setGameState(GameState g);

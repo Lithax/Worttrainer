@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Einstellungen;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.GameState;
@@ -57,6 +58,13 @@ public class MainControllerImpl implements MainController {
 		propagate(() -> mainView.getEinstellungsView().setSchwierigkeiten(mainModel.getEinstellungen().getSchwierigkeiten()));
 
 		propagate(() -> mainView.getSpieleView().setSpiele(spiele));
+
+		String recentlyPlayed = propagate(() -> mainModel.getUserData().getRecentlyPlayedGame());
+		if(recentlyPlayed != null) {
+			Optional<Spiel> spiel = spiele.stream().filter(s -> s.getName().equals(recentlyPlayed)).findFirst();
+			if(spiel.isPresent())
+				mainView.getHomeView().setRecentlyPlayedSpiel(spiel.get());
+		}
 
 		updateEinstellungsView();
 	}
@@ -110,6 +118,9 @@ public class MainControllerImpl implements MainController {
 		for(Spiel spiel : spiele)
 			if(spiel.getName().endsWith(name)) {
 				currentSpiel = spiel;
+				propagate(() -> mainModel.getUserData().setRecentlyPlayedGame(name));
+				mainView.getHomeView().setRecentlyPlayedSpiel(spiel);
+				propagate(() -> mainModel.getUserData().save());
 				mainModel.setGameState(GameState.GAME_RUNNING);
 				return;
 			}

@@ -15,7 +15,7 @@ public class FallDerWoerterModel extends LinearSpielModel {
 	}
 
 	public String getSpielDescription(){
-		return "";
+		return "Teste dein Wissen über die Wortarten! In Fall der Wörter fallen Wörter vom oberen Bildschirmrand, und deine Aufgabe ist es, sie in das richtige „Wortarten-Loch“ zu steuern – zum Beispiel „laufen“ in das Loch für Verb oder „Hund“ in das Loch für Nomen. Je schneller und genauer du die Wörter richtig einsortierst, desto mehr Punkte bekommst du. Das Spiel hilft dir, die verschiedenen Wortarten zu erkennen und dein grammatisches Verständnis zu trainieren.";
 	}
 
 	public String getSpielName(){

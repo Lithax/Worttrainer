@@ -12,6 +12,8 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util.GsonIO;
+
 /**
  * @author Benutzbiber
  * @version 1.0
@@ -54,9 +56,6 @@ public record Tip(String text, String title) {
 	 * @throws IOException 
 	 */
 	public static void loadTips(Path path) throws IOException {
-		if(!Files.exists(path))
-			Files.createFile(path);
-		String jsonString = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
-		tips = new Gson().fromJson(jsonString, new TypeToken<List<Tip>>(){}.getType());
+		tips = GsonIO.load(path, new TypeToken<List<Tip>>(){}.getType());
 	}
 }//end Tip

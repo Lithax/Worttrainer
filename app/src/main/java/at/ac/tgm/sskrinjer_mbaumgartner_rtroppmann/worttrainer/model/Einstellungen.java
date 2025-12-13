@@ -12,6 +12,8 @@ import java.nio.file.StandardOpenOption;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util.GsonIO;
+
 /**
  * @author mhbau
  * @version 1.0
@@ -54,13 +56,7 @@ public class Einstellungen {
 	 * @param path
 	 */
 	public static void save(Einstellungen einstellungen, Path path) throws IOException {
-		Gson gson = new Gson();
-		String jsonString = gson.toJson(einstellungen, Einstellungen.class);
-		Files.writeString(path, jsonString, 
-			StandardCharsets.UTF_8, 
-			StandardOpenOption.CREATE, 
-			StandardOpenOption.TRUNCATE_EXISTING
-		);
+		GsonIO.save(einstellungen, Einstellungen.class, path);
 	}
 
 	/**
@@ -69,11 +65,7 @@ public class Einstellungen {
 	 * @return einstellungen
 	 */
 	public static Einstellungen load(Path path) throws IOException {
-		Gson gson = new Gson();
-		if(!Files.exists(path))
-			Files.createFile(path);
-		String jsonString = new String(Files.readAllBytes(path));
-		return gson.fromJson(jsonString, Einstellungen.class);
+		return GsonIO.load(path, Einstellungen.class);
 	}
 
 	/**

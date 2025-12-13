@@ -19,6 +19,7 @@ public class MainModelImpl implements MainModel {
 	private TimeUpdateThread timer;
 	private Wortliste wortliste;
 	private Einstellungen einstellungen;
+	private UserData userData;
 
 	/**
 	 * 
@@ -38,6 +39,11 @@ public class MainModelImpl implements MainModel {
 	public Einstellungen getEinstellungen() throws IOException {
 		if(einstellungen == null) einstellungen = Einstellungen.load(Einstellungen.einstellungenPath);
 		return einstellungen;
+	}
+
+	public UserData getUserData() throws IOException {
+		if(userData == null) userData = UserData.load(UserData.userDataPath);
+		return userData;
 	}
 
 	public GameState getGameState(){

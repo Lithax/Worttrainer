@@ -15,7 +15,7 @@ public class FehlerfuchsModel extends LinearSpielModel {
 	}
 
 	public String getSpielDescription(){
-		return "";
+		return "Stelle deine Rechtschreibkenntnisse auf die Probe! In Fehlerfuchs bekommst du Wörter oder Sätze angezeigt, in denen sich kleine Rechtschreibfehler eingeschlichen haben. Deine Aufgabe ist es, diese Fehler zu erkennen und zu korrigieren – zum Beispiel „Doschen“ in „Duschen“.";
 	}
 
 	public String getSpielName(){

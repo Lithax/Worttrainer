@@ -15,7 +15,9 @@ public class ArtikeljaegerModel extends LinearSpielModel {
 	}
 
 	public String getSpielDescription(){
-		return "";
+		return "Teste dein Wissen über die richtigen Artikel! In Artikeljäger bekommst du ein Wort angezeigt und musst schnell den passenden Artikel auswählen – Der, Die oder Das – indem du auf die richtigen Buttons klickst.\n" + //
+						"\n" + //
+						"Je schneller und genauer du die Artikel auswählst, desto mehr Punkte bekommst du. Das Spiel trainiert spielerisch dein Gespür für die deutsche Grammatik und hilft dir, die Artikel von Substantiven sicher zu erkennen.";
 	}
 
 	public String getSpielName(){

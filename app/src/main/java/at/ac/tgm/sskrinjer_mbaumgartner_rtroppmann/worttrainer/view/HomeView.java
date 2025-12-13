@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Tip;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
 
 /**
  * @author mhbau
@@ -30,4 +31,6 @@ public interface HomeView {
 	 */
 	public void setUhrzeit(LocalTime uhrzeit);
 
+
+	void setRecentlyPlayedSpiel(Spiel spiel);
 }
