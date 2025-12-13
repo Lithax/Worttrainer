@@ -16,7 +16,8 @@ public abstract class LinearSpielModel extends SpielModel {
 	public Statistik getStatistik() 
 	{
 		Statistik s = super.getStatistik();
-		s.getStatFields().put("Fehlerquote", String.valueOf((fehlerAnzahl / gesamtAnzahl) * 100));
+		if(gesamtAnzahl!=0)
+			s.getStatFields().put("Fehlerquote", String.valueOf((fehlerAnzahl / gesamtAnzahl) * 100));
 		return s;
 	}
 }//end LinearSpielModel
