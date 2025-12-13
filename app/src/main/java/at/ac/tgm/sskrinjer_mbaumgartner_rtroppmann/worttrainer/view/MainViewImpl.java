@@ -63,7 +63,7 @@ public class MainViewImpl extends JFrame implements MainView {
     	}
 
 		FlatSVGIcon.ColorFilter.getInstance().setMapper(color -> {
-			if (color.equals(java.awt.Color.BLACK)) {
+			if (color.equals(Color.BLACK)) {
 				return UIManager.getColor("Label.foreground");
 			}
 			return color;
