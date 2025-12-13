@@ -20,18 +20,23 @@ import com.google.gson.reflect.TypeToken;
 public class Einstellungen {
 	private int anzahlSpielrunden;
 	public static final Path einstellungenPath = Path.of("settings/settings.json");
-	private int schwierigkeit;
+	private static final String[] schwierigkeiten = new String[]{"Leicht","Normal","Schwer"};
+	private String schwierigkeit;
 	private String theme;
 
 	public void setTheme(String theme) {
 		this.theme = theme;
 	}
 
+	public String[] getSchwierigkeiten() {
+		return schwierigkeiten;
+	}
+
 	public int getAnzahlRunden(){
 		return anzahlSpielrunden;
 	}
 
-	public int getSchwierigkeit(){
+	public String getSchwierigkeit(){
 		return schwierigkeit;
 	}
 
@@ -85,8 +90,11 @@ public class Einstellungen {
 	 * 
 	 * @param schwierigkeit
 	 */
-	public void setSchwierigkeit(int schwierigkeit)  {
-		if(schwierigkeit < 1 || schwierigkeit > 3) 
+	public void setSchwierigkeit(String schwierigkeit)  {
+		boolean found = false;
+		for(String s : schwierigkeiten)
+			if(s.equals(schwierigkeit)) found = true;
+		if(!found) 
 			throw new IllegalArgumentException("Schwierigkeit muss entweder 1, 2 oder 3 sein!");
 		this.schwierigkeit = schwierigkeit;
 	}

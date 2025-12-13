@@ -21,6 +21,7 @@ import com.formdev.flatlaf.intellijthemes.FlatAllIJThemes;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.Font;
+import com.formdev.flatlaf.extras.FlatSVGIcon;
 
 import com.formdev.flatlaf.FlatLaf;
 
@@ -47,17 +48,6 @@ public class MainViewImpl extends JFrame implements MainView {
 		spieleView = new SpieleViewImpl(controller);
 		einstellungsView = new EinstellungsViewImpl();
 
-		tabbedPane = new JTabbedPane();
-
-		tabbedPane.addTab("Start", SvgIconLoader.load("home.svg", 30, 30), homeView);
-		tabbedPane.addTab("Einstellungen", SvgIconLoader.load("settings.svg", 30, 30), einstellungsView);
-		tabbedPane.addTab("Spiele", SvgIconLoader.load("spiele.svg", 30, 30), spieleView);
-		tabbedPane.setFont(tabbedPane.getFont().deriveFont(16));
-
-		tabbedPane.setSelectedIndex(0);
-
-		setContentPane(tabbedPane);
-
 		UIManager.installLookAndFeel("FlatLaf Light", FlatLightLaf.class.getName());
         UIManager.installLookAndFeel("FlatLaf Dark", FlatDarkLaf.class.getName());
         
@@ -66,14 +56,27 @@ public class MainViewImpl extends JFrame implements MainView {
 
 		UIManager.installLookAndFeel("Flat Darcula", FlatDarculaLaf.class.getName());
 		
-		FlatAllIJThemes.install();
+		for (FlatAllIJThemes.FlatIJLookAndFeelInfo themeInfo : FlatAllIJThemes.INFOS) {
+        	UIManager.installLookAndFeel(themeInfo.getName(), themeInfo.getClassName());
+    	}
+
+		tabbedPane = new JTabbedPane();
+
+		tabbedPane.addTab("Start", new FlatSVGIcon(SvgIconLoader.homeSVGPath.toString(), 28, 28), homeView);
+		tabbedPane.addTab("Spiele", new FlatSVGIcon(SvgIconLoader.spieleSVGPath.toString(), 28, 28), spieleView);
+		tabbedPane.addTab("Einstellungen", new FlatSVGIcon(SvgIconLoader.settingsSVGPath.toString(), 28, 28), einstellungsView);
+		tabbedPane.setFont(tabbedPane.getFont().deriveFont(16));
+
+		tabbedPane.setSelectedIndex(0);
+
+		setContentPane(tabbedPane);
 
 		setVisible(true);
 		requestFocus();
 	}
 
 	public void setController(MainController controller) {
-		this.controller = new AtomicReference<>(controller);
+		this.controller.set(controller);
 		einstellungsView.setEinstellungsListener(controller);
 	}
 
@@ -115,7 +118,8 @@ public class MainViewImpl extends JFrame implements MainView {
 			if (info.getName().equals(theme)) {
 				try {
 					UIManager.setLookAndFeel(info.getClassName());
-					SwingUtilities.updateComponentTreeUI(this);
+					//SwingUtilities.updateComponentTreeUI(this);
+					FlatLaf.updateUI();
 					this.getRootPane().updateUI(); 
 				} catch (Exception e) {e.printStackTrace();}
 				return;

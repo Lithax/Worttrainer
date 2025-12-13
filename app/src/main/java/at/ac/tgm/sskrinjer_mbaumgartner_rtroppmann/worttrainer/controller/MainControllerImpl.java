@@ -54,6 +54,9 @@ public class MainControllerImpl implements MainController {
 		propagate(() -> mainView.getHomeView().setTipOfTheDay(mainModel.getTipOfTheDay()));
 
 		mainModel.setTimeListener(this);
+		propagate(() -> mainView.getEinstellungsView().setSchwierigkeiten(mainModel.getEinstellungen().getSchwierigkeiten()));
+
+		propagate(() -> mainView.getSpieleView().setSpiele(spiele));
 
 		updateEinstellungsView();
 	}

@@ -13,11 +13,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.google.guava:guava:32.1.2-jre'          // Guava
-    implementation 'com.google.code.gson:gson:2.13.2'           // Gson
-    implementation 'com.formdev:flatlaf:3.7'                    // FlatLaf
-    implementation 'com.formdev:flatlaf-intellij-themes:3.4'
-    implementation 'org.apache.xmlgraphics:batik-all:1.19'
+    implementation 'com.google.guava:guava:33.4.0-jre'          // Upgraded from 32.x
+    implementation 'com.google.code.gson:gson:2.12.1'           // Upgraded/Fixed typo
+
+    // UI - FlatLaf
+    // IMPORTANT: These 3 versions MUST match exactly, or it crashes.
+    implementation 'com.formdev:flatlaf:3.5.4'
+    implementation 'com.formdev:flatlaf-intellij-themes:3.5.4'
+    implementation 'com.formdev:flatlaf-extras:3.5.4'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.0'

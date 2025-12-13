@@ -65,6 +65,7 @@ public class HomeViewImpl extends JPanel implements HomeView {
 
         tipTitle = new JLabel("Tipp des Tages");
         tipTitle.putClientProperty(FlatClientProperties.STYLE, "font: bold $h3.font; foreground: $Component.accentColor");
+        tipTitle.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
         tipTitle.setHorizontalAlignment(SwingConstants.LEFT);
 
         tipContent = new JTextArea("Lade Tipp...");

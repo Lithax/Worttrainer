@@ -26,7 +26,7 @@ import com.formdev.flatlaf.FlatClientProperties;
 public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 
 	private JTextField anzahlRundenField;
-	private JComboBox<Integer> schwierigkeitCBox;
+	private JComboBox<String> schwierigkeitCBox;
 	private JComboBox<String> themeCBox;
 	private EinstellungenListener l;
 
@@ -65,7 +65,7 @@ public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 
         addLabel(formPanel, "Schwierigkeit:", 2, gbc);
 
-        schwierigkeitCBox = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5}); 
+        schwierigkeitCBox = new JComboBox<>(); 
         addComponent(formPanel, schwierigkeitCBox, 2, gbc);
 
         addLabel(formPanel, "Design:", 3, gbc);
@@ -104,8 +104,8 @@ public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 		return Integer.parseInt(anzahlRundenField.getText());
 	}
 
-	public int getSchwierigkeit(){
-		return (Integer) schwierigkeitCBox.getSelectedItem();
+	public String getSchwierigkeit(){
+		return (String) schwierigkeitCBox.getSelectedItem();
 	}
 
 	public String getTheme(){
@@ -124,8 +124,8 @@ public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 	 * 
 	 * @param schwierigkeit
 	 */
-	public void setSchwierigkeit(int schwierigkeit){
-		schwierigkeitCBox.setSelectedItem(Integer.valueOf(schwierigkeit));
+	public void setSchwierigkeit(String schwierigkeit){
+		schwierigkeitCBox.setSelectedItem(schwierigkeit);
 	}
 
 	/**
@@ -145,5 +145,12 @@ public class EinstellungsViewImpl extends JPanel implements EinstellungsView {
 	public void setThemes(String[] themes) {
 		for(String theme : themes)
 			themeCBox.addItem(theme);
+	}
+
+	@Override
+	public void setSchwierigkeiten(String[] schwierigkeiten) {
+		schwierigkeitCBox.removeAllItems();
+		for(String i : schwierigkeiten)
+			schwierigkeitCBox.addItem(i);
 	}
 }//end EinstellungsViewImpl

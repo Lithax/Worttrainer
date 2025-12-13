@@ -10,7 +10,7 @@ public interface EinstellungsView {
 
 	public int getAnzahlRunden();
 
-	public int getSchwierigkeit();
+	public String getSchwierigkeit();
 
 	public String getTheme();
 
@@ -24,7 +24,9 @@ public interface EinstellungsView {
 	 * 
 	 * @param schwierigkeit
 	 */
-	public void setSchwierigkeit(int schwierigkeit);
+	public void setSchwierigkeit(String schwierigkeit);
+
+	void setSchwierigkeiten(String[] schwierigkeiten);
 
 	/**
 	 * 

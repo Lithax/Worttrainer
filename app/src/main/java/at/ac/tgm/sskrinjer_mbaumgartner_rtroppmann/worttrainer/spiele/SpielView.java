@@ -19,7 +19,7 @@ public abstract class SpielView<
         V extends SpielView<C, V>
 > implements SpielEngineView {
 
-	public static final Path iconsPath = Path.of("icons");
+	public static final Path iconsPath = Path.of("resource/icons");
 	protected C spielController;
 
 	/**
@@ -27,7 +27,7 @@ public abstract class SpielView<
 	 * @param spielController
 	 */
 	public SpielView(C spielController){
-
+		this.spielController = spielController;
 	}
 
 	protected Path getIconFile() {
