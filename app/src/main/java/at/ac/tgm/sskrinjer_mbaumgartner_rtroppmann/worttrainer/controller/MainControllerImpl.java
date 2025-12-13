@@ -74,6 +74,7 @@ public class MainControllerImpl implements MainController {
 		currentSpiel.spielBeenden();
 		currentSpiel = null;
 		mainModel.setGameState(GameState.GAME_ABSENT);
+		mainView.disposeSpiel();
 	}
 
 	/**
@@ -115,6 +116,7 @@ public class MainControllerImpl implements MainController {
 
 	@Override
 	public void onSpielSelected(String name) {
+		if(currentSpiel != null) onSpielBeenden();
 		for(Spiel spiel : spiele)
 			if(spiel.getName().endsWith(name)) {
 				currentSpiel = spiel;
@@ -122,6 +124,8 @@ public class MainControllerImpl implements MainController {
 				mainView.getHomeView().setRecentlyPlayedSpiel(spiel);
 				propagate(() -> mainModel.getUserData().save());
 				mainModel.setGameState(GameState.GAME_RUNNING);
+				spiel.spielStarten();
+				mainView.setSpiel(spiel.newSpielEngineView());
 				return;
 			}
 		mainView.showMessage("Lade Fehler", "Spiel konnte nicht gefunden werden", MessageType.ERROR);
