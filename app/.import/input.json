@@ -99,10 +99,10 @@
       "akkusativ": "den Apfel"
     },
     "plural": {
-      "nominativ": "die ?pfel",
-      "genitiv": "der ?pfel",
-      "dativ": "den ?pfeln",
-      "akkusativ": "die ?pfel"
+      "nominativ": "die Äpfel",
+      "genitiv": "der Äpfel",
+      "dativ": "den Äpfeln",
+      "akkusativ": "die Äpfel"
     }
   },
   {
@@ -131,10 +131,10 @@
       "akkusativ": "den Baum"
     },
     "plural": {
-      "nominativ": "die B?ume",
-      "genitiv": "der B?ume",
-      "dativ": "den B?umen",
-      "akkusativ": "die B?ume"
+      "nominativ": "die Bäume",
+      "genitiv": "der Bäume",
+      "dativ": "den Bäumen",
+      "akkusativ": "die Bäume"
     }
   },
   {
@@ -147,10 +147,10 @@
       "akkusativ": "das Buch"
     },
     "plural": {
-      "nominativ": "die B?cher",
-      "genitiv": "der B?cher",
-      "dativ": "den B?chern",
-      "akkusativ": "die B?cher"
+      "nominativ": "die Bücher",
+      "genitiv": "der Bücher",
+      "dativ": "den Büchern",
+      "akkusativ": "die Bücher"
     }
   },
   {
@@ -179,10 +179,10 @@
       "akkusativ": "den Garten"
     },
     "plural": {
-      "nominativ": "die G?rten",
-      "genitiv": "der G?rten",
-      "dativ": "den G?rten",
-      "akkusativ": "die G?rten"
+      "nominativ": "die Gärten",
+      "genitiv": "der Gärten",
+      "dativ": "den Gärten",
+      "akkusativ": "die Gärten"
     }
   },
   {
@@ -195,10 +195,10 @@
       "akkusativ": "das Haus"
     },
     "plural": {
-      "nominativ": "die H?user",
-      "genitiv": "der H?user",
-      "dativ": "den H?usern",
-      "akkusativ": "die H?user"
+      "nominativ": "die Häuser",
+      "genitiv": "der Häuser",
+      "dativ": "den Häusern",
+      "akkusativ": "die Häuser"
     }
   },
   {
@@ -243,10 +243,10 @@
       "akkusativ": "den Mann"
     },
     "plural": {
-      "nominativ": "die M?nner",
-      "genitiv": "der M?nner",
-      "dativ": "den M?nnern",
-      "akkusativ": "die M?nner"
+      "nominativ": "die Männer",
+      "genitiv": "der Männer",
+      "dativ": "den Männern",
+      "akkusativ": "die Männer"
     }
   },
   {
@@ -259,10 +259,10 @@
       "akkusativ": "die Maus"
     },
     "plural": {
-      "nominativ": "die M?use",
-      "genitiv": "der M?use",
-      "dativ": "den M?usen",
-      "akkusativ": "die M?use"
+      "nominativ": "die Mäuse",
+      "genitiv": "der Mäuse",
+      "dativ": "den Mäusen",
+      "akkusativ": "die Mäuse"
     }
   },
   {
@@ -291,10 +291,10 @@
       "akkusativ": "die Mutter"
     },
     "plural": {
-      "nominativ": "die M?tter",
-      "genitiv": "der M?tter",
-      "dativ": "den M?ttern",
-      "akkusativ": "die M?tter"
+      "nominativ": "die Mütter",
+      "genitiv": "der Mütter",
+      "dativ": "den Müttern",
+      "akkusativ": "die Mütter"
     }
   },
   {
@@ -307,10 +307,10 @@
       "akkusativ": "die Nacht"
     },
     "plural": {
-      "nominativ": "die N?chte",
-      "genitiv": "der N?chte",
-      "dativ": "den N?chten",
-      "akkusativ": "die N?chte"
+      "nominativ": "die Nächte",
+      "genitiv": "der Nächte",
+      "dativ": "den Nächten",
+      "akkusativ": "die Nächte"
     }
   },
   {
@@ -371,10 +371,10 @@
       "akkusativ": "den Stuhl"
     },
     "plural": {
-      "nominativ": "die St?hle",
-      "genitiv": "der St?hle",
-      "dativ": "den St?hlen",
-      "akkusativ": "die St?hle"
+      "nominativ": "die Stühle",
+      "genitiv": "der Stühle",
+      "dativ": "den Stühlen",
+      "akkusativ": "die Stühle"
     }
   },
   {
@@ -419,10 +419,10 @@
       "akkusativ": "den Topf"
     },
     "plural": {
-      "nominativ": "die T?pfe",
-      "genitiv": "der T?pfe",
-      "dativ": "den T?pfen",
-      "akkusativ": "die T?pfe"
+      "nominativ": "die Töpfe",
+      "genitiv": "der Töpfe",
+      "dativ": "den Töpfen",
+      "akkusativ": "die Töpfe"
     }
   },
   {
@@ -451,10 +451,10 @@
       "akkusativ": "den Vater"
     },
     "plural": {
-      "nominativ": "die V?ter",
-      "genitiv": "der V?ter",
-      "dativ": "den V?tern",
-      "akkusativ": "die V?ter"
+      "nominativ": "die Väter",
+      "genitiv": "der Väter",
+      "dativ": "den Vätern",
+      "akkusativ": "die Väter"
     }
   },
   {
@@ -467,10 +467,10 @@
       "akkusativ": "den Vogel"
     },
     "plural": {
-      "nominativ": "die V?gel",
-      "genitiv": "der V?gel",
-      "dativ": "den V?geln",
-      "akkusativ": "die V?gel"
+      "nominativ": "die Vögel",
+      "genitiv": "der Vögel",
+      "dativ": "den Vögeln",
+      "akkusativ": "die Vögel"
     }
   },
   {
@@ -483,10 +483,10 @@
       "akkusativ": "den Wald"
     },
     "plural": {
-      "nominativ": "die W?lder",
-      "genitiv": "der W?lder",
-      "dativ": "den W?ldern",
-      "akkusativ": "die W?lder"
+      "nominativ": "die Wälder",
+      "genitiv": "der Wälder",
+      "dativ": "den Wäldern",
+      "akkusativ": "die Wälder"
     }
   },
   {
@@ -520,7 +520,7 @@
     "wort": "essen",
     "wortart": "Verb",
     "formen": [
-      "a?",
+      "aß",
       "gegessen",
       "isst"
     ]
@@ -531,7 +531,7 @@
     "formen": [
       "fuhr",
       "gefahren",
-      "f?hrt"
+      "fährt"
     ]
   },
   {
@@ -540,7 +540,7 @@
     "formen": [
       "fiel",
       "gefallen",
-      "f?llt"
+      "fällt"
     ]
   },
   {
@@ -576,16 +576,16 @@
     "formen": [
       "hielt",
       "gehalten",
-      "h?lt"
+      "hält"
     ]
   },
   {
-    "wort": "hei?en",
+    "wort": "heißen",
     "wortart": "Verb",
     "formen": [
-      "hie?",
-      "gehei?en",
-      "hei?t"
+      "hieß",
+      "geheißen",
+      "heißt"
     ]
   },
   {
@@ -598,12 +598,12 @@
     ]
   },
   {
-    "wort": "h?ren",
+    "wort": "hören",
     "wortart": "Verb",
     "formen": [
-      "h?rte",
-      "geh?rt",
-      "h?rt"
+      "hörte",
+      "gehört",
+      "hört"
     ]
   },
   {
@@ -637,9 +637,9 @@
     "wort": "lassen",
     "wortart": "Verb",
     "formen": [
-      "lie?",
+      "ließ",
       "gelassen",
-      "l?sst"
+      "lässt"
     ]
   },
   {
@@ -648,7 +648,7 @@
     "formen": [
       "lief",
       "gelaufen",
-      "l?uft"
+      "läuft"
     ]
   },
   {
@@ -718,16 +718,16 @@
     "wort": "alt",
     "wortart": "Adjektiv",
     "formen": [
-      "?lter",
-      "am ?ltesten"
+      "älter",
+      "am ältesten"
     ]
   },
   {
     "wort": "arm",
     "wortart": "Adjektiv",
     "formen": [
-      "?rmer",
-      "am ?rmsten"
+      "ärmer",
+      "am ärmsten"
     ]
   },
   {
@@ -739,11 +739,11 @@
     ]
   },
   {
-    "wort": "b?se",
+    "wort": "böse",
     "wortart": "Adjektiv",
     "formen": [
-      "b?ser",
-      "am b?sesten"
+      "böser",
+      "am bösesten"
     ]
   },
   {
@@ -795,11 +795,11 @@
     ]
   },
   {
-    "wort": "fr?h",
+    "wort": "früh",
     "wortart": "Adjektiv",
     "formen": [
-      "fr?her",
-      "am fr?hesten"
+      "früher",
+      "am frühesten"
     ]
   },
   {
@@ -819,11 +819,11 @@
     ]
   },
   {
-    "wort": "gro?",
+    "wort": "groß",
     "wortart": "Adjektiv",
     "formen": [
-      "gr??er",
-      "am gr??ten"
+      "größer",
+      "am größten"
     ]
   },
   {
@@ -838,32 +838,32 @@
     "wort": "hart",
     "wortart": "Adjektiv",
     "formen": [
-      "h?rter",
-      "am h?rtesten"
+      "härter",
+      "am härtesten"
     ]
   },
   {
     "wort": "hoch",
     "wortart": "Adjektiv",
     "formen": [
-      "h?her",
-      "am h?chsten"
+      "höher",
+      "am höchsten"
     ]
   },
   {
     "wort": "jung",
     "wortart": "Adjektiv",
     "formen": [
-      "j?nger",
-      "am j?ngsten"
+      "jünger",
+      "am jüngsten"
     ]
   },
   {
     "wort": "kalt",
     "wortart": "Adjektiv",
     "formen": [
-      "k?lter",
-      "am k?ltesten"
+      "kälter",
+      "am kältesten"
     ]
   },
   {
@@ -878,8 +878,8 @@
     "wort": "lang",
     "wortart": "Adjektiv",
     "formen": [
-      "l?nger",
-      "am l?ngsten"
+      "länger",
+      "am längsten"
     ]
   },
   {
@@ -910,8 +910,8 @@
     "wort": "rot",
     "wortart": "Adjektiv",
     "formen": [
-      "r?ter",
-      "am r?testen"
+      "röter",
+      "am rötesten"
     ]
   },
   {
@@ -1127,7 +1127,7 @@
     "wortart": "Numeral"
   },
   {
-    "wort": "f?nf",
+    "wort": "fünf",
     "wortart": "Numeral"
   },
   {
@@ -1155,7 +1155,7 @@
     "wortart": "Numeral"
   },
   {
-    "wort": "zw?lf",
+    "wort": "zwölf",
     "wortart": "Numeral"
   },
   {
@@ -1167,7 +1167,7 @@
     "wortart": "Numeral"
   },
   {
-    "wort": "drei?ig",
+    "wort": "dreißig",
     "wortart": "Numeral"
   },
   {
@@ -1175,7 +1175,7 @@
     "wortart": "Numeral"
   },
   {
-    "wort": "f?nfzig",
+    "wort": "fünfzig",
     "wortart": "Numeral"
   },
   {
@@ -1279,7 +1279,7 @@
     "wortart": "Adverb"
   },
   {
-    "wort": "nat?rlich",
+    "wort": "natürlich",
     "wortart": "Adverb"
   },
   {
@@ -1303,7 +1303,7 @@
     "wortart": "Adverb"
   },
   {
-    "wort": "au?en",
+    "wort": "außen",
     "wortart": "Adverb"
   },
   {
@@ -1371,7 +1371,7 @@
     "wortart": "Konjunktion"
   },
   {
-    "wort": "w?hrend",
+    "wort": "während",
     "wortart": "Konjunktion"
   },
   {
@@ -1435,11 +1435,11 @@
     "wortart": "Interjektion"
   },
   {
-    "wort": "?tsch",
+    "wort": "ätsch",
     "wortart": "Interjektion"
   },
   {
-    "wort": "b?h",
+    "wort": "bäh",
     "wortart": "Interjektion"
   },
   {

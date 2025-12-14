@@ -218,8 +218,7 @@ final_list = original_json + new_entries
 # Output result
 json_output = json.dumps(final_list, indent=2, ensure_ascii=False)
 
-# Save to file (optional) or print
-# with open('german_words_extended.json', 'w', encoding='utf-8') as f:
-#     f.write(json_output)
+with open('german_words_extended.json', 'w', encoding='utf-8') as f:
+    f.write(json_output)
 
 print(json_output)
