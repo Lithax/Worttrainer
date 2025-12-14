@@ -15,10 +15,10 @@ public class FallDerWoerterModel extends LinearSpielModel {
     public static final int WIDTH = 600;
     public static final int HEIGHT = 400;
     private static final int SPAWN_Y = 50;
-    private double baseSpeed = 2.0;
-	private double speed = baseSpeed;
-	private double baseLateralSpeed = 7.0;
-	private double lateralSpeed = baseLateralSpeed;
+    private double baseSpeed;
+	private double speed;
+	private double baseLateralSpeed;
+	private double lateralSpeed;
 
 	private boolean movingLeft = false;
     private boolean movingRight = false;
@@ -34,7 +34,7 @@ public class FallDerWoerterModel extends LinearSpielModel {
         Wortart.ARTIKEL
     };
     
-    private Feedback lastFeedback = new Feedback("Steuerung mit Tasten A/D oder ←/→", FeedbackType.PRAISE);
+    private Feedback lastFeedback;
     private boolean gameRunning = false;
     private Random rand = new Random();
 
@@ -44,19 +44,27 @@ public class FallDerWoerterModel extends LinearSpielModel {
 
     @Override
     public void spielStarten(SpielListener l) {
+		super.spielStarten(l);
         this.gameRunning = true;
 
 		this.movingLeft = false;
         this.movingRight = false;
 
+		baseSpeed = 2.0;
+		baseLateralSpeed = 8.0;
+		speed = baseSpeed;
+		lateralSpeed = baseLateralSpeed;
+
+		lastFeedback = new Feedback("Steuerung mit Tasten A/D oder ←/→", FeedbackType.PRAISE);
+
 		boolean custom = false;
 
 		double multiplier = 0.0;
-        switch (l.getEinstellungen().numerifySchwierigkeit(l.getEinstellungen().getSchwierigkeit())) {
+        switch (einstellungen.numerifySchwierigkeit(einstellungen.getSchwierigkeit())) {
             case 1: multiplier = 0.6; break;
             case 2: multiplier = 1.5; break;
             case 3: multiplier = 2.0; break;
-			case 4: custom = true; baseSpeed = 0.01; baseLateralSpeed = 7.0; break;
+			case 4: custom = true; baseSpeed = 0.005; baseLateralSpeed = 7.0; break;
             default: multiplier = 1.0;
         }
 

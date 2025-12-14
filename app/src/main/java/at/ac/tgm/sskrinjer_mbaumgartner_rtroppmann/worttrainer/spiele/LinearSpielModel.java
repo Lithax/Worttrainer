@@ -20,7 +20,7 @@ public abstract class LinearSpielModel extends SpielModel {
 		Statistik s = super.getStatistik();
 		if(gesamtAnzahl!=0) {
 			double quote = ((double)fehlerAnzahl / (double)gesamtAnzahl) * 100;
-			System.out.println(quote);
+
 			s.getStatFields().put("Anzahl der gespielten Runden", String.valueOf(gesamtAnzahl));
 			s.getStatFields().put("Fehlerquote", String.format("%.1f", quote));
 			s.getStatFields().put("Höchster Streak", String.valueOf(highestStreak));

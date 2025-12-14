@@ -2,6 +2,7 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
 
 import java.util.HashMap;
 
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Einstellungen;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wortliste;
 
@@ -13,6 +14,7 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wor
 public abstract class SpielModel {
 
 	protected Wortliste wortliste;
+	protected Einstellungen einstellungen;
 
 	public SpielModel(){
 
@@ -24,10 +26,14 @@ public abstract class SpielModel {
 
 	public Statistik getStatistik() {
         HashMap<String, String> fields = new HashMap<>();
+		if(einstellungen != null)
+			fields.put("Schwierigkeit", einstellungen.getSchwierigkeit());
         return new Statistik(getSpielDescription(), getSpielName() + " - Statistik", fields);
 	}
 
 	public abstract boolean hasNewRound();
 
-	public abstract void spielStarten(SpielListener l);
+	public void spielStarten(SpielListener l) {
+		einstellungen = l.getEinstellungen();
+	}
 }//end SpielModel
