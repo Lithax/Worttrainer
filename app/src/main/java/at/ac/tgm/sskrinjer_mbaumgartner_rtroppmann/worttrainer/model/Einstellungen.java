@@ -22,7 +22,7 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util.GsonIO;
 public class Einstellungen {
 	private int anzahlSpielrunden;
 	public static final Path einstellungenPath = Path.of("settings/settings.json");
-	private static final String[] schwierigkeiten = new String[]{"Leicht","Normal","Schwer"};
+	private static final String[] schwierigkeiten = new String[]{"Leicht","Normal","Schwer", "DEMO"};
 	private String schwierigkeit;
 	private String theme;
 

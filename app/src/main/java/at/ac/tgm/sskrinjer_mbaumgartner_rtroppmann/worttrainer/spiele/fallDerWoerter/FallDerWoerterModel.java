@@ -49,16 +49,21 @@ public class FallDerWoerterModel extends LinearSpielModel {
 		this.movingLeft = false;
         this.movingRight = false;
 
-		double multiplier;
+		boolean custom = false;
+
+		double multiplier = 0.0;
         switch (l.getEinstellungen().numerifySchwierigkeit(l.getEinstellungen().getSchwierigkeit())) {
             case 1: multiplier = 0.6; break;
             case 2: multiplier = 1.5; break;
             case 3: multiplier = 2.0; break;
+			case 4: custom = true; baseSpeed = 0.01; baseLateralSpeed = 7.0; break;
             default: multiplier = 1.0;
         }
 
-    	this.baseSpeed = baseSpeed * multiplier;
-		this.baseLateralSpeed = baseLateralSpeed * multiplier;
+		if(!custom) {
+			this.baseSpeed = baseSpeed * multiplier;
+			this.baseLateralSpeed = baseLateralSpeed * multiplier;
+		}
         spawnNextWord();
     }
 
@@ -70,19 +75,19 @@ public class FallDerWoerterModel extends LinearSpielModel {
     }
 
     private void spawnNextWord() {
-        currentWord = wortliste.getRandomWort();
+        currentWord = wortliste.getBalancedRandomWort();
 
         int attempts = 0;
         while (!isValidForBuckets(currentWord) && attempts < 10) {
-            currentWord = wortliste.getRandomWort();
+            currentWord = wortliste.getBalancedRandomWort();
             attempts++;
         }
         
         currentX = WIDTH / 2.0;
         currentY = SPAWN_Y;
         
-        speed = baseSpeed + Math.min(6.0, 2.0 + (streak * 0.1));
-		lateralSpeed = baseLateralSpeed + Math.min(6.0, 2.0 + (streak * 0.1)) / 2.0;
+        speed = baseSpeed + Math.min(6.0, 2.0 + (streak * 0.2));
+		lateralSpeed = baseLateralSpeed + Math.min(6.0, 2.0 + (streak * 0.2)) / 2.0;
     }
 
     private boolean isValidForBuckets(Wort w) {

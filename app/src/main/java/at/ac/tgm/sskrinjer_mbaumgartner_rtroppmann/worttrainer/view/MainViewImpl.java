@@ -57,6 +57,7 @@ public class MainViewImpl extends JFrame implements MainView {
 	private SpieleViewImpl spieleView;
 	private JTabbedPane tabbedPane;
 	private JPanel gamePane;
+	private JPanel gameContentPane;
 	private JLabel gameTitleLabel;
 	private AtomicReference<MainController> controller = new AtomicReference<>(null);
 
@@ -121,6 +122,9 @@ public class MainViewImpl extends JFrame implements MainView {
 		gamePane.setLayout(new BorderLayout());
 		gamePane.add(headerWrapper, BorderLayout.NORTH);
 
+		gameContentPane = new JPanel();
+		gamePane.add(gameContentPane, BorderLayout.CENTER);
+
 		tabbedPane = new JTabbedPane();
 
 		tabbedPane.addTab("Start", new FlatSVGIcon(SvgIconLoader.homeSVGPath.toString(), 28, 28), homeView);
@@ -142,7 +146,7 @@ public class MainViewImpl extends JFrame implements MainView {
 	}
 
 	public void disposeSpiel(){
-		gamePane.removeAll();
+		gameContentPane.removeAll();
 		setContentPane(tabbedPane);
 	}
 

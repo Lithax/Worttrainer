@@ -73,46 +73,46 @@ public class WortQuery {
 
     // --- 3. Ausführung (Die eigentliche Logik) ---
 
-    public List<String> execute() {
-        // A) Erstmal passende Basis-Wörter aus der Liste holen
-        List<Wort> basisWoerter = Arrays.stream(quelle.alleWoerter())
-                .filter(filter)            // Unsere gesammelten Filter anwenden
-                .collect(Collectors.toList());
-
-        if (basisWoerter.isEmpty()) return Collections.emptyList();
-
-        // B) Zufällige Auswahl treffen (wir mischen die Liste)
-        Collections.shuffle(basisWoerter);
-
-        // Wir nehmen etwas mehr als 'anzahl', falls durch Transformation mehr entsteht,
-        // oder wir schneiden erst ganz am Ende ab. Hier einfachheitshalber:
-        // Wir nehmen die ersten X Basiswörter und generieren daraus.
-        List<Wort> auswahl = basisWoerter.stream()
-                .limit(anzahl)
-                .collect(Collectors.toList());
-
-        // C) Transformation: Aus Basiswörtern die gewünschten Formen machen
-        List<String> ergebnisStrings = new ArrayList<>();
-
-//        for (Wort w : auswahl) {
-//            // 1. Grundform (wenn gewünscht)
-//            if (inkludiereGrundform) {
-//                ergebnisStrings.add(w.wort());
-//            }
+    //public List<String> execute() {
+    //    // A) Erstmal passende Basis-Wörter aus der Liste holen
+    //    List<Wort> basisWoerter = Arrays.stream(quelle.alleWoerter())
+    //            .filter(filter)            // Unsere gesammelten Filter anwenden
+    //            .collect(Collectors.toList());
 //
-//            // 2. Fälle generieren (nur für Nomen/Adjektive relevant)
-//            if (!gewuenschteFaelle.isEmpty()) {
-//                ergebnisStrings.addAll(w.getFormen(gewuenschteFaelle));
-//            }
+    //    if (basisWoerter.isEmpty()) return Collections.emptyList();
 //
-//            // 3. Verbformen generieren
-//            if (inkludiereVerbformen && w.getWortart() == Wortart.VERB) {
-//                ergebnisStrings.addAll(w.getVerbformen());
-//            }
-//        }
-
-        // Optional: Falls durch die Erweiterungen mehr als 'anzahl' entstanden sind,
-        // könnte man hier nochmal limitieren oder shuffeln.
-        return ergebnisStrings;
-    }
+    //    // B) Zufällige Auswahl treffen (wir mischen die Liste)
+    //    Collections.shuffle(basisWoerter);
+//
+    //    // Wir nehmen etwas mehr als 'anzahl', falls durch Transformation mehr entsteht,
+    //    // oder wir schneiden erst ganz am Ende ab. Hier einfachheitshalber:
+    //    // Wir nehmen die ersten X Basiswörter und generieren daraus.
+    //    List<Wort> auswahl = basisWoerter.stream()
+    //            .limit(anzahl)
+    //            .collect(Collectors.toList());
+//
+    //    // C) Transformation: Aus Basiswörtern die gewünschten Formen machen
+    //    List<String> ergebnisStrings = new ArrayList<>();
+//
+//  //      for (Wort w : auswahl) {
+//  //          // 1. Grundform (wenn gewünscht)
+//  //          if (inkludiereGrundform) {
+//  //              ergebnisStrings.add(w.wort());
+//  //          }
+////
+//  //          // 2. Fälle generieren (nur für Nomen/Adjektive relevant)
+//  //          if (!gewuenschteFaelle.isEmpty()) {
+//  //              ergebnisStrings.addAll(w.getFormen(gewuenschteFaelle));
+//  //          }
+////
+//  //          // 3. Verbformen generieren
+//  //          if (inkludiereVerbformen && w.getWortart() == Wortart.VERB) {
+//  //              ergebnisStrings.addAll(w.getVerbformen());
+//  //          }
+//  //      }
+//
+    //    // Optional: Falls durch die Erweiterungen mehr als 'anzahl' entstanden sind,
+    //    // könnte man hier nochmal limitieren oder shuffeln.
+    //    return ergebnisStrings;
+    //}
 }

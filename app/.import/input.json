@@ -1023,5 +1023,2012 @@
   { "wort": "Ungewissheit", "wortart": "Nomen", "artikel": "die", "singular": { "genitiv": "der Ungewissheit", "dativ": "der Ungewissheit", "akkusativ": "die Ungewissheit" }, "plural": {} },
   { "wort": "Vertreter", "wortart": "Nomen", "artikel": "der", "singular": { "genitiv": "des Vertreters", "dativ": "dem Vertreter", "akkusativ": "den Vertreter" }, "plural": { "nominativ": "die Vertreter", "genitiv": "der Vertreter", "dativ": "den Vertretern", "akkusativ": "die Vertreter" } },
   { "wort": "Delegierter", "wortart": "Nomen", "artikel": "der", "singular": { "genitiv": "des Delegierten", "dativ": "dem Delegierten", "akkusativ": "den Delegierten" }, "plural": { "nominativ": "die Delegierten", "genitiv": "der Delegierten", "dativ": "den Delegierten", "akkusativ": "die Delegierten" } },
-  { "wort": "Gesandte", "wortart": "Nomen", "artikel": "der", "singular": { "genitiv": "des Gesandten", "dativ": "dem Gesandten", "akkusativ": "den Gesandten" }, "plural": { "nominativ": "die Gesandten", "genitiv": "der Gesandten", "dativ": "den Gesandten", "akkusativ": "die Gesandten" } }
+  { "wort": "Gesandte", "wortart": "Nomen", "artikel": "der", "singular": { "genitiv": "des Gesandten", "dativ": "dem Gesandten", "akkusativ": "den Gesandten" }, "plural": { "nominativ": "die Gesandten", "genitiv": "der Gesandten", "dativ": "den Gesandten", "akkusativ": "die Gesandten" } },
+  {
+    "wort": "jeder",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "kein",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "etwas",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dieser",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "jener",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "welcher",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "haben",
+    "wortart": "Verb",
+    "formen": ["hatte", "gehabt", "hat"]
+  },
+  {
+    "wort": "sein",
+    "wortart": "Verb",
+    "formen": ["war", "gewesen", "ist"]
+  },
+  {
+    "wort": "werden",
+    "wortart": "Verb",
+    "formen": ["wurde", "geworden", "wird"]
+  },
+  {
+    "wort": "können",
+    "wortart": "Verb",
+    "formen": ["konnte", "gekonnt", "kann"]
+  },
+  {
+    "wort": "müssen",
+    "wortart": "Verb",
+    "formen": ["musste", "gemusst", "muss"]
+  },
+  {
+    "wort": "sollen",
+    "wortart": "Verb",
+    "formen": ["sollte", "sollen", "soll"]
+  },
+  {
+    "wort": "wollen",
+    "wortart": "Verb",
+    "formen": ["wollte", "gewollt", "will"]
+  },
+  {
+    "wort": "dürfen",
+    "wortart": "Verb",
+    "formen": ["durfte", "gedurft", "darf"]
+  },
+  {
+    "wort": "mögen",
+    "wortart": "Verb",
+    "formen": ["mochte", "gemocht", "mag"]
+  },
+  {
+    "wort": "laufen",
+    "wortart": "Verb",
+    "formen": ["lief", "gelaufen", "läuft"]
+  },
+  {
+    "wort": "essen",
+    "wortart": "Verb",
+    "formen": ["aß", "gegessen", "isst"]
+  },
+  {
+    "wort": "trinken",
+    "wortart": "Verb",
+    "formen": ["trank", "getrunken", "trinkt"]
+  },
+  {
+    "wort": "fragen",
+    "wortart": "Verb",
+    "formen": ["fragte", "gefragt", "fragt"]
+  },
+  {
+    "wort": "antworten",
+    "wortart": "Verb",
+    "formen": ["antwortete", "geantwortet", "antwortet"]
+  },
+  {
+    "wort": "geben",
+    "wortart": "Verb",
+    "formen": ["gab", "gegeben", "gibt"]
+  },
+  {
+    "wort": "nehmen",
+    "wortart": "Verb",
+    "formen": ["nahm", "genommen", "nimmt"]
+  },
+  {
+    "wort": "bringen",
+    "wortart": "Verb",
+    "formen": ["brachte", "gebracht", "bringt"]
+  },
+  {
+    "wort": "finden",
+    "wortart": "Verb",
+    "formen": ["fand", "gefunden", "findet"]
+  },
+  {
+    "wort": "wissen",
+    "wortart": "Verb",
+    "formen": ["wusste", "gewusst", "weiß"]
+  },
+  {
+    "wort": "sagen",
+    "wortart": "Verb",
+    "formen": ["sagte", "gesagt", "sagt"]
+  },
+  {
+    "wort": "leben",
+    "wortart": "Verb",
+    "formen": ["lebte", "gelebt", "lebt"]
+  },
+  {
+    "wort": "klein",
+    "wortart": "Adjektiv",
+    "formen": ["kleiner", "am kleinsten"]
+  },
+  {
+    "wort": "lang",
+    "wortart": "Adjektiv",
+    "formen": ["länger", "am längsten"]
+  },
+  {
+    "wort": "kurz",
+    "wortart": "Adjektiv",
+    "formen": ["kürzer", "am kürzesten"]
+  },
+  {
+    "wort": "richtig",
+    "wortart": "Adjektiv",
+    "formen": ["richtiger", "am richtigsten"]
+  },
+  {
+    "wort": "falsch",
+    "wortart": "Adjektiv",
+    "formen": ["falscher", "am falschesten"]
+  },
+  {
+    "wort": "gut",
+    "wortart": "Adjektiv",
+    "formen": ["besser", "am besten"]
+  },
+  {
+    "wort": "schlecht",
+    "wortart": "Adjektiv",
+    "formen": ["schlechter", "am schlechtesten"]
+  },
+  {
+    "wort": "früh",
+    "wortart": "Adjektiv",
+    "formen": ["früher", "am frühesten"]
+  },
+  {
+    "wort": "spät",
+    "wortart": "Adjektiv",
+    "formen": ["später", "am spätesten"]
+  },
+  {
+    "wort": "gern",
+    "wortart": "Adjektiv",
+    "formen": ["gerner", "am gernsten"]
+  },
+  {
+    "wort": "neu",
+    "wortart": "Adjektiv",
+    "formen": ["neuer", "am neuesten"]
+  },
+  {
+    "wort": "alt",
+    "wortart": "Adjektiv",
+    "formen": ["älter", "am ältesten"]
+  },
+  {
+    "wort": "groß",
+    "wortart": "Adjektiv",
+    "formen": ["größer", "am größten"]
+  },
+  {
+    "wort": "schön",
+    "wortart": "Adjektiv",
+    "formen": ["schöner", "am schönsten"]
+  },
+  {
+    "wort": "schnell",
+    "wortart": "Adjektiv",
+    "formen": ["schneller", "am schnellsten"]
+  },
+  {
+    "wort": "traurig",
+    "wortart": "Adjektiv",
+    "formen": ["trauriger", "am traurigsten"]
+  },
+  {
+    "wort": "kalt",
+    "wortart": "Adjektiv",
+    "formen": ["kälter", "am kältesten"]
+  },
+  {
+    "wort": "wichtig",
+    "wortart": "Adjektiv",
+    "formen": ["wichtiger", "am wichtigsten"]
+  },
+  {
+    "wort": "leise",
+    "wortart": "Adjektiv",
+    "formen": ["leiser", "am leisesten"]
+  },
+  {
+    "wort": "dunkel",
+    "wortart": "Adjektiv",
+    "formen": ["dunkler", "am dunkelsten"]
+  },
+  {
+    "wort": "hell",
+    "wortart": "Adjektiv",
+    "formen": ["heller", "am hellsten"]
+  },
+  {
+    "wort": "warm",
+    "wortart": "Adjektiv",
+    "formen": ["wärmer", "am wärmsten"]
+  },
+  {
+    "wort": "teuer",
+    "wortart": "Adjektiv",
+    "formen": ["teurer", "am teuersten"]
+  },
+  {
+    "wort": "billig",
+    "wortart": "Adjektiv",
+    "formen": ["billiger", "am billigsten"]
+  },
+  {
+    "wort": "stark",
+    "wortart": "Adjektiv",
+    "formen": ["stärker", "am stärksten"]
+  },
+  {
+    "wort": "schwach",
+    "wortart": "Adjektiv",
+    "formen": ["schwächer", "am schwächsten"]
+  },
+  {
+    "wort": "schwer",
+    "wortart": "Adjektiv",
+    "formen": ["schwerer", "am schwersten"]
+  },
+  {
+    "wort": "leicht",
+    "wortart": "Adjektiv",
+    "formen": ["leichter", "am leichtesten"]
+  },
+  {
+    "wort": "freundlich",
+    "wortart": "Adjektiv",
+    "formen": ["freundlicher", "am freundlichsten"]
+  },
+  {
+    "wort": "feindlich",
+    "wortart": "Adjektiv",
+    "formen": ["feindlicher", "am feindlichsten"]
+  },
+  {
+    "wort": "einfach",
+    "wortart": "Adjektiv",
+    "formen": ["einfacher", "am einfachsten"]
+  },
+  {
+    "wort": "kompliziert",
+    "wortart": "Adjektiv",
+    "formen": ["komplizierter", "am kompliziertesten"]
+  },
+  {
+    "wort": "offen",
+    "wortart": "Adjektiv",
+    "formen": ["offener", "am offensten"]
+  },
+  {
+    "wort": "versteckt",
+    "wortart": "Adjektiv",
+    "formen": ["versteckter", "am verstecktesten"]
+  },
+  {
+    "wort": "pünktlich",
+    "wortart": "Adjektiv",
+    "formen": ["pünktlicher", "am pünktlichsten"]
+  },
+  {
+    "wort": "unpünktlich",
+    "wortart": "Adjektiv",
+    "formen": ["unpünktlicher", "am unpünktlichsten"]
+  },
+  {
+    "wort": "nötig",
+    "wortart": "Adjektiv",
+    "formen": ["nötiger", "am nötigsten"]
+  },
+  {
+    "wort": "unnötig",
+    "wortart": "Adjektiv",
+    "formen": ["unnötiger", "am unnötigsten"]
+  },
+  {
+    "wort": "nützlich",
+    "wortart": "Adjektiv",
+    "formen": ["nützlicher", "am nützlichsten"]
+  },
+  {
+    "wort": "sinnlos",
+    "wortart": "Adjektiv",
+    "formen": ["sinnloser", "am sinnlosesten"]
+  },
+  {
+    "wort": "echt",
+    "wortart": "Adjektiv",
+    "formen": ["echter", "am echtesten"]
+  },
+  {
+    "wort": "falsch",
+    "wortart": "Adjektiv",
+    "formen": ["falscher", "am falschesten"]
+  },
+  {
+    "wort": "klar",
+    "wortart": "Adjektiv",
+    "formen": ["klarer", "am klarsten"]
+  },
+  {
+    "wort": "unklar",
+    "wortart": "Adjektiv",
+    "formen": ["unklarer", "am unklarsten"]
+  },
+  {
+    "wort": "sicher",
+    "wortart": "Adjektiv",
+    "formen": ["sicherer", "am sichersten"]
+  },
+  {
+    "wort": "unsicher",
+    "wortart": "Adjektiv",
+    "formen": ["unsicherer", "am unsichersten"]
+  },
+  {
+    "wort": "vernünftig",
+    "wortart": "Adjektiv",
+    "formen": ["vernünftiger", "am vernünftigsten"]
+  },
+  {
+    "wort": "unvernünftig",
+    "wortart": "Adjektiv",
+    "formen": ["unvernünftiger", "am unvernünftigsten"]
+  },
+  {
+    "wort": "produktiv",
+    "wortart": "Adjektiv",
+    "formen": ["produktiver", "am produktivsten"]
+  },
+  {
+    "wort": "faul",
+    "wortart": "Adjektiv",
+    "formen": ["fauler", "am faulsten"]
+  },
+  {
+    "wort": "fleißig",
+    "wortart": "Adjektiv",
+    "formen": ["fleißiger", "am fleißigsten"]
+  },
+  {
+    "wort": "ruhig",
+    "wortart": "Adjektiv",
+    "formen": ["ruhiger", "am ruhigsten"]
+  },
+  {
+    "wort": "laut",
+    "wortart": "Adjektiv",
+    "formen": ["lauter", "am lautesten"]
+  },
+  {
+    "wort": "interessant",
+    "wortart": "Adjektiv",
+    "formen": ["interessanter", "am interessantesten"]
+  },
+  {
+    "wort": "langweilig",
+    "wortart": "Adjektiv",
+    "formen": ["langweiliger", "am langweiligsten"]
+  },
+  {
+    "wort": "ernst",
+    "wortart": "Adjektiv",
+    "formen": ["ernster", "am ernstesten"]
+  },
+  {
+    "wort": "lustig",
+    "wortart": "Adjektiv",
+    "formen": ["lustiger", "am lustigsten"]
+  },
+  {
+    "wort": "traurig",
+    "wortart": "Adjektiv",
+    "formen": ["trauriger", "am traurigsten"]
+  },
+  {
+    "wort": "glücklich",
+    "wortart": "Adjektiv",
+    "formen": ["glücklicher", "am glücklichsten"]
+  },
+  {
+    "wort": "unglücklich",
+    "wortart": "Adjektiv",
+    "formen": ["unglücklicher", "am unglücklichsten"]
+  },
+  {
+    "wort": "stolz",
+    "wortart": "Adjektiv",
+    "formen": ["stolzer", "am stolzesten"]
+  },
+  {
+    "wort": "bescheiden",
+    "wortart": "Adjektiv",
+    "formen": ["bescheidener", "am bescheidensten"]
+  },
+  {
+    "wort": "mutig",
+    "wortart": "Adjektiv",
+    "formen": ["mutiger", "am mutigsten"]
+  },
+  {
+    "wort": "feige",
+    "wortart": "Adjektiv",
+    "formen": ["feiger", "am feigsten"]
+  },
+  {
+    "wort": "tapfer",
+    "wortart": "Adjektiv",
+    "formen": ["tapferer", "am tapfersten"]
+  },
+  {
+    "wort": "freundlich",
+    "wortart": "Adjektiv",
+    "formen": ["freundlicher", "am freundlichsten"]
+  },
+  {
+    "wort": "unfreundlich",
+    "wortart": "Adjektiv",
+    "formen": ["unfreundlicher", "am unfreundlichsten"]
+  },
+  {
+    "wort": "geduldig",
+    "wortart": "Adjektiv",
+    "formen": ["geduldiger", "am geduldigsten"]
+  },
+  {
+    "wort": "ungeduldig",
+    "wortart": "Adjektiv",
+    "formen": ["ungeduldiger", "am ungeduldigsten"]
+  },
+  {
+    "wort": "stärker",
+    "wortart": "Adjektiv",
+    "formen": ["stärkerer", "am stärksten"]
+  },
+  {
+    "wort": "schwächer",
+    "wortart": "Adjektiv",
+    "formen": ["schwächerer", "am schwächsten"]
+  },
+  {
+    "wort": "reich",
+    "wortart": "Adjektiv",
+    "formen": ["reicher", "am reichsten"]
+  },
+  {
+    "wort": "arm",
+    "wortart": "Adjektiv",
+    "formen": ["ärmer", "am ärmsten"]
+  },
+  {
+    "wort": "wahr",
+    "wortart": "Adjektiv",
+    "formen": ["wahrer", "am wahrsten"]
+  },
+  {
+    "wort": "falsch",
+    "wortart": "Adjektiv",
+    "formen": ["falscher", "am falschesten"]
+  },
+  {
+    "wort": "richtig",
+    "wortart": "Adjektiv",
+    "formen": ["richtiger", "am richtigsten"]
+  },
+  {
+    "wort": "leer",
+    "wortart": "Adjektiv",
+    "formen": ["leerer", "am leersten"]
+  },
+  {
+    "wort": "voll",
+    "wortart": "Adjektiv",
+    "formen": ["voller", "am vollsten"]
+  },
+  {
+    "wort": "sauer",
+    "wortart": "Adjektiv",
+    "formen": ["saurer", "am sauersten"]
+  },
+  {
+    "wort": "süß",
+    "wortart": "Adjektiv",
+    "formen": ["süßer", "am süßesten"]
+  },
+  {
+    "wort": "bitter",
+    "wortart": "Adjektiv",
+    "formen": ["bitterer", "am bittersten"]
+  },
+  {
+    "wort": "salzig",
+    "wortart": "Adjektiv",
+    "formen": ["salziger", "am salzigsten"]
+  },
+  {
+    "wort": "heiß",
+    "wortart": "Adjektiv",
+    "formen": ["heißer", "am heißesten"]
+  },
+  {
+    "wort": "kühl",
+    "wortart": "Adjektiv",
+    "formen": ["kühler", "am kühlsten"]
+  },
+  {
+    "wort": "breit",
+    "wortart": "Adjektiv",
+    "formen": ["breiter", "am breitesten"]
+  },
+  {
+    "wort": "schmal",
+    "wortart": "Adjektiv",
+    "formen": ["schmaler", "am schmalsten"]
+  },
+  {
+    "wort": "dünn",
+    "wortart": "Adjektiv",
+    "formen": ["dünner", "am dünnsten"]
+  },
+  {
+    "wort": "dick",
+    "wortart": "Adjektiv",
+    "formen": ["dicker", "am dicksten"]
+  },
+  {
+    "wort": "nass",
+    "wortart": "Adjektiv",
+    "formen": ["nasser", "am nassesten"]
+  },
+  {
+    "wort": "trocken",
+    "wortart": "Adjektiv",
+    "formen": ["trockener", "am trockensten"]
+  },
+  {
+    "wort": "still",
+    "wortart": "Adjektiv",
+    "formen": ["stiller", "am stillsten"]
+  },
+  {
+    "wort": "ruhig",
+    "wortart": "Adjektiv",
+    "formen": ["ruhiger", "am ruhigsten"]
+  },
+  {
+    "wort": "freundlich",
+    "wortart": "Adjektiv",
+    "formen": ["freundlicher", "am freundlichsten"]
+  },
+  {
+    "wort": "unfreundlich",
+    "wortart": "Adjektiv",
+    "formen": ["unfreundlicher", "am unfreundlichsten"]
+  },
+  {
+    "wort": "neu",
+    "wortart": "Adjektiv",
+    "formen": ["neuer", "am neuesten"]
+  },
+  {
+    "wort": "alt",
+    "wortart": "Adjektiv",
+    "formen": ["älter", "am ältesten"]
+  },
+  {
+    "wort": "jung",
+    "wortart": "Adjektiv",
+    "formen": ["jünger", "am jüngsten"]
+  },
+  {
+    "wort": "modern",
+    "wortart": "Adjektiv",
+    "formen": ["moderner", "am modernsten"]
+  },
+  {
+    "wort": "traditionell",
+    "wortart": "Adjektiv",
+    "formen": ["traditioneller", "am traditionellsten"]
+  },
+  {
+    "wort": "zufrieden",
+    "wortart": "Adjektiv",
+    "formen": ["zufriedener", "am zufriedensten"]
+  },
+  {
+    "wort": "unzufrieden",
+    "wortart": "Adjektiv",
+    "formen": ["unzufriedener", "am unzufriedensten"]
+  },
+  {
+    "wort": "mutig",
+    "wortart": "Adjektiv",
+    "formen": ["mutiger", "am mutigsten"]
+  },
+  {
+    "wort": "ängstlich",
+    "wortart": "Adjektiv",
+    "formen": ["ängstlicher", "am ängstlichsten"]
+  },
+  {
+    "wort": "weich",
+    "wortart": "Adjektiv",
+    "formen": ["weicher", "am weichsten"]
+  },
+  {
+    "wort": "hart",
+    "wortart": "Adjektiv",
+    "formen": ["härter", "am härtesten"]
+  },
+  {
+    "wort": "glatt",
+    "wortart": "Adjektiv",
+    "formen": ["glatter", "am glattesten"]
+  },
+  {
+    "wort": "rau",
+    "wortart": "Adjektiv",
+    "formen": ["rauer", "am rauhesten"]
+  },
+  {
+    "wort": "samtig",
+    "wortart": "Adjektiv",
+    "formen": ["samtiger", "am samtigsten"]
+  },
+  {
+    "wort": "klebrig",
+    "wortart": "Adjektiv",
+    "formen": ["klebriger", "am klebrigsten"]
+  },
+  {
+    "wort": "trocken",
+    "wortart": "Adjektiv",
+    "formen": ["trockener", "am trockensten"]
+  },
+  {
+    "wort": "feucht",
+    "wortart": "Adjektiv",
+    "formen": ["feuchter", "am feuchtesten"]
+  },
+  {
+    "wort": "rein",
+    "wortart": "Adjektiv",
+    "formen": ["reiner", "am reinsten"]
+  },
+  {
+    "wort": "schmutzig",
+    "wortart": "Adjektiv",
+    "formen": ["schmutziger", "am schmutzigsten"]
+  },
+  {
+    "wort": "leer",
+    "wortart": "Adjektiv",
+    "formen": ["leerer", "am leersten"]
+  },
+  {
+    "wort": "voll",
+    "wortart": "Adjektiv",
+    "formen": ["voller", "am vollsten"]
+  },
+  {
+    "wort": "praktisch",
+    "wortart": "Adjektiv",
+    "formen": ["praktischer", "am praktischsten"]
+  },
+  {
+    "wort": "unpraktisch",
+    "wortart": "Adjektiv",
+    "formen": ["unpraktischer", "am unpraktischsten"]
+  },
+  {
+    "wort": "ordentlich",
+    "wortart": "Adjektiv",
+    "formen": ["ordentlicher", "am ordentlichsten"]
+  },
+  {
+    "wort": "unordentlich",
+    "wortart": "Adjektiv",
+    "formen": ["unordentlicher", "am unordentlichsten"]
+  },
+  {
+    "wort": "verboten",
+    "wortart": "Adjektiv",
+    "formen": ["verbotener", "am verbotensten"]
+  },
+  {
+    "wort": "erlaubt",
+    "wortart": "Adjektiv",
+    "formen": ["erlaubter", "am erlaubtesten"]
+  },
+  {
+    "wort": "möglich",
+    "wortart": "Adjektiv",
+    "formen": ["möglicher", "am möglichsten"]
+  },
+  {
+    "wort": "unmöglich",
+    "wortart": "Adjektiv",
+    "formen": ["unmöglicher", "am unmöglichsten"]
+  },
+  {
+    "wort": "wichtig",
+    "wortart": "Adjektiv",
+    "formen": ["wichtiger", "am wichtigsten"]
+  },
+  {
+    "wort": "unwichtig",
+    "wortart": "Adjektiv",
+    "formen": ["unwichtiger", "am unwichtigsten"]
+  },
+  {
+    "wort": "nützlich",
+    "wortart": "Adjektiv",
+    "formen": ["nützlicher", "am nützlichsten"]
+  },
+  {
+    "wort": "nutzlos",
+    "wortart": "Adjektiv",
+    "formen": ["nutzloser", "am nutzlosesten"]
+  },
+  {
+    "wort": "reich",
+    "wortart": "Adjektiv",
+    "formen": ["reicher", "am reichsten"]
+  },
+  {
+    "wort": "arm",
+    "wortart": "Adjektiv",
+    "formen": ["ärmer", "am ärmsten"]
+  },
+  {
+    "wort": "gesund",
+    "wortart": "Adjektiv",
+    "formen": ["gesünder", "am gesündesten"]
+  },
+  {
+    "wort": "krank",
+    "wortart": "Adjektiv",
+    "formen": ["kranker", "am krankesten"]
+  },
+  {
+    "wort": "neu",
+    "wortart": "Adjektiv",
+    "formen": ["neuer", "am neuesten"]
+  },
+  {
+    "wort": "alt",
+    "wortart": "Adjektiv",
+    "formen": ["älter", "am ältesten"]
+  },
+  {
+    "wort": "jung",
+    "wortart": "Adjektiv",
+    "formen": ["jünger", "am jüngsten"]
+  },
+  {
+    "wort": "erwachsen",
+    "wortart": "Adjektiv",
+    "formen": ["erwachsener", "am erwachsensten"]
+  },
+  {
+    "wort": "kindlich",
+    "wortart": "Adjektiv",
+    "formen": ["kindlicher", "am kindlichsten"]
+  },
+  {
+    "wort": "mutig",
+    "wortart": "Adjektiv",
+    "formen": ["mutiger", "am mutigsten"]
+  },
+  {
+    "wort": "feige",
+    "wortart": "Adjektiv",
+    "formen": ["feiger", "am feigsten"]
+  },
+  {
+    "wort": "tapfer",
+    "wortart": "Adjektiv",
+    "formen": ["tapferer", "am tapfersten"]
+  },
+  {
+    "wort": "ehrenhaft",
+    "wortart": "Adjektiv",
+    "formen": ["ehrenhafter", "am ehrenhaftesten"]
+  },
+  {
+    "wort": "unehrenhaft",
+    "wortart": "Adjektiv",
+    "formen": ["unehrenhafter", "am unehrenhaftesten"]
+  },
+  {
+    "wort": "loyale",
+    "wortart": "Adjektiv",
+    "formen": ["loyaler", "am loyalsten"]
+  },
+  {
+    "wort": "treulos",
+    "wortart": "Adjektiv",
+    "formen": ["treuloser", "am treulosesten"]
+  },
+  {
+    "wort": "fleißig",
+    "wortart": "Adjektiv",
+    "formen": ["fleißiger", "am fleißigsten"]
+  },
+  {
+    "wort": "faul",
+    "wortart": "Adjektiv",
+    "formen": ["fauler", "am faulsten"]
+  },
+  {
+    "wort": "aktiv",
+    "wortart": "Adjektiv",
+    "formen": ["aktiver", "am aktivsten"]
+  },
+  {
+    "wort": "passiv",
+    "wortart": "Adjektiv",
+    "formen": ["passiver", "am passivsten"]
+  },
+  {
+    "wort": "offen",
+    "wortart": "Adjektiv",
+    "formen": ["offener", "am offensten"]
+  },
+  {
+    "wort": "zurückhaltend",
+    "wortart": "Adjektiv",
+    "formen": ["zurückhaltender", "am zurückhaltendsten"]
+  },
+  {
+    "wort": "glücklich",
+    "wortart": "Adjektiv",
+    "formen": ["glücklicher", "am glücklichsten"]
+  },
+  {
+    "wort": "traurig",
+    "wortart": "Adjektiv",
+    "formen": ["trauriger", "am traurigsten"]
+  },
+  {
+    "wort": "fröhlich",
+    "wortart": "Adjektiv",
+    "formen": ["fröhlicher", "am fröhlichsten"]
+  },
+  {
+    "wort": "deprimiert",
+    "wortart": "Adjektiv",
+    "formen": ["deprimierter", "am deprimiertesten"]
+  },
+  {
+    "wort": "positiv",
+    "wortart": "Adjektiv",
+    "formen": ["positiver", "am positivsten"]
+  },
+  {
+    "wort": "negativ",
+    "wortart": "Adjektiv",
+    "formen": ["negativer", "am negativsten"]
+  },
+  {
+    "wort": "neutral",
+    "wortart": "Adjektiv",
+    "formen": ["neutraler", "am neutralsten"]
+  },
+  {
+    "wort": "existieren",
+    "wortart": "Verb",
+    "formen": ["existierte", "existiert", "existiert"]
+  },
+  {
+    "wort": "entstehen",
+    "wortart": "Verb",
+    "formen": ["entstand", "entstanden", "entsteht"]
+  },
+  {
+    "wort": "verschwinden",
+    "wortart": "Verb",
+    "formen": ["verschwand", "verschwunden", "verschwindet"]
+  },
+  {
+    "wort": "erscheinen",
+    "wortart": "Verb",
+    "formen": ["erschien", "erschienen", "erscheint"]
+  },
+  {
+    "wort": "verbergen",
+    "wortart": "Verb",
+    "formen": ["verbarg", "verborgen", "verbirgt"]
+  },
+  {
+    "wort": "zeigen",
+    "wortart": "Verb",
+    "formen": ["zeigte", "gezeigt", "zeigt"]
+  },
+  {
+    "wort": "verstecken",
+    "wortart": "Verb",
+    "formen": ["versteckte", "versteckt", "versteckt"]
+  },
+  {
+    "wort": "hören",
+    "wortart": "Verb",
+    "formen": ["hörte", "gehört", "hört"]
+  },
+  {
+    "wort": "fühlen",
+    "wortart": "Verb",
+    "formen": ["fühlte", "gefühlt", "fühlt"]
+  },
+  {
+    "wort": "denken",
+    "wortart": "Verb",
+    "formen": ["dachte", "gedacht", "denkt"]
+  },
+  {
+    "wort": "glauben",
+    "wortart": "Verb",
+    "formen": ["glaubte", "geglaubt", "glaubt"]
+  },
+  {
+    "wort": "zweifeln",
+    "wortart": "Verb",
+    "formen": ["zweifelte", "gezweifelt", "zweifelt"]
+  },
+  {
+    "wort": "wünschen",
+    "wortart": "Verb",
+    "formen": ["wünschte", "gewünscht", "wünscht"]
+  },
+  {
+    "wort": "hoffen",
+    "wortart": "Verb",
+    "formen": ["hoffte", "gehofft", "hofft"]
+  },
+  {
+    "wort": "fürchten",
+    "wortart": "Verb",
+    "formen": ["fürchtete", "gefürchtet", "fürchtet"]
+  },
+  {
+    "wort": "lieben",
+    "wortart": "Verb",
+    "formen": ["liebte", "geliebt", "liebt"]
+  },
+  {
+    "wort": "hassen",
+    "wortart": "Verb",
+    "formen": ["hasste", "gehasst", "hasst"]
+  },
+  {
+    "wort": "verzeihen",
+    "wortart": "Verb",
+    "formen": ["verzieh", "verziehen", "verzeiht"]
+  },
+  {
+    "wort": "verletzen",
+    "wortart": "Verb",
+    "formen": ["verletzte", "verletzt", "verletzt"]
+  },
+  {
+    "wort": "heilen",
+    "wortart": "Verb",
+    "formen": ["heilte", "geheilt", "heilt"]
+  },
+  {
+    "wort": "beginnen",
+    "wortart": "Verb",
+    "formen": ["begann", "begonnen", "beginnt"]
+  },
+  {
+    "wort": "enden",
+    "wortart": "Verb",
+    "formen": ["endete", "geendet", "endet"]
+  },
+  {
+    "wort": "fortsetzen",
+    "wortart": "Verb",
+    "formen": ["setzte fort", "fortgesetzt", "setzt fort"]
+  },
+  {
+    "wort": "unterbrechen",
+    "wortart": "Verb",
+    "formen": ["unterbrach", "unterbrochen", "unterbricht"]
+  },
+  {
+    "wort": "beginnen",
+    "wortart": "Verb",
+    "formen": ["begann", "begonnen", "beginnt"]
+  },
+  {
+    "wort": "beenden",
+    "wortart": "Verb",
+    "formen": ["beendete", "beendet", "beendet"]
+  },
+  {
+    "wort": "erzählen",
+    "wortart": "Verb",
+    "formen": ["erzählte", "erzählt", "erzählt"]
+  },
+  {
+    "wort": "beschreiben",
+    "wortart": "Verb",
+    "formen": ["beschrieb", "beschrieben", "beschreibt"]
+  },
+  {
+    "wort": "erklären",
+    "wortart": "Verb",
+    "formen": ["erklärte", "erklärt", "erklärt"]
+  },
+  {
+    "wort": "analysieren",
+    "wortart": "Verb",
+    "formen": ["analysierte", "analysiert", "analysiert"]
+  },
+  {
+    "wort": "synthetisieren",
+    "wortart": "Verb",
+    "formen": ["synthetisierte", "synthetisiert", "synthetisiert"]
+  },
+  {
+    "wort": "verbinden",
+    "wortart": "Verb",
+    "formen": ["verband", "verbunden", "verbindet"]
+  },
+  {
+    "wort": "trennen",
+    "wortart": "Verb",
+    "formen": ["trennte", "getrennt", "trennt"]
+  },
+  {
+    "wort": "kombinieren",
+    "wortart": "Verb",
+    "formen": ["kombinierte", "kombiniert", "kombiniert"]
+  },
+  {
+    "wort": "mischen",
+    "wortart": "Verb",
+    "formen": ["mischte", "gemischt", "mischt"]
+  },
+  {
+    "wort": "verändern",
+    "wortart": "Verb",
+    "formen": ["veränderte", "verändert", "verändert"]
+  },
+  {
+    "wort": "bleiben",
+    "wortart": "Verb",
+    "formen": ["blieb", "geblieben", "bleibt"]
+  },
+  {
+    "wort": "wachsen",
+    "wortart": "Verb",
+    "formen": ["wuchs", "gewachsen", "wächst"]
+  },
+  {
+    "wort": "schrumpfen",
+    "wortart": "Verb",
+    "formen": ["schrumpfte", "geschrumpft", "schrumpft"]
+  },
+  {
+    "wort": "auftauchen",
+    "wortart": "Verb",
+    "formen": ["tauchte auf", "aufgetaucht", "taucht auf"]
+  },
+  {
+    "wort": "versenken",
+    "wortart": "Verb",
+    "formen": ["versenkte", "versenkt", "versenkt"]
+  },
+  {
+    "wort": "fliegen",
+    "wortart": "Verb",
+    "formen": ["flog", "geflogen", "fliegt"]
+  },
+  {
+    "wort": "schwimmen",
+    "wortart": "Verb",
+    "formen": ["schwamm", "geschwommen", "schwimmt"]
+  },
+  {
+    "wort": "reisen",
+    "wortart": "Verb",
+    "formen": ["reiste", "gereist", "reist"]
+  },
+  {
+    "wort": "anhalten",
+    "wortart": "Verb",
+    "formen": ["hielt an", "angehalten", "hält an"]
+  },
+  {
+    "wort": "losfahren",
+    "wortart": "Verb",
+    "formen": ["fuhr los", "losgefahren", "fährt los"]
+  },
+  {
+    "wort": "ankommen",
+    "wortart": "Verb",
+    "formen": ["kam an", "angekommen", "kommt an"]
+  },
+  {
+    "wort": "verlassen",
+    "wortart": "Verb",
+    "formen": ["verließ", "verlassen", "verlässt"]
+  },
+  {
+    "wort": "zurückkehren",
+    "wortart": "Verb",
+    "formen": ["kehrte zurück", "zurückgekehrt", "kehrt zurück"]
+  },
+  {
+    "wort": "kämpfen",
+    "wortart": "Verb",
+    "formen": ["kämpfte", "gekämpft", "kämpft"]
+  },
+  {
+    "wort": "verhandeln",
+    "wortart": "Verb",
+    "formen": ["verhandelte", "verhandelt", "verhandelt"]
+  },
+  {
+    "wort": "zustimmen",
+    "wortart": "Verb",
+    "formen": ["stimmte zu", "zugestimmt", "stimmt zu"]
+  },
+  {
+    "wort": "ablehnen",
+    "wortart": "Verb",
+    "formen": ["lehnte ab", "abgelehnt", "lehnt ab"]
+  },
+  {
+    "wort": "akzeptieren",
+    "wortart": "Verb",
+    "formen": ["akzeptierte", "akzeptiert", "akzeptiert"]
+  },
+  {
+    "wort": "verweigern",
+    "wortart": "Verb",
+    "formen": ["verweigerte", "verweigert", "verweigert"]
+  },
+  {
+    "wort": "gewinnen",
+    "wortart": "Verb",
+    "formen": ["gewann", "gewonnen", "gewinnt"]
+  },
+  {
+    "wort": "verlieren",
+    "wortart": "Verb",
+    "formen": ["verlor", "verloren", "verliert"]
+  },
+  {
+    "wort": "öffnen",
+    "wortart": "Verb",
+    "formen": ["öffnete", "geöffnet", "öffnet"]
+  },
+  {
+    "wort": "schließen",
+    "wortart": "Verb",
+    "formen": ["schloss", "geschlossen", "schließt"]
+  },
+  {
+    "wort": "anfangen",
+    "wortart": "Verb",
+    "formen": ["fing an", "angefangen", "fängt an"]
+  },
+  {
+    "wort": "aufhören",
+    "wortart": "Verb",
+    "formen": ["hörte auf", "aufgehört", "hört auf"]
+  },
+  {
+    "wort": "versuchen",
+    "wortart": "Verb",
+    "formen": ["versuchte", "versucht", "versucht"]
+  },
+  {
+    "wort": "gelingen",
+    "wortart": "Verb",
+    "formen": ["gelang", "geglungen", "gelingt"]
+  },
+  {
+    "wort": "scheitern",
+    "wortart": "Verb",
+    "formen": ["scheiterte", "gescheitert", "scheitert"]
+  },
+  {
+    "wort": "nutzen",
+    "wortart": "Verb",
+    "formen": ["nutzte", "genutzt", "nutzt"]
+  },
+  {
+    "wort": "verschwenden",
+    "wortart": "Verb",
+    "formen": ["verschwendete", "verschwendet", "verschwendet"]
+  },
+  {
+    "wort": "sparen",
+    "wortart": "Verb",
+    "formen": ["sparte", "gespart", "spart"]
+  },
+  {
+    "wort": "kosten",
+    "wortart": "Verb",
+    "formen": ["kostete", "gekostet", "kostet"]
+  },
+  {
+    "wort": "bezahlen",
+    "wortart": "Verb",
+    "formen": ["bezahlte", "bezahlt", "bezahlt"]
+  },
+  {
+    "wort": "einkaufen",
+    "wortart": "Verb",
+    "formen": ["kaufte ein", "eingekauft", "kauft ein"]
+  },
+  {
+    "wort": "verkaufen",
+    "wortart": "Verb",
+    "formen": ["verkaufte", "verkauft", "verkauft"]
+  },
+  {
+    "wort": "besitzen",
+    "wortart": "Verb",
+    "formen": ["besaß", "besessen", "besitzt"]
+  },
+  {
+    "wort": "verlieren",
+    "wortart": "Verb",
+    "formen": ["verlor", "verloren", "verliert"]
+  },
+  {
+    "wort": "schaffen",
+    "wortart": "Verb",
+    "formen": ["schuf", "geschaffen", "schafft"]
+  },
+  {
+    "wort": "zerstören",
+    "wortart": "Verb",
+    "formen": ["zerstörte", "zerstört", "zerstört"]
+  },
+  {
+    "wort": "aufbauen",
+    "wortart": "Verb",
+    "formen": ["baute auf", "aufgebaut", "baut auf"]
+  },
+  {
+    "wort": "entwickeln",
+    "wortart": "Verb",
+    "formen": ["entwickelte", "entwickelt", "entwickelt"]
+  },
+  {
+    "wort": "forschen",
+    "wortart": "Verb",
+    "formen": ["forschte", "geforscht", "forscht"]
+  },
+  {
+    "wort": "studieren",
+    "wortart": "Verb",
+    "formen": ["studierte", "studiert", "studiert"]
+  },
+  {
+    "wort": "lehren",
+    "wortart": "Verb",
+    "formen": ["lehrte", "gelehrt", "lehrt"]
+  },
+  {
+    "wort": "lernen",
+    "wortart": "Verb",
+    "formen": ["lernte", "gelernt", "lernt"]
+  },
+  {
+    "wort": "verstehen",
+    "wortart": "Verb",
+    "formen": ["verstand", "verstanden", "versteht"]
+  },
+  {
+    "wort": "missverstehen",
+    "wortart": "Verb",
+    "formen": ["missverstand", "missverstanden", "missversteht"]
+  },
+  {
+    "wort": "unterrichten",
+    "wortart": "Verb",
+    "formen": ["unterrichtete", "unterrichtet", "unterrichtet"]
+  },
+  {
+    "wort": "fragen",
+    "wortart": "Verb",
+    "formen": ["fragte", "gefragt", "fragt"]
+  },
+  {
+    "wort": "antworten",
+    "wortart": "Verb",
+    "formen": ["antwortete", "geantwortet", "antwortet"]
+  },
+  {
+    "wort": "reden",
+    "wortart": "Verb",
+    "formen": ["redete", "geredet", "redet"]
+  },
+  {
+    "wort": "schweigen",
+    "wortart": "Verb",
+    "formen": ["schwieg", "geschwiegen", "schweigt"]
+  },
+  {
+    "wort": "lügen",
+    "wortart": "Verb",
+    "formen": ["log", "gelogen", "lügt"]
+  },
+  {
+    "wort": "sich irren",
+    "wortart": "Verb",
+    "formen": ["irrte sich", "sich geirrt", "irrt sich"]
+  },
+  {
+    "wort": "korrigieren",
+    "wortart": "Verb",
+    "formen": ["korrigierte", "korrigiert", "korrigiert"]
+  },
+  {
+    "wort": "zitieren",
+    "wortart": "Verb",
+    "formen": ["zitierte", "zitiert", "zitiert"]
+  },
+  {
+    "wort": "anfangen",
+    "wortart": "Verb",
+    "formen": ["fing an", "angefangen", "fängt an"]
+  },
+  {
+    "wort": "beenden",
+    "wortart": "Verb",
+    "formen": ["beendete", "beendet", "beendet"]
+  },
+  {
+    "wort": "überdauern",
+    "wortart": "Verb",
+    "formen": ["überdauerte", "überdauert", "überdauert"]
+  },
+  {
+    "wort": "vergehen",
+    "wortart": "Verb",
+    "formen": ["verging", "vergangen", "vergeht"]
+  },
+  {
+    "wort": "wachsen",
+    "wortart": "Verb",
+    "formen": ["wuchs", "gewachsen", "wächst"]
+  },
+  {
+    "wort": "ernten",
+    "wortart": "Verb",
+    "formen": ["erntete", "geerntet", "erntet"]
+  },
+  {
+    "wort": "säen",
+    "wortart": "Verb",
+    "formen": ["säte", "gesät", "sät"]
+  },
+  {
+    "wort": "bauen",
+    "wortart": "Verb",
+    "formen": ["baute", "gebaut", "baut"]
+  },
+  {
+    "wort": "reißen",
+    "wortart": "Verb",
+    "formen": ["riss", "gerissen", "reißt"]
+  },
+  {
+    "wort": "verwalten",
+    "wortart": "Verb",
+    "formen": ["verwaltete", "verwaltet", "verwaltet"]
+  },
+  {
+    "wort": "kontrollieren",
+    "wortart": "Verb",
+    "formen": ["kontrollierte", "kontrolliert", "kontrolliert"]
+  },
+  {
+    "wort": "gehorchen",
+    "wortart": "Verb",
+    "formen": ["gehorchte", "gehorcht", "gehorcht"]
+  },
+  {
+    "wort": "widerstehen",
+    "wortart": "Verb",
+    "formen": ["widerstand", "widerstanden", "widersteht"]
+  },
+  {
+    "wort": "folgen",
+    "wortart": "Verb",
+    "formen": ["folgte", "gefolgt", "folgt"]
+  },
+  {
+    "wort": "führen",
+    "wortart": "Verb",
+    "formen": ["führte", "geführt", "führt"]
+  },
+  {
+    "wort": "leiten",
+    "wortart": "Verb",
+    "formen": ["leitete", "geleitet", "leitet"]
+  },
+  {
+    "wort": "befehlen",
+    "wortart": "Verb",
+    "formen": ["befahl", "befohlen", "befiehlt"]
+  },
+  {
+    "wort": "bitten",
+    "wortart": "Verb",
+    "formen": ["bat", "gebeten", "bittet"]
+  },
+  {
+    "wort": "fordern",
+    "wortart": "Verb",
+    "formen": ["forderte", "gefordert", "fordert"]
+  },
+  {
+    "wort": "anbieten",
+    "wortart": "Verb",
+    "formen": ["bot an", "angeboten", "bietet an"]
+  },
+  {
+    "wort": "annehmen",
+    "wortart": "Verb",
+    "formen": ["nahm an", "angenommen", "nimmt an"]
+  },
+  {
+    "wort": "verlangen",
+    "wortart": "Verb",
+    "formen": ["verlangte", "verlangt", "verlangt"]
+  },
+  {
+    "wort": "brauchen",
+    "wortart": "Verb",
+    "formen": ["brauchte", "gebraucht", "braucht"]
+  },
+  {
+    "wort": "genügen",
+    "wortart": "Verb",
+    "formen": ["genügte", "genügt", "genügt"]
+  },
+  {
+    "wort": "fehlen",
+    "wortart": "Verb",
+    "formen": ["fehlte", "gefehlt", "fehlt"]
+  },
+  {
+    "wort": "gefallen",
+    "wortart": "Verb",
+    "formen": ["gefiel", "gefallen", "gefällt"]
+  },
+  {
+    "wort": "gehören",
+    "wortart": "Verb",
+    "formen": ["gehörte", "gehört", "gehört"]
+  },
+  {
+    "wort": "gehören zu",
+    "wortart": "Verb",
+    "formen": ["gehörte zu", "zugehört", "gehört zu"]
+  },
+  {
+    "wort": "dienen",
+    "wortart": "Verb",
+    "formen": ["diente", "gedient", "dient"]
+  },
+  {
+    "wort": "helfen",
+    "wortart": "Verb",
+    "formen": ["half", "geholfen", "hilft"]
+  },
+  {
+    "wort": "schaden",
+    "wortart": "Verb",
+    "formen": ["schadete", "geschadet", "schadet"]
+  },
+  {
+    "wort": "nützen",
+    "wortart": "Verb",
+    "formen": ["nützte", "genutzt", "nützt"]
+  },
+  {
+    "wort": "erwarten",
+    "wortart": "Verb",
+    "formen": ["erwartete", "erwartet", "erwartet"]
+  },
+  {
+    "wort": "rechnen mit",
+    "wortart": "Verb",
+    "formen": ["rechnete mit", "gerechnet mit", "rechnet mit"]
+  },
+  {
+    "wort": "hoffentlich",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "wahrscheinlich",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "unwahrscheinlich",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "selbstverständlich",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "vielleicht",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "allerdings",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "stattdessen",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "zumindest",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "hauptsächlich",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "allgemein",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "speziell",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "darum",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "deshalb",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "trotzdem",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "sogar",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "eher",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "lieber",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "euer",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "ihr",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "sein",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "ihren",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "unsere",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "eigene",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "solcher",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "jeglicher",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "keiner",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "einige",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "viele",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "wenige",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "manche",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "mehrere",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "etliche",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "irgendein",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "irgendwelche",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "etwas",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "genug",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "genügend",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "derselbe",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dieselben",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "jenes",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "welche",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "diese",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "jene",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "solche",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "jegliche",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "keine",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "einigen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "vielen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "wenigen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "manchen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "mehreren",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "etlichen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "irgendeinen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "irgendwelchen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "etwas",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "genug",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "genügend",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "desselben",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "diesen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "jenen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "welchen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dem",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "der",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "das",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "die",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "einen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "eine",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "einem",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "eines",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "einen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "einer",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "einer",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dem",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "der",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dem",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "der",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "den",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "der",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "den",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "den",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "mein",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dein",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "sein",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "ihr",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "unser",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "euer",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "deren",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "wem",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "was",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dort",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortige",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortigem",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortigen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortigen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiges",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiges",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiges",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "dortiger",
+    "wortart": "Artikel"
+  }
 ]
