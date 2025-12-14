@@ -1,172 +1,108 @@
 [
   {
+    "wort": "Hund",
+    "wortart": "Nomen",
+    "artikel": "der",
+    "singular": {
+      "genitiv": "des Hundes",
+      "dativ": "dem Hund",
+      "akkusativ": "den Hund"
+    },
+    "plural": {
+      "nominativ": "die Hunde",
+      "genitiv": "der Hunde",
+      "dativ": "den Hunden",
+      "akkusativ": "die Hunde"
+    }
+  },
+  {
+    "wort": "Katze",
+    "wortart": "Nomen",
+    "artikel": "die",
+    "singular": {
+      "2": "der Katze",
+      "3": "der Katze",
+      "4": "die Katze"
+    },
+    "plural": {
+      "1": "die Katzen",
+      "genetiv": "der Katzen",
+      "3": "den Katzen",
+      "akkusativ": "die Katzen"
+    }
+  },
+  {
+    "wort": "Krokodil",
+    "artikel": "das",
+    "wortart": "Nomen",
+    "singular": {
+      "1": "das Krokodil",
+      "2": "des Krokodils",
+      "3": "dem Krokodil",
+      "4": "das Krokodil"
+    },
+    "plural": {
+      "1": "die Krokodile",
+      "2": "der Krokodile",
+      "3": "den Krokodilen",
+      "4": "die Krokodile"
+    }
+  },
+  {
+    "wort": "gehen",
+    "wortart": "Verb",
+    "formen": [
+      "ging",
+      "gegangen",
+      "geht"
+    ]
+  },
+  {
+    "wort": "schoen",
+    "wortart": "Adjektiv",
+    "formen": [
+      "schoener",
+      "am schoensten"
+    ]
+  },
+  {
+    "wort": "der",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "mein",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "zwei",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "gestern",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "und",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "ach",
+    "wortart": "Interjektion"
+  },
+  {
     "wort": "Apfel",
     "wortart": "Nomen",
     "artikel": "der",
     "singular": {
-      "nominativ": "der Apfel",
       "genitiv": "des Apfels",
       "dativ": "dem Apfel",
       "akkusativ": "den Apfel"
     },
     "plural": {
-      "nominativ": "die Äpfel",
-      "genitiv": "der Äpfel",
-      "dativ": "den Äpfeln",
-      "akkusativ": "die Äpfel"
-    }
-  },
-  {
-    "wort": "Baum",
-    "wortart": "Nomen",
-    "artikel": "der",
-    "singular": {
-      "nominativ": "der Baum",
-      "genitiv": "des Baumes",
-      "dativ": "dem Baum",
-      "akkusativ": "den Baum"
-    },
-    "plural": {
-      "nominativ": "die Bäume",
-      "genitiv": "der Bäume",
-      "dativ": "den Bäumen",
-      "akkusativ": "die Bäume"
-    }
-  },
-  {
-    "wort": "Buch",
-    "wortart": "Nomen",
-    "artikel": "das",
-    "singular": {
-      "nominativ": "das Buch",
-      "genitiv": "des Buches",
-      "dativ": "dem Buch",
-      "akkusativ": "das Buch"
-    },
-    "plural": {
-      "nominativ": "die Bücher",
-      "genitiv": "der Bücher",
-      "dativ": "den Büchern",
-      "akkusativ": "die Bücher"
-    }
-  },
-  {
-    "wort": "Frau",
-    "wortart": "Nomen",
-    "artikel": "die",
-    "singular": {
-      "nominativ": "die Frau",
-      "genitiv": "der Frau",
-      "dativ": "der Frau",
-      "akkusativ": "die Frau"
-    },
-    "plural": {
-      "nominativ": "die Frauen",
-      "genitiv": "der Frauen",
-      "dativ": "den Frauen",
-      "akkusativ": "die Frauen"
-    }
-  },
-  {
-    "wort": "Haus",
-    "wortart": "Nomen",
-    "artikel": "das",
-    "singular": {
-      "nominativ": "das Haus",
-      "genitiv": "des Hauses",
-      "dativ": "dem Haus",
-      "akkusativ": "das Haus"
-    },
-    "plural": {
-      "nominativ": "die Häuser",
-      "genitiv": "der Häuser",
-      "dativ": "den Häusern",
-      "akkusativ": "die Häuser"
-    }
-  },
-  {
-    "wort": "Kind",
-    "wortart": "Nomen",
-    "artikel": "das",
-    "singular": {
-      "nominativ": "das Kind",
-      "genitiv": "des Kindes",
-      "dativ": "dem Kind",
-      "akkusativ": "das Kind"
-    },
-    "plural": {
-      "nominativ": "die Kinder",
-      "genitiv": "der Kinder",
-      "dativ": "den Kindern",
-      "akkusativ": "die Kinder"
-    }
-  },
-  {
-    "wort": "Mann",
-    "wortart": "Nomen",
-    "artikel": "der",
-    "singular": {
-      "nominativ": "der Mann",
-      "genitiv": "des Mannes",
-      "dativ": "dem Mann",
-      "akkusativ": "den Mann"
-    },
-    "plural": {
-      "nominativ": "die Männer",
-      "genitiv": "der Männer",
-      "dativ": "den Männern",
-      "akkusativ": "die Männer"
-    }
-  },
-  {
-    "wort": "Maus",
-    "wortart": "Nomen",
-    "artikel": "die",
-    "singular": {
-      "nominativ": "die Maus",
-      "genitiv": "der Maus",
-      "dativ": "der Maus",
-      "akkusativ": "die Maus"
-    },
-    "plural": {
-      "nominativ": "die Mäuse",
-      "genitiv": "der Mäuse",
-      "dativ": "den Mäusen",
-      "akkusativ": "die Mäuse"
-    }
-  },
-  {
-    "wort": "Stuhl",
-    "wortart": "Nomen",
-    "artikel": "der",
-    "singular": {
-      "nominativ": "der Stuhl",
-      "genitiv": "des Stuhles",
-      "dativ": "dem Stuhl",
-      "akkusativ": "den Stuhl"
-    },
-    "plural": {
-      "nominativ": "die Stühle",
-      "genitiv": "der Stühle",
-      "dativ": "den Stühlen",
-      "akkusativ": "die Stühle"
-    }
-  },
-  {
-    "wort": "Tisch",
-    "wortart": "Nomen",
-    "artikel": "der",
-    "singular": {
-      "nominativ": "der Tisch",
-      "genitiv": "des Tisches",
-      "dativ": "dem Tisch",
-      "akkusativ": "den Tisch"
-    },
-    "plural": {
-      "nominativ": "die Tische",
-      "genitiv": "der Tische",
-      "dativ": "den Tischen",
-      "akkusativ": "die Tische"
+      "nominativ": "die ?pfel",
+      "genitiv": "der ?pfel",
+      "dativ": "den ?pfeln",
+      "akkusativ": "die ?pfel"
     }
   },
   {
@@ -174,7 +110,6 @@
     "wortart": "Nomen",
     "artikel": "das",
     "singular": {
-      "nominativ": "das Auto",
       "genitiv": "des Autos",
       "dativ": "dem Auto",
       "akkusativ": "das Auto"
@@ -187,20 +122,35 @@
     }
   },
   {
-    "wort": "Blume",
+    "wort": "Baum",
     "wortart": "Nomen",
-    "artikel": "die",
+    "artikel": "der",
     "singular": {
-      "nominativ": "die Blume",
-      "genitiv": "der Blume",
-      "dativ": "der Blume",
-      "akkusativ": "die Blume"
+      "genitiv": "des Baumes",
+      "dativ": "dem Baum",
+      "akkusativ": "den Baum"
     },
     "plural": {
-      "nominativ": "die Blumen",
-      "genitiv": "der Blumen",
-      "dativ": "den Blumen",
-      "akkusativ": "die Blumen"
+      "nominativ": "die B?ume",
+      "genitiv": "der B?ume",
+      "dativ": "den B?umen",
+      "akkusativ": "die B?ume"
+    }
+  },
+  {
+    "wort": "Buch",
+    "wortart": "Nomen",
+    "artikel": "das",
+    "singular": {
+      "genitiv": "des Buches",
+      "dativ": "dem Buch",
+      "akkusativ": "das Buch"
+    },
+    "plural": {
+      "nominativ": "die B?cher",
+      "genitiv": "der B?cher",
+      "dativ": "den B?chern",
+      "akkusativ": "die B?cher"
     }
   },
   {
@@ -208,7 +158,6 @@
     "wortart": "Nomen",
     "artikel": "das",
     "singular": {
-      "nominativ": "das Fenster",
       "genitiv": "des Fensters",
       "dativ": "dem Fenster",
       "akkusativ": "das Fenster"
@@ -225,33 +174,47 @@
     "wortart": "Nomen",
     "artikel": "der",
     "singular": {
-      "nominativ": "der Garten",
       "genitiv": "des Gartens",
       "dativ": "dem Garten",
       "akkusativ": "den Garten"
     },
     "plural": {
-      "nominativ": "die Gärten",
-      "genitiv": "der Gärten",
-      "dativ": "den Gärten",
-      "akkusativ": "die Gärten"
+      "nominativ": "die G?rten",
+      "genitiv": "der G?rten",
+      "dativ": "den G?rten",
+      "akkusativ": "die G?rten"
     }
   },
   {
-    "wort": "Hand",
+    "wort": "Haus",
     "wortart": "Nomen",
-    "artikel": "die",
+    "artikel": "das",
     "singular": {
-      "nominativ": "die Hand",
-      "genitiv": "der Hand",
-      "dativ": "der Hand",
-      "akkusativ": "die Hand"
+      "genitiv": "des Hauses",
+      "dativ": "dem Haus",
+      "akkusativ": "das Haus"
     },
     "plural": {
-      "nominativ": "die Hände",
-      "genitiv": "der Hände",
-      "dativ": "den Händen",
-      "akkusativ": "die Hände"
+      "nominativ": "die H?user",
+      "genitiv": "der H?user",
+      "dativ": "den H?usern",
+      "akkusativ": "die H?user"
+    }
+  },
+  {
+    "wort": "Kind",
+    "wortart": "Nomen",
+    "artikel": "das",
+    "singular": {
+      "genitiv": "des Kindes",
+      "dativ": "dem Kind",
+      "akkusativ": "das Kind"
+    },
+    "plural": {
+      "nominativ": "die Kinder",
+      "genitiv": "der Kinder",
+      "dativ": "den Kindern",
+      "akkusativ": "die Kinder"
     }
   },
   {
@@ -259,7 +222,6 @@
     "wortart": "Nomen",
     "artikel": "die",
     "singular": {
-      "nominativ": "die Lampe",
       "genitiv": "der Lampe",
       "dativ": "der Lampe",
       "akkusativ": "die Lampe"
@@ -272,20 +234,99 @@
     }
   },
   {
-    "wort": "Meer",
+    "wort": "Mann",
     "wortart": "Nomen",
-    "artikel": "das",
+    "artikel": "der",
     "singular": {
-      "nominativ": "das Meer",
-      "genitiv": "des Meeres",
-      "dativ": "dem Meer",
-      "akkusativ": "das Meer"
+      "genitiv": "des Mannes",
+      "dativ": "dem Mann",
+      "akkusativ": "den Mann"
     },
     "plural": {
-      "nominativ": "die Meere",
-      "genitiv": "der Meere",
-      "dativ": "den Meeren",
-      "akkusativ": "die Meere"
+      "nominativ": "die M?nner",
+      "genitiv": "der M?nner",
+      "dativ": "den M?nnern",
+      "akkusativ": "die M?nner"
+    }
+  },
+  {
+    "wort": "Maus",
+    "wortart": "Nomen",
+    "artikel": "die",
+    "singular": {
+      "genitiv": "der Maus",
+      "dativ": "der Maus",
+      "akkusativ": "die Maus"
+    },
+    "plural": {
+      "nominativ": "die M?use",
+      "genitiv": "der M?use",
+      "dativ": "den M?usen",
+      "akkusativ": "die M?use"
+    }
+  },
+  {
+    "wort": "Mond",
+    "wortart": "Nomen",
+    "artikel": "der",
+    "singular": {
+      "genitiv": "des Mondes",
+      "dativ": "dem Mond",
+      "akkusativ": "den Mond"
+    },
+    "plural": {
+      "nominativ": "die Monde",
+      "genitiv": "der Monde",
+      "dativ": "den Monden",
+      "akkusativ": "die Monde"
+    }
+  },
+  {
+    "wort": "Mutter",
+    "wortart": "Nomen",
+    "artikel": "die",
+    "singular": {
+      "genitiv": "der Mutter",
+      "dativ": "der Mutter",
+      "akkusativ": "die Mutter"
+    },
+    "plural": {
+      "nominativ": "die M?tter",
+      "genitiv": "der M?tter",
+      "dativ": "den M?ttern",
+      "akkusativ": "die M?tter"
+    }
+  },
+  {
+    "wort": "Nacht",
+    "wortart": "Nomen",
+    "artikel": "die",
+    "singular": {
+      "genitiv": "der Nacht",
+      "dativ": "der Nacht",
+      "akkusativ": "die Nacht"
+    },
+    "plural": {
+      "nominativ": "die N?chte",
+      "genitiv": "der N?chte",
+      "dativ": "den N?chten",
+      "akkusativ": "die N?chte"
+    }
+  },
+  {
+    "wort": "Nase",
+    "wortart": "Nomen",
+    "artikel": "die",
+    "singular": {
+      "genitiv": "der Nase",
+      "dativ": "der Nase",
+      "akkusativ": "die Nase"
+    },
+    "plural": {
+      "nominativ": "die Nasen",
+      "genitiv": "der Nasen",
+      "dativ": "den Nasen",
+      "akkusativ": "die Nasen"
     }
   },
   {
@@ -293,7 +334,6 @@
     "wortart": "Nomen",
     "artikel": "die",
     "singular": {
-      "nominativ": "die Sonne",
       "genitiv": "der Sonne",
       "dativ": "der Sonne",
       "akkusativ": "die Sonne"
@@ -306,20 +346,35 @@
     }
   },
   {
-    "wort": "Straße",
+    "wort": "Spiel",
     "wortart": "Nomen",
-    "artikel": "die",
+    "artikel": "das",
     "singular": {
-      "nominativ": "die Straße",
-      "genitiv": "der Straße",
-      "dativ": "der Straße",
-      "akkusativ": "die Straße"
+      "genitiv": "des Spiels",
+      "dativ": "dem Spiel",
+      "akkusativ": "das Spiel"
     },
     "plural": {
-      "nominativ": "die Straßen",
-      "genitiv": "der Straßen",
-      "dativ": "den Straßen",
-      "akkusativ": "die Straßen"
+      "nominativ": "die Spiele",
+      "genitiv": "der Spiele",
+      "dativ": "den Spielen",
+      "akkusativ": "die Spiele"
+    }
+  },
+  {
+    "wort": "Stuhl",
+    "wortart": "Nomen",
+    "artikel": "der",
+    "singular": {
+      "genitiv": "des Stuhles",
+      "dativ": "dem Stuhl",
+      "akkusativ": "den Stuhl"
+    },
+    "plural": {
+      "nominativ": "die St?hle",
+      "genitiv": "der St?hle",
+      "dativ": "den St?hlen",
+      "akkusativ": "die St?hle"
     }
   },
   {
@@ -327,7 +382,6 @@
     "wortart": "Nomen",
     "artikel": "der",
     "singular": {
-      "nominativ": "der Tag",
       "genitiv": "des Tages",
       "dativ": "dem Tag",
       "akkusativ": "den Tag"
@@ -340,20 +394,35 @@
     }
   },
   {
-    "wort": "Tür",
+    "wort": "Tisch",
     "wortart": "Nomen",
-    "artikel": "die",
+    "artikel": "der",
     "singular": {
-      "nominativ": "die Tür",
-      "genitiv": "der Tür",
-      "dativ": "der Tür",
-      "akkusativ": "die Tür"
+      "genitiv": "des Tisches",
+      "dativ": "dem Tisch",
+      "akkusativ": "den Tisch"
     },
     "plural": {
-      "nominativ": "die Türen",
-      "genitiv": "der Türen",
-      "dativ": "den Türen",
-      "akkusativ": "die Türen"
+      "nominativ": "die Tische",
+      "genitiv": "der Tische",
+      "dativ": "den Tischen",
+      "akkusativ": "die Tische"
+    }
+  },
+  {
+    "wort": "Topf",
+    "wortart": "Nomen",
+    "artikel": "der",
+    "singular": {
+      "genitiv": "des Topfes",
+      "dativ": "dem Topf",
+      "akkusativ": "den Topf"
+    },
+    "plural": {
+      "nominativ": "die T?pfe",
+      "genitiv": "der T?pfe",
+      "dativ": "den T?pfen",
+      "akkusativ": "die T?pfe"
     }
   },
   {
@@ -361,7 +430,6 @@
     "wortart": "Nomen",
     "artikel": "die",
     "singular": {
-      "nominativ": "die Uhr",
       "genitiv": "der Uhr",
       "dativ": "der Uhr",
       "akkusativ": "die Uhr"
@@ -374,20 +442,35 @@
     }
   },
   {
+    "wort": "Vater",
+    "wortart": "Nomen",
+    "artikel": "der",
+    "singular": {
+      "genitiv": "des Vaters",
+      "dativ": "dem Vater",
+      "akkusativ": "den Vater"
+    },
+    "plural": {
+      "nominativ": "die V?ter",
+      "genitiv": "der V?ter",
+      "dativ": "den V?tern",
+      "akkusativ": "die V?ter"
+    }
+  },
+  {
     "wort": "Vogel",
     "wortart": "Nomen",
     "artikel": "der",
     "singular": {
-      "nominativ": "der Vogel",
       "genitiv": "des Vogels",
       "dativ": "dem Vogel",
       "akkusativ": "den Vogel"
     },
     "plural": {
-      "nominativ": "die Vögel",
-      "genitiv": "der Vögel",
-      "dativ": "den Vögeln",
-      "akkusativ": "die Vögel"
+      "nominativ": "die V?gel",
+      "genitiv": "der V?gel",
+      "dativ": "den V?geln",
+      "akkusativ": "die V?gel"
     }
   },
   {
@@ -395,284 +478,441 @@
     "wortart": "Nomen",
     "artikel": "der",
     "singular": {
-      "nominativ": "der Wald",
       "genitiv": "des Waldes",
       "dativ": "dem Wald",
       "akkusativ": "den Wald"
     },
     "plural": {
-      "nominativ": "die Wälder",
-      "genitiv": "der Wälder",
-      "dativ": "den Wäldern",
-      "akkusativ": "die Wälder"
+      "nominativ": "die W?lder",
+      "genitiv": "der W?lder",
+      "dativ": "den W?ldern",
+      "akkusativ": "die W?lder"
     }
-  },
-  {
-    "wort": "Zeit",
-    "wortart": "Nomen",
-    "artikel": "die",
-    "singular": {
-      "nominativ": "die Zeit",
-      "genitiv": "der Zeit",
-      "dativ": "der Zeit",
-      "akkusativ": "die Zeit"
-    },
-    "plural": {
-      "nominativ": "die Zeiten",
-      "genitiv": "der Zeiten",
-      "dativ": "den Zeiten",
-      "akkusativ": "die Zeiten"
-    }
-  },
-  {
-    "wort": "essen",
-    "wortart": "Verb",
-    "formen": ["aß", "gegessen", "isst"]
-  },
-  {
-    "wort": "fahren",
-    "wortart": "Verb",
-    "formen": ["fuhr", "gefahren", "fährt"]
-  },
-  {
-    "wort": "sehen",
-    "wortart": "Verb",
-    "formen": ["sah", "gesehen", "sieht"]
-  },
-  {
-    "wort": "laufen",
-    "wortart": "Verb",
-    "formen": ["lief", "gelaufen", "läuft"]
-  },
-  {
-    "wort": "schlafen",
-    "wortart": "Verb",
-    "formen": ["schlief", "geschlafen", "schläft"]
-  },
-  {
-    "wort": "kommen",
-    "wortart": "Verb",
-    "formen": ["kam", "gekommen", "kommt"]
-  },
-  {
-    "wort": "sprechen",
-    "wortart": "Verb",
-    "formen": ["sprach", "gesprochen", "spricht"]
-  },
-  {
-    "wort": "geben",
-    "wortart": "Verb",
-    "formen": ["gab", "gegeben", "gibt"]
-  },
-  {
-    "wort": "lesen",
-    "wortart": "Verb",
-    "formen": ["las", "gelesen", "liest"]
-  },
-  {
-    "wort": "schreiben",
-    "wortart": "Verb",
-    "formen": ["schrieb", "geschrieben", "schreibt"]
-  },
-  {
-    "wort": "trinken",
-    "wortart": "Verb",
-    "formen": ["trank", "getrunken", "trinkt"]
   },
   {
     "wort": "arbeiten",
     "wortart": "Verb",
-    "formen": ["arbeitete", "gearbeitet", "arbeitet"]
-  },
-  {
-    "wort": "spielen",
-    "wortart": "Verb",
-    "formen": ["spielte", "gespielt", "spielt"]
-  },
-  {
-    "wort": "lernen",
-    "wortart": "Verb",
-    "formen": ["lernte", "gelernt", "lernt"]
-  },
-  {
-    "wort": "machen",
-    "wortart": "Verb",
-    "formen": ["machte", "gemacht", "macht"]
-  },
-  {
-    "wort": "sagen",
-    "wortart": "Verb",
-    "formen": ["sagte", "gesagt", "sagt"]
-  },
-  {
-    "wort": "hören",
-    "wortart": "Verb",
-    "formen": ["hörte", "gehört", "hört"]
-  },
-  {
-    "wort": "kaufen",
-    "wortart": "Verb",
-    "formen": ["kaufte", "gekauft", "kauft"]
-  },
-  {
-    "wort": "wohnen",
-    "wortart": "Verb",
-    "formen": ["wohnte", "gewohnt", "wohnt"]
-  },
-  {
-    "wort": "lachen",
-    "wortart": "Verb",
-    "formen": ["lachte", "gelacht", "lacht"]
-  },
-  {
-    "wort": "fragen",
-    "wortart": "Verb",
-    "formen": ["fragte", "gefragt", "fragt"]
-  },
-  {
-    "wort": "antworten",
-    "wortart": "Verb",
-    "formen": ["antwortete", "geantwortet", "antwortet"]
-  },
-  {
-    "wort": "helfen",
-    "wortart": "Verb",
-    "formen": ["half", "geholfen", "hilft"]
-  },
-  {
-    "wort": "finden",
-    "wortart": "Verb",
-    "formen": ["fand", "gefunden", "findet"]
+    "formen": [
+      "arbeitete",
+      "gearbeitet",
+      "arbeitet"
+    ]
   },
   {
     "wort": "bleiben",
     "wortart": "Verb",
-    "formen": ["blieb", "geblieben", "bleibt"]
+    "formen": [
+      "blieb",
+      "geblieben",
+      "bleibt"
+    ]
   },
   {
-    "wort": "groß",
-    "wortart": "Adjektiv",
-    "formen": ["größer", "am größten"]
+    "wort": "denken",
+    "wortart": "Verb",
+    "formen": [
+      "dachte",
+      "gedacht",
+      "denkt"
+    ]
   },
   {
-    "wort": "klein",
-    "wortart": "Adjektiv",
-    "formen": ["kleiner", "am kleinsten"]
+    "wort": "essen",
+    "wortart": "Verb",
+    "formen": [
+      "a?",
+      "gegessen",
+      "isst"
+    ]
   },
   {
-    "wort": "schnell",
-    "wortart": "Adjektiv",
-    "formen": ["schneller", "am schnellsten"]
+    "wort": "fahren",
+    "wortart": "Verb",
+    "formen": [
+      "fuhr",
+      "gefahren",
+      "f?hrt"
+    ]
   },
   {
-    "wort": "langsam",
-    "wortart": "Adjektiv",
-    "formen": ["langsamer", "am langsamsten"]
+    "wort": "fallen",
+    "wortart": "Verb",
+    "formen": [
+      "fiel",
+      "gefallen",
+      "f?llt"
+    ]
   },
   {
-    "wort": "gut",
-    "wortart": "Adjektiv",
-    "formen": ["besser", "am besten"]
+    "wort": "finden",
+    "wortart": "Verb",
+    "formen": [
+      "fand",
+      "gefunden",
+      "findet"
+    ]
   },
   {
-    "wort": "schlecht",
-    "wortart": "Adjektiv",
-    "formen": ["schlechter", "am schlechtesten"]
+    "wort": "fragen",
+    "wortart": "Verb",
+    "formen": [
+      "fragte",
+      "gefragt",
+      "fragt"
+    ]
+  },
+  {
+    "wort": "geben",
+    "wortart": "Verb",
+    "formen": [
+      "gab",
+      "gegeben",
+      "gibt"
+    ]
+  },
+  {
+    "wort": "halten",
+    "wortart": "Verb",
+    "formen": [
+      "hielt",
+      "gehalten",
+      "h?lt"
+    ]
+  },
+  {
+    "wort": "hei?en",
+    "wortart": "Verb",
+    "formen": [
+      "hie?",
+      "gehei?en",
+      "hei?t"
+    ]
+  },
+  {
+    "wort": "helfen",
+    "wortart": "Verb",
+    "formen": [
+      "half",
+      "geholfen",
+      "hilft"
+    ]
+  },
+  {
+    "wort": "h?ren",
+    "wortart": "Verb",
+    "formen": [
+      "h?rte",
+      "geh?rt",
+      "h?rt"
+    ]
+  },
+  {
+    "wort": "kaufen",
+    "wortart": "Verb",
+    "formen": [
+      "kaufte",
+      "gekauft",
+      "kauft"
+    ]
+  },
+  {
+    "wort": "kennen",
+    "wortart": "Verb",
+    "formen": [
+      "kannte",
+      "gekannt",
+      "kennt"
+    ]
+  },
+  {
+    "wort": "kommen",
+    "wortart": "Verb",
+    "formen": [
+      "kam",
+      "gekommen",
+      "kommt"
+    ]
+  },
+  {
+    "wort": "lassen",
+    "wortart": "Verb",
+    "formen": [
+      "lie?",
+      "gelassen",
+      "l?sst"
+    ]
+  },
+  {
+    "wort": "laufen",
+    "wortart": "Verb",
+    "formen": [
+      "lief",
+      "gelaufen",
+      "l?uft"
+    ]
+  },
+  {
+    "wort": "leben",
+    "wortart": "Verb",
+    "formen": [
+      "lebte",
+      "gelebt",
+      "lebt"
+    ]
+  },
+  {
+    "wort": "lernen",
+    "wortart": "Verb",
+    "formen": [
+      "lernte",
+      "gelernt",
+      "lernt"
+    ]
+  },
+  {
+    "wort": "lesen",
+    "wortart": "Verb",
+    "formen": [
+      "las",
+      "gelesen",
+      "liest"
+    ]
+  },
+  {
+    "wort": "liegen",
+    "wortart": "Verb",
+    "formen": [
+      "lag",
+      "gelegen",
+      "liegt"
+    ]
+  },
+  {
+    "wort": "machen",
+    "wortart": "Verb",
+    "formen": [
+      "machte",
+      "gemacht",
+      "macht"
+    ]
+  },
+  {
+    "wort": "nehmen",
+    "wortart": "Verb",
+    "formen": [
+      "nahm",
+      "genommen",
+      "nimmt"
+    ]
+  },
+  {
+    "wort": "reden",
+    "wortart": "Verb",
+    "formen": [
+      "redete",
+      "geredet",
+      "redet"
+    ]
   },
   {
     "wort": "alt",
     "wortart": "Adjektiv",
-    "formen": ["älter", "am ältesten"]
-  },
-  {
-    "wort": "jung",
-    "wortart": "Adjektiv",
-    "formen": ["jünger", "am jüngsten"]
-  },
-  {
-    "wort": "kalt",
-    "wortart": "Adjektiv",
-    "formen": ["kälter", "am kältesten"]
-  },
-  {
-    "wort": "warm",
-    "wortart": "Adjektiv",
-    "formen": ["wärmer", "am wärmsten"]
-  },
-  {
-    "wort": "hell",
-    "wortart": "Adjektiv",
-    "formen": ["heller", "am hellsten"]
-  },
-  {
-    "wort": "dunkel",
-    "wortart": "Adjektiv",
-    "formen": ["dunkler", "am dunkelsten"]
-  },
-  {
-    "wort": "stark",
-    "wortart": "Adjektiv",
-    "formen": ["stärker", "am stärksten"]
-  },
-  {
-    "wort": "schwach",
-    "wortart": "Adjektiv",
-    "formen": ["schwächer", "am schwächsten"]
-  },
-  {
-    "wort": "teuer",
-    "wortart": "Adjektiv",
-    "formen": ["teurer", "am teuersten"]
-  },
-  {
-    "wort": "billig",
-    "wortart": "Adjektiv",
-    "formen": ["billiger", "am billigsten"]
-  },
-  {
-    "wort": "laut",
-    "wortart": "Adjektiv",
-    "formen": ["lauter", "am lautesten"]
-  },
-  {
-    "wort": "leise",
-    "wortart": "Adjektiv",
-    "formen": ["leiser", "am leisesten"]
-  },
-  {
-    "wort": "schwer",
-    "wortart": "Adjektiv",
-    "formen": ["schwerer", "am schwersten"]
-  },
-  {
-    "wort": "leicht",
-    "wortart": "Adjektiv",
-    "formen": ["leichter", "am leichtesten"]
-  },
-  {
-    "wort": "neu",
-    "wortart": "Adjektiv",
-    "formen": ["neuer", "am neusten"]
-  },
-  {
-    "wort": "reich",
-    "wortart": "Adjektiv",
-    "formen": ["reicher", "am reichsten"]
+    "formen": [
+      "?lter",
+      "am ?ltesten"
+    ]
   },
   {
     "wort": "arm",
     "wortart": "Adjektiv",
-    "formen": ["ärmer", "am ärmsten"]
+    "formen": [
+      "?rmer",
+      "am ?rmsten"
+    ]
   },
   {
-    "wort": "lustig",
+    "wort": "blau",
     "wortart": "Adjektiv",
-    "formen": ["lustiger", "am lustigsten"]
+    "formen": [
+      "blauer",
+      "am blausten"
+    ]
   },
   {
-    "wort": "traurig",
+    "wort": "b?se",
     "wortart": "Adjektiv",
-    "formen": ["trauriger", "am traurigsten"]
+    "formen": [
+      "b?ser",
+      "am b?sesten"
+    ]
+  },
+  {
+    "wort": "breit",
+    "wortart": "Adjektiv",
+    "formen": [
+      "breiter",
+      "am breitesten"
+    ]
+  },
+  {
+    "wort": "dunkel",
+    "wortart": "Adjektiv",
+    "formen": [
+      "dunkler",
+      "am dunkelsten"
+    ]
+  },
+  {
+    "wort": "fern",
+    "wortart": "Adjektiv",
+    "formen": [
+      "ferner",
+      "am fernsten"
+    ]
+  },
+  {
+    "wort": "fest",
+    "wortart": "Adjektiv",
+    "formen": [
+      "fester",
+      "am festesten"
+    ]
+  },
+  {
+    "wort": "frei",
+    "wortart": "Adjektiv",
+    "formen": [
+      "freier",
+      "am freiesten"
+    ]
+  },
+  {
+    "wort": "froh",
+    "wortart": "Adjektiv",
+    "formen": [
+      "froher",
+      "am frohsten"
+    ]
+  },
+  {
+    "wort": "fr?h",
+    "wortart": "Adjektiv",
+    "formen": [
+      "fr?her",
+      "am fr?hesten"
+    ]
+  },
+  {
+    "wort": "ganz",
+    "wortart": "Adjektiv",
+    "formen": [
+      "ganzer",
+      "am ganzesten"
+    ]
+  },
+  {
+    "wort": "gelb",
+    "wortart": "Adjektiv",
+    "formen": [
+      "gelber",
+      "am gelbsten"
+    ]
+  },
+  {
+    "wort": "gro?",
+    "wortart": "Adjektiv",
+    "formen": [
+      "gr??er",
+      "am gr??ten"
+    ]
+  },
+  {
+    "wort": "gut",
+    "wortart": "Adjektiv",
+    "formen": [
+      "besser",
+      "am besten"
+    ]
+  },
+  {
+    "wort": "hart",
+    "wortart": "Adjektiv",
+    "formen": [
+      "h?rter",
+      "am h?rtesten"
+    ]
+  },
+  {
+    "wort": "hoch",
+    "wortart": "Adjektiv",
+    "formen": [
+      "h?her",
+      "am h?chsten"
+    ]
+  },
+  {
+    "wort": "jung",
+    "wortart": "Adjektiv",
+    "formen": [
+      "j?nger",
+      "am j?ngsten"
+    ]
+  },
+  {
+    "wort": "kalt",
+    "wortart": "Adjektiv",
+    "formen": [
+      "k?lter",
+      "am k?ltesten"
+    ]
+  },
+  {
+    "wort": "klein",
+    "wortart": "Adjektiv",
+    "formen": [
+      "kleiner",
+      "am kleinsten"
+    ]
+  },
+  {
+    "wort": "lang",
+    "wortart": "Adjektiv",
+    "formen": [
+      "l?nger",
+      "am l?ngsten"
+    ]
+  },
+  {
+    "wort": "laut",
+    "wortart": "Adjektiv",
+    "formen": [
+      "lauter",
+      "am lautesten"
+    ]
+  },
+  {
+    "wort": "leicht",
+    "wortart": "Adjektiv",
+    "formen": [
+      "leichter",
+      "am leichtesten"
+    ]
+  },
+  {
+    "wort": "neu",
+    "wortart": "Adjektiv",
+    "formen": [
+      "neuer",
+      "am neusten"
+    ]
+  },
+  {
+    "wort": "rot",
+    "wortart": "Adjektiv",
+    "formen": [
+      "r?ter",
+      "am r?testen"
+    ]
   },
   {
     "wort": "die",
@@ -680,18 +920,6 @@
   },
   {
     "wort": "das",
-    "wortart": "Artikel"
-  },
-  {
-    "wort": "des",
-    "wortart": "Artikel"
-  },
-  {
-    "wort": "dem",
-    "wortart": "Artikel"
-  },
-  {
-    "wort": "den",
     "wortart": "Artikel"
   },
   {
@@ -703,11 +931,7 @@
     "wortart": "Artikel"
   },
   {
-    "wort": "einer",
-    "wortart": "Artikel"
-  },
-  {
-    "wort": "eines",
+    "wort": "einen",
     "wortart": "Artikel"
   },
   {
@@ -715,7 +939,11 @@
     "wortart": "Artikel"
   },
   {
-    "wort": "einen",
+    "wort": "einer",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "eines",
     "wortart": "Artikel"
   },
   {
@@ -727,6 +955,14 @@
     "wortart": "Artikel"
   },
   {
+    "wort": "keinen",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "keinem",
+    "wortart": "Artikel"
+  },
+  {
     "wort": "keiner",
     "wortart": "Artikel"
   },
@@ -735,31 +971,15 @@
     "wortart": "Artikel"
   },
   {
-    "wort": "keinem",
+    "wort": "den",
     "wortart": "Artikel"
   },
   {
-    "wort": "keinen",
+    "wort": "dem",
     "wortart": "Artikel"
   },
   {
-    "wort": "dieser",
-    "wortart": "Artikel"
-  },
-  {
-    "wort": "diese",
-    "wortart": "Artikel"
-  },
-  {
-    "wort": "dieses",
-    "wortart": "Artikel"
-  },
-  {
-    "wort": "diesem",
-    "wortart": "Artikel"
-  },
-  {
-    "wort": "diesen",
+    "wort": "des",
     "wortart": "Artikel"
   },
   {
@@ -773,5 +993,525 @@
   {
     "wort": "jenes",
     "wortart": "Artikel"
+  },
+  {
+    "wort": "welcher",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "welche",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "welches",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "manch",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "solch",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "ich",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "du",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "er",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "sie",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "es",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "wir",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "ihr",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "mich",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "dich",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "ihn",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "uns",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "euch",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "mir",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "dir",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "ihm",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "ihnen",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "dein",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "sein",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "ihr",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "unser",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "euer",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "wer",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "was",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "jemand",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "niemand",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "eins",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "drei",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "vier",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "f?nf",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "sechs",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "sieben",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "acht",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "neun",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "zehn",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "elf",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "zw?lf",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "dreizehn",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "zwanzig",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "drei?ig",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "vierzig",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "f?nfzig",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "hundert",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "tausend",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "erste",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "zweite",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "dritte",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "vierte",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "einmal",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "zweimal",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "beide",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "heute",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "morgen",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "hier",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "da",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "dort",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "jetzt",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "immer",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "nie",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "oft",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "selten",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "vielleicht",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "wahrscheinlich",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "leider",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "gern",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "sicher",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "wirklich",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "nat?rlich",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "links",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "rechts",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "oben",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "unten",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "innen",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "au?en",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "bald",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "damals",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "aber",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "als",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "bevor",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "bis",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "da",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "damit",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "dass",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "denn",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "obwohl",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "oder",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "seit",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "sobald",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "sondern",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "sowie",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "w?hrend",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "weil",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "wenn",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "wie",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "wo",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "wohingegen",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "zumal",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "ob",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "entweder",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "weder",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "noch",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "ah",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "aha",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "au",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "aua",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "autsch",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "?tsch",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "b?h",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "bravo",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "doch",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "hm",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "hoppla",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "huch",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "hurra",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "igitt",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "ja",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "naja",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "nein",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "oh",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "oho",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "pfui",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "psst",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "so",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "tja",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "wow",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "oje",
+    "wortart": "Interjektion"
   }
 ]

@@ -17,6 +17,7 @@ import javax.swing.InputMap;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
+import javax.swing.UIManager;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SwingSpielView;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fallDerWoerter.FallDerWoerterModel.Feedback;
@@ -87,7 +88,7 @@ public class FallDerWoerterView extends SwingSpielView<FallDerWoerterController,
     private class GamePanel extends JPanel {
         
         public GamePanel() {
-            setBackground(javax.swing.UIManager.getColor("Panel.background"));
+            setBackground(UIManager.getColor("Panel.background"));
         }
 
         @Override
@@ -101,25 +102,43 @@ public class FallDerWoerterView extends SwingSpielView<FallDerWoerterController,
 
             int bucketHeight = 80;
             int bucketY = h - bucketHeight;
-            int bucketW = w / 4;
+            
+            int count = model.buckets.length;
+            int bucketW = w / count;
 
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < count; i++) {
                 Wortart type = model.buckets[i];
                 int x = i * bucketW;
                 
-                if (i % 2 == 0) g2.setColor(javax.swing.UIManager.getColor("Button.background"));
-                else g2.setColor(javax.swing.UIManager.getColor("Button.borderColor"));
+                // 1. Determine Bucket Background Color
+                Color bucketColor;
+                if (i % 2 == 0) {
+                    bucketColor = UIManager.getColor("Button.background");
+                } else {
+                    // Use a slightly different shade for alternating buckets
+                    // Instead of "borderColor", we darken or lighten the button background slightly
+                    // to ensure it looks good but distinct.
+                    Color btnBg = UIManager.getColor("Button.background");
+                    bucketColor = isDark(btnBg) ? btnBg.brighter() : btnBg.darker();
+                }
                 
+                // 2. Fill Bucket
+                g2.setColor(bucketColor);
                 g2.fillRect(x, bucketY, bucketW, bucketHeight);
                 
-                g2.setColor(Color.GRAY);
+                // 3. Draw Border
+                g2.setColor(UIManager.getColor("Component.borderColor")); // Better than Color.GRAY
                 g2.drawRect(x, bucketY, bucketW, bucketHeight);
                 
-                g2.setColor(javax.swing.UIManager.getColor("Label.foreground"));
-                g2.setFont(new Font("SansSerif", Font.BOLD, 14));
+                // 4. Calculate Text Color dynamically (FIX FOR READABILITY)
+                g2.setColor(getReadableTextColor(bucketColor));
+                
+                int fontSize = count > 5 ? 12 : 14; 
+                g2.setFont(new Font("SansSerif", Font.BOLD, fontSize));
                 drawCenteredString(g2, type.getName(), x + bucketW/2, bucketY + bucketHeight/2);
             }
 
+            // --- Draw Word ---
             double wordXRatio = model.getX() / 600.0;
             double wordYRatio = model.getY() / 400.0;
             
@@ -131,24 +150,44 @@ public class FallDerWoerterView extends SwingSpielView<FallDerWoerterController,
             FontMetrics fm = g2.getFontMetrics();
             int txtW = fm.stringWidth(wordText);
             
-            g2.setColor(javax.swing.UIManager.getColor("Component.accentColor"));
+            // Draw Word Bubble
+            g2.setColor(UIManager.getColor("Component.accentColor"));
             g2.fillRoundRect(screenX - txtW/2 - 10, screenY - 25, txtW + 20, 40, 20, 20);
             
-            g2.setColor(Color.WHITE);
+            // Draw Word Text (White text on Accent color is usually safe in FlatLaf)
+            g2.setColor(Color.WHITE); 
             g2.drawString(wordText, screenX - txtW/2, screenY);
 
-            g2.setColor(javax.swing.UIManager.getColor("Label.foreground"));
+            // --- Draw HUD ---
+            g2.setColor(UIManager.getColor("Label.foreground"));
             g2.setFont(new Font("SansSerif", Font.PLAIN, 18));
             g2.drawString("Streak: " + model.getStreak(), 20, 30);
             
             Feedback feedback = model.getFeedback();
-            if (!feedback.message().isEmpty()) {
+            if (feedback != null && !feedback.message().isEmpty()) {
                 g2.setColor(feedback.type() == FeedbackType.PRAISE ? new Color(0, 150, 0) : Color.RED);
-                
                 drawCenteredString(g2, feedback.message(), w/2, 50);
             }
         }
         
+        /**
+         * Calculates whether black or white text is more readable on the given background.
+         */
+        private Color getReadableTextColor(Color background) {
+            // Calculate luminance (perceived brightness)
+            double luminance = (0.299 * background.getRed() + 
+                                0.587 * background.getGreen() + 
+                                0.114 * background.getBlue()) / 255;
+
+            // If bright > 0.5, use Black text. If dark < 0.5, use White text.
+            return luminance > 0.5 ? Color.BLACK : Color.WHITE;
+        }
+
+        private boolean isDark(Color c) {
+            double luminance = (0.299 * c.getRed() + 0.587 * c.getGreen() + 0.114 * c.getBlue()) / 255;
+            return luminance < 0.5;
+        }
+
         private void drawCenteredString(Graphics2D g2, String text, int x, int y) {
             FontMetrics fm = g2.getFontMetrics();
             int len = fm.stringWidth(text);

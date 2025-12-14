@@ -22,7 +22,7 @@ public class FallDerWoerterModel extends LinearSpielModel {
 
 	private boolean movingLeft = false;
     private boolean movingRight = false;
-    
+
     private Wort currentWord;
     private double currentX = 300;
     private double currentY = SPAWN_Y;
@@ -31,7 +31,10 @@ public class FallDerWoerterModel extends LinearSpielModel {
         Wortart.NOMEN, 
         Wortart.VERB, 
         Wortart.ADJEKTIV, 
-        Wortart.ARTIKEL
+        Wortart.ARTIKEL,
+		Wortart.PRONOMEN,
+		Wortart.KONJUNKTION,
+		Wortart.INTERJEKTION
     };
     
     private Feedback lastFeedback;
@@ -64,7 +67,7 @@ public class FallDerWoerterModel extends LinearSpielModel {
             case 1: multiplier = 0.6; break;
             case 2: multiplier = 1.5; break;
             case 3: multiplier = 2.0; break;
-			case 4: custom = true; baseSpeed = 0.005; baseLateralSpeed = 7.0; break;
+			case 4: custom = true; baseSpeed = 1; baseLateralSpeed = 7.0; break;
             default: multiplier = 1.0;
         }
 
@@ -94,8 +97,8 @@ public class FallDerWoerterModel extends LinearSpielModel {
         currentX = WIDTH / 2.0;
         currentY = SPAWN_Y;
         
-        speed = baseSpeed + Math.min(6.0, 2.0 + (streak * 0.2));
-		lateralSpeed = baseLateralSpeed + Math.min(6.0, 2.0 + (streak * 0.2)) / 2.0;
+        speed = baseSpeed + Math.min(6.0, (streak * 0.1));
+		lateralSpeed = baseLateralSpeed + Math.min(6.0, (streak * 0.1)) / 2.0;
     }
 
     private boolean isValidForBuckets(Wort w) {
@@ -136,18 +139,20 @@ public class FallDerWoerterModel extends LinearSpielModel {
     private void checkBucketCollision() {
         gesamtAnzahl++;
         
-        int bucketWidth = WIDTH / 4;
+        int count = buckets.length;
+        int bucketWidth = WIDTH / count;
+        
         int bucketIndex = (int) (currentX / bucketWidth);
         
         if (bucketIndex < 0) bucketIndex = 0;
-        if (bucketIndex >= 4) bucketIndex = 3;
+        if (bucketIndex >= count) bucketIndex = count - 1;
 
         Wortart hitCategory = buckets[bucketIndex];
 
         if (currentWord.wortart() == hitCategory) {
             streak++;
-			if(streak > highestStreak)
-				highestStreak = streak;
+            if(streak > highestStreak)
+                highestStreak = streak;
             lastFeedback = getRandomPraise();
         } else {
             streak = 0;

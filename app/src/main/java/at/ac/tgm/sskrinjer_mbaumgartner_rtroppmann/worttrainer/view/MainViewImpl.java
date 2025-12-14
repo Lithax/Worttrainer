@@ -32,6 +32,7 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -65,6 +66,7 @@ public class MainViewImpl extends JFrame implements MainView {
 		super("SBT Worttrainer - Skrinjer::Baumgartner::Troppmann");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(600, 500);
+		setMinimumSize(new Dimension(600, 550));
 		try {
 			setIconImage(ImageIO.read(this.getClass().getResourceAsStream("/icons/icon.png")));
 		} catch (IOException e) {
@@ -122,7 +124,7 @@ public class MainViewImpl extends JFrame implements MainView {
 		gamePane.setLayout(new BorderLayout());
 		gamePane.add(headerWrapper, BorderLayout.NORTH);
 
-		gameContentPane = new JPanel();
+		gameContentPane = new JPanel(new BorderLayout());
 		gamePane.add(gameContentPane, BorderLayout.CENTER);
 
 		tabbedPane = new JTabbedPane();
@@ -138,6 +140,7 @@ public class MainViewImpl extends JFrame implements MainView {
 
 		setVisible(true);
 		requestFocus();
+		pack();
 	}
 
 	public void setController(MainController controller) {
@@ -167,7 +170,7 @@ public class MainViewImpl extends JFrame implements MainView {
 	 * @param spielEngineView
 	 */
 	public void setSpiel(Spiel spiel){
-		gamePane.add((Container)spiel.newSpielEngineView().getAsObject(), BorderLayout.CENTER);
+		gameContentPane.add((Container)spiel.newSpielEngineView().getAsObject(), BorderLayout.CENTER);
 		gameTitleLabel.setText(spiel.getName());
 		setContentPane(gamePane);
 		SwingUtilities.updateComponentTreeUI(gamePane);
