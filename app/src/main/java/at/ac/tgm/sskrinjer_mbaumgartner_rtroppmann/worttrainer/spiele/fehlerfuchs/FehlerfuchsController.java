@@ -21,7 +21,6 @@ public class FehlerfuchsController extends SpielController<FehlerfuchsModel, Feh
 
 	@Override
 	public void spielStarten() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'spielStarten'");
+		
 	}
 }//end FehlerfuchsController

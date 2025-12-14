@@ -1,6 +1,7 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.controller.MainController;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
 
 /**
  * @author Benutzbiber
@@ -29,7 +30,7 @@ public interface MainView {
 	 * 
 	 * @param spielEngineView
 	 */
-	public void setSpiel(SpielEngineView spielEngineView);
+	public void setSpiel(Spiel spiel);
 
 	/**
 	 * 

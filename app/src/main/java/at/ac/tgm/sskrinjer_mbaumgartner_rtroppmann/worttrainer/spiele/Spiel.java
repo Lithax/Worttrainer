@@ -18,6 +18,8 @@ public interface Spiel {
 
 	public String getName();
 
+	void setSpielListener(SpielListener l);
+
 	public SpielEngineView newSpielEngineView();
 
 	public void spielBeenden();

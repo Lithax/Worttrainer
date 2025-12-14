@@ -29,5 +29,5 @@ public abstract class SpielModel {
 
 	public abstract boolean hasNewRound();
 
-	public abstract void spielStarten();
+	public abstract void spielStarten(SpielListener l);
 }//end SpielModel

@@ -30,6 +30,19 @@ public class Einstellungen {
 		this.theme = theme;
 	}
 
+	/**
+	 * START AT 1 BEING THE LOWEST!
+	 * @param schwierigkeit
+	 * @return
+	 */
+	public int numerifySchwierigkeit(String schwierigkeit) {
+		for(int i = 0; i < schwierigkeiten.length; i++) {
+			if(schwierigkeiten[i].equals(schwierigkeit))
+				return i+1;
+		}
+		return -1;
+	}
+
 	public String[] getSchwierigkeiten() {
 		return schwierigkeiten;
 	}

@@ -40,6 +40,9 @@ public class MainControllerImpl implements MainController {
 		this.mainModel = mainModel;
 		this.mainView = mainView;
 
+		for(Spiel s : spiele)
+			s.setSpielListener(this);
+
 		Thread.setDefaultUncaughtExceptionHandler((t, e) -> handleException(e));
 		Propagate.exceptHandler = this::handleException;
 
@@ -125,7 +128,7 @@ public class MainControllerImpl implements MainController {
 				propagate(() -> mainModel.getUserData().save());
 				mainModel.setGameState(GameState.GAME_RUNNING);
 				spiel.spielStarten();
-				mainView.setSpiel(spiel.newSpielEngineView());
+				mainView.setSpiel(spiel);
 				return;
 			}
 		mainView.showMessage("Lade Fehler", "Spiel konnte nicht gefunden werden", MessageType.ERROR);
@@ -134,5 +137,10 @@ public class MainControllerImpl implements MainController {
 	private void handleException(Throwable e) {
 		mainView.showMessage("Internal Error", e.getMessage(), MessageType.ERROR);
 		e.printStackTrace();
+	}
+
+	@Override
+	public Einstellungen getEinstellungen() {
+		return propagate(() -> mainModel.getEinstellungen());
 	}
 }//end MainControllerImpl

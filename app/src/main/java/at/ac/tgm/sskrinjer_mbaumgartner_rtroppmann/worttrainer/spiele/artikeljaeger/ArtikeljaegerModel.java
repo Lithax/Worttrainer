@@ -1,6 +1,7 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.artikeljaeger;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.LinearSpielModel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielListener;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 
 /**
@@ -32,7 +33,9 @@ public class ArtikeljaegerModel extends LinearSpielModel {
 		return false;
 	}
 
-	public void spielStarten(){
+	
+
+	public void spielStarten(SpielListener l){
 
 	}
 }//end Artikelj�gerModel

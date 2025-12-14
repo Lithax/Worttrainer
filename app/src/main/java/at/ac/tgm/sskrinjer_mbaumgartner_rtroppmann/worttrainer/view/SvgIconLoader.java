@@ -14,6 +14,7 @@ public class SvgIconLoader { // chat chat chatti wurde hier verwendet (kb auf 50
     public static final Path homeSVGPath = svgPath.resolve("home.svg");
     public static final Path settingsSVGPath = svgPath.resolve("settings.svg");
     public static final Path spieleSVGPath = svgPath.resolve("spiele.svg");
+    public static final Path exitSVGPath = svgPath.resolve("exit.svg");
 
     
 }

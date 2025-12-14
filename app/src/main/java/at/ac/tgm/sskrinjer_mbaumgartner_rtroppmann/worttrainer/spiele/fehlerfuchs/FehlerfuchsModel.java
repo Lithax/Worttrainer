@@ -1,6 +1,7 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fehlerfuchs;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.LinearSpielModel;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielListener;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 
 /**
@@ -30,7 +31,7 @@ public class FehlerfuchsModel extends LinearSpielModel {
 		return false;
 	}
 
-	public void spielStarten(){
+	public void spielStarten(SpielListener l){
 
 	}
 }//end FehlerfuchsModel

@@ -16,8 +16,9 @@
     }
   },
   {
-    "wort": "die Katze",
+    "wort": "Katze",
     "wortart": "Nomen",
+    "artikel": "die",
     "singular": {
       "2": "der Katze",
       "3": "der Katze",
@@ -32,6 +33,7 @@
   },
   {
     "wort": "Krokodil",
+    "artikel": "das",
     "wortart": "Nomen",
     "singular": {
       "1": "das Krokodil",

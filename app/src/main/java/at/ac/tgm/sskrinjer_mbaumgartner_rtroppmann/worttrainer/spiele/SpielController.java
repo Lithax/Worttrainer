@@ -18,6 +18,7 @@ public abstract class SpielController<
 
 	protected M model;
 	protected V view;
+	protected SpielListener spielListener;
 
 	public String getDescription(){
 		return model.getSpielDescription();
@@ -37,6 +38,11 @@ public abstract class SpielController<
 
 	public void spielBeenden(){
 		view.showStatistik(model.getStatistik());
+	}
+
+	@Override
+	public void setSpielListener(SpielListener l) {
+		this.spielListener = l;
 	}
 
 	public abstract void spielStarten();

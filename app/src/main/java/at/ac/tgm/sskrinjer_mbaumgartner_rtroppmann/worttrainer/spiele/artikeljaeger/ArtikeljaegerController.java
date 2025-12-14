@@ -20,6 +20,6 @@ public class ArtikeljaegerController extends SpielController<ArtikeljaegerModel,
 	}
 
 	public void spielStarten(){
-
+		
 	}
 }//end ArtikeljaegerController

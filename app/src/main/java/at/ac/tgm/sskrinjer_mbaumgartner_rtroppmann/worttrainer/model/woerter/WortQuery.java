@@ -47,7 +47,7 @@ public class WortQuery {
 
     public WortQuery nurWortarten(Wortart... arten) {
         Set<Wortart> erlaubte = Set.of(arten); // Set.of ist performant (ab Java 9)
-        this.filter = this.filter.and(w -> erlaubte.contains(w.getWortart()));
+        this.filter = this.filter.and(w -> erlaubte.contains(w.wortart()));
         return this;
     }
 
