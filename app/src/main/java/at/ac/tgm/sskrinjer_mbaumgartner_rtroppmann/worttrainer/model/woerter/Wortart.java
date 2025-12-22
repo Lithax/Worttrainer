@@ -24,3 +24,4 @@ public enum Wortart {
         return displayName;
     }
 }
+
