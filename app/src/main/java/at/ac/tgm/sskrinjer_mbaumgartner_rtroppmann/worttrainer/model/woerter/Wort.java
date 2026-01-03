@@ -63,7 +63,7 @@ public record Wort(
 
     public String displayWord() {
         return switch (wortart) {
-            case NOMEN -> artikel() + " " + (wort.substring(0, 1).toUpperCase() + wort.substring(1).toLowerCase());
+            case NOMEN -> (wort.substring(0, 1).toUpperCase() + wort.substring(1).toLowerCase());
             default -> wort.toLowerCase();
         };
     }

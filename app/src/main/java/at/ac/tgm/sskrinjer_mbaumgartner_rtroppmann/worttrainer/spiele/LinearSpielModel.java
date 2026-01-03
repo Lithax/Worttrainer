@@ -16,8 +16,6 @@ public abstract class LinearSpielModel extends SpielModel {
 	protected int highestStreak = 0;
 	protected int streak = 0;
 
-	protected WortQuery linearQuery = wortListe.query().mitLaenge(1, 1);
-
     @Override
 	public Statistik getStatistik() 
 	{

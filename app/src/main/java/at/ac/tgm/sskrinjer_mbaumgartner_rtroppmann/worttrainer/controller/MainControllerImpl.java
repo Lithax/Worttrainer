@@ -71,6 +71,8 @@ public class MainControllerImpl implements MainController {
 		}
 
 		updateEinstellungsView();
+
+		propagate(() -> mainModel.loadWortliste());
 	}
 
 	public void onSpielBeenden(){

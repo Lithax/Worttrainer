@@ -24,4 +24,6 @@ public interface MainModel {
 	public Wortliste getWortliste();
 
 	public void setTimeListener(TimeListener controller);
+
+	void loadWortliste() throws IOException;
 }

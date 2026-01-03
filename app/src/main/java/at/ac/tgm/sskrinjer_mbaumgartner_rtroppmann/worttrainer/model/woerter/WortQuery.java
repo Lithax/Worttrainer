@@ -1,15 +1,13 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter;
 
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wort;
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.WortTag;
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wortart;
-
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class WortQuery {
 
-    private final Wortliste quelle;
+    private Wortliste quelle;
 
     // Filter-Sets
     private Set<Wortart> erlaubteWortarten = new HashSet<>();
@@ -20,6 +18,8 @@ public class WortQuery {
     private int maxLaenge = Integer.MAX_VALUE;
     private int minKomplexitaet = 0;
     private int maxKomplexitaet = 10;
+
+    private int maxResults = 100;
 
     private boolean nurBasis = false;
 
@@ -33,34 +33,17 @@ public class WortQuery {
         this.quelle = quelle;
     }
 
-    // =================================================================
-    // 1. Nomen Shortcuts
-    // (Aktiviert NOMEN, lässt andere Wortarten aber unberührt!)
-    // =================================================================
-
-    /**
-     * Konfiguriert, dass Nomen zwingend im Plural stehen müssen.
-     * <br><b>Wichtig:</b> Fügt NOMEN zu den erlaubten Wortarten hinzu.
-     * Andere erlaubte Wortarten (z.B. Verben) bleiben davon unberührt und werden weiterhin geladen.
-     */
+    // --- Shortcuts (unchanged semantics) ---
     public WortQuery nomenImPlural() {
         mitWortart(Wortart.NOMEN);
         return mussHaben(Wortart.NOMEN, WortTag.PLURAL);
     }
 
-    /**
-     * Konfiguriert, dass Nomen zwingend im Singular stehen müssen.
-     * <br><b>Wichtig:</b> Fügt NOMEN zu den erlaubten Wortarten hinzu.
-     */
     public WortQuery nomenImSingular() {
         mitWortart(Wortart.NOMEN);
         return mussHaben(Wortart.NOMEN, WortTag.SINGULAR);
     }
 
-    /**
-     * Schränkt Nomen auf bestimmte Fälle ein.
-     * Bsp: nomenImFall(WortTag.NOMINATIV) -> Nur 1. Fall.
-     */
     public WortQuery nomenImFall(WortTag... faelle) {
         mitWortart(Wortart.NOMEN);
         if (faelle.length == 1) {
@@ -70,94 +53,47 @@ public class WortQuery {
         }
     }
 
-    // =================================================================
-    // 2. Verb Shortcuts
-    // (Aktiviert VERB, lässt andere Wortarten unberührt!)
-    // =================================================================
-
-    /**
-     * Erlaubt Verben nur im Präsens (Gegenwart).
-     * Bsp: "geht", "läuft".
-     */
     public WortQuery verbImPraesens() {
         mitWortart(Wortart.VERB);
         return mussHaben(Wortart.VERB, WortTag.VERB_PRAESENS);
     }
 
-    /**
-     * Erlaubt Verben nur in der Vergangenheit (Präteritum).
-     * Bsp: "ging", "lief".
-     */
     public WortQuery verbInVergangenheit() {
         mitWortart(Wortart.VERB);
         return mussHaben(Wortart.VERB, WortTag.VERB_VERGANGENHEIT);
     }
 
-    /**
-     * Erlaubt Verben nur als Partizip (oft für Perfekt genutzt).
-     * Bsp: "gegangen", "gelaufen".
-     */
     public WortQuery verbInPartizip() {
         mitWortart(Wortart.VERB);
         return mussHaben(Wortart.VERB, WortTag.VERB_PARTIZIP);
     }
 
-    // =================================================================
-    // 3. Adjektiv Shortcuts
-    // (Aktiviert ADJEKTIV, lässt andere Wortarten unberührt!)
-    // =================================================================
-
-    /**
-     * Erlaubt Adjektive nur in der Grundform (Positiv).
-     * Bsp: "schön", "schnell".
-     */
     public WortQuery adjektivPositiv() {
         mitWortart(Wortart.ADJEKTIV);
-        // Da Basis-Adjektive meist keine speziellen Tags haben außer BASIS (oder gar keinen Tag im JSON),
-        // filtern wir hier am besten auf "Kein Komparativ und kein Superlativ".
-        // Oder explizit auf BASIS, wenn dein Importer das setzt.
         return mussHaben(Wortart.ADJEKTIV, WortTag.BASIS);
     }
 
-    /**
-     * Erlaubt Adjektive nur im Komparativ (1. Steigerung).
-     * Bsp: "schöner", "schneller".
-     */
     public WortQuery adjektivKomparativ() {
         mitWortart(Wortart.ADJEKTIV);
         return mussHaben(Wortart.ADJEKTIV, WortTag.KOMPARATIV);
     }
 
-    /**
-     * Erlaubt Adjektive nur im Superlativ (höchste Steigerung).
-     * Bsp: "am schönsten", "am schnellsten".
-     */
     public WortQuery adjektivSuperlativ() {
         mitWortart(Wortart.ADJEKTIV);
         return mussHaben(Wortart.ADJEKTIV, WortTag.SUPERLATIV);
     }
 
-    /**
-     * Erlaubt Adjektive in jeder gesteigerten Form (Komparativ ODER Superlativ).
-     */
     public WortQuery adjektivGesteigert() {
         mitWortart(Wortart.ADJEKTIV);
         return einerVon(Wortart.ADJEKTIV, WortTag.KOMPARATIV, WortTag.SUPERLATIV);
     }
 
-    // =================================================================
-    // 4. Basis Konfiguration & Ausführung
-    // =================================================================
-
+    // --- Config ---
     public WortQuery nurBasis() {
         this.nurBasis = true;
         return this;
     }
 
-    /**
-     * Fügt Wortarten zur Liste der erlaubten Arten hinzu.
-     * Dies ist ADDITIV. Bereits erlaubte Arten bleiben bestehen.
-     */
     public WortQuery mitWortart(Wortart... arten) {
         Collections.addAll(erlaubteWortarten, arten);
         return this;
@@ -180,12 +116,16 @@ public class WortQuery {
         return this;
     }
 
+    public WortQuery mitMaxResults(int max) {
+        this.maxResults = max;
+        return this;
+    }
+
     public WortQuery check(Predicate<Wort> predicate) {
         this.customPredicates.add(predicate);
         return this;
     }
 
-    // Private Helper für die Shortcuts
     private WortQuery mussHaben(Wortart art, WortTag... tags) {
         pflichtRegeln.computeIfAbsent(art, k -> new HashSet<>()).addAll(Arrays.asList(tags));
         return this;
@@ -196,20 +136,63 @@ public class WortQuery {
         return this;
     }
 
-    public Wort[] excecute () {
+    // --- CORE: filteredStream (no premature limit) ---
+    public Stream<Wort> filteredStream() {
         return Arrays.stream(quelle.getAlleWoerter())
                 .filter(w -> !nurBasis || w.tags().contains(WortTag.BASIS))
                 .filter(this::checkWortart)
                 .filter(w -> w.laenge() >= minLaenge && w.laenge() <= maxLaenge)
                 .filter(w -> w.komplexitaet() >= minKomplexitaet && w.komplexitaet() <= maxKomplexitaet)
                 .filter(this::checkTags)
-                .filter(w -> customPredicates.stream().allMatch(p -> p.test(w)))
+                .filter(w -> customPredicates.stream().allMatch(p -> p.test(w)));
+    }
+
+    // array() applies the limit when materializing
+    public Wort[] array() {
+        return filteredStream()
+                .limit(maxResults)
                 .toArray(Wort[]::new);
     }
 
+    // Balanced random across Wortart buckets
+    public Wort[] randomBalancedArray() {
+        // Collect full filtered pool and group by wortart
+        Map<Wortart, List<Wort>> grouped = filteredStream()
+                .collect(Collectors.groupingBy(Wort::wortart, () -> new EnumMap<>(Wortart.class), Collectors.toList()));
+
+        // Ensure all expected buckets are present (so round-robin order is stable).
+        Set<Wortart> expected = erlaubteWortarten.isEmpty()
+                ? EnumSet.allOf(Wortart.class)
+                : EnumSet.copyOf(erlaubteWortarten);
+
+        for (Wortart a : expected) {
+            grouped.putIfAbsent(a, new ArrayList<>());
+        }
+
+        // Shuffle each group with a Random instance
+        Random rnd = new Random(System.nanoTime());
+        grouped.values().forEach(list -> Collections.shuffle(list, rnd));
+
+        // Round-robin pick from each group until we hit maxResults or pool exhausted
+        List<Wort> result = new ArrayList<>(Math.min(maxResults, 64));
+        boolean added;
+        do {
+            added = false;
+            for (Wortart a : expected) { // stable ordering across runs
+                List<Wort> list = grouped.get(a);
+                if (list != null && !list.isEmpty() && result.size() < maxResults) {
+                    result.add(list.remove(0));
+                    added = true;
+                }
+            }
+        } while (added && result.size() < maxResults);
+
+        return result.toArray(new Wort[0]);
+    }
+
+    // --- helper checks ---
     private boolean checkWortart(Wort w) {
         if (verboteneWortarten.contains(w.wortart())) return false;
-        // Wenn allowlist leer ist, ist ALLES erlaubt. Sonst nur was drin steht.
         return erlaubteWortarten.isEmpty() || erlaubteWortarten.contains(w.wortart());
     }
 
@@ -226,5 +209,13 @@ public class WortQuery {
             if (Collections.disjoint(currentTags, optionen)) return false;
         }
         return true;
+    }
+
+    public void setQuelle(Wortliste quelle) {
+        this.quelle = quelle;
+    }
+
+    public Wortliste getQuelle() {
+        return quelle;
     }
 }

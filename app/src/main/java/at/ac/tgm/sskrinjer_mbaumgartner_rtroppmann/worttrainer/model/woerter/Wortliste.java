@@ -29,6 +29,8 @@ public class Wortliste {
         if (instance == null) {
             instance = new Wortliste();
         }
+        System.out.println("DIE SUPER COOLE WORTLISTE::::::::::::::");
+        System.out.println(instance.woerter);
         return instance;
     }
 
@@ -80,4 +82,4 @@ public class Wortliste {
     public List<String> getWarnungen() {
         return Collections.unmodifiableList(importWarnungen);
     }
-}
+}   

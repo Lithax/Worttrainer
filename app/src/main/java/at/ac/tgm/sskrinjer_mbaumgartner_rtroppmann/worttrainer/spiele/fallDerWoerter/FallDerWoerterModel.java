@@ -34,8 +34,6 @@ public class FallDerWoerterModel extends LinearSpielModel {
 		Wortart.INTERJEKTION
     };
 
-    private final WortQuery query = wortListe.query().mitWortart(buckets).mitLaenge(1, 1);
-
     private Feedback lastFeedback;
     private boolean gameRunning = false;
     private Random rand = new Random();
@@ -43,6 +41,13 @@ public class FallDerWoerterModel extends LinearSpielModel {
     @Override
     public void spielStarten(SpielListener l) {
 		super.spielStarten(l);
+
+        query.mitWortart(buckets)
+             .mitLaenge(1, 16)
+             .adjektivPositiv()
+             .verbImPraesens()
+             .nomenImSingular();
+
         this.gameRunning = true;
 
 		this.movingLeft = false;
@@ -87,7 +92,14 @@ public class FallDerWoerterModel extends LinearSpielModel {
     }
 
     private void spawnNextWord() {
-        currentWord = query.excecute()[1];
+        Wort[] candidates = query.randomBalancedArray();
+        
+        if (candidates.length > 0) {
+            currentWord = candidates[rand.nextInt(candidates.length)];
+        } else {
+            System.err.println("Warnung: Keine Wörter gefunden für die aktuellen Filter!");
+            return;
+        }
         
         currentX = WIDTH / 2.0;
         currentY = SPAWN_Y;

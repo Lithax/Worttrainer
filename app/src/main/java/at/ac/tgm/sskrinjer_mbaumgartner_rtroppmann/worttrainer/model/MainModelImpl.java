@@ -19,6 +19,8 @@ public class MainModelImpl implements MainModel {
 	private Einstellungen einstellungen;
 	private UserData userData;
 
+	private String[] wortlistenPaths = {".import/input.json"};
+
 	/**
 	 * 
 	 * @param controller
@@ -53,6 +55,9 @@ public class MainModelImpl implements MainModel {
 		return Tip.getTipOfTheDay();
 	}
 
+	public void loadWortliste() throws IOException {
+		wortliste.ladeAusDateien(wortlistenPaths);
+	}
 
 	@Override
 	public void setGameState(GameState g) {

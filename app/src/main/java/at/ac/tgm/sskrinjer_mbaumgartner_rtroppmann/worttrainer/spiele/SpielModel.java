@@ -14,7 +14,7 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wor
  * @created 08-Dez-2025 15:09:39
  */
 public abstract class SpielModel {
-    protected Wortliste wortListe;
+    protected WortQuery query;
 	protected Einstellungen einstellungen;
 
 	public abstract String getSpielDescription();
@@ -32,7 +32,6 @@ public abstract class SpielModel {
 
 	public void spielStarten(SpielListener l) {
 		einstellungen = l.getEinstellungen();
-        wortListe = l.getWortliste();
-        
+        query = l.getWortliste().query();
 	}
 }//end SpielModel
