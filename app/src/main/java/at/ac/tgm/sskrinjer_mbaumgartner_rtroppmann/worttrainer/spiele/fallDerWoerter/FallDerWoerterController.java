@@ -2,6 +2,7 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fallDerWo
 
 import javax.swing.Timer;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielController;
+
 import java.awt.event.ActionEvent;
 
 public class FallDerWoerterController extends SpielController<FallDerWoerterModel, FallDerWoerterController, FallDerWoerterView> {

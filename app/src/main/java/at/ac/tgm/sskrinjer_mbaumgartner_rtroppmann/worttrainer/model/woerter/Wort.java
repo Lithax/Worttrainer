@@ -58,6 +58,13 @@ public record Wort(
         } else if(tags().contains(WortTag.AKKUSATIV)) {
             return 4;
         }
-        throw new  UnavailableWortOperationException("Kein Fall für:" + wort);
+        throw new UnavailableWortOperationException("Kein Fall für:" + wort);
+    }
+
+    public String displayWord() {
+        return switch (wortart) {
+            case NOMEN -> artikel() + " " + (wort.substring(0, 1).toUpperCase() + wort.substring(1).toLowerCase());
+            default -> wort.toLowerCase();
+        };
     }
 }

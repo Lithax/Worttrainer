@@ -1,14 +1,14 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fallDerWoerter;
 
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wort;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wortart;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wortliste;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.LinearSpielModel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielListener;
 
-import java.awt.Rectangle;
 import java.util.Random;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.*;
+
 
 public class FallDerWoerterModel extends LinearSpielModel {
 
@@ -27,7 +27,7 @@ public class FallDerWoerterModel extends LinearSpielModel {
     private double currentX = 300;
     private double currentY = SPAWN_Y;
     
-    public final Wortart[] buckets = {
+    public static final Wortart[] buckets = {
         Wortart.NOMEN, 
         Wortart.VERB, 
         Wortart.ADJEKTIV, 
@@ -36,13 +36,16 @@ public class FallDerWoerterModel extends LinearSpielModel {
 		Wortart.KONJUNKTION,
 		Wortart.INTERJEKTION
     };
-    
+    private static final WortQuery wq = Wortliste.getInstance().query().mitWortart(buckets).mitLaenge(2, 16);
+
+
     private Feedback lastFeedback;
     private boolean gameRunning = false;
     private Random rand = new Random();
 
     public FallDerWoerterModel() {
-        this.wortliste = Wortliste.loadWortliste();
+        super(wq);
+        this.wortliste = Wortliste.getInstance();
     }
 
     @Override
@@ -86,14 +89,8 @@ public class FallDerWoerterModel extends LinearSpielModel {
     }
 
     private void spawnNextWord() {
-        currentWord = wortliste.getBalancedRandomWort();
 
-        int attempts = 0;
-        while (!isValidForBuckets(currentWord) && attempts < 10) {
-            currentWord = wortliste.getBalancedRandomWort();
-            attempts++;
-        }
-        
+        nextWort();
         currentX = WIDTH / 2.0;
         currentY = SPAWN_Y;
         
@@ -101,13 +98,6 @@ public class FallDerWoerterModel extends LinearSpielModel {
 		lateralSpeed = baseLateralSpeed + Math.min(6.0, (streak * 0.1)) / 2.0;
     }
 
-    private boolean isValidForBuckets(Wort w) {
-        if (w == null) return false;
-        for (Wortart wa : buckets) {
-            if (wa == w.wortart()) return true;
-        }
-        return false;
-    }
 
     public void update() {
         if (!gameRunning || currentWord == null) return;
@@ -179,7 +169,7 @@ public class FallDerWoerterModel extends LinearSpielModel {
 
     public double getX() { return currentX; }
     public double getY() { return currentY; }
-    public String getWordText() { return currentWord != null ? currentWord.getDisplayWord() : ""; }
+    public String getWordText() { return currentWord != null ? currentWord.displayWord() : ""; }
     public Feedback getFeedback() { return lastFeedback; }
     public int getStreak() { return streak; }
 
