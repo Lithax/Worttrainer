@@ -67,11 +67,17 @@ public class FallDerWoerterModel extends LinearSpielModel {
 
 		double multiplier = 0.0;
         switch (einstellungen.numerifySchwierigkeit(einstellungen.getSchwierigkeit())) {
-            case 1: multiplier = 0.6; break;
-            case 2: multiplier = 1.5; break;
-            case 3: multiplier = 2.0; break;
-			case 4: custom = true; baseSpeed = 1; baseLateralSpeed = 7.0; break;
-            default: multiplier = 1.0;
+            /*
+             *@Marius ich hab dein fuckass switch mit 3 inlined anweisungen und breaks zu einem advanced switch gemacht
+             */
+            case 1 -> multiplier = 0.6;
+            case 2 -> multiplier = 1.5;
+            case 3 -> multiplier = 2.0;
+			case 4 -> {
+                custom = true;
+                baseSpeed = 1; baseLateralSpeed = 7.0;
+            }
+            default -> multiplier = 1.0;
         }
 
 		if(!custom) {

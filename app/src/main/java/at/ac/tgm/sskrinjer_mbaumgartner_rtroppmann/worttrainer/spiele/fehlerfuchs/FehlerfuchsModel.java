@@ -1,5 +1,7 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fehlerfuchs;
 
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.WortQuery;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wortliste;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.LinearSpielModel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielListener;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
@@ -12,11 +14,12 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 public class FehlerfuchsModel extends LinearSpielModel {
 
 	public FehlerfuchsModel(){
-
+        super(Wortliste.getInstance().query()); //#todo
 	}
 
 	public String getSpielDescription(){
-		return "Stelle deine Rechtschreibkenntnisse auf die Probe! In Fehlerfuchs bekommst du Wörter oder Sätze angezeigt, in denen sich kleine Rechtschreibfehler eingeschlichen haben. Deine Aufgabe ist es, diese Fehler zu erkennen und zu korrigieren – zum Beispiel „Doschen“ in „Duschen“.";
+        System.out.println("biber"); //#todo remove
+        return "Stelle deine Rechtschreibkenntnisse auf die Probe! In Fehlerfuchs bekommst du Wörter oder Sätze angezeigt, in denen sich kleine Rechtschreibfehler eingeschlichen haben. Deine Aufgabe ist es, diese Fehler zu erkennen und zu korrigieren – zum Beispiel „Doschen“ in „Duschen“.";
 	}
 
 	public String getSpielName(){
