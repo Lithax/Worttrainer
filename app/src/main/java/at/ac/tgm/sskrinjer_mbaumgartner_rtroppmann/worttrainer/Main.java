@@ -18,6 +18,10 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.MainViewImpl
  */
 public class Main {
 	public Main() {
+		 String currentDir = System.getProperty("user.dir");
+        
+        // Print it
+        System.out.println("Current working directory: " + currentDir);
 		SwingUtilities.invokeLater(() -> {
 			MainView mV = new MainViewImpl();
 			MainModel mM = new MainModelImpl();

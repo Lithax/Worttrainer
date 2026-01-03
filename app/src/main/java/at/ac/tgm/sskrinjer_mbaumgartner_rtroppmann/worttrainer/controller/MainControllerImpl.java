@@ -12,6 +12,7 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Einstellung
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.GameState;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.TimeListener;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wortliste;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util.Propagate;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.EinstellungenListener;
@@ -142,5 +143,10 @@ public class MainControllerImpl implements MainController {
 	@Override
 	public Einstellungen getEinstellungen() {
 		return propagate(() -> mainModel.getEinstellungen());
+	}
+
+	@Override
+	public Wortliste getWortliste() {
+		return mainModel.getWortliste();
 	}
 }//end MainControllerImpl

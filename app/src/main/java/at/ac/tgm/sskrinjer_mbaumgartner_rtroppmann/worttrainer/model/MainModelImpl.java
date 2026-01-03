@@ -27,6 +27,7 @@ public class MainModelImpl implements MainModel {
 	public MainModelImpl() {
 		timer = new TimeUpdateThread();
 		timer.start();
+		wortliste = Wortliste.getInstance();
 	}
 
 	@Override

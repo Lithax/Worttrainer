@@ -13,10 +13,6 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
  */
 public class ArtikeljaegerModel extends LinearSpielModel {
 
-	public ArtikeljaegerModel(){
-        super(Wortliste.getInstance().query()); //#todo
-	}
-
 	public String getSpielDescription(){
 		return "Teste dein Wissen über die richtigen Artikel! In Artikeljäger bekommst du ein Wort angezeigt und musst schnell den passenden Artikel auswählen – Der, Die oder Das – indem du auf die richtigen Buttons klickst.\n" + //
 						"\n" + //

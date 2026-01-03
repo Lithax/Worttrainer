@@ -1,8 +1,5 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fallDerWoerter;
 
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wort;
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wortart;
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wortliste;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.LinearSpielModel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielListener;
 
@@ -36,17 +33,12 @@ public class FallDerWoerterModel extends LinearSpielModel {
 		Wortart.KONJUNKTION,
 		Wortart.INTERJEKTION
     };
-    private static final WortQuery wq = Wortliste.getInstance().query().mitWortart(buckets).mitLaenge(2, 16);
 
+    private final WortQuery query = wortListe.query().mitWortart(buckets).mitLaenge(1, 1);
 
     private Feedback lastFeedback;
     private boolean gameRunning = false;
     private Random rand = new Random();
-
-    public FallDerWoerterModel() {
-        super(wq);
-        this.wortliste = Wortliste.getInstance();
-    }
 
     @Override
     public void spielStarten(SpielListener l) {
@@ -95,8 +87,8 @@ public class FallDerWoerterModel extends LinearSpielModel {
     }
 
     private void spawnNextWord() {
-
-        nextWort();
+        currentWord = query.excecute()[1];
+        
         currentX = WIDTH / 2.0;
         currentY = SPAWN_Y;
         

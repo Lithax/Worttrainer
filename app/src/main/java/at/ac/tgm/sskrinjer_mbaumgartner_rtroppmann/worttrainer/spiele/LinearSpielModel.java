@@ -2,6 +2,7 @@ package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.WortQuery;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wortliste;
 
 /**
  * @author mhbau
@@ -15,9 +16,7 @@ public abstract class LinearSpielModel extends SpielModel {
 	protected int highestStreak = 0;
 	protected int streak = 0;
 
-    public LinearSpielModel(WortQuery query) {
-        super(query);
-    }
+	protected WortQuery linearQuery = wortListe.query().mitLaenge(1, 1);
 
     @Override
 	public Statistik getStatistik() 
