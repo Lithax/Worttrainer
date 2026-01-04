@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     implementation 'com.google.guava:guava:33.4.0-jre'          // Upgraded from 32.x
-    implementation 'com.google.code.gson:gson:2.12.1'           // Upgraded/Fixed typo
+    implementation 'com.google.code.gson:gson:2.13.2'           // Upgraded/Fixed typo
 
     // UI - FlatLaf
     // IMPORTANT: These 3 versions MUST match exactly, or it crashes.
