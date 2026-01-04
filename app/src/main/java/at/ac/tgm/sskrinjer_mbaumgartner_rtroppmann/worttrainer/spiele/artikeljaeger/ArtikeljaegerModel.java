@@ -69,26 +69,26 @@ public class ArtikeljaegerModel extends LinearSpielModel {
     private void loadNomenKandidaten() {
         kandidaten.clear();
         // Prefer to use the same JSON source as Wortliste
-        if (!Files.exists(Wortliste.woerterPath)) {
-            // Fallback: still allow game to run with empty list
-            return;
-        }
-        try (BufferedReader reader = Files.newBufferedReader(Wortliste.woerterPath)) {
-            Gson gson = new Gson();
-            Type listType = new TypeToken<List<Wort>>() {}.getType();
-            List<Wort> list = gson.fromJson(reader, listType);
-            if (list == null) return;
-
-            for (Wort w : list) {
-                if (w == null) continue;
-                if (w.wortart() != Wortart.NOMEN) continue;
-                String art = normalizeArtikel(w.artikel());
-                if (art == null) continue;
-                if (isSupportedArtikel(art)) kandidaten.add(w);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //if (!Files.exists(Wortliste.woerterPath)) {
+        //    // Fallback: still allow game to run with empty list
+        //    return;
+        //}
+        //try (BufferedReader reader = Files.newBufferedReader(Wortliste.woerterPath)) {
+        //    Gson gson = new Gson();
+        //    Type listType = new TypeToken<List<Wort>>() {}.getType();
+        //    List<Wort> list = gson.fromJson(reader, listType);
+        //    if (list == null) return;
+//
+        //    for (Wort w : list) {
+        //        if (w == null) continue;
+        //        if (w.wortart() != Wortart.NOMEN) continue;
+        //        String art = normalizeArtikel(w.artikel());
+        //        if (art == null) continue;
+        //        if (isSupportedArtikel(art)) kandidaten.add(w);
+        //    }
+        //} catch (IOException e) {
+        //    e.printStackTrace();
+        //}
     }
 
     private boolean isSupportedArtikel(String artikel) {
