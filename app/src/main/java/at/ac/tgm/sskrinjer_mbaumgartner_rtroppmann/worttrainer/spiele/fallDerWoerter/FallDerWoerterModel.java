@@ -92,7 +92,7 @@ public class FallDerWoerterModel extends LinearSpielModel {
     }
 
     private void spawnNextWord() {
-        Wort[] candidates = query.randomBalancedArray();
+        Wort[] candidates = query.randomBalancedJArray();
         
         if (candidates.length > 0) {
             currentWord = candidates[rand.nextInt(candidates.length)];

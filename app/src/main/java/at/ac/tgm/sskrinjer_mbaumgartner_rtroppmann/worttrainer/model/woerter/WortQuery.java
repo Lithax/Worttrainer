@@ -155,7 +155,7 @@ public class WortQuery {
     }
 
     // Balanced random across Wortart buckets
-    public Wort[] randomBalancedArray() {
+    public ArrayList<Wort> randomBalancedArray() {
         // Collect full filtered pool and group by wortart
         Map<Wortart, List<Wort>> grouped = filteredStream()
                 .collect(Collectors.groupingBy(Wort::wortart, () -> new EnumMap<>(Wortart.class), Collectors.toList()));
@@ -174,7 +174,7 @@ public class WortQuery {
         grouped.values().forEach(list -> Collections.shuffle(list, rnd));
 
         // Round-robin pick from each group until we hit maxResults or pool exhausted
-        List<Wort> result = new ArrayList<>(Math.min(maxResults, 64));
+        ArrayList<Wort> result = new ArrayList<>(Math.min(maxResults, 64));
         boolean added;
         do {
             added = false;
@@ -187,7 +187,11 @@ public class WortQuery {
             }
         } while (added && result.size() < maxResults);
 
-        return result.toArray(new Wort[0]);
+        return result;
+    }
+
+    public Wort[] randomBalancedJArray() {
+        return randomBalancedArray().toArray(new Wort[0]);
     }
 
     // --- helper checks ---

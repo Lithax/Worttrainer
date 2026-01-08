@@ -107,7 +107,7 @@ public class ArtikeljaegerModel extends LinearSpielModel {
     }
 
     public void nextRound() {
-        kandidaten = List.of(query.randomBalancedArray());
+        kandidaten = query.randomBalancedArray();
 
         if (kandidaten.isEmpty()) {
             current = null;
