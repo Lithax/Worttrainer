@@ -193,8 +193,4 @@ public class FallDerWoerterModel extends LinearSpielModel {
         return "Fall der Wörter";
     }
 
-    @Override
-    public boolean hasNewRound() {
-        return true;
-    }
 }
