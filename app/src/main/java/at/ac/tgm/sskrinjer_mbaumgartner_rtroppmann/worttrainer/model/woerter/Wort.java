@@ -40,8 +40,7 @@ public record Wort(
      * @return
      */
     public double komplexitaet() {
-        // Todo: Implementierung der Komplexitätsberechnung
-        return 5;
+        return WortKomplexitaet.berechneKomplexitaet(this);
     }
 
     public int laenge() {
@@ -67,4 +66,99 @@ public record Wort(
             default -> wort.toLowerCase();
         };
     }
+
+    private class WortKomplexitaet {
+        private WortKomplexitaet() {}
+
+        public static double berechneKomplexitaet(Wort wort) {
+            String w = wort.wort().toLowerCase();
+            double k = 1.0;
+
+            // 1. Wortlänge (logarithmisch, damit lange Wörter nicht sofort explodieren)
+            k += Math.log(w.length() + 1) * 1.1;
+
+            // 2. Mehrbuchstaben-Laute
+            k += count(w, "sch") * 0.8;
+            k += count(w, "ch") * 0.5;
+            k += count(w, "ie") * 0.6;
+            k += count(w, "ck") * 0.6;
+            k += count(w, "tz") * 0.6;
+
+            // 3. Umlaute & ß
+            k += count(w, "ä") * 0.4;
+            k += count(w, "ö") * 0.4;
+            k += count(w, "ü") * 0.4;
+            k += count(w, "ß") * 0.7;
+
+            // 4. Doppelkonsonanten
+            k += countDoubleConsonants(w) * 0.6;
+
+            // 5. Dehnungs-h
+            k += countDehnungsH(w) * 0.7;
+
+            // 6. Konsonantencluster (3 oder mehr)
+            k += countConsonantClusters(w) * 0.6;
+
+            // 7. Typische schwierige Endungen
+            if (w.endsWith("ung"))  k += 0.8;
+            if (w.endsWith("lich")) k += 0.8;
+            if (w.endsWith("keit") || w.endsWith("heit")) k += 0.9;
+
+            return Math.min(k, 9.999);
+        }
+
+        // ===== Helper =====
+
+        private static int count(String w, String part) {
+            int c = 0, i = 0;
+            while ((i = w.indexOf(part, i)) >= 0) {
+                c++;
+                i += part.length();
+            }
+            return c;
+        }
+
+        private static int countDoubleConsonants(String w) {
+            int c = 0;
+            for (int i = 0; i < w.length() - 1; i++) {
+                char a = w.charAt(i);
+                char b = w.charAt(i + 1);
+                if (a == b && isConsonant(a)) c++;
+            }
+            return c;
+        }
+
+        private static int countDehnungsH(String w) {
+            int c = 0;
+            for (int i = 1; i < w.length() - 1; i++) {
+                if (w.charAt(i) == 'h' && isVowel(w.charAt(i - 1))) {
+                    c++;
+                }
+            }
+            return c;
+        }
+
+        private static int countConsonantClusters(String w) {
+            int max = 0, cur = 0;
+            for (char ch : w.toCharArray()) {
+                if (isConsonant(ch)) {
+                    cur++;
+                    max = Math.max(max, cur);
+                } else {
+                    cur = 0;
+                }
+            }
+            // erst ab 3 Konsonanten relevant
+            return Math.max(0, max - 2);
+        }
+
+        private static boolean isVowel(char c) {
+            return "aeiouäöü".indexOf(c) >= 0;
+        }
+
+        private static boolean isConsonant(char c) {
+            return Character.isLetter(c) && !isVowel(c);
+        }
+    }
+
 }

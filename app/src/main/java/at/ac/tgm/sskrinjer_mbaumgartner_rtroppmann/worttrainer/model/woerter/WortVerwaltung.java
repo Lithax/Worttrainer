@@ -1,5 +1,6 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -19,7 +20,7 @@ public class WortVerwaltung {
     }
 
     private void refreshListe() {
-        liste = List.of(query.array());
+        liste = new  ArrayList<Wort>(List.of(query.array()));
     }
 
     public Wort nextWort() {
