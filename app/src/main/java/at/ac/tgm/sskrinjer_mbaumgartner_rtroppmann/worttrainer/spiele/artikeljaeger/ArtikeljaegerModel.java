@@ -10,6 +10,7 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Random;
 
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.WortTag;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -49,6 +50,7 @@ public class ArtikeljaegerModel extends LinearSpielModel {
     @Override
     public void spielStarten(SpielListener l) {
         super.spielStarten(l);
+        query.mitWortart(Wortart.NOMEN).nomenImFall(WortTag.NOMINATIV);
 
         // Reset Stats
         fehlerAnzahl = 0;
@@ -105,6 +107,8 @@ public class ArtikeljaegerModel extends LinearSpielModel {
     }
 
     public void nextRound() {
+        kandidaten = List.of(query.randomBalancedArray());
+
         if (kandidaten.isEmpty()) {
             current = null;
             prompt = "Keine Nomen mit Artikel in der Wortliste gefunden.";
