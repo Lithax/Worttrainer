@@ -52,12 +52,6 @@ public class ArtikeljaegerModel extends LinearSpielModel {
         super.spielStarten(l);
         query.mitWortart(Wortart.NOMEN).nomenImFall(WortTag.NOMINATIV);
 
-        // Reset Stats
-        fehlerAnzahl = 0;
-        gesamtAnzahl = 0;
-        highestStreak = 0;
-        streak = 0;
-
         // Settings
         maxRounds = einstellungen != null ? einstellungen.getAnzahlRunden() : 10;
 

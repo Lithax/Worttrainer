@@ -45,4 +45,13 @@ public abstract class LinearSpielModel extends SpielModel {
 		}
 		return s;
 	}
+
+	@Override
+	public void spielStarten(SpielListener l) {
+		super.spielStarten(l);
+		fehlerAnzahl = 0;
+		gesamtAnzahl = 0;
+		highestStreak = 0;
+		streak = 0;
+	}
 }//end LinearSpielModel
