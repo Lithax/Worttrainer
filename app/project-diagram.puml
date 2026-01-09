@@ -1,0 +1,449 @@
+@startuml
+!theme plain
+hide empty members
+skinparam linetype ortho
+
+interface MainController {
+}
+TimeListener <|-- MainController
+SpieleListener <|-- MainController
+EinstellungenListener <|-- MainController
+SpielListener <|-- MainController
+class MainControllerImpl {
+  {field} currentSpiel
+  {field} mainModel
+  {field} mainView
+  {field} spiele
+}
+MainController <|.. MainControllerImpl
+class Main {
+}
+class Einstellungen {
+  {field} anzahlSpielrunden
+  {field} einstellungenPath
+  {field} schwierigkeiten
+  {field} schwierigkeit
+  {field} theme
+}
+enum GameState { }
+interface MainModel {
+}
+class MainModelImpl {
+  {field} gameState
+  {field} timer
+  {field} wortliste
+  {field} einstellungen
+  {field} userData
+  {field} wortlistenPaths
+}
+MainModel <|.. MainModelImpl
+class Statistik {
+  {field} fliesstext
+  {field} statfields
+  {field} title
+}
+interface TimeListener {
+}
+class TimeUpdateThread {
+  {field} UPDATE_INTERVAL_MIN
+  {field} scheduler
+  {field} timerCallback
+}
+class Tip << (R,orchid) Record >> {
+  text
+  title
+}
+class UserData {
+  {field} userDataPath
+  {field} recentlyPlayedGame
+}
+class ImportResult << (R,orchid) Record >> {
+  woerter
+  elternLookup
+  warnungen
+}
+class InvalidWortException {
+}
+Exception <|-- InvalidWortException
+class UnavailableWortOperationException {
+}
+RuntimeException <|-- UnavailableWortOperationException
+class WortKomplexitaet {
+}
+class Wort << (R,orchid) Record >> {
+  wort
+  wortart
+  artikel
+  tags
+  variationen
+}
+enum Wortart { }
+class WortImporter {
+}
+class RawWort {
+  {field} wort
+  {field} wortart
+  {field} artikel
+  {field} singular
+  {field} plural
+  {field} formen
+}
+class Wortliste {
+  {field} instance
+  {field} woerter
+  {field} elternLookup
+  {field} importWarnungen
+}
+class WortQuery {
+  {field} quelle
+  {field} erlaubteWortarten
+  {field} verboteneWortarten
+  {field} minLaenge
+  {field} maxLaenge
+  {field} minKomplexitaet
+  {field} maxKomplexitaet
+  {field} maxResults
+  {field} nurBasis
+  {field} pflichtRegeln
+  {field} wahlRegeln
+  {field} customPredicates
+}
+enum WortTag { }
+class WortVerwaltung {
+  {field} query
+  {field} liste
+  {field} random
+}
+class ArtikeljaegerController {
+  {field} transitionTimer
+}
+SpielController <|-- ArtikeljaegerController
+class ArtikeljaegerModel {
+  {field} ARTIKEL_OPTIONEN
+  {field} random
+  {field} kandidaten
+  {field} current
+  {field} prompt
+  {field} lastFeedback
+  {field} maxRounds
+}
+LinearSpielModel <|-- ArtikeljaegerModel
+class Feedback << (R,orchid) Record >> {
+  message
+  correct
+}
+class ArtikeljaegerView {
+  {field} promptLabel
+  {field} roundLabel
+  {field} feedbackLabel
+  {field} derBtn
+  {field} dieBtn
+  {field} dasBtn
+}
+SwingSpielView <|-- ArtikeljaegerView
+class FallDerWoerterController {
+  {field} gameLoop
+}
+SpielController <|-- FallDerWoerterController
+class FallDerWoerterModel {
+  {field} WIDTH
+  {field} HEIGHT
+  {field} SPAWN_Y
+  {field} baseSpeed
+  {field} speed
+  {field} baseLateralSpeed
+  {field} lateralSpeed
+  {field} movingLeft
+  {field} movingRight
+  {field} currentWord
+  {field} currentX
+  {field} currentY
+  {field} buckets
+  {field} lastFeedback
+  {field} gameRunning
+  {field} rand
+}
+LinearSpielModel <|-- FallDerWoerterModel
+class Feedback << (R,orchid) Record >> {
+  message
+  type
+}
+enum FeedbackType { }
+class FallDerWoerterView {
+  {field} gamePanel
+  {field} model
+}
+SwingSpielView <|-- FallDerWoerterView
+class GamePanel {
+}
+JPanel <|-- GamePanel
+class FehlerfuchsController {
+  {field} transitionTimer
+}
+SpielController <|-- FehlerfuchsController
+class FehlerfuchsModel {
+  {field} wv
+  {field} korrektesWort
+  {field} fehlerhaftesWort
+  {field} lastFeedback
+  {field} random
+  {field} maxRounds
+  {field} FEHLER_LISTE
+}
+LinearSpielModel <|-- FehlerfuchsModel
+class Fehler {
+  {field} name
+  {field} kategorie
+  {field} prioritaet
+  {field} isApplicable
+  {field} apply
+}
+class Feedback << (R,orchid) Record >> {
+  message
+  correct
+}
+class FehlerfuchsView {
+  {field} wordLabel
+  {field} feedbackLabel
+  {field} inputField
+  {field} submitBtn
+}
+SwingSpielView <|-- FehlerfuchsView
+class LinearSpielModel {
+  {field} fehlerAnzahl
+  {field} gesamtAnzahl
+  {field} highestStreak
+  {field} streak
+}
+SpielModel <|-- LinearSpielModel
+interface Spiel {
+}
+class SpielController {
+  {field} model
+  {field} view
+  {field} spielListener
+}
+Spiel <|.. SpielController
+interface SpielListe {
+  {field} SPIELE
+}
+interface SpielListener {
+}
+class SpielModel {
+  {field} query
+  {field} einstellungen
+}
+class SpielView {
+  {field} iconsPath
+  {field} spielController
+}
+SpielEngineView <|.. SpielView
+class SwingSpielView {
+  {field} mainPanel
+}
+SpielView <|-- SwingSpielView
+class GsonIO {
+}
+class Pair {
+  {field} key
+  {field} value
+}
+class Propagate {
+  {field} exceptHandler
+}
+interface ThrowingRunnable {
+}
+interface ThrowingSupplier {
+}
+interface EinstellungenListener {
+}
+interface EinstellungsView {
+}
+class EinstellungsViewImpl {
+  {field} anzahlRundenField
+  {field} schwierigkeitCBox
+  {field} themeCBox
+  {field} l
+}
+JPanel <|-- EinstellungsViewImpl
+EinstellungsView <|.. EinstellungsViewImpl
+interface HomeView {
+}
+class HomeViewImpl {
+  {field} datumLabel
+  {field} uhrzeitLabel
+  {field} tipTitle
+  {field} tipContent
+  {field} tipCard
+  {field} recentCard
+  {field} recentTitle
+  {field} recentGameName
+  {field} recentGameIcon
+  {field} recentGameDesc
+  {field} timeFormatter
+  {field} dateFormatter
+}
+JPanel <|-- HomeViewImpl
+HomeView <|.. HomeViewImpl
+class IconLoader {
+  {field} iconsPath
+}
+interface MainView {
+}
+class MainViewImpl {
+  {field} einstellungsView
+  {field} homeView
+  {field} spieleView
+  {field} tabbedPane
+  {field} gamePane
+  {field} gameContentPane
+  {field} gameTitleLabel
+  {field} controller
+  {field} typeMap
+}
+JFrame <|-- MainViewImpl
+MainView <|.. MainViewImpl
+enum MessageType { }
+interface SpieleListener {
+}
+interface SpielEngineView {
+}
+interface SpieleView {
+}
+class SpieleViewImpl {
+  {field} l
+  {field} gridPanel
+}
+JPanel <|-- SpieleViewImpl
+SpieleView <|.. SpieleViewImpl
+class SpielPanel {
+  {field} listenerRef
+  {field} CARD_WIDTH
+  {field} CARD_HEIGHT
+  {field} IMAGE_SIZE
+  {field} MAX_DESC_LENGTH
+}
+JPanel <|-- SpielPanel
+class StatistikDialog {
+}
+JDialog <|-- StatistikDialog
+class SvgIconLoader {
+  {field} svgPath
+  {field} homeSVGPath
+  {field} settingsSVGPath
+  {field} spieleSVGPath
+  {field} exitSVGPath
+}
+class SwingUtil {
+}
+
+' --- Relations ---
+WortTag <-- WortQuery : pflichtRegeln
+Path <-- Einstellungen : einstellungenPath
+TimeUpdateThread <-- MainModelImpl : timer
+Einstellungen <-- MainModelImpl : einstellungen
+Random <-- FehlerfuchsModel : random
+Wort <-- ArtikeljaegerModel : current
+Timer <-- ArtikeljaegerController : transitionTimer
+JPanel <-- SpieleViewImpl : gridPanel
+Path <-- SvgIconLoader : spieleSVGPath
+JPanel <-- HomeViewImpl : tipCard
+Wortart <-- Wort : wortart
+DateTimeFormatter <-- HomeViewImpl : timeFormatter
+Random <-- Fehler : apply
+MessageType <-- MainViewImpl : typeMap
+Spiel <-- SpielListe : SPIELE
+Path <-- SvgIconLoader : exitSVGPath
+Predicate <-- WortQuery : customPredicates
+Wort <-- WortQuery : customPredicates
+JPanel <-- MainViewImpl : gamePane
+SpieleListener <-- SpieleViewImpl : l
+AtomicReference <-- SpielPanel : listenerRef
+TimeListener <-- TimeUpdateThread : timerCallback
+JLabel <-- ArtikeljaegerView : roundLabel
+Spiel <-- MainControllerImpl : spiele
+JLabel <-- ArtikeljaegerView : promptLabel
+EinstellungsViewImpl <-- MainViewImpl : einstellungsView
+JTextField <-- FehlerfuchsView : inputField
+Timer <-- FehlerfuchsController : transitionTimer
+SpieleListener <-- SpielPanel : listenerRef
+Wortliste <-- MainModelImpl : wortliste
+JLabel <-- FehlerfuchsView : wordLabel
+Wort <-- ImportResult : woerter
+Feedback <-- ArtikeljaegerModel : lastFeedback
+Wortart <-- WortQuery : wahlRegeln
+Random <-- FallDerWoerterModel : rand
+MainModel <-- MainControllerImpl : mainModel
+FallDerWoerterModel <-- FallDerWoerterView : model
+EinstellungenListener <-- EinstellungsViewImpl : l
+JLabel <-- HomeViewImpl : uhrzeitLabel
+JPanel <-- HomeViewImpl : recentCard
+Wort <-- ImportResult : elternLookup
+WortVerwaltung <-- FehlerfuchsModel : wv
+Predicate <-- Fehler : isApplicable
+Throwable <-- Propagate : exceptHandler
+Path <-- UserData : userDataPath
+Wort <-- FallDerWoerterModel : currentWord
+Wortliste <-- WortQuery : quelle
+JPanel <-- SwingSpielView : mainPanel
+JLabel <-- HomeViewImpl : recentTitle
+Feedback <-- FehlerfuchsModel : lastFeedback
+Wort <-- Wortliste : elternLookup
+Wort <-- WortVerwaltung : liste
+JLabel <-- FehlerfuchsView : feedbackLabel
+Random <-- ArtikeljaegerModel : random
+Timer <-- FallDerWoerterController : gameLoop
+MainView <-- MainControllerImpl : mainView
+GameState <-- MainModelImpl : gameState
+JComboBox <-- EinstellungsViewImpl : schwierigkeitCBox
+Feedback <-- FallDerWoerterModel : lastFeedback
+Path <-- IconLoader : iconsPath
+Wort <-- FehlerfuchsModel : korrektesWort
+Wort <-- ArtikeljaegerModel : kandidaten
+JLabel <-- ArtikeljaegerView : feedbackLabel
+FeedbackType <-- Feedback : type
+JLabel <-- MainViewImpl : gameTitleLabel
+HomeViewImpl <-- MainViewImpl : homeView
+JTabbedPane <-- MainViewImpl : tabbedPane
+ScheduledExecutorService <-- TimeUpdateThread : scheduler
+Fehler <-- FehlerfuchsModel : FEHLER_LISTE
+WortTag <-- WortQuery : wahlRegeln
+JTextField <-- EinstellungsViewImpl : anzahlRundenField
+JButton <-- ArtikeljaegerView : dieBtn
+WortQuery <-- SpielModel : query
+WortQuery <-- WortVerwaltung : query
+Path <-- SvgIconLoader : homeSVGPath
+Wortart <-- RawWort : wortart
+JButton <-- ArtikeljaegerView : derBtn
+SpielListener <-- SpielController : spielListener
+SpieleViewImpl <-- MainViewImpl : spieleView
+JLabel <-- HomeViewImpl : recentGameIcon
+Wortart <-- WortQuery : erlaubteWortarten
+JTextArea <-- HomeViewImpl : recentGameDesc
+Wortart <-- WortQuery : pflichtRegeln
+WortTag <-- Wort : tags
+JComboBox <-- EinstellungsViewImpl : themeCBox
+Wortart <-- WortQuery : verboteneWortarten
+DateTimeFormatter <-- HomeViewImpl : dateFormatter
+MainController <-- MainViewImpl : controller
+AtomicReference <-- SpieleViewImpl : l
+Random <-- WortVerwaltung : random
+AtomicReference <-- MainViewImpl : controller
+JLabel <-- HomeViewImpl : datumLabel
+JButton <-- FehlerfuchsView : submitBtn
+Wortart <-- FallDerWoerterModel : buckets
+JLabel <-- HomeViewImpl : recentGameName
+Wort <-- Wortliste : woerter
+BiFunction <-- Fehler : apply
+Path <-- SvgIconLoader : settingsSVGPath
+UserData <-- MainModelImpl : userData
+JButton <-- ArtikeljaegerView : dasBtn
+JLabel <-- HomeViewImpl : tipTitle
+JTextArea <-- HomeViewImpl : tipContent
+Path <-- SvgIconLoader : svgPath
+Einstellungen <-- SpielModel : einstellungen
+JPanel <-- MainViewImpl : gameContentPane
+GamePanel <-- FallDerWoerterView : gamePanel
+Spiel <-- MainControllerImpl : currentSpiel
+
+@enduml

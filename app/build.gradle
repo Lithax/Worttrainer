@@ -1,8 +1,19 @@
+/* 
+ * 1. BUILDSCRIPT BLOCK (Must be top of file)
+ */
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.github.javaparser:javaparser-core:3.26.3'
+    }
+}
+
 plugins {
     id 'java'
     id 'application'
-    // id 'com.github.johnrengelman.shadow' version '8.1.1' // optional - not required for fatJar
-    // id 'at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer' version '1.0.0' // keep commented while debugging
+    // id 'com.github.johnrengelman.shadow' version '8.1.1' 
 }
 
 group = 'at.ac.tgm'
@@ -13,11 +24,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.google.guava:guava:33.4.0-jre'          // Upgraded from 32.x
-    implementation 'com.google.code.gson:gson:2.13.2'           // Upgraded/Fixed typo
+    implementation 'com.google.guava:guava:33.4.0-jre'
+    implementation 'com.google.code.gson:gson:2.13.2'
 
     // UI - FlatLaf
-    // IMPORTANT: These 3 versions MUST match exactly, or it crashes.
     implementation 'com.formdev:flatlaf:3.5.4'
     implementation 'com.formdev:flatlaf-intellij-themes:3.5.4'
     implementation 'com.formdev:flatlaf-extras:3.5.4'
@@ -42,24 +52,137 @@ tasks.jar {
     }
 }
 
-/*
- * fatJar: creates a runnable "uber" jar including runtime dependencies.
- * Run it with: .\gradlew.bat fatJar
- */
 task fatJar(type: Jar) {
-    archiveClassifier.set('all')                   // produces *-all.jar
+    archiveClassifier.set('all')
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
         attributes 'Main-Class': application.mainClass.toString()
     }
-    // include compiled classes
     from sourceSets.main.output
-
-    // include runtime deps (unpack JARs)
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
-    // keep the default jar contents (like resources)
     with tasks.jar
 }
 
+/*
+ * ===========================================================================
+ * GENERATE PLANTUML TASK (Fixed for Generics & Wildcards)
+ * ===========================================================================
+ */
+task generatePlantUml {
+    group = "documentation"
+    description = "Generates a single PlantUML file from Java 22 sources with relations"
+
+    def srcPath = layout.projectDirectory.dir("src/main/java").asFile.absolutePath
+    def outPath = layout.projectDirectory.file("project-diagram.puml").asFile.absolutePath
+
+    doLast {
+        println "Parsing Java sources from: ${srcPath}"
+        
+        File rootDir = new File(srcPath)
+        File outputFile = new File(outPath)
+
+        outputFile.write("@startuml\n")
+        outputFile.append("!theme plain\n")
+        outputFile.append("hide empty members\n")
+        outputFile.append("skinparam linetype ortho\n\n")
+
+        def config = new com.github.javaparser.ParserConfiguration()
+        config.setLanguageLevel(com.github.javaparser.ParserConfiguration.LanguageLevel.JAVA_21)
+        com.github.javaparser.StaticJavaParser.setConfiguration(config)
+
+        Set<String> relations = new HashSet<>()
+        
+        // Common types to ignore in diagrams to keep it readable
+        def ignoreTypes = [
+            "String", "int", "boolean", "double", "float", "long", "void", "char", "byte", "short", 
+            "Integer", "Boolean", "Double", "Object", "Class", "List", "ArrayList", "Set", "HashSet", 
+            "Map", "HashMap", "Optional", "WeakReference", "Consumer", "Supplier", "Function", "URL", "URI"
+        ]
+
+        // --- HELPER CLOSURE TO EXTRACT CLEAN TYPES ---
+        // Converts "WeakReference<? extends SpieleListener>" -> ["SpieleListener"]
+        def extractTypes = { String rawType ->
+            def results = []
+            // 1. Remove confusing generics wildcards
+            String clean = rawType.replace("? extends ", "").replace("? super ", "").replace("?", "")
+            
+            // 2. Extract words that look like Classes (simplistic but robust)
+            // This splits "Map<String, Tip>" into "Map", "String", "Tip"
+            def tokens = clean.split("[^a-zA-Z0-9_]+") 
+            
+            tokens.each { token ->
+                if (!token.isEmpty() && !ignoreTypes.contains(token) && token.length() > 1) {
+                    // Only add if it looks like a custom class (starts with Uppercase usually, but let's just allow all non-ignored)
+                    results.add(token)
+                }
+            }
+            return results
+        }
+
+        if (rootDir.exists()) {
+            rootDir.eachFileRecurse(groovy.io.FileType.FILES) { File javaFile ->
+                if (javaFile.name.endsWith(".java")) {
+                    try {
+                        def cu = com.github.javaparser.StaticJavaParser.parse(javaFile)
+
+                        // --- Classes & Interfaces ---
+                        cu.findAll(com.github.javaparser.ast.body.ClassOrInterfaceDeclaration.class).each { c ->
+                            def type = c.isInterface() ? "interface" : "class"
+                            def name = c.getNameAsString()
+                            
+                            outputFile.append("${type} ${name} {\n")
+                            c.getFields().each { f ->
+                                f.getVariables().each { v ->
+                                    outputFile.append("  {field} ${v.getNameAsString()}\n") // Simplified display in box
+                                    
+                                    // Generate Relations
+                                    extractTypes(v.getTypeAsString()).each { targetType ->
+                                        if (targetType != name) { // Don't point to self
+                                            relations.add("${targetType} <-- ${name} : ${v.getNameAsString()}")
+                                        }
+                                    }
+                                }
+                            }
+                            outputFile.append("}\n")
+                            c.getExtendedTypes().each { p -> outputFile.append("${p.getNameAsString()} <|-- ${name}\n") }
+                            c.getImplementedTypes().each { p -> outputFile.append("${p.getNameAsString()} <|.. ${name}\n") }
+                        }
+
+                        // --- Records ---
+                        cu.findAll(com.github.javaparser.ast.body.RecordDeclaration.class).each { r ->
+                            def name = r.getNameAsString()
+                            outputFile.append("class ${name} << (R,orchid) Record >> {\n")
+                            r.getParameters().each { p ->
+                                outputFile.append("  ${p.getNameAsString()}\n")
+                                
+                                extractTypes(p.getTypeAsString()).each { targetType ->
+                                    if (targetType != name) {
+                                        relations.add("${targetType} <-- ${name} : ${p.getNameAsString()}")
+                                    }
+                                }
+                            }
+                            outputFile.append("}\n")
+                            r.getImplementedTypes().each { p -> outputFile.append("${p.getNameAsString()} <|.. ${name}\n") }
+                        }
+                        
+                        // --- Enums ---
+                        cu.findAll(com.github.javaparser.ast.body.EnumDeclaration.class).each { e ->
+                             outputFile.append("enum ${e.getNameAsString()} { }\n")
+                        }
+
+                    } catch (Exception e) {
+                        println "Skipping ${javaFile.name}: ${e.message}"
+                    }
+                }
+            }
+        }
+
+        outputFile.append("\n' --- Relations ---\n")
+        relations.each { rel -> outputFile.append("${rel}\n") }
+
+        outputFile.append("\n@enduml")
+        println "SUCCESS: Diagram generated at: ${outputFile.absolutePath}"
+    }
+}

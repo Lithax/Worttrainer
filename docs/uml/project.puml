@@ -1,0 +1,471 @@
+@startuml
+
+' =========================================================================
+' STYLE CONFIGURATION
+' =========================================================================
+skinparam handwritten true
+skinparam shadowing true
+skinparam backgroundColor white
+skinparam defaultFontName "Segoe Print"
+skinparam packageStyle rectangle
+skinparam linetype ortho
+
+skinparam class {
+    BackgroundColor white
+    ArrowColor black
+    BorderColor black
+    AttributeFontSize 10
+    MethodFontSize 10
+    FontSize 12
+}
+
+' =========================================================================
+' 1. CLASS DEFINITIONS (By Package)
+' =========================================================================
+
+package Controller {
+    interface MainController {
+        + onSpielSelected(String name)
+    }
+
+    class MainControllerImpl {
+        - spiele: List<Spiel>
+        - currentSpiel: Spiel
+        + MainControllerImpl(List<Spiel>, MainModel, MainView)
+        + onSpielBeenden()
+        + onUpdateTime(LocalDate, LocalTime)
+        + onEinstellungenSave()
+        + onSpielSelected(String)
+        - handleException(Throwable)
+    }
+}
+
+package Model {
+    interface MainModel {
+        + getEinstellungen(): Einstellungen
+        + getUserData(): UserData
+        + getGameState(): GameState
+        + setGameState(GameState)
+        + getTipOfTheDay(): Tip
+        + getWortliste(): Wortliste
+        + setTimeListener(TimeListener)
+        + loadWortliste()
+    }
+
+    class MainModelImpl {
+        - wortlistenPaths: String[]
+        + MainModelImpl()
+    }
+
+    class Einstellungen {
+        - anzahlSpielrunden: int
+        - schwierigkeit: String
+        - theme: String
+        + {static} einstellungenPath: Path
+        + save()
+        + {static} load(Path): Einstellungen
+        + numerifySchwierigkeit(String): int
+    }
+
+    class UserData {
+        - recentlyPlayedGame: String
+        + {static} userDataPath: Path
+        + {static} load(Path): UserData
+        + save()
+    }
+
+    class Tip <<Record>> {
+        + text: String
+        + title: String
+        + {static} tipsPath: Path
+        + {static} getTipOfTheDay(): Tip
+        + {static} loadTips(Path)
+    }
+
+    class Statistik {
+        - fliesstext: String
+        - statfields: HashMap<String, String>
+        - title: String
+        + getFliesstext(): String
+        + getStatFields(): HashMap
+    }
+
+    enum GameState {
+        GAME_RUNNING
+        GAME_INTERRUPTED
+        GAME_ABSENT
+    }
+
+    interface TimeListener {
+        + onUpdateTime(LocalDate, LocalTime)
+    }
+
+    class TimeUpdateThread {
+        - scheduler: ScheduledExecutorService
+        + setTimeListener(TimeListener)
+        + start()
+        + stop()
+    }
+}
+
+package Woerter {
+    class Wortliste <<Singleton>> {
+        - {static} instance: Wortliste
+        - woerter: Set<Wort>
+        - elternLookup: Map<Wort, Wort>
+        + {static} getInstance(): Wortliste
+        + ladeAusDateien(String...)
+        + getAlleWoerter(): Wort[]
+        + query(): WortQuery
+    }
+
+    class Wort <<Record>> {
+        + wort: String
+        + wortart: Wortart
+        + artikel: String
+        + tags: Set<WortTag>
+        + variationen: List<Wort>
+        + komplexitaet(): double
+        + getFall(): int
+        + displayWord(): String
+    }
+
+    enum Wortart {
+        NOMEN, VERB, ADJEKTIV, ARTIKEL, 
+        PRONOMEN, NUMERAL, ADVERB, 
+        KONJUNKTION, INTERJEKTION, UNKNOWN
+    }
+
+    enum WortTag {
+        BASIS, NOMINATIV, GENITIV, DATIV, AKKUSATIV,
+        SINGULAR, PLURAL, POSITIV, KOMPARATIV, 
+        SUPERLATIV, VERB_GEGENWART, VERB_VERGANGENHEIT, 
+        VERB_PARTIZIP, VERB_PRAESENS
+    }
+
+    class WortQuery {
+        - minLaenge: int
+        - maxLaenge: int
+        - minKomplexitaet: double
+        - maxKomplexitaet: double
+        + nomenImPlural(): WortQuery
+        + verbImPraesens(): WortQuery
+        + filteredStream(): Stream<Wort>
+        + randomBalancedArray(): ArrayList<Wort>
+    }
+
+    class WortVerwaltung {
+        - liste: List<Wort>
+        + nextWort(): Wort
+    }
+
+    class WortImporter <<Utility>> {
+        + {static} importJson(Reader): ImportResult
+    }
+
+    class ImportResult <<Record>> {
+        List<Wort> woerter
+        Map<Wort, Wort> elternLookup
+        List<String> warnungen
+    }
+    
+    class InvalidWortException
+    class UnavailableWortOperationException
+}
+
+package View {
+    interface MainView {
+        + disposeSpiel()
+        + getEinstellungsView()
+        + getHomeView()
+        + getSpieleView()
+        + setController(MainController)
+        + setSpiel(Spiel)
+        + setTheme(String)
+        + showMessage(String, String, MessageType)
+    }
+
+    class MainViewImpl {
+        - tabbedPane: JTabbedPane
+        - gamePane: JPanel
+        + MainViewImpl()
+    }
+
+    interface HomeView {
+        + setDatum(LocalDate)
+        + setTipOfTheDay(Tip)
+        + setRecentlyPlayedSpiel(Spiel)
+    }
+
+    class HomeViewImpl
+
+    interface EinstellungsView {
+        + getAnzahlRunden(): int
+        + getSchwierigkeit(): String
+        + getTheme(): String
+        + setEinstellungsListener(EinstellungenListener)
+    }
+
+    class EinstellungsViewImpl
+
+    interface SpieleView {
+        + setSpiele(List<Spiel>)
+    }
+
+    class SpieleViewImpl {
+        - gridPanel: JPanel
+    }
+    
+    interface SpielEngineView {
+        + getAsObject(): Object
+    }
+
+    interface EinstellungenListener {
+        + onEinstellungenSave()
+    }
+
+    interface SpieleListener {
+        + onSpielSelected(String)
+        + onSpielBeenden()
+    }
+
+    class SpielPanel {
+        + SpielPanel(String, String, InputStream, AtomicReference)
+    }
+    
+    class StatistikDialog
+    
+    enum MessageType {
+        INFO, ERROR
+    }
+}
+
+package Spiele {
+    interface Spiel {
+        + getDescription(): String
+        + getIcon(): InputStream
+        + getName(): String
+        + setSpielListener(SpielListener)
+        + newSpielEngineView(): SpielEngineView
+        + spielBeenden()
+        + spielStarten()
+    }
+
+    interface SpielListener {
+        + onSpielBeenden()
+        + getEinstellungen(): Einstellungen
+        + getWortliste(): Wortliste
+    }
+
+    interface SpielListe {
+        + {static} SPIELE: List<Spiel>
+    }
+
+    abstract class SpielController<M, C, V> {
+        # model: M
+        # view: V
+        # spielListener: SpielListener
+    }
+
+    abstract class SpielModel {
+        # query: WortQuery
+        # einstellungen: Einstellungen
+        + getStatistik(): Statistik
+        + spielStarten(SpielListener)
+        + {abstract} getSpielDescription(): String
+        + {abstract} getSpielName(): String
+    }
+
+    abstract class LinearSpielModel {
+        # fehlerAnzahl: int
+        # gesamtAnzahl: int
+        # highestStreak: int
+        # streak: int
+    }
+
+    abstract class SpielView<C, V> {
+        # spielController: C
+        + loadIcon(): InputStream
+        + showStatistik(Statistik)
+    }
+
+    abstract class SwingSpielView<C, V> {
+        # mainPanel: JPanel
+    }
+}
+
+package Artikeljaeger {
+    class ArtikeljaegerController {
+        - transitionTimer: Timer
+        + onArtikelClicked(String)
+    }
+    class ArtikeljaegerModel {
+        - kandidaten: List<Wort>
+        - current: Wort
+        - lastFeedback: Feedback
+        + nextRound()
+        + submitArtikel(String): boolean
+    }
+    class ArtikeljaegerView {
+        - derBtn: JButton
+        - dieBtn: JButton
+        - dasBtn: JButton
+    }
+}
+
+package Fehlerfuchs {
+    class FehlerfuchsController {
+        + onWordSubmitted(String)
+    }
+    class FehlerfuchsModel {
+        - wv: WortVerwaltung
+        - korrektesWort: Wort
+        - fehlerhaftesWort: String
+        + baueFehlerEin(Wort, int, Random): String
+    }
+    class FehlerfuchsView {
+        - inputField: JTextField
+        - submitBtn: JButton
+    }
+    class Fehler <<Inner>>
+}
+
+package FallDerWoerter {
+    class FallDerWoerterController {
+        - gameLoop: Timer
+        + moveLeft()
+        + moveRight()
+    }
+    class FallDerWoerterModel {
+        - currentX: double
+        - currentY: double
+        - buckets: Wortart[]
+        + update()
+    }
+    class FallDerWoerterView {
+        - gamePanel: GamePanel
+    }
+}
+
+package Utils {
+    class GsonIO
+    class Propagate
+    class Pair<K,V>
+    class SvgIconLoader
+    class SwingUtil
+    class IconLoader
+}
+
+class Main
+
+' =========================================================================
+' 2. RELATIONSHIPS
+' =========================================================================
+
+' --- Main MVC Wiring ---
+Main ..> MainControllerImpl : creates
+Main ..> MainModelImpl : creates
+Main ..> MainViewImpl : creates
+
+MainControllerImpl ..|> MainController
+MainControllerImpl ..|> TimeListener
+MainControllerImpl ..|> SpieleListener
+MainControllerImpl ..|> EinstellungenListener
+MainControllerImpl ..|> SpielListener
+
+MainModelImpl ..|> MainModel
+MainViewImpl ..|> MainView
+
+MainControllerImpl o--> MainModel : model
+MainControllerImpl o--> MainView : view
+MainControllerImpl o--> Spiel : currentSpiel
+
+' --- Model Internals ---
+MainModelImpl *--> TimeUpdateThread
+MainModelImpl o--> Wortliste
+MainModelImpl o--> Einstellungen
+MainModelImpl o--> UserData
+MainModelImpl o--> GameState
+
+TimeUpdateThread o--> TimeListener
+
+' --- View Internals ---
+MainViewImpl *--> HomeViewImpl
+MainViewImpl *--> SpieleViewImpl
+MainViewImpl *--> EinstellungsViewImpl
+
+HomeViewImpl ..|> HomeView
+SpieleViewImpl ..|> SpieleView
+EinstellungsViewImpl ..|> EinstellungsView
+
+EinstellungsViewImpl --> EinstellungenListener : notifies
+SpieleViewImpl --> SpielPanel : uses
+SpielPanel --> SpieleListener : notifies
+MainViewImpl ..> SpielEngineView : embeds
+
+' --- Word System ---
+Wortliste o--> Wort
+Wort o--> Wortart
+Wort o--> WortTag
+Wortliste ..> WortImporter : uses
+WortImporter ..> ImportResult : produces
+WortImporter ..> Wort : creates
+WortImporter ..> InvalidWortException : throws
+
+Wortliste ..> WortQuery : factory
+WortQuery --> Wortliste : source
+WortVerwaltung --> WortQuery : uses
+WortVerwaltung --> Wort : manages
+
+' --- Game Framework ---
+SpielController ..|> Spiel
+SpielController o--> SpielModel
+SpielController o--> SpielView
+SpielController o--> SpielListener
+
+LinearSpielModel --|> SpielModel
+SwingSpielView --|> SpielView
+SwingSpielView ..|> SpielEngineView
+
+SpielModel ..> Statistik : creates
+SpielModel o--> WortQuery
+SpielModel o--> Einstellungen
+SpielView ..> StatistikDialog : creates
+
+SpielListe o--> Spiel : static list
+
+' --- Concrete Games: Artikeljaeger ---
+ArtikeljaegerController --|> SpielController
+ArtikeljaegerModel --|> LinearSpielModel
+ArtikeljaegerView --|> SwingSpielView
+
+ArtikeljaegerController --> ArtikeljaegerModel
+ArtikeljaegerController --> ArtikeljaegerView
+ArtikeljaegerView --> ArtikeljaegerController
+
+' --- Concrete Games: Fehlerfuchs ---
+FehlerfuchsController --|> SpielController
+FehlerfuchsModel --|> LinearSpielModel
+FehlerfuchsView --|> SwingSpielView
+
+FehlerfuchsController --> FehlerfuchsModel
+FehlerfuchsController --> FehlerfuchsView
+FehlerfuchsView --> FehlerfuchsController
+FehlerfuchsModel +-- Fehler
+FehlerfuchsModel o--> WortVerwaltung
+
+' --- Concrete Games: FallDerWoerter ---
+FallDerWoerterController --|> SpielController
+FallDerWoerterModel --|> LinearSpielModel
+FallDerWoerterView --|> SwingSpielView
+
+FallDerWoerterController --> FallDerWoerterModel
+FallDerWoerterController --> FallDerWoerterView
+FallDerWoerterView --> FallDerWoerterController
+
+' --- Util Usages (Selective to avoid clutter) ---
+Einstellungen ..> GsonIO
+UserData ..> GsonIO
+MainControllerImpl ..> Propagate
+
+@enduml
