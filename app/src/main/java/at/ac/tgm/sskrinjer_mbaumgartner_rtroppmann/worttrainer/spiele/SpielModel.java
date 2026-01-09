@@ -28,7 +28,7 @@ public abstract class SpielModel {
         return new Statistik(getSpielDescription(), getSpielName() + " - Statistik", fields);
 	}
 
-	public abstract boolean hasNewRound();
+	// public abstract boolean hasNewRound(); //unnötig?
 
 	public void spielStarten(SpielListener l) {
 		einstellungen = l.getEinstellungen();

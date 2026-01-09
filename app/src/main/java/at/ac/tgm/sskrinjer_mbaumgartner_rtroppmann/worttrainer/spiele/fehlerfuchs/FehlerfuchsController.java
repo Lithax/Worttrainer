@@ -1,27 +1,44 @@
 package at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.fehlerfuchs;
 
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wortliste;
+import javax.swing.Timer;
+
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielController;
 
-/**
- * @author Benutzbiber
- * @version 1.0
- * @created 08-Dez-2025 15:09:38
- */
-public class FehlerfuchsController extends SpielController<FehlerfuchsModel, FehlerfuchsController, FehlerfuchsView> {
+public class FehlerfuchsController
+		extends SpielController<FehlerfuchsModel, FehlerfuchsController, FehlerfuchsView> {
 
-	public FehlerfuchsController(){
+	private Timer transitionTimer;
+
+	public FehlerfuchsController() {
 		model = new FehlerfuchsModel();
 		view = new FehlerfuchsView(this);
 	}
 
 	@Override
-	public void spielBeenden() {
-		super.spielBeenden();
+	public void spielStarten() {
+		model.spielStarten(spielListener);
+		view.renderFromModel(model);
+		view.setInputEnabled(true);
 	}
 
-	@Override
-	public void spielStarten() {
-		
+	public void onWordSubmitted(String userInput) {
+		view.setInputEnabled(false);
+
+		model.submitAnswer(userInput);
+		view.showFeedback(model.getFeedback());
+
+		if (transitionTimer != null) transitionTimer.stop();
+		transitionTimer = new Timer(800, e -> {
+			transitionTimer.stop();
+			if (model.isFinished()) {
+				if (spielListener != null) spielListener.onSpielBeenden();
+				return;
+			}
+			model.nextRound();
+			view.renderFromModel(model);
+			view.setInputEnabled(true);
+		});
+		transitionTimer.setRepeats(false);
+		transitionTimer.start();
 	}
-}//end FehlerfuchsController
+}

@@ -179,11 +179,6 @@ public class ArtikeljaegerModel extends LinearSpielModel {
     }
 
     @Override
-    public boolean hasNewRound() {
-        return true;
-    }
-
-    @Override
     public Statistik getStatistik() {
         Statistik s = super.getStatistik();
         int richtig = Math.max(0, gesamtAnzahl - fehlerAnzahl);

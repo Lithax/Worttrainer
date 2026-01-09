@@ -16,8 +16,8 @@ public class WortQuery {
     // Ranges
     private int minLaenge = 0;
     private int maxLaenge = Integer.MAX_VALUE;
-    private int minKomplexitaet = 0;
-    private int maxKomplexitaet = 10;
+    private double minKomplexitaet = 0;
+    private double maxKomplexitaet = 10;
 
     private int maxResults = 100;
 
@@ -110,7 +110,9 @@ public class WortQuery {
         return this;
     }
 
-    public WortQuery mitKomplexitaet(int min, int max) {
+    public WortQuery mitKomplexitaet(double min, double max) {
+        if(min >= 10) throw new IllegalArgumentException("min (" +min + ") >= 10");
+        if(max > 10) System.err.println("max (" +max + ") > 10");
         this.minKomplexitaet = min;
         this.maxKomplexitaet = max;
         return this;
@@ -142,7 +144,7 @@ public class WortQuery {
                 .filter(w -> !nurBasis || w.tags().contains(WortTag.BASIS))
                 .filter(this::checkWortart)
                 .filter(w -> w.laenge() >= minLaenge && w.laenge() <= maxLaenge)
-                .filter(w -> w.komplexitaet() >= minKomplexitaet && w.komplexitaet() <= maxKomplexitaet)
+                .filter(w -> (minKomplexitaet == 0 && maxKomplexitaet == 10) || (w.komplexitaet() >= minKomplexitaet && w.komplexitaet() <= maxKomplexitaet))
                 .filter(this::checkTags)
                 .filter(w -> customPredicates.stream().allMatch(p -> p.test(w)));
     }

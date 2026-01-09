@@ -63,7 +63,7 @@ public class FallDerWoerterModel extends LinearSpielModel {
 		boolean custom = false;
 
 		double multiplier = 0.0;
-        switch (einstellungen.numerifySchwierigkeit(einstellungen.getSchwierigkeit())) {
+        switch (einstellungen.numerifySchwierigkeit()) {
             /*
              *@Marius ich hab dein fuckass switch mit 3 inlined anweisungen und breaks zu einem advanced switch gemacht
              */
@@ -193,8 +193,4 @@ public class FallDerWoerterModel extends LinearSpielModel {
         return "Fall der Wörter";
     }
 
-    @Override
-    public boolean hasNewRound() {
-        return true;
-    }
 }

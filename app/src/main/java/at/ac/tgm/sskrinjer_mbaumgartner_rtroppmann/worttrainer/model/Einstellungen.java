@@ -43,6 +43,10 @@ public class Einstellungen {
 		return -1;
 	}
 
+    public int numerifySchwierigkeit() {
+        return numerifySchwierigkeit(schwierigkeit);
+    }
+
 	public String[] getSchwierigkeiten() {
 		return schwierigkeiten;
 	}
