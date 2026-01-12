@@ -34,8 +34,11 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -113,6 +116,16 @@ public class MainViewImpl extends JFrame implements MainView {
 
 		exitButton.setFocusable(false);
 		exitButton.addActionListener(e -> controller.get().onSpielBeenden());
+
+		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
+            @Override
+            public boolean dispatchKeyEvent(KeyEvent e) {
+                if (e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    controller.get().onSpielBeenden();
+                }
+                return false;
+            }
+        });
 
 		headPanel.add(exitButton, BorderLayout.EAST);
 
