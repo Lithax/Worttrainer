@@ -29,7 +29,7 @@ public class Wortliste {
         if (instance == null) {
             instance = new Wortliste();
         }
-        System.out.println("DIE SUPER COOLE WORTLISTE::::::::::::::");
+        System.out.println("Geladene Wörter:");
         System.out.println(instance.woerter);
         return instance;
     }
@@ -52,6 +52,8 @@ public class Wortliste {
             this.elternLookup.putAll(result.elternLookup());
             this.importWarnungen.addAll(result.warnungen());
         }
+
+        if(this.woerter.isEmpty()) throw new WortlistenLadeException("Es wurden keine wörter in " + Arrays.toString(pfade) + " gefunden");
     }
 
     /**

@@ -1,0 +1,2427 @@
+[
+  {
+    "wort": "Hund",
+    "wortart": "Nomen",
+    "artikel": "der",
+    "singular": {
+      "genitiv": "des Hundes",
+      "dativ": "dem Hund",
+      "akkusativ": "den Hund"
+    },
+    "plural": {
+      "nominativ": "die Hunde",
+      "genitiv": "der Hunde",
+      "dativ": "den Hunden",
+      "akkusativ": "die Hunde"
+    }
+  },
+  {
+    "wort": "Katze",
+    "wortart": "Nomen",
+    "artikel": "die",
+    "singular": {
+      "genitiv": "der Katze",
+      "dativ": "der Katze",
+      "akkusativ": "die Katze"
+    },
+    "plural": {
+      "nominativ": "die Katzen",
+      "genitiv": "der Katzen",
+      "dativ": "den Katzen",
+      "akkusativ": "die Katzen"
+    }
+  },
+  {
+    "wort": "Auto",
+    "wortart": "Nomen",
+    "artikel": "das",
+    "singular": {
+      "genitiv": "des Autos",
+      "dativ": "dem Auto",
+      "akkusativ": "das Auto"
+    },
+    "plural": {
+      "nominativ": "die Autos",
+      "genitiv": "der Autos",
+      "dativ": "den Autos",
+      "akkusativ": "die Autos"
+    }
+  },
+  {
+    "wort": "Baum",
+    "wortart": "Nomen",
+    "artikel": "der",
+    "singular": {
+      "genitiv": "des Baumes",
+      "dativ": "dem Baum",
+      "akkusativ": "den Baum"
+    },
+    "plural": {
+      "nominativ": "die Bäume",
+      "genitiv": "der Bäume",
+      "dativ": "den Bäumen",
+      "akkusativ": "die Bäume"
+    }
+  },
+  {
+    "wort": "Haus",
+    "wortart": "Nomen",
+    "artikel": "das",
+    "singular": {
+      "genitiv": "des Hauses",
+      "dativ": "dem Haus",
+      "akkusativ": "das Haus"
+    },
+    "plural": {
+      "nominativ": "die Häuser",
+      "genitiv": "der Häuser",
+      "dativ": "den Häusern",
+      "akkusativ": "die Häuser"
+    }
+  },
+  {
+    "wort": "Kind",
+    "wortart": "Nomen",
+    "artikel": "das",
+    "singular": {
+      "genitiv": "des Kindes",
+      "dativ": "dem Kind",
+      "akkusativ": "das Kind"
+    },
+    "plural": {
+      "nominativ": "die Kinder",
+      "genitiv": "der Kinder",
+      "dativ": "den Kindern",
+      "akkusativ": "die Kinder"
+    }
+  },
+  {
+    "wort": "gehen",
+    "wortart": "Verb",
+    "formen": [
+      "ging",
+      "gegangen",
+      "geht"
+    ]
+  },
+  {
+    "wort": "essen",
+    "wortart": "Verb",
+    "formen": [
+      "aß",
+      "gegessen",
+      "isst"
+    ]
+  },
+  {
+    "wort": "schoen",
+    "wortart": "Adjektiv",
+    "formen": [
+      "schoener",
+      "am schoensten"
+    ]
+  },
+  {
+    "wort": "alt",
+    "wortart": "Adjektiv",
+    "formen": [
+      "älter",
+      "am ältesten"
+    ]
+  },
+  {
+    "wort": "der",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "die",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "ein",
+    "wortart": "Artikel"
+  },
+  {
+    "wort": "ich",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "du",
+    "wortart": "Pronomen"
+  },
+  {
+    "wort": "eins",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "zwei",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "heute",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "gestern",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "und",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "aber",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "oh",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "ah",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "Vater",
+    "wortart": "Nomen",
+    "artikel": "der",
+    "singular": {
+      "genitiv": "des Vaters",
+      "dativ": "dem Vater",
+      "akkusativ": "den Vater"
+    },
+    "plural": {
+      "nominativ": "die Väter",
+      "genitiv": "der Väter",
+      "dativ": "den Vätern",
+      "akkusativ": "die Väter"
+    }
+  },
+  {
+    "wort": "Mutter",
+    "wortart": "Nomen",
+    "artikel": "die",
+    "singular": {
+      "genitiv": "der Mutter",
+      "dativ": "der Mutter",
+      "akkusativ": "die Mutter"
+    },
+    "plural": {
+      "nominativ": "die Mütter",
+      "genitiv": "der Mütter",
+      "dativ": "den Müttern",
+      "akkusativ": "die Mütter"
+    }
+  },
+  {
+    "wort": "Kind",
+    "wortart": "Nomen",
+    "artikel": "das",
+    "singular": {
+      "genitiv": "des Kindes",
+      "dativ": "dem Kind",
+      "akkusativ": "das Kind"
+    },
+    "plural": {
+      "nominativ": "die Kinder",
+      "genitiv": "der Kinder",
+      "dativ": "den Kindern",
+      "akkusativ": "die Kinder"
+    }
+  },
+  {
+    "wort": "Freund",
+    "wortart": "Nomen",
+    "artikel": "der",
+    "singular": {
+      "genitiv": "des Freundes",
+      "dativ": "dem Freund",
+      "akkusativ": "den Freund"
+    },
+    "plural": {
+      "nominativ": "die Freunde",
+      "genitiv": "der Freunde",
+      "dativ": "den Freunden",
+      "akkusativ": "die Freunde"
+    }
+  },
+  {
+    "wort": "Freundin",
+    "wortart": "Nomen",
+    "artikel": "die",
+    "singular": {
+      "genitiv": "der Freundin",
+      "dativ": "der Freundin",
+      "akkusativ": "die Freundin"
+    },
+    "plural": {
+      "nominativ": "die Freundinnen",
+      "genitiv": "der Freundinnen",
+      "dativ": "den Freundinnen",
+      "akkusativ": "die Freundinnen"
+    }
+  },
+  {
+    "wort": "arbeiten",
+    "wortart": "Verb",
+    "formen": [
+      "arbeitete",
+      "gearbeitet",
+      "arbeitet"
+    ]
+  },
+  {
+    "wort": "lernen",
+    "wortart": "Verb",
+    "formen": [
+      "lernte",
+      "gelernt",
+      "lernt"
+    ]
+  },
+  {
+    "wort": "spielen",
+    "wortart": "Verb",
+    "formen": [
+      "spielte",
+      "gespielt",
+      "spielt"
+    ]
+  },
+  {
+    "wort": "schreiben",
+    "wortart": "Verb",
+    "formen": [
+      "schrieb",
+      "geschrieben",
+      "schreibt"
+    ]
+  },
+  {
+    "wort": "lesen",
+    "wortart": "Verb",
+    "formen": [
+      "las",
+      "gelesen",
+      "liest"
+    ]
+  },
+  {
+    "wort": "schnell",
+    "wortart": "Adjektiv",
+    "formen": [
+      "schneller",
+      "am schnellsten"
+    ]
+  },
+  {
+    "wort": "langsam",
+    "wortart": "Adjektiv",
+    "formen": [
+      "langsamer",
+      "am langsamsten"
+    ]
+  },
+  {
+    "wort": "glücklich",
+    "wortart": "Adjektiv",
+    "formen": [
+      "glücklicher",
+      "am glücklichsten"
+    ]
+  },
+  {
+    "wort": "traurig",
+    "wortart": "Adjektiv",
+    "formen": [
+      "trauriger",
+      "am traurigsten"
+    ]
+  },
+  {
+    "wort": "klein",
+    "wortart": "Adjektiv",
+    "formen": [
+      "kleiner",
+      "am kleinsten"
+    ]
+  },
+  {
+    "wort": "groß",
+    "wortart": "Adjektiv",
+    "formen": [
+      "größer",
+      "am größten"
+    ]
+  },
+  {
+    "wort": "immer",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "oft",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "selten",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "manchmal",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "bald",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "später",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "und",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "oder",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "aber",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "denn",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "wenn",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "weil",
+    "wortart": "Konjunktion"
+  },
+  {
+    "wort": "ja",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "nein",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "oh",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "ach",
+    "wortart": "Interjektion"
+  },
+  {
+    "wort": "eins",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "zwei",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "drei",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "vier",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "fünf",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "sechs",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "sieben",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "acht",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "neun",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "zehn",
+    "wortart": "Numeral"
+  },
+  {
+    "wort": "Hundehütte",
+    "wortart": "Nomen",
+    "artikel": "die",
+    "singular": {
+      "genitiv": "der Hundehütte",
+      "dativ": "der Hundehütte",
+      "akkusativ": "die Hundehütte"
+    },
+    "plural": {
+      "nominativ": "die Hundehütten",
+      "genitiv": "der Hundehütten",
+      "dativ": "den Hundehütten",
+      "akkusativ": "die Hundehütten"
+    }
+  },
+  {
+    "wort": "Schule",
+    "wortart": "Nomen",
+    "artikel": "die",
+    "singular": {
+      "genitiv": "der Schule",
+      "dativ": "der Schule",
+      "akkusativ": "die Schule"
+    },
+    "plural": {
+      "nominativ": "die Schulen",
+      "genitiv": "der Schulen",
+      "dativ": "den Schulen",
+      "akkusativ": "die Schulen"
+    }
+  },
+  {
+    "wort": "Buch",
+    "wortart": "Nomen",
+    "artikel": "das",
+    "singular": {
+      "genitiv": "des Buches",
+      "dativ": "dem Buch",
+      "akkusativ": "das Buch"
+    },
+    "plural": {
+      "nominativ": "die Bücher",
+      "genitiv": "der Bücher",
+      "dativ": "den Büchern",
+      "akkusativ": "die Bücher"
+    }
+  },
+  {
+    "wort": "Stuhl",
+    "wortart": "Nomen",
+    "artikel": "der",
+    "singular": {
+      "genitiv": "des Stuhles",
+      "dativ": "dem Stuhl",
+      "akkusativ": "den Stuhl"
+    },
+    "plural": {
+      "nominativ": "die Stühle",
+      "genitiv": "der Stühle",
+      "dativ": "den Stühlen",
+      "akkusativ": "die Stühle"
+    }
+  },
+  {
+    "wort": "Tisch",
+    "wortart": "Nomen",
+    "artikel": "der",
+    "singular": {
+      "genitiv": "des Tisches",
+      "dativ": "dem Tisch",
+      "akkusativ": "den Tisch"
+    },
+    "plural": {
+      "nominativ": "die Tische",
+      "genitiv": "der Tische",
+      "dativ": "den Tischen",
+      "akkusativ": "die Tische"
+    }
+  },
+  {
+    "wort": "fahren",
+    "wortart": "Verb",
+    "formen": [
+      "fuhr",
+      "gefahren",
+      "fährt"
+    ]
+  },
+  {
+    "wort": "kommen",
+    "wortart": "Verb",
+    "formen": [
+      "kam",
+      "gekommen",
+      "kommt"
+    ]
+  },
+  {
+    "wort": "bringen",
+    "wortart": "Verb",
+    "formen": [
+      "brachte",
+      "gebracht",
+      "bringt"
+    ]
+  },
+  {
+    "wort": "sagen",
+    "wortart": "Verb",
+    "formen": [
+      "sagte",
+      "gesagt",
+      "sagt"
+    ]
+  },
+  {
+    "wort": "schön",
+    "wortart": "Adjektiv",
+    "formen": [
+      "schöner",
+      "am schönsten"
+    ]
+  },
+  {
+    "wort": "hässlich",
+    "wortart": "Adjektiv",
+    "formen": [
+      "hässlicher",
+      "am hässlichsten"
+    ]
+  },
+  {
+    "wort": "hell",
+    "wortart": "Adjektiv",
+    "formen": [
+      "heller",
+      "am hellsten"
+    ]
+  },
+  {
+    "wort": "dunkel",
+    "wortart": "Adjektiv",
+    "formen": [
+      "dunkler",
+      "am dunkelsten"
+    ]
+  },
+  {
+    "wort": "oben",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "unten",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "links",
+    "wortart": "Adverb"
+  },
+  {
+    "wort": "rechts",
+    "wortart": "Adverb"
+  },
+    {
+      "wort": "Universität",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Universität","dativ":"der Universität","akkusativ":"die Universität"},
+      "plural": {"nominativ":"die Universitäten","genitiv":"der Universitäten","dativ":"den Universitäten","akkusativ":"die Universitäten"}
+    },
+    {
+      "wort": "Regierung",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Regierung","dativ":"der Regierung","akkusativ":"die Regierung"},
+      "plural": {"nominativ":"die Regierungen","genitiv":"der Regierungen","dativ":"den Regierungen","akkusativ":"die Regierungen"}
+    },
+    {
+      "wort": "Wissenschaftler",
+      "wortart": "Nomen",
+      "artikel": "der",
+      "singular": {"genitiv":"des Wissenschaftlers","dativ":"dem Wissenschaftler","akkusativ":"den Wissenschaftler"},
+      "plural": {"nominativ":"die Wissenschaftler","genitiv":"der Wissenschaftler","dativ":"den Wissenschaftlern","akkusativ":"die Wissenschaftler"}
+    },
+    {
+      "wort": "Entwicklung",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Entwicklung","dativ":"der Entwicklung","akkusativ":"die Entwicklung"},
+      "plural": {"nominativ":"die Entwicklungen","genitiv":"der Entwicklungen","dativ":"den Entwicklungen","akkusativ":"die Entwicklungen"}
+    },
+    {
+      "wort": "Gesetzgebung",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Gesetzgebung","dativ":"der Gesetzgebung","akkusativ":"die Gesetzgebung"},
+      "plural": {"nominativ":"die Gesetzgebungen","genitiv":"der Gesetzgebungen","dativ":"den Gesetzgebungen","akkusativ":"die Gesetzgebungen"}
+    },
+    {
+      "wort": "analysieren",
+      "wortart": "Verb",
+      "formen":["analysierte","analysiert","analysiert"]
+    },
+    {
+      "wort": "evaluieren",
+      "wortart": "Verb",
+      "formen":["evaluierte","evaluiert","evaluiert"]
+    },
+    {
+      "wort": "implementieren",
+      "wortart": "Verb",
+      "formen":["implementierte","implementiert","implementiert"]
+    },
+    {
+      "wort": "kommunizieren",
+      "wortart": "Verb",
+      "formen":["kommunizierte","kommuniziert","kommuniziert"]
+    },
+    {
+      "wort": "koordinieren",
+      "wortart": "Verb",
+      "formen":["koordinierte","koordiniert","koordiniert"]
+    },
+    {
+      "wort": "komplex",
+      "wortart": "Adjektiv",
+      "formen":["komplexer","am komplexesten"]
+    },
+    {
+      "wort": "innovativ",
+      "wortart": "Adjektiv",
+      "formen":["innovativer","am innovativsten"]
+    },
+    {
+      "wort": "effizient",
+      "wortart": "Adjektiv",
+      "formen":["effizienter","am effizientesten"]
+    },
+    {
+      "wort": "nachhaltig",
+      "wortart": "Adjektiv",
+      "formen":["nachhaltiger","am nachhaltigsten"]
+    },
+    {
+      "wort": "bedeutend",
+      "wortart": "Adjektiv",
+      "formen":["bedeutender","am bedeutendsten"]
+    },
+    {
+      "wort": "präzise",
+      "wortart": "Adjektiv",
+      "formen":["präziser","am präzisesten"]
+    },
+    {
+      "wort": "zugleich",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "gelegentlich",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "unter Umständen",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "fortlaufend",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "deshalb",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "währenddessen",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "obgleich",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "sodass",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "ohnehin",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "andererseits",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "Achso",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "Hoppla",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "Tutmirleid",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "mein",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "dein",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "sein",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "ihr",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "unser",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "euer",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "kein",
+      "wortart": "Artikel"
+    },
+    {
+      "wort": "eine",
+      "wortart": "Artikel"
+    },
+    {
+      "wort": "drittens",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "mehrere",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "einige",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "forschung",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Forschung","dativ":"der Forschung","akkusativ":"die Forschung"},
+      "plural": {"nominativ":"die Forschungen","genitiv":"der Forschungen","dativ":"den Forschungen","akkusativ":"die Forschungen"}
+    },
+    {
+      "wort": "Demokratie",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Demokratie","dativ":"der Demokratie","akkusativ":"die Demokratie"},
+      "plural": {"nominativ":"die Demokratien","genitiv":"der Demokratien","dativ":"den Demokratien","akkusativ":"die Demokratien"}
+    },
+    {
+      "wort": "Globalisierung",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Globalisierung","dativ":"der Globalisierung","akkusativ":"die Globalisierung"},
+      "plural": {"nominativ":"die Globalisierungen","genitiv":"der Globalisierungen","dativ":"den Globalisierungen","akkusativ":"die Globalisierungen"}
+    },
+    {
+      "wort": "Technologie",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Technologie","dativ":"der Technologie","akkusativ":"die Technologie"},
+      "plural": {"nominativ":"die Technologien","genitiv":"der Technologien","dativ":"den Technologien","akkusativ":"die Technologien"}
+    },
+    {
+      "wort": "Analyse",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Analyse","dativ":"der Analyse","akkusativ":"die Analyse"},
+      "plural": {"nominativ":"die Analysen","genitiv":"der Analysen","dativ":"den Analysen","akkusativ":"die Analysen"}
+    },
+    {
+      "wort": "interpretieren",
+      "wortart": "Verb",
+      "formen":["interpretierte","interpretiert","interpretiert"]
+    },
+    {
+      "wort": "diskutieren",
+      "wortart": "Verb",
+      "formen":["diskutierte","diskutiert","diskutiert"]
+    },
+    {
+      "wort": "realisieren",
+      "wortart": "Verb",
+      "formen":["realisierte","realisiert","realisiert"]
+    },
+    {
+      "wort": "evaluativ",
+      "wortart": "Adjektiv",
+      "formen":["evaluativer","am evaluativsten"]
+    },
+    {
+      "wort": "strategisch",
+      "wortart": "Adjektiv",
+      "formen":["strategischer","am strategischsten"]
+    },
+    {
+      "wort": "differenziert",
+      "wortart": "Adjektiv",
+      "formen":["differenzierter","am differenziertesten"]
+    },
+    {
+      "wort": "kompliziert",
+      "wortart": "Adjektiv",
+      "formen":["komplizierter","am kompliziertesten"]
+    },
+    {
+      "wort": "abstrakt",
+      "wortart": "Adjektiv",
+      "formen":["abstrakter","am abstraktesten"]
+    },
+    {
+      "wort": "vorläufig",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "letztendlich",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "tatsächlich",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "grundsätzlich",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "Philosophie",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Philosophie","dativ":"der Philosophie","akkusativ":"die Philosophie"},
+      "plural": {"nominativ":"die Philosophien","genitiv":"der Philosophien","dativ":"den Philosophien","akkusativ":"die Philosophien"}
+    },
+    {
+      "wort": "Architektur",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Architektur","dativ":"der Architektur","akkusativ":"die Architektur"},
+      "plural": {"nominativ":"die Architekturen","genitiv":"der Architekturen","dativ":"den Architekturen","akkusativ":"die Architekturen"}
+    },
+    {
+      "wort": "Medizin",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Medizin","dativ":"der Medizin","akkusativ":"die Medizin"},
+      "plural": {"nominativ":"die Medizinen","genitiv":"der Medizinen","dativ":"den Medizinen","akkusativ":"die Medizinen"}
+    },
+    {
+      "wort": "Psychologie",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Psychologie","dativ":"der Psychologie","akkusativ":"die Psychologie"},
+      "plural": {"nominativ":"die Psychologien","genitiv":"der Psychologien","dativ":"den Psychologien","akkusativ":"die Psychologien"}
+    },
+    {
+      "wort": "Biologie",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Biologie","dativ":"der Biologie","akkusativ":"die Biologie"},
+      "plural": {"nominativ":"die Biologien","genitiv":"der Biologien","dativ":"den Biologien","akkusativ":"die Biologien"}
+    },
+    {
+      "wort": "diskutieren",
+      "wortart": "Verb",
+      "formen":["diskutierte","diskutiert","diskutiert"]
+    },
+    {
+      "wort": "analysieren",
+      "wortart": "Verb",
+      "formen":["analysierte","analysiert","analysiert"]
+    },
+    {
+      "wort": "forschen",
+      "wortart": "Verb",
+      "formen":["forschte","geforscht","forscht"]
+    },
+    {
+      "wort": "untersuchen",
+      "wortart": "Verb",
+      "formen":["untersuchte","untersucht","untersucht"]
+    },
+    {
+      "wort": "bewerten",
+      "wortart": "Verb",
+      "formen":["bewertete","bewertet","bewertet"]
+    },
+    {
+      "wort": "kritisch",
+      "wortart": "Adjektiv",
+      "formen":["kritischer","am kritischsten"]
+    },
+    {
+      "wort": "fundamental",
+      "wortart": "Adjektiv",
+      "formen":["fundamentaler","am fundamentalsten"]
+    },
+    {
+      "wort": "präventiv",
+      "wortart": "Adjektiv",
+      "formen":["präventiver","am präventivsten"]
+    },
+    {
+      "wort": "essentiell",
+      "wortart": "Adjektiv",
+      "formen":["essentieller","am essentiellsten"]
+    },
+    {
+      "wort": "vielseitig",
+      "wortart": "Adjektiv",
+      "formen":["vielseitiger","am vielseitigsten"]
+    },
+    {
+      "wort": "konsequent",
+      "wortart": "Adjektiv",
+      "formen":["konsequenter","am konsequentesten"]
+    },
+    {
+      "wort": "detailliert",
+      "wortart": "Adjektiv",
+      "formen":["detaillierter","am detailliertesten"]
+    },
+    {
+      "wort": "gelegentlich",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "letztlich",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "tatsächlich",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "vorrangig",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "obwohl",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "sodass",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "damit",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "jedoch",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "aha",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "hm",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "oh",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "mein",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "dein",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "sein",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "ihr",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "unser",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "euer",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "ein",
+      "wortart": "Artikel"
+    },
+    {
+      "wort": "eine",
+      "wortart": "Artikel"
+    },
+    {
+      "wort": "kein",
+      "wortart": "Artikel"
+    },
+    {
+      "wort": "zwei",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "drei",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "vier",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "fünf",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "sechs",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "sieben",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "acht",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "neun",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "zehn",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "Komplexität",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Komplexität","dativ":"der Komplexität","akkusativ":"die Komplexität"},
+      "plural": {"nominativ":"die Komplexitäten","genitiv":"der Komplexitäten","dativ":"den Komplexitäten","akkusativ":"die Komplexitäten"}
+    },
+    {
+      "wort": "Innovation",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Innovation","dativ":"der Innovation","akkusativ":"die Innovation"},
+      "plural": {"nominativ":"die Innovationen","genitiv":"der Innovationen","dativ":"den Innovationen","akkusativ":"die Innovationen"}
+    },
+    {
+      "wort": "Strategie",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Strategie","dativ":"der Strategie","akkusativ":"die Strategie"},
+      "plural": {"nominativ":"die Strategien","genitiv":"der Strategien","dativ":"den Strategien","akkusativ":"die Strategien"}
+    },
+    {
+      "wort": "Techniker",
+      "wortart": "Nomen",
+      "artikel": "der",
+      "singular": {"genitiv":"des Technikers","dativ":"dem Techniker","akkusativ":"den Techniker"},
+      "plural": {"nominativ":"die Techniker","genitiv":"der Techniker","dativ":"den Technikern","akkusativ":"die Techniker"}
+    },
+    {
+      "wort": "erforschen",
+      "wortart": "Verb",
+      "formen":["erforschte","erforscht","erforscht"]
+    },
+    {
+      "wort": "entwickeln",
+      "wortart": "Verb",
+      "formen":["entwickelte","entwickelt","entwickelt"]
+    },
+    {
+      "wort": "optimieren",
+      "wortart": "Verb",
+      "formen":["optimierte","optimiert","optimiert"]
+    },
+    {
+      "wort": "strukturieren",
+      "wortart": "Verb",
+      "formen":["strukturierte","strukturiert","strukturiert"]
+    },
+    {
+      "wort": "Wasserkraft",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Wasserkraft","dativ":"der Wasserkraft","akkusativ":"die Wasserkraft"},
+      "plural": {"nominativ":"die Wasserkraften","genitiv":"der Wasserkraften","dativ":"den Wasserkraften","akkusativ":"die Wasserkraften"}
+    },
+    {
+      "wort": "Biodiversität",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Biodiversität","dativ":"der Biodiversität","akkusativ":"die Biodiversität"},
+      "plural": {"nominativ":"die Biodiversitäten","genitiv":"der Biodiversitäten","dativ":"den Biodiversitäten","akkusativ":"die Biodiversitäten"}
+    },
+    {
+      "wort": "Solaranlage",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Solaranlage","dativ":"der Solaranlage","akkusativ":"die Solaranlage"},
+      "plural": {"nominativ":"die Solaranlagen","genitiv":"der Solaranlagen","dativ":"den Solaranlagen","akkusativ":"die Solaranlagen"}
+    },
+    {
+      "wort": "Windenergie",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Windenergie","dativ":"der Windenergie","akkusativ":"die Windenergie"},
+      "plural": {"nominativ":"die Windenergien","genitiv":"der Windenergien","dativ":"den Windenergien","akkusativ":"die Windenergien"}
+    },
+    {
+      "wort": "Recycling",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Recycling","dativ":"dem Recycling","akkusativ":"das Recycling"},
+      "plural": {"nominativ":"die Recyclings","genitiv":"der Recyclings","dativ":"den Recyclings","akkusativ":"die Recyclings"}
+    },
+    {
+      "wort": "pflanzen",
+      "wortart": "Verb",
+      "formen":["pflanzte","gepflanzt","pflanzt"]
+    },
+    {
+      "wort": "ernten",
+      "wortart": "Verb",
+      "formen":["ernte","geerntet","erntet"]
+    },
+    {
+      "wort": "säen",
+      "wortart": "Verb",
+      "formen":["säte","gesät","sät"]
+    },
+    {
+      "wort": "gärtnern",
+      "wortart": "Verb",
+      "formen":["gärtnere","gegärtnert","gärtnern"]
+    },
+    {
+      "wort": "bewässern",
+      "wortart": "Verb",
+      "formen":["bewässerte","bewässert","bewässert"]
+    },
+    {
+      "wort": "natürlich",
+      "wortart": "Adjektiv",
+      "formen":["natürlicher","am natürlichsten"]
+    },
+    {
+      "wort": "ökologisch",
+      "wortart": "Adjektiv",
+      "formen":["ökologischer","am ökologischsten"]
+    },
+    {
+      "wort": "nachhaltig",
+      "wortart": "Adjektiv",
+      "formen":["nachhaltiger","am nachhaltigsten"]
+    },
+    {
+      "wort": "umweltfreundlich",
+      "wortart": "Adjektiv",
+      "formen":["umweltfreundlicher","am umweltfreundlichsten"]
+    },
+    {
+      "wort": "energieeffizient",
+      "wortart": "Adjektiv",
+      "formen":["energieeffizienter","am energieeffizientesten"]
+    },
+    {
+      "wort": "höchst",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "dahingehend",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "insbesondere",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "überwiegend",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "währenddessen",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "sowie",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "obgleich",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "solange",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "trotzdem",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "pfui",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "aua",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "wow",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "die",
+      "wortart": "Artikel"
+    },
+    {
+      "wort": "der",
+      "wortart": "Artikel"
+    },
+    {
+      "wort": "das",
+      "wortart": "Artikel"
+    },
+    {
+      "wort": "ein",
+      "wortart": "Artikel"
+    },
+    {
+      "wort": "eine",
+      "wortart": "Artikel"
+    },
+    {
+      "wort": "kein",
+      "wortart": "Artikel"
+    },
+    {
+      "wort": "mein",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "dein",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "sein",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "ihr",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "unser",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "euer",
+      "wortart": "Pronomen"
+    },
+    {
+      "wort": "eins",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "zwei",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "drei",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "vier",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "fünf",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "acht",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "zehn",
+      "wortart": "Numeral"
+    },
+    {
+      "wort": "Handwerk",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Handwerks","dativ":"dem Handwerk","akkusativ":"das Handwerk"},
+      "plural": {"nominativ":"die Handwerke","genitiv":"der Handwerke","dativ":"den Handwerken","akkusativ":"die Handwerke"}
+    },
+    {
+      "wort": "Keramik",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Keramik","dativ":"der Keramik","akkusativ":"die Keramik"},
+      "plural": {"nominativ":"die Keramiken","genitiv":"der Keramiken","dativ":"den Keramiken","akkusativ":"die Keramiken"}
+    },
+    {
+      "wort": "Malerei",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Malerei","dativ":"der Malerei","akkusativ":"die Malerei"},
+      "plural": {"nominativ":"die Malereien","genitiv":"der Malereien","dativ":"den Malereien","akkusativ":"die Malereien"}
+    },
+    {
+      "wort": "Musik",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Musik","dativ":"der Musik","akkusativ":"die Musik"},
+      "plural": {"nominativ":"die Musiken","genitiv":"der Musiken","dativ":"den Musiken","akkusativ":"die Musiken"}
+    },
+    {
+      "wort": "tanzen",
+      "wortart": "Verb",
+      "formen":["tanzte","getanzt","tanzt"]
+    },
+    {
+      "wort": "malen",
+      "wortart": "Verb",
+      "formen":["malte","gemalt","malt"]
+    },
+    {
+      "wort": "zeichnen",
+      "wortart": "Verb",
+      "formen":["zeichnete","gezeichnet","zeichnet"]
+    },
+    {
+      "wort": "singen",
+      "wortart": "Verb",
+      "formen":["sang","gesungen","singt"]
+    },
+    {
+      "wort": "Segelschiff",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Segelschiffs","dativ":"dem Segelschiff","akkusativ":"das Segelschiff"},
+      "plural": {"nominativ":"die Segelschiffe","genitiv":"der Segelschiffe","dativ":"den Segelschiffen","akkusativ":"die Segelschiffe"}
+    },
+    {
+      "wort": "Bergsteigen",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Bergsteigens","dativ":"dem Bergsteigen","akkusativ":"das Bergsteigen"},
+      "plural": {"nominativ":"die Bergsteigen","genitiv":"der Bergsteigen","dativ":"den Bergsteigen","akkusativ":"die Bergsteigen"}
+    },
+    {
+      "wort": "wandern",
+      "wortart": "Verb",
+      "formen":["wanderte","gewandert","wandert"]
+    },
+    {
+      "wort": "kochen",
+      "wortart": "Verb",
+      "formen":["kochte","gekocht","kocht"]
+    },
+    {
+      "wort": "probieren",
+      "wortart": "Verb",
+      "formen":["probierte","probiert","probiert"]
+    },
+    {
+      "wort": "reif",
+      "wortart": "Adjektiv",
+      "formen":["reifer","am reifsten"]
+    },
+    {
+      "wort": "würzig",
+      "wortart": "Adjektiv",
+      "formen":["würziger","am würzigsten"]
+    },
+    {
+      "wort": "scharf",
+      "wortart": "Adjektiv",
+      "formen":["schärfer","am schärfsten"]
+    },
+    {
+      "wort": "spazieren",
+      "wortart": "Verb",
+      "formen":["spazierte","spaziert","spaziert"]
+    },
+    {
+      "wort": "laufen",
+      "wortart": "Verb",
+      "formen":["lief","gelaufen","läuft"]
+    },
+    {
+      "wort": "Radfahren",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Radfahrens","dativ":"dem Radfahren","akkusativ":"das Radfahren"},
+      "plural": {"nominativ":"die Radfahren","genitiv":"der Radfahren","dativ":"den Radfahren","akkusativ":"die Radfahren"}
+    },
+    {
+      "wort": "Apfel",
+      "wortart": "Nomen",
+      "artikel": "der",
+      "singular": {"genitiv":"des Apfels","dativ":"dem Apfel","akkusativ":"den Apfel"},
+      "plural": {"nominativ":"die Äpfel","genitiv":"der Äpfel","dativ":"den Äpfeln","akkusativ":"die Äpfel"}
+    },
+    {
+      "wort": "Schokolade",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Schokolade","dativ":"der Schokolade","akkusativ":"die Schokolade"},
+      "plural": {"nominativ":"die Schokoladen","genitiv":"der Schokoladen","dativ":"den Schokoladen","akkusativ":"die Schokoladen"}
+    },
+    {
+      "wort": "Strand",
+      "wortart": "Nomen",
+      "artikel": "der",
+      "singular": {"genitiv":"des Strandes","dativ":"dem Strand","akkusativ":"den Strand"},
+      "plural": {"nominativ":"die Strände","genitiv":"der Strände","dativ":"den Stränden","akkusativ":"die Strände"}
+    },
+    {
+      "wort": "Meer",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Meeres","dativ":"dem Meer","akkusativ":"das Meer"},
+      "plural": {"nominativ":"die Meere","genitiv":"der Meere","dativ":"den Meeren","akkusativ":"die Meere"}
+    },
+    {
+      "wort": "ferngesteuert",
+      "wortart": "Adjektiv",
+      "formen":["ferngesteuerter","am ferngesteuertesten"]
+    },
+    {
+      "wort": "entspannt",
+      "wortart": "Adjektiv",
+      "formen":["entspannter","am entspanntesten"]
+    },
+    {
+      "wort": "schnell",
+      "wortart": "Adjektiv",
+      "formen":["schneller","am schnellsten"]
+    },
+    {
+      "wort": "plötzlich",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "davor",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "danach",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "unterwegs",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "obwohl",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "sobald",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "weil",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "ach",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "oh",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "hey",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "wow",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "Algorithmus",
+      "wortart": "Nomen",
+      "artikel": "der",
+      "singular": {"genitiv":"des Algorithmus","dativ":"dem Algorithmus","akkusativ":"den Algorithmus"},
+      "plural": {"nominativ":"die Algorithmen","genitiv":"der Algorithmen","dativ":"den Algorithmen","akkusativ":"die Algorithmen"}
+    },
+    {
+      "wort": "Programmieren",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Programmierens","dativ":"dem Programmieren","akkusativ":"das Programmieren"},
+      "plural": {"nominativ":"die Programmieren","genitiv":"der Programmieren","dativ":"den Programmieren","akkusativ":"die Programmieren"}
+    },
+    {
+      "wort": "entwickeln",
+      "wortart": "Verb",
+      "formen":["entwickelte","entwickelt","entwickelt"]
+    },
+    {
+      "wort": "forschen",
+      "wortart": "Verb",
+      "formen":["forschte","geforscht","forscht"]
+    },
+    {
+      "wort": "analysieren",
+      "wortart": "Verb",
+      "formen":["analysierte","analysiert","analysiert"]
+    },
+    {
+      "wort": "digital",
+      "wortart": "Adjektiv",
+      "formen":["digitaler","am digitalsten"]
+    },
+    {
+      "wort": "innovativ",
+      "wortart": "Adjektiv",
+      "formen":["innovativer","am innovativsten"]
+    },
+    {
+      "wort": "komplex",
+      "wortart": "Adjektiv",
+      "formen":["komplexer","am komplexesten"]
+    },
+    {
+      "wort": "KI",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der KI","dativ":"der KI","akkusativ":"die KI"},
+      "plural": {"nominativ":"die KIs","genitiv":"der KIs","dativ":"den KIs","akkusativ":"die KIs"}
+    },
+    {
+      "wort": "Blockchain",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Blockchain","dativ":"der Blockchain","akkusativ":"die Blockchain"},
+      "plural": {"nominativ":"die Blockchains","genitiv":"der Blockchains","dativ":"den Blockchains","akkusativ":"die Blockchains"}
+    },
+    {
+      "wort": "Cloud",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Cloud","dativ":"der Cloud","akkusativ":"die Cloud"},
+      "plural": {"nominativ":"die Clouds","genitiv":"der Clouds","dativ":"den Clouds","akkusativ":"die Clouds"}
+    },
+    {
+      "wort": "streamen",
+      "wortart": "Verb",
+      "formen":["streamte","gestreamt","streamt"]
+    },
+    {
+      "wort": "posten",
+      "wortart": "Verb",
+      "formen":["postete","gepostet","postet"]
+    },
+    {
+      "wort": "liken",
+      "wortart": "Verb",
+      "formen":["likte","gelikt","likt"]
+    },
+    {
+      "wort": "teilen",
+      "wortart": "Verb",
+      "formen":["teilte","geteilt","teilt"]
+    },
+    {
+      "wort": "vernetzt",
+      "wortart": "Adjektiv",
+      "formen":["vernetzter","am vernetztesten"]
+    },
+    {
+      "wort": "schnell",
+      "wortart": "Adjektiv",
+      "formen":["schneller","am schnellsten"]
+    },
+    {
+      "wort": "effizient",
+      "wortart": "Adjektiv",
+      "formen":["effizienter","am effizientesten"]
+    },
+    {
+      "wort": "virtuell",
+      "wortart": "Adjektiv",
+      "formen":["virtueller","am virtuellsten"]
+    },
+    {
+      "wort": "heutzutage",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "online",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "offline",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "manchmal",
+      "wortart": "Adverb"
+    },
+    {
+      "wort": "während",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "bevor",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "damit",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "ob",
+      "wortart": "Konjunktion"
+    },
+    {
+      "wort": "aha",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "hm",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "ohje",
+      "wortart": "Interjektion"
+    },
+    {
+      "wort": "wow",
+      "wortart": "Interjektion"
+    },
+      {
+        "wort": "Herz-Kreislauf-System",
+        "wortart": "Nomen",
+        "artikel": "das",
+        "singular": {"genitiv":"des Herz-Kreislauf-Systems","dativ":"dem Herz-Kreislauf-System","akkusativ":"das Herz-Kreislauf-System"},
+        "plural": {"nominativ":"die Herz-Kreislauf-Systeme","genitiv":"der Herz-Kreislauf-Systeme","dativ":"den Herz-Kreislauf-Systemen","akkusativ":"die Herz-Kreislauf-Systeme"}
+      },
+      {
+        "wort": "Immunsystem",
+        "wortart": "Nomen",
+        "artikel": "das",
+        "singular": {"genitiv":"des Immunsystems","dativ":"dem Immunsystem","akkusativ":"das Immunsystem"},
+        "plural": {"nominativ":"die Immunsysteme","genitiv":"der Immunsysteme","dativ":"den Immunsystemen","akkusativ":"die Immunsysteme"}
+      },
+      {
+        "wort": "sich ernähren",
+        "wortart": "Verb",
+        "formen":["ernährte sich","hat sich ernährt","ernährt sich"]
+      },
+      {
+        "wort": "trainieren",
+        "wortart": "Verb",
+        "formen":["trainierte","trainiert","trainiert"]
+      },
+      {
+        "wort": "dehydrieren",
+        "wortart": "Verb",
+        "formen":["dehydrierte","dehydriert","dehydriert"]
+      },
+      {
+        "wort": "übergewicht",
+        "wortart": "Nomen",
+        "artikel": "das",
+        "singular": {"genitiv":"des Übergewichts","dativ":"dem Übergewicht","akkusativ":"das Übergewicht"},
+        "plural": {"nominativ":"die Übergewichte","genitiv":"der Übergewichte","dativ":"den Übergewichten","akkusativ":"die Übergewichte"}
+      },
+      {
+        "wort": "kalorienarm",
+        "wortart": "Adjektiv",
+        "formen":["kalorienärmer","am kalorienärmsten"]
+      },
+      {
+        "wort": "vitaminreich",
+        "wortart": "Adjektiv",
+        "formen":["vitaminreicher","am vitaminreichsten"]
+      },
+      {
+        "wort": "ausdauernd",
+        "wortart": "Adjektiv",
+        "formen":["ausdauernder","am ausdauerndsten"]
+      },
+      {
+        "wort": "Stoffwechsel",
+        "wortart": "Nomen",
+        "artikel": "der",
+        "singular": {"genitiv":"des Stoffwechsels","dativ":"dem Stoffwechsel","akkusativ":"den Stoffwechsel"},
+        "plural": {"nominativ":"die Stoffwechsel","genitiv":"der Stoffwechsel","dativ":"den Stoffwechseln","akkusativ":"die Stoffwechsel"}
+      },
+      {
+        "wort": "Blutdruck",
+        "wortart": "Nomen",
+        "artikel": "der",
+        "singular": {"genitiv":"des Blutdrucks","dativ":"dem Blutdruck","akkusativ":"den Blutdruck"},
+        "plural": {"nominativ":"die Blutdrücke","genitiv":"der Blutdrücke","dativ":"den Blutdrücken","akkusativ":"die Blutdrücke"}
+      },
+      {
+        "wort": "Muskelaufbau",
+        "wortart": "Nomen",
+        "artikel": "der",
+        "singular": {"genitiv":"des Muskelaufbaus","dativ":"dem Muskelaufbau","akkusativ":"den Muskelaufbau"},
+        "plural": {"nominativ":"die Muskelaufbauten","genitiv":"der Muskelaufbauten","dativ":"den Muskelaufbauten","akkusativ":"die Muskelaufbauten"}
+      },
+      {
+        "wort": "dehnen",
+        "wortart": "Verb",
+        "formen":["dehnte","gedehnt","dehnt"]
+      },
+      {
+        "wort": "regenerieren",
+        "wortart": "Verb",
+        "formen":["regenerierte","regeneriert","regeneriert"]
+      },
+      {
+        "wort": "präventiv",
+        "wortart": "Adjektiv",
+        "formen":["präventiver","am präventivsten"]
+      },
+      {
+        "wort": "körperlich",
+        "wortart": "Adjektiv",
+        "formen":["körperlicher","am körperlichsten"]
+      },
+      {
+        "wort": "mental",
+        "wortart": "Adjektiv",
+        "formen":["mentaler","am mentalsten"]
+      },
+      {
+        "wort": "Schlafmangel",
+        "wortart": "Nomen",
+        "artikel": "der",
+        "singular": {"genitiv":"des Schlafmangels","dativ":"dem Schlafmangel","akkusativ":"den Schlafmangel"},
+        "plural": {"nominativ":"die Schlafmängel","genitiv":"der Schlafmängel","dativ":"den Schlafmängeln","akkusativ":"die Schlafmängel"}
+      },
+      {
+        "wort": "Hydration",
+        "wortart": "Nomen",
+        "artikel": "die",
+        "singular": {"genitiv":"der Hydration","dativ":"der Hydration","akkusativ":"die Hydration"},
+        "plural": {"nominativ":"die Hydrationen","genitiv":"der Hydrationen","dativ":"den Hydrationen","akkusativ":"die Hydrationen"}
+      },
+      {
+        "wort": "präzise",
+        "wortart": "Adjektiv",
+        "formen":["präziser","am präzisesten"]
+      },
+      {
+        "wort": "körpernah",
+        "wortart": "Adjektiv",
+        "formen":["körpernaher","am körpernahsten"]
+      },
+      {
+        "wort": "arzt",
+        "wortart": "Nomen",
+        "artikel": "der",
+        "singular": {"genitiv":"des Arztes","dativ":"dem Arzt","akkusativ":"den Arzt"},
+        "plural": {"nominativ":"die Ärzte","genitiv":"der Ärzte","dativ":"den Ärzten","akkusativ":"die Ärzte"}
+      },
+      {
+        "wort": "krankenschwester",
+        "wortart": "Nomen",
+        "artikel": "die",
+        "singular": {"genitiv":"der Krankenschwester","dativ":"der Krankenschwester","akkusativ":"die Krankenschwester"},
+        "plural": {"nominativ":"die Krankenschwestern","genitiv":"der Krankenschwestern","dativ":"den Krankenschwestern","akkusativ":"die Krankenschwestern"}
+      },
+    {
+      "wort": "Reisepass",
+      "wortart": "Nomen",
+      "artikel": "der",
+      "singular": {"genitiv":"des Reisepasses","dativ":"dem Reisepass","akkusativ":"den Reisepass"},
+      "plural": {"nominativ":"die Reisepässe","genitiv":"der Reisepässe","dativ":"den Reisepässen","akkusativ":"die Reisepässe"}
+    },
+    {
+      "wort": "Flughafen",
+      "wortart": "Nomen",
+      "artikel": "der",
+      "singular": {"genitiv":"des Flughafens","dativ":"dem Flughafen","akkusativ":"den Flughafen"},
+      "plural": {"nominativ":"die Flughäfen","genitiv":"der Flughäfen","dativ":"den Flughäfen","akkusativ":"die Flughäfen"}
+    },
+    {
+      "wort": "abfliegen",
+      "wortart": "Verb",
+      "formen":["flog ab","ist abgeflogen","fliegt ab"]
+    },
+    {
+      "wort": "ankommen",
+      "wortart": "Verb",
+      "formen":["kam an","ist angekommen","kommt an"]
+    },
+    {
+      "wort": "einchecken",
+      "wortart": "Verb",
+      "formen":["checkte ein","hat eingecheckt","checkt ein"]
+    },
+    {
+      "wort": "Hotelreservierung",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Hotelreservierung","dativ":"der Hotelreservierung","akkusativ":"die Hotelreservierung"},
+      "plural": {"nominativ":"die Hotelreservierungen","genitiv":"der Hotelreservierungen","dativ":"den Hotelreservierungen","akkusativ":"die Hotelreservierungen"}
+    },
+    {
+      "wort": "Landschaft",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Landschaft","dativ":"der Landschaft","akkusativ":"die Landschaft"},
+      "plural": {"nominativ":"die Landschaften","genitiv":"der Landschaften","dativ":"den Landschaften","akkusativ":"die Landschaften"}
+    },
+    {
+      "wort": "städtisch",
+      "wortart": "Adjektiv",
+      "formen":["städtischer","am städtischsten"]
+    },
+    {
+      "wort": "ländlich",
+      "wortart": "Adjektiv",
+      "formen":["ländlicher","am ländlichsten"]
+    },
+    {
+      "wort": "sightseeing",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Sightseeings","dativ":"dem Sightseeing","akkusativ":"das Sightseeing"},
+      "plural": {"nominativ":"die Sightseeings","genitiv":"der Sightseeings","dativ":"den Sightseeings","akkusativ":"die Sightseeings"}
+    },
+    {
+      "wort": "touristisch",
+      "wortart": "Adjektiv",
+      "formen":["touristischer","am touristischsten"]
+    },
+    {
+      "wort": "Stadtzentrum",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Stadtzentrums","dativ":"dem Stadtzentrum","akkusativ":"das Stadtzentrum"},
+      "plural": {"nominativ":"die Stadtzentren","genitiv":"der Stadtzentren","dativ":"den Stadtzentren","akkusativ":"die Stadtzentren"}
+    },
+    {
+      "wort": "Bergregion",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Bergregion","dativ":"der Bergregion","akkusativ":"die Bergregion"},
+      "plural": {"nominativ":"die Bergregionen","genitiv":"der Bergregionen","dativ":"den Bergregionen","akkusativ":"die Bergregionen"}
+    },
+    {
+      "wort": "wandern",
+      "wortart": "Verb",
+      "formen":["wanderte","ist gewandert","wandert"]
+    },
+    {
+      "wort": "erkunden",
+      "wortart": "Verb",
+      "formen":["erkundete","hat erkundet","erkundet"]
+    },
+    {
+      "wort": "Unterkunft",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Unterkunft","dativ":"der Unterkunft","akkusativ":"die Unterkunft"},
+      "plural": {"nominativ":"die Unterkünfte","genitiv":"der Unterkünfte","dativ":"den Unterkünften","akkusativ":"die Unterkünfte"}
+    },
+    {
+      "wort": "Reiseleitung",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Reiseleitung","dativ":"der Reiseleitung","akkusativ":"die Reiseleitung"},
+      "plural": {"nominativ":"die Reiseleitungen","genitiv":"der Reiseleitungen","dativ":"den Reiseleitungen","akkusativ":"die Reiseleitungen"}
+    },
+    {
+      "wort": "verreisen",
+      "wortart": "Verb",
+      "formen":["verreiste","ist verreist","verreist"]
+    },
+    {
+      "wort": "routenplanen",
+      "wortart": "Verb",
+      "formen":["plante die Route","hat die Route geplant","plant die Route"]
+    },
+    {
+      "wort": "Kreuzfahrtschiff",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Kreuzfahrtschiffs","dativ":"dem Kreuzfahrtschiff","akkusativ":"das Kreuzfahrtschiff"},
+      "plural": {"nominativ":"die Kreuzfahrtschiffe","genitiv":"der Kreuzfahrtschiffe","dativ":"den Kreuzfahrtschiffen","akkusativ":"die Kreuzfahrtschiffe"}
+    },
+    {
+      "wort": "Ferienort",
+      "wortart": "Nomen",
+      "artikel": "der",
+      "singular": {"genitiv":"des Ferienortes","dativ":"dem Ferienort","akkusativ":"den Ferienort"},
+      "plural": {"nominativ":"die Ferienorte","genitiv":"der Ferienorte","dativ":"den Ferienorten","akkusativ":"die Ferienorte"}
+    },
+    {
+      "wort": "historisch",
+      "wortart": "Adjektiv",
+      "formen":["historischer","am historischsten"]
+    },
+    {
+      "wort": "kulturell",
+      "wortart": "Adjektiv",
+      "formen":["kultureller","am kulturellsten"]
+    },
+    {
+      "wort": "Sehenswürdigkeit",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Sehenswürdigkeit","dativ":"der Sehenswürdigkeit","akkusativ":"die Sehenswürdigkeit"},
+      "plural": {"nominativ":"die Sehenswürdigkeiten","genitiv":"der Sehenswürdigkeiten","dativ":"den Sehenswürdigkeiten","akkusativ":"die Sehenswürdigkeiten"}
+    },
+  {
+    "wort": "Stadtführung",
+    "wortart": "Nomen",
+    "artikel": "die",
+    "singular": {
+      "genitiv": "der Stadtführung",
+      "dativ": "der Stadtführung",
+      "akkusativ": "die Stadtführung"
+    },
+    "plural": {
+      "nominativ": "die Stadtführungen",
+      "genitiv": "der Stadtführungen",
+      "dativ": "den Stadtführungen",
+      "akkusativ": "die Stadtführungen"
+    }
+  },
+    {
+      "wort": "Supermarkt",
+      "wortart": "Nomen",
+      "artikel": "der",
+      "singular": {"genitiv":"des Supermarktes","dativ":"dem Supermarkt","akkusativ":"den Supermarkt"},
+      "plural": {"nominativ":"die Supermärkte","genitiv":"der Supermärkte","dativ":"den Supermärkten","akkusativ":"die Supermärkte"}
+    },
+    {
+      "wort": "Bäckerei",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Bäckerei","dativ":"der Bäckerei","akkusativ":"die Bäckerei"},
+      "plural": {"nominativ":"die Bäckereien","genitiv":"der Bäckereien","dativ":"den Bäckereien","akkusativ":"die Bäckereien"}
+    },
+    {
+      "wort": "Gemüse",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Gemüses","dativ":"dem Gemüse","akkusativ":"das Gemüse"},
+      "plural": {"nominativ":"die Gemüse","genitiv":"der Gemüse","dativ":"den Gemüsen","akkusativ":"die Gemüse"}
+    },
+    {
+      "wort": "Obst",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Obsts","dativ":"dem Obst","akkusativ":"das Obst"},
+      "plural": {"nominativ":"die Obstsorten","genitiv":"der Obstsorten","dativ":"den Obstsorten","akkusativ":"die Obstsorten"}
+    },
+    {
+      "wort": "Wohnviertel",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Wohnviertels","dativ":"dem Wohnviertel","akkusativ":"das Wohnviertel"},
+      "plural": {"nominativ":"die Wohnviertel","genitiv":"der Wohnviertel","dativ":"den Wohnvierteln","akkusativ":"die Wohnviertel"}
+    },
+    {
+      "wort": "U-Bahn",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der U-Bahn","dativ":"der U-Bahn","akkusativ":"die U-Bahn"},
+      "plural": {"nominativ":"die U-Bahnen","genitiv":"der U-Bahnen","dativ":"den U-Bahnen","akkusativ":"die U-Bahnen"}
+    },
+    {
+      "wort": "Straßenbahn",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Straßenbahn","dativ":"der Straßenbahn","akkusativ":"die Straßenbahn"},
+      "plural": {"nominativ":"die Straßenbahnen","genitiv":"der Straßenbahnen","dativ":"den Straßenbahnen","akkusativ":"die Straßenbahnen"}
+    },
+    {
+      "wort": "Taxi",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Taxis","dativ":"dem Taxi","akkusativ":"das Taxi"},
+      "plural": {"nominativ":"die Taxis","genitiv":"der Taxis","dativ":"den Taxis","akkusativ":"die Taxis"}
+    },
+    {
+      "wort": "fahren",
+      "wortart": "Verb",
+      "formen":["fuhr","ist gefahren","fährt"]
+    },
+    {
+      "wort": "einkaufen",
+      "wortart": "Verb",
+      "formen":["kaufte ein","hat eingekauft","kauft ein"]
+    },
+    {
+      "wort": "kochen",
+      "wortart": "Verb",
+      "formen":["kochte","hat gekocht","kocht"]
+    },
+    {
+      "wort": "bestellen",
+      "wortart": "Verb",
+      "formen":["bestellte","hat bestellt","bestellt"]
+    },
+    {
+      "wort": "wohnen",
+      "wortart": "Verb",
+      "formen":["wohnte","hat gewohnt","wohnt"]
+    },
+    {
+      "wort": "modern",
+      "wortart": "Adjektiv",
+      "formen":["moderner","am modernsten"]
+    },
+    {
+      "wort": "historisch",
+      "wortart": "Adjektiv",
+      "formen":["historischer","am historischsten"]
+    },
+    {
+      "wort": "lebendig",
+      "wortart": "Adjektiv",
+      "formen":["lebendiger","am lebendigsten"]
+    },
+    {
+      "wort": "ruhig",
+      "wortart": "Adjektiv",
+      "formen":["ruhiger","am ruhigsten"]
+    },
+    {
+      "wort": "Restaurant",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Restaurants","dativ":"dem Restaurant","akkusativ":"das Restaurant"},
+      "plural": {"nominativ":"die Restaurants","genitiv":"der Restaurants","dativ":"den Restaurants","akkusativ":"die Restaurants"}
+    },
+    {
+      "wort": "Café",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Cafés","dativ":"dem Café","akkusativ":"das Café"},
+      "plural": {"nominativ":"die Cafés","genitiv":"der Cafés","dativ":"den Cafés","akkusativ":"die Cafés"}
+    },
+    {
+      "wort": "Bürogebäude",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Bürogebäudes","dativ":"dem Bürogebäude","akkusativ":"das Bürogebäude"},
+      "plural": {"nominativ":"die Bürogebäude","genitiv":"der Bürogebäude","dativ":"den Bürogebäuden","akkusativ":"die Bürogebäude"}
+    },
+    {
+      "wort": "Fahrkarte",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Fahrkarte","dativ":"der Fahrkarte","akkusativ":"die Fahrkarte"},
+      "plural": {"nominativ":"die Fahrkarten","genitiv":"der Fahrkarten","dativ":"den Fahrkarten","akkusativ":"die Fahrkarten"}
+    },
+    {
+      "wort": "Zug",
+      "wortart": "Nomen",
+      "artikel": "der",
+      "singular": {"genitiv":"des Zuges","dativ":"dem Zug","akkusativ":"den Zug"},
+      "plural": {"nominativ":"die Züge","genitiv":"der Züge","dativ":"den Zügen","akkusativ":"die Züge"}
+    },
+    {
+      "wort": "Bus",
+      "wortart": "Nomen",
+      "artikel": "der",
+      "singular": {"genitiv":"des Busses","dativ":"dem Bus","akkusativ":"den Bus"},
+      "plural": {"nominativ":"die Busse","genitiv":"der Busse","dativ":"den Bussen","akkusativ":"die Busse"}
+    },
+    {
+      "wort": "Fahrrad",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Fahrrads","dativ":"dem Fahrrad","akkusativ":"das Fahrrad"},
+      "plural": {"nominativ":"die Fahrräder","genitiv":"der Fahrräder","dativ":"den Fahrrädern","akkusativ":"die Fahrräder"}
+    },
+    {
+      "wort": "Lebensmittelgeschäft",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Lebensmittelgeschäfts","dativ":"dem Lebensmittelgeschäft","akkusativ":"das Lebensmittelgeschäft"},
+      "plural": {"nominativ":"die Lebensmittelgeschäfte","genitiv":"der Lebensmittelgeschäfte","dativ":"den Lebensmittelgeschäften","akkusativ":"die Lebensmittelgeschäfte"}
+    },
+    {
+      "wort": "Marktplatz",
+      "wortart": "Nomen",
+      "artikel": "der",
+      "singular": {"genitiv":"des Marktplatzes","dativ":"dem Marktplatz","akkusativ":"den Marktplatz"},
+      "plural": {"nominativ":"die Marktplätze","genitiv":"der Marktplätze","dativ":"den Marktplätzen","akkusativ":"die Marktplätze"}
+    },
+    {
+      "wort": "Superfood",
+      "wortart": "Nomen",
+      "artikel": "das",
+      "singular": {"genitiv":"des Superfoods","dativ":"dem Superfood","akkusativ":"das Superfood"},
+      "plural": {"nominativ":"die Superfoods","genitiv":"der Superfoods","dativ":"den Superfoods","akkusativ":"die Superfoods"}
+    },
+    {
+      "wort": "Lebensqualität",
+      "wortart": "Nomen",
+      "artikel": "die",
+      "singular": {"genitiv":"der Lebensqualität","dativ":"der Lebensqualität","akkusativ":"die Lebensqualität"},
+      "plural": {"nominativ":"die Lebensqualitäten","genitiv":"der Lebensqualitäten","dativ":"den Lebensqualitäten","akkusativ":"die Lebensqualitäten"}
+    },
+    {
+      "wort": "bequem",
+      "wortart": "Adjektiv",
+      "formen":["bequemer","am bequemsten"]
+    },
+    {
+      "wort": "verkehrsreich",
+      "wortart": "Adjektiv",
+      "formen":["verkehrsreicher","am verkehrsreichsten"]
+    },
+    {
+      "wort": "lebhaft",
+      "wortart": "Adjektiv",
+      "formen":["lebhafter","am lebhaftesten"]
+    },
+    {"wort":"Roboter","wortart":"Nomen"},
+    {"wort":"Künstliche Intelligenz","wortart":"Nomen"},
+    {"wort":"Drohne","wortart":"Nomen"},
+    {"wort":"Algorithmus","wortart":"Nomen"},
+    {"wort":"Programmieren","wortart":"Verb","formen":["programmierte","programmiert","programmiert"]},
+    {"wort":"codieren","wortart":"Verb","formen":["codierte","codiert","codiert"]},
+    {"wort":"debuggen","wortart":"Verb","formen":["debuggte","debuggt","debuggt"]},
+    {"wort":"virtualisieren","wortart":"Verb","formen":["virtualisierte","virtualisiert","virtualisiert"]},
+    {"wort":"nachhaltig","wortart":"Adjektiv","formen":["nachhaltiger","am nachhaltigsten"]},
+    {"wort":"digital","wortart":"Adjektiv","formen":["digitaler","am digitalsten"]},
+    {"wort":"ökologisch","wortart":"Adjektiv","formen":["ökologischer","am ökologischsten"]},
+    {"wort":"Regenwald","wortart":"Nomen"},
+    {"wort":"Korallenriff","wortart":"Nomen"},
+    {"wort":"Sonnenaufgang","wortart":"Nomen"},
+    {"wort":"Bergsteigen","wortart":"Verb","formen":["stieg berg","ist berggestiegen","steigt berg"]},
+    {"wort":"wandern","wortart":"Verb","formen":["wanderte","gewandert","wandert"]},
+    {"wort":"klettern","wortart":"Verb","formen":["kletterte","geklettert","klettert"]},
+    {"wort":"abenteuerlich","wortart":"Adjektiv","formen":["abenteuerlicher","am abenteuerlichsten"]},
+    {"wort":"extrem","wortart":"Adjektiv","formen":["extremer","am extremsten"]},
+    {"wort":"Fußball","wortart":"Nomen"},
+    {"wort":"Basketball","wortart":"Nomen"},
+    {"wort":"Schwimmen","wortart":"Verb","formen":["schwamm","geschwommen","schwimmt"]},
+    {"wort":"trainieren","wortart":"Verb","formen":["trainierte","trainiert","trainiert"]},
+    {"wort":"laufen","wortart":"Verb","formen":["lief","gelaufen","läuft"]},
+    {"wort":"schnell","wortart":"Adjektiv","formen":["schneller","am schnellsten"]},
+    {"wort":"stark","wortart":"Adjektiv","formen":["stärker","am stärksten"]},
+    {"wort":"Gitarre","wortart":"Nomen"},
+    {"wort":"Klavier","wortart":"Nomen"},
+    {"wort":"Musizieren","wortart":"Verb","formen":["musizierte","musiziert","musiziert"]},
+    {"wort":"komponieren","wortart":"Verb","formen":["komponierte","komponiert","komponiert"]},
+    {"wort":"tönen","wortart":"Verb","formen":["tönte","getönt","tönt"]},
+    {"wort":"melodisch","wortart":"Adjektiv","formen":["melodischer","am melodischsten"]},
+    {"wort":"harmonisch","wortart":"Adjektiv","formen":["harmonischer","am harmonischsten"]},
+    {"wort":"Museum","wortart":"Nomen"},
+    {"wort":"Galerie","wortart":"Nomen"},
+    {"wort":"ausstellen","wortart":"Verb","formen":["stellte aus","ausgestellt","stellt aus"]},
+    {"wort":"besichtigen","wortart":"Verb","formen":["besichtigte","besichtigt","besichtigt"]},
+    {"wort":"kulturell","wortart":"Adjektiv","formen":["kultureller","am kulturellsten"]},
+    {"wort":"historisch","wortart":"Adjektiv","formen":["historischer","am historischsten"]},
+    {"wort":"Experiment","wortart":"Nomen"},
+    {"wort":"Labor","wortart":"Nomen"},
+    {"wort":"forschen","wortart":"Verb","formen":["forschte","geforscht","forscht"]},
+    {"wort":"analysieren","wortart":"Verb","formen":["analysierte","analysiert","analysiert"]},
+    {"wort":"wissenschaftlich","wortart":"Adjektiv","formen":["wissenschaftlicher","am wissenschaftlichsten"]},
+    {"wort":"präzise","wortart":"Adjektiv","formen":["präziser","am präzisesten"]},
+    {"wort":"Werkzeug","wortart":"Nomen"},
+    {"wort":"Schraube","wortart":"Nomen"},
+    {"wort":"bauen","wortart":"Verb","formen":["baute","gebaut","baut"]},
+    {"wort":"konstruieren","wortart":"Verb","formen":["konstruierte","konstruiert","konstruiert"]},
+    {"wort":"handwerklich","wortart":"Adjektiv","formen":["handwerklicher","am handwerklichsten"]},
+    {"wort":"stabil","wortart":"Adjektiv","formen":["stabiler","am stabilsten"]},
+    {"wort":"Technologie","wortart":"Nomen"},
+    {"wort":"App","wortart":"Nomen"},
+    {"wort":"downloaden","wortart":"Verb","formen":["downloadete","gedownloadet","downloadet"]},
+    {"wort":"installieren","wortart":"Verb","formen":["installierte","installiert","installiert"]},
+    {"wort":"intuitiv","wortart":"Adjektiv","formen":["intuitiver","am intuitivsten"]},
+    {"wort":"effizient","wortart":"Adjektiv","formen":["effizienter","am effizientesten"]},
+    {"wort":"Arzt","wortart":"Nomen"},
+    {"wort":"Krankenhaus","wortart":"Nomen"},
+    {"wort":"Patient","wortart":"Nomen"},
+    {"wort":"untersuchen","wortart":"Verb","formen":["untersuchte","untersucht","untersucht"]},
+    {"wort":"heilen","wortart":"Verb","formen":["heilte","geheilt","heilt"]},
+    {"wort":"impfen","wortart":"Verb","formen":["impfte","geimpft","impft"]},
+    {"wort":"medizinisch","wortart":"Adjektiv","formen":["medizinischer","am medizinischsten"]},
+    {"wort":"gesund","wortart":"Adjektiv","formen":["gesünder","am gesündesten"]},
+    {"wort":"krank","wortart":"Adjektiv","formen":["kränker","am kränksten"]},
+    {"wort":"Apotheke","wortart":"Nomen"},
+    {"wort":"Rezept","wortart":"Nomen"},
+    {"wort":"Medikament","wortart":"Nomen"},
+    {"wort":"verschreiben","wortart":"Verb","formen":["verschrieb","verschrieben","verschreibt"]},
+    {"wort":"dosieren","wortart":"Verb","formen":["dosierte","dosiert","dosiert"]},
+    {"wort":"schnell","wortart":"Adjektiv","formen":["schneller","am schnellsten"]},
+    {"wort":"wirkungsarm","wortart":"Adjektiv","formen":["wirkungsärmer","am wirkungsärmsten"]},
+    {"wort":"Regen","wortart":"Nomen"},
+    {"wort":"Waldgebiet","wortart":"Nomen"},
+    {"wort":"Bergsee","wortart":"Nomen"},
+    {"wort":"wandern","wortart":"Verb","formen":["wanderte","gewandert","wandert"]},
+    {"wort":"pflanzen","wortart":"Verb","formen":["pflanzte","gepflanzt","pflanzt"]},
+    {"wort":"schützen","wortart":"Verb","formen":["schützte","geschützt","schützt"]},
+    {"wort":"natürlich","wortart":"Adjektiv","formen":["natürlicher","am natürlichsten"]},
+    {"wort":"wild","wortart":"Adjektiv","formen":["wilder","am wildesten"]},
+    {"wort":"Strand","wortart":"Nomen"},
+    {"wort":"Hotel","wortart":"Nomen"},
+    {"wort":"Flughafen","wortart":"Nomen"},
+    {"wort":"reisen","wortart":"Verb","formen":["reiste","gereist","reist"]},
+    {"wort":"buchen","wortart":"Verb","formen":["buchte","gebucht","bucht"]},
+    {"wort":"packen","wortart":"Verb","formen":["packte","gepackt","packt"]},
+    {"wort":"urlauberfreundlich","wortart":"Adjektiv","formen":["urlauberfreundlicher","am urlauberfreundlichsten"]},
+    {"wort":"exotisch","wortart":"Adjektiv","formen":["exotischer","am exotischsten"]},
+    {"wort":"Mango","wortart":"Nomen"},
+    {"wort":"Quinoa","wortart":"Nomen"},
+    {"wort":"Sushi","wortart":"Nomen"},
+    {"wort":"kochen","wortart":"Verb","formen":["kochte","gekocht","kocht"]},
+    {"wort":"backen","wortart":"Verb","formen":["backte","gebacken","backt"]},
+    {"wort":"würzen","wortart":"Verb","formen":["würzte","gewürzt","würzt"]},
+    {"wort":"frisch","wortart":"Adjektiv","formen":["frischer","am frischesten"]},
+    {"wort":"pikant","wortart":"Adjektiv","formen":["pikantier","am pikantesten"]},
+    {"wort":"Bühne","wortart":"Nomen"},
+    {"wort":"Film","wortart":"Nomen"},
+    {"wort":"Buchhandlung","wortart":"Nomen"},
+    {"wort":"lesen","wortart":"Verb","formen":["las","gelesen","liest"]},
+    {"wort":"zeichnen","wortart":"Verb","formen":["zeichnete","gezeichnet","zeichnet"]},
+    {"wort":"aufführen","wortart":"Verb","formen":["führte auf","aufgeführt","führt auf"]},
+    {"wort":"künstlerisch","wortart":"Adjektiv","formen":["künstlerischer","am künstlerischsten"]},
+    {"wort":"spannend","wortart":"Adjektiv","formen":["spannender","am spannendsten"]},
+    {"wort":"Staubsauger","wortart":"Nomen"},
+    {"wort":"Waschmaschine","wortart":"Nomen"},
+    {"wort":"Küche","wortart":"Nomen"},
+    {"wort":"putzen","wortart":"Verb","formen":["putzte","geputzt","putzt"]},
+    {"wort":"koordinieren","wortart":"Verb","formen":["koordinierte","koordiniert","koordiniert"]},
+    {"wort":"organisieren","wortart":"Verb","formen":["organisierte","organisiert","organisiert"]},
+    {"wort":"praktisch","wortart":"Adjektiv","formen":["praktischer","am praktischsten"]},
+    {"wort":"sauber","wortart":"Adjektiv","formen":["sauberer","am saubersten"]},
+    {"wort":"Kaffee","wortart":"Nomen"},
+    {"wort":"Tee","wortart":"Nomen"},
+    {"wort":"Kakao","wortart":"Nomen"},
+    {"wort":"trinken","wortart":"Verb","formen":["trank","getrunken","trinkt"]},
+    {"wort":"mixen","wortart":"Verb","formen":["mixte","gemixt","mixt"]},
+    {"wort":"zubereiten","wortart":"Verb","formen":["bereitete zu","zubereitet","bereitet zu"]},
+    {"wort":"warm","wortart":"Adjektiv","formen":["wärmer","am wärmsten"]},
+    {"wort":"kalt","wortart":"Adjektiv","formen":["kälter","am kältesten"]},
+    {"wort":"Kunststoff","wortart":"Nomen"},
+    {"wort":"Glas","wortart":"Nomen"},
+    {"wort":"Metall","wortart":"Nomen"},
+    {"wort":"schneiden","wortart":"Verb","formen":["schnitt","geschnitten","schneidet"]},
+    {"wort":"formen","wortart":"Verb","formen":["formte","geformt","formt"]},
+    {"wort":"biegen","wortart":"Verb","formen":["bog","gebogen","biegt"]},
+    {"wort":"stabil","wortart":"Adjektiv","formen":["stabiler","am stabilsten"]},
+    {"wort":"flexibel","wortart":"Adjektiv","formen":["flexibler","am flexibelsten"]},
+    {"wort":"Quantenmechanik","wortart":"Nomen"},
+    {"wort":"Neuroplastizität","wortart":"Nomen"},
+    {"wort":"Photosynthese","wortart":"Nomen"},
+    {"wort":"Epistemologie","wortart":"Nomen"},
+    {"wort":"Thermodynamik","wortart":"Nomen"},
+    {"wort":"Zirkadianrhythmus","wortart":"Nomen"},
+    {"wort":"Antizipation","wortart":"Nomen"},
+    {"wort":"Kollaborieren","wortart":"Verb","formen":["kollaborierte","kollaboriert","kollaboriert"]},
+    {"wort":"Kompensieren","wortart":"Verb","formen":["kompensierte","kompensiert","kompensiert"]},
+    {"wort":"Operationalisieren","wortart":"Verb","formen":["operationalisierte","operationalisiert","operationalisiert"]},
+    {"wort":"Validieren","wortart":"Verb","formen":["validierte","validiert","validiert"]},
+    {"wort":"Implementieren","wortart":"Verb","formen":["implementierte","implementiert","implementiert"]},
+    {"wort":"hypothetisch","wortart":"Adjektiv","formen":["hypothetischer","am hypothetischsten"]},
+    {"wort":"intrinsisch","wortart":"Adjektiv","formen":["intrinsischer","am intrinsischsten"]},
+    {"wort":"transzendental","wortart":"Adjektiv","formen":["transzendenter","am transzendentalsten"]},
+    {"wort":"interdisziplinär","wortart":"Adjektiv","formen":["interdisziplinärer","am interdisziplinärsten"]},
+    {"wort":"Polymerisation","wortart":"Nomen"},
+    {"wort":"Kohlenstoffdioxid","wortart":"Nomen"},
+    {"wort":"Endosymbiose","wortart":"Nomen"},
+    {"wort":"Multiversum","wortart":"Nomen"},
+    {"wort":"Neurotransmitter","wortart":"Nomen"},
+    {"wort":"Zirkulationssystem","wortart":"Nomen"},
+    {"wort":"Präzedenzfall","wortart":"Nomen"},
+    {"wort":"Exekutive","wortart":"Nomen"},
+    {"wort":"Legislative","wortart":"Nomen"},
+    {"wort":"Judikative","wortart":"Nomen"},
+    {"wort":"Kontrapunkt","wortart":"Nomen"},
+    {"wort":"Fugato","wortart":"Nomen"},
+    {"wort":"Seriell","wortart":"Adjektiv","formen":["serieller","am seriellsten"]},
+    {"wort":"Synthetisieren","wortart":"Verb","formen":["synthetisierte","synthetisiert","synthetisiert"]},
+    {"wort":"Analysieren","wortart":"Verb","formen":["analysierte","analysiert","analysiert"]},
+    {"wort":"Differenzieren","wortart":"Verb","formen":["differenzierte","differenziert","differenziert"]},
+    {"wort":"Konditionieren","wortart":"Verb","formen":["konditionierte","konditioniert","konditioniert"]},
+    {"wort":"Rekonstruieren","wortart":"Verb","formen":["rekonstruierte","rekonstruiert","rekonstruiert"]},
+    {"wort":"Perzeption","wortart":"Nomen"},
+    {"wort":"Kognition","wortart":"Nomen"},
+    {"wort":"Metakognition","wortart":"Nomen"},
+    {"wort":"Autopoiesis","wortart":"Nomen"},
+    {"wort":"Heuristik","wortart":"Nomen"},
+    {"wort":"Exponentialfunktion","wortart":"Nomen"},
+    {"wort":"Logarithmus","wortart":"Nomen"},
+    {"wort":"Dekomposition","wortart":"Nomen"},
+    {"wort":"Resilienz","wortart":"Nomen"},
+    {"wort":"Kohärenz","wortart":"Nomen"},
+    {"wort":"Multikollinearität","wortart":"Nomen"},
+    {"wort":"Biodiversität","wortart":"Nomen"},
+    {"wort":"Ökosystemdienstleistungen","wortart":"Nomen"},
+    {"wort":"Anthropozän","wortart":"Nomen"},
+    {"wort":"Sustainability","wortart":"Nomen"},
+    {"wort":"Eutrophierung","wortart":"Nomen"},
+    {"wort":"Photosynthetisch","wortart":"Adjektiv","formen":["photosynthetischer","am photosynthetischsten"]},
+    {"wort":"kaskadieren","wortart":"Verb","formen":["kaskadierte","kaskadiert","kaskadiert"]},
+    {"wort":"modulieren","wortart":"Verb","formen":["modulierte","moduliert","moduliert"]},
+    {"wort":"synthetisch","wortart":"Adjektiv","formen":["synthetischer","am synthetischsten"]},
+    {"wort":"algorithmisch","wortart":"Adjektiv","formen":["algorithmischer","am algorithmischsten"]},
+    {"wort":"juristisch","wortart":"Adjektiv","formen":["juristischer","am juristischsten"]},
+    {"wort":"soziokulturell","wortart":"Adjektiv","formen":["soziokultureller","am soziokulturellsten"]},
+    {"wort":"Interferenz","wortart":"Nomen"},
+    {"wort":"Resonanz","wortart":"Nomen"},
+    {"wort":"Polarisation","wortart":"Nomen"},
+    {"wort":"Spektroskopie","wortart":"Nomen"},
+    {"wort":"Dendrit","wortart":"Nomen"},
+    {"wort":"Synapse","wortart":"Nomen"},
+    {"wort":"Mitochondrium","wortart":"Nomen"},
+    {"wort":"Chloroplast","wortart":"Nomen"},
+    {"wort":"Antagonistisch","wortart":"Adjektiv","formen":["antagonistischer","am antagonistischsten"]},
+    {"wort":"synergistisch","wortart":"Adjektiv","formen":["synergistischer","am synergistischsten"]},
+    {"wort":"kollaborativ","wortart":"Adjektiv","formen":["kollaborativer","am kollaborativsten"]},
+    {"wort":"funktional","wortart":"Adjektiv","formen":["funktionaler","am funktionalsten"]},
+    {"wort":"Paradigma","wortart":"Nomen"},
+    {"wort":"Dichotomie","wortart":"Nomen"},
+    {"wort":"Polysemie","wortart":"Nomen"},
+    {"wort":"Hermeneutik","wortart":"Nomen"},
+    {"wort":"Existenzialismus","wortart":"Nomen"},
+    {"wort":"Dekonstruktion","wortart":"Nomen"},
+    {"wort":"Kausalität","wortart":"Nomen"},
+    {"wort":"Teleologie","wortart":"Nomen"},
+    {"wort":"Neurotransmission","wortart":"Nomen"},
+    {"wort":"Oxidation","wortart":"Nomen"},
+    {"wort":"Reduktion","wortart":"Nomen"},
+    {"wort":"Transkription","wortart":"Nomen"},
+    {"wort":"Translation","wortart":"Nomen"},
+    {"wort":"Differentialgleichung","wortart":"Nomen"},
+    {"wort":"Integralrechnung","wortart":"Nomen"},
+    {"wort":"Stochastik","wortart":"Nomen"},
+    {"wort":"Quantifizierung","wortart":"Nomen"},
+    {"wort":"Korrelation","wortart":"Nomen"},
+    {"wort":"Regressionsanalyse","wortart":"Nomen"},
+    {"wort":"Multivariate","wortart":"Adjektiv","formen":["multivariater","am multivariatesten"]},
+    {"wort":"Deterministisch","wortart":"Adjektiv","formen":["deterministischer","am deterministischsten"]},
+    {"wort":"Probabilistisch","wortart":"Adjektiv","formen":["probabilistischer","am probabilistischsten"]}
+]
