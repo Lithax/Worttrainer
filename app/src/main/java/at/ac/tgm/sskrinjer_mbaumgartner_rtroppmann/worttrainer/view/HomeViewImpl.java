@@ -49,7 +49,7 @@ public class HomeViewImpl extends JPanel implements HomeView {
         
         uhrzeitLabel = new JLabel("00:00");
         uhrzeitLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        uhrzeitLabel.putClientProperty(FlatClientProperties.STYLE, "font: $h00.font");
+        uhrzeitLabel.putClientProperty(FlatClientProperties.STYLE, "font: 65");
         
         datumLabel = new JLabel("Montag, 01. Jänner 2025");
         datumLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -82,6 +82,7 @@ public class HomeViewImpl extends JPanel implements HomeView {
         tipContent.setEditable(false);
         tipContent.setFocusable(false);
         tipContent.setOpaque(false);
+        tipContent.putClientProperty(FlatClientProperties.STYLE, "font: $h5.font");
 
         tipCard.add(tipTitle, BorderLayout.NORTH);
         tipCard.add(tipContent, BorderLayout.CENTER);
