@@ -55,7 +55,7 @@ public class FehlerfuchsModel extends LinearSpielModel {
             streak = 0;
             fehlerAnzahl++;
             lastFeedback = new Feedback(
-                    "Falsch – richtig wäre: " + korrektesWort, false);
+                    "Falsch – richtig wäre: " + korrektesWort.displayWord(), false);
         }
     }
 
