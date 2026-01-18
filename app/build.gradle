@@ -13,7 +13,8 @@ buildscript {
 plugins {
     id 'java'
     id 'application'
-    // id 'com.github.johnrengelman.shadow' version '8.1.1' 
+    // id 'com.github.johnrengelman.shadow' version '8.1.1'
+    id 'org.beryx.jlink' version '3.1.1'
 }
 
 group = 'at.ac.tgm'
@@ -184,5 +185,26 @@ task generatePlantUml {
 
         outputFile.append("\n@enduml")
         println "SUCCESS: Diagram generated at: ${outputFile.absolutePath}"
+    }
+}
+
+jlink {
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+
+    launcher {
+        name = 'Worttrainer'
+    }
+
+    jpackage {
+        installerType = 'exe'
+
+        // ACHTUNG: Muss eine .ico Datei sein!
+        icon = 'src/main/resources/icons/icon.ico'
+
+        installerOptions = [
+                '--win-dir-chooser',
+                '--win-menu',
+                '--win-shortcut'
+        ]
     }
 }

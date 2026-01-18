@@ -122,7 +122,7 @@ public class FehlerfuchsView
         feedbackLabel.setText(feedback.message());
 
         // Simpler Farb-Check (Logik ggf. anpassen)
-        if (feedback.toString().toLowerCase().contains("richtig")) {
+        if (feedback.correct()) {
             feedbackLabel.setForeground(new Color(40, 167, 69));
         } else {
             feedbackLabel.setForeground(new Color(220, 53, 69));

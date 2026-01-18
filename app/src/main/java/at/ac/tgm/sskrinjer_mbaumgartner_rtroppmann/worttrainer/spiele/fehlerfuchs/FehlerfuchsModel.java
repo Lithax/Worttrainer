@@ -6,10 +6,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.Statistik;
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wort;
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.WortTag;
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.WortVerwaltung;
-import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wortliste;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.*;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.LinearSpielModel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.SpielListener;
 
@@ -26,7 +23,9 @@ public class FehlerfuchsModel extends LinearSpielModel {
     @Override
     public void spielStarten(SpielListener l) {
         super.spielStarten(l);
-        wv = new WortVerwaltung(Wortliste.getInstance().query().nomenImFall(WortTag.NOMINATIV).nomenImSingular().mitLaenge(6, 99).mitKomplexitaet(4.5 + einstellungen.numerifySchwierigkeit() * 0.6, 10));
+        double minKomplexitaet = 4.5 + einstellungen.numerifySchwierigkeit() * 0.6;
+        query.mitLaenge(6, 99).mitKomplexitaet(minKomplexitaet, 10).nomenImFall(WortTag.NOMINATIV).verbImPraesens().nomenImSingular();
+        wv = new WortVerwaltung(query);
 
         fehlerAnzahl = 0;
         gesamtAnzahl = 0;
@@ -118,7 +117,30 @@ public class FehlerfuchsModel extends LinearSpielModel {
             verwendeteKategorien.add(fehler.kategorie);
         }
 
+        // Wenn nach allen Versuchen das Wort immer noch das Original ist
+        if (aktuell.equals(original)) {
+            return erzwingeBuchstabenTausch(original, random);
+        }
+
         return aktuell;
+    }
+
+    private static String erzwingeBuchstabenTausch(String wort, Random random) {
+        // Sicherheitscheck: Wort muss mind. 2 Zeichen haben zum Tauschen
+        if (wort == null || wort.length() < 2) {
+            return wort;
+        }
+
+        char[] chars = wort.toCharArray();
+
+        int index = random.nextInt(chars.length - 1);
+
+        // Der Tausch (Swap)
+        char temp = chars[index];
+        chars[index] = chars[index + 1];
+        chars[index + 1] = temp;
+
+        return new String(chars);
     }
 
 
@@ -175,7 +197,7 @@ public class FehlerfuchsModel extends LinearSpielModel {
 
         if (neu.length() >= 2 && neu.charAt(0) == neu.charAt(1)) return true;
 
-        for (String kern : List.of("sch", "ch", "ie")) {
+        for (String kern : List.of("sch", "ch")) {
             if (original.contains(kern) && !neu.contains(kern)) return true;
         }
 

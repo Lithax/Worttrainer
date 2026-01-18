@@ -10,9 +10,10 @@ public class WortVerwaltung {
     private List<Wort> liste;
     private final Random random = new Random();
 
-    public WortVerwaltung(WortQuery query) {
+    public WortVerwaltung(WortQuery query) throws WortlistenLadeException {
         this.query = query;
         refreshListe();
+        if(liste.isEmpty()) throw new WortlistenLadeException("Keine passenden Wörter für dieses Spiel gefunden");
     }
 
     public void setQuery(WortQuery query) {
