@@ -13,6 +13,7 @@ import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.GameState;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.MainModel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.TimeListener;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.Wortliste;
+import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.model.woerter.WortlistenLadeException;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.spiele.Spiel;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.util.Propagate;
 import at.ac.tgm.sskrinjer_mbaumgartner_rtroppmann.worttrainer.view.EinstellungenListener;
@@ -66,13 +67,15 @@ public class MainControllerImpl implements MainController {
 		String recentlyPlayed = propagate(() -> mainModel.getUserData().getRecentlyPlayedGame());
 		if(recentlyPlayed != null) {
 			Optional<Spiel> spiel = spiele.stream().filter(s -> s.getName().equals(recentlyPlayed)).findFirst();
-			if(spiel.isPresent())
-				mainView.getHomeView().setRecentlyPlayedSpiel(spiel.get());
+            spiel.ifPresent(value -> mainView.getHomeView().setRecentlyPlayedSpiel(value)); //intelliJ sagt inline ist besser
 		}
 
 		updateEinstellungsView();
-
-		propagate(() -> mainModel.loadWortliste());
+        try {
+            propagate(mainModel::loadWortliste);
+        } catch (WortlistenLadeException e) {
+            //#toDo @marius was muss da rein
+        }
 	}
 
 	public void onSpielBeenden(){
