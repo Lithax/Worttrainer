@@ -71,11 +71,7 @@ public class MainControllerImpl implements MainController {
 		}
 
 		updateEinstellungsView();
-        try {
-            propagate(mainModel::loadWortliste);
-        } catch (WortlistenLadeException e) {
-            //#toDo @marius was muss da rein
-        }
+        propagate(mainModel::loadWortliste);
 	}
 
 	public void onSpielBeenden(){

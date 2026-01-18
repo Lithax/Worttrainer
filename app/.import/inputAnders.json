@@ -1,0 +1,9 @@
+[
+  {
+    "wort": "Blockchain",
+    "wortart": "Nomen",
+    "artikel": "die",
+    "singular": {"genitiv":"der Blockchain","dativ":"der Blockchain","akkusativ":"die Blockchain"},
+    "plural": {"nominativ":"die Blockchains","genitiv":"der Blockchains","dativ":"den Blockchains","akkusativ":"die Blockchains"}
+  }
+]
