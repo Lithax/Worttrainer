@@ -28,11 +28,6 @@ public class FehlerfuchsModel extends LinearSpielModel {
         super.spielStarten(l);
         wv = new WortVerwaltung(Wortliste.getInstance().query().nomenImFall(WortTag.NOMINATIV).nomenImSingular().mitLaenge(6, 99).mitKomplexitaet(4.5 + einstellungen.numerifySchwierigkeit() * 0.6, 10));
 
-        fehlerAnzahl = 0;
-        gesamtAnzahl = 0;
-        streak = 0;
-        highestStreak = 0;
-
         maxRounds = einstellungen != null ? einstellungen.getAnzahlRunden() : 10;
 
         lastFeedback = new Feedback("Korrigiere das Wort!", true);
